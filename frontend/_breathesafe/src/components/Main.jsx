@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react'
+import React, { useEffect, useReducer, useState } from 'react'
 import SensorCard from './SensorCard'
 import SensorChart from './SensorChart'
 import NameCard from './NameCard'
@@ -7,15 +7,11 @@ import Alerts from './Alerts'
 import axios from 'axios'
 import formatTimestamp from './functions/formatTimestamp'
 import { useEmployee } from './contexts/EmployeeContext'
+import { dataReducer, INITIAL_STATE } from './functions/dataReducer'
 
 function Main() {
 
-  const [latestPM25, setLatestPM25] = useState({})
-  const [latestPM10, setLatestPM10] = useState({})
-  const [latestPM25AQI, setLatestPM25AQI] = useState({})
-  const [latestPM10AQI, setLatestPM10AQI] = useState({})
-  const [latestPM25Level, setLatestPM25Level] = useState({})
-  const [latestPM10Level, setLatestPM10Level] = useState({})
+  const [sensorState, dispatch] = useReducer(dataReducer, INITIAL_STATE)
   const [pmChartData, setPMChartData] = useState(null)
   const [aqiChartData, setAQIChartData] = useState(null)
   const [employeeName, setEmployeeName] = useState("")
@@ -24,22 +20,19 @@ function Main() {
   useEffect(() => {
     const fetchData = async () =>{
       try {
-        console.log(selectedEmployee)
         const response = await axios.get(`http://localhost:5000/api/sensor_data?employeeID=${selectedEmployee}`)
         const sensorData = response.data
         setEmployeeName(sensorData[0].emp_name)
 
         if (sensorData.length > 0) {
           const latestReading = sensorData[sensorData.length - 1]
-
-          setLatestPM25({ value: latestReading.pm25, timestamp: latestReading.timestamp })
-          setLatestPM10({ value: latestReading.pm10, timestamp: latestReading.timestamp })
-          
-          setLatestPM25AQI({ value: latestReading.aqi_pm25, timestamp: latestReading.timestamp })
-          setLatestPM10AQI({ value: latestReading.aqi_pm10, timestamp: latestReading.timestamp })
-
-          setLatestPM25Level({ value: latestReading.aqi_pm25_category, timestamp: latestReading.timestamp })
-          setLatestPM10Level({ value: latestReading.aqi_pm10_category, timestamp: latestReading.timestamp })
+          console.log(latestReading)
+          dispatch({ type: "UPDATE", field: "latestPM25", value: latestReading.pm25, timestamp: latestReading.timestamp })
+          dispatch({ type: "UPDATE", field: "latestPM10", value: latestReading.pm10, timestamp: latestReading.timestamp })
+          dispatch({ type: "UPDATE", field: "latestPM25AQI", value: latestReading.aqi_pm25, timestamp: latestReading.timestamp })
+          dispatch({ type: "UPDATE", field: "latestPM10AQI", value: latestReading.aqi_pm10, timestamp: latestReading.timestamp })
+          dispatch({ type: "UPDATE", field: "latestPM25Level", value: latestReading.aqi_pm25_category, timestamp: latestReading.timestamp })
+          dispatch({ type: "UPDATE", field: "latestPM10Level", value: latestReading.aqi_pm10_category, timestamp: latestReading.timestamp })
         }
 
         const pmChartData = sensorData.reduce((acc, { id, pm25, pm10, timestamp }) => {
@@ -81,9 +74,9 @@ function Main() {
       <NameCard employeeName={employeeName}/>
       <div className='grid grid-cols-[30%_35%_35%] gap-4 pr-4 max-lg:grid-cols-1'>
         <div className='ml-4 grid grid-rows-[22.5%_22.5%_55%] gap-2'>
-          <SensorCard label="PM 2.5" value={latestPM25.value} latestVal={latestPM25Level.value}/>
-          <SensorCard label="PM 10" value={latestPM10.value} latestVal={latestPM10Level.value}/>
-          <Alerts latestPM25={latestPM25Level.value} latestPM10={latestPM10Level.value}/>
+          <SensorCard label="PM 2.5" value={sensorState.latestPM25.value} latestVal={sensorState.latestPM25Level.value}/>
+          <SensorCard label="PM 10" value={sensorState.latestPM10.value} latestVal={sensorState.latestPM10Level.value}/>
+          <Alerts latestPM25={sensorState.latestPM25Level.value} latestPM10={sensorState.latestPM10Level.value}/>
         </div>
         <div className='grid grid-rows-2 gap-2 max-lg:ml-4'>
           <SensorChart chartData={pmChartData} title="Concentration (µg/m³)" type="concentration"/>
