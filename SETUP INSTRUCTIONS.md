@@ -23,7 +23,7 @@ sensor_db
   | - - latest_25           - float            - not null
   | - - latest_10           - float            - not null
   | - - latest_aqi_25       - float            - not null
-  | - - latest_aiq_10       - float            - not null
+  | - - latest_aqi_10       - float            - not null
 | - - sensor_data
   | - - column name         - data type        - additional properties
   | - - id                  - int              - primary key - not null - auto increment
@@ -60,3 +60,5 @@ to install dependencies:
 5. type "npm install *names of dependencies*"
 
 NOTE: If any dependencies fail to download, please search for "*dependency name* install npm"
+NOTE: Please change payload in ESP32 code to include a device_id variable at the end (see backend > src > services > sensorServices.js > Line 33). 
+This variable can simply be 1, 2, 3, ...
