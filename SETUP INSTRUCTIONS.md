@@ -53,9 +53,10 @@ dependencies:
      - recharts
        
 to install dependencies:
-1. right click backend and click "Open in Integrated Terminal"
-2. type "npm install *names of dependencies*"
-3. right click _breathesafe (under frontend) and click "Open in Integrated Terminal"
-4. type "npm install *names of dependencies*"
+1. open in visual studio code
+2. right click backend and click "Open in Integrated Terminal"
+3. type "npm install *names of dependencies*"
+4. right click _breathesafe (under frontend) and click "Open in Integrated Terminal"
+5. type "npm install *names of dependencies*"
 
 NOTE: If any dependencies fail to download, please search for "*dependency name* install npm"
