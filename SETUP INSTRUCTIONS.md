@@ -1,3 +1,5 @@
+**CLICK ON EDIT FILE TO VIEW DATABASE STRUCTURE PROPERLY**
+
 Things needed:
 1. npm and dependencies
    - npm download link: https://docs.npmjs.com/downloading-and-installing-node-js-and-npm
