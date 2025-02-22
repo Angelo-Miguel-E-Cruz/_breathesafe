@@ -59,4 +59,3 @@ to install dependencies:
 4. type "npm install *names of dependencies*"
 
 NOTE: If any dependencies fail to download, please search for "*dependency name* install npm"
-NOTE: Please check "package.json" file for both backend and frontend and remove 
