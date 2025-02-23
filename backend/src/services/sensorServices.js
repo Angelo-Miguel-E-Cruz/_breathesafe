@@ -70,13 +70,12 @@ export const updateEmployeeData = (empID, newData) => {
   const newEmpName = newData.emp_name
   const newEmpID = newData.emp_id
   const newDevID = newData.device_id
-  const newGender = newData.gender
-  const newAge = newData.age === "" ? 0 : Number(newData.age)
-  console.log(newEmpName)
+  const newGender = newData.emp_gender
+  const newAge = newData.emp_age === "" ? 0 : Number(newData.emp_age)
 
   return new Promise((resolve, reject) => {
     const sql = `UPDATE employees_tb 
-             SET emp_name = ?, emp_id = ?, device_id = ?, gender = ?, age = ?
+             SET emp_name = ?, emp_id = ?, device_id = ?, emp_gender = ?, emp_age = ?
              WHERE id = ?`
 
     query(sql, [newEmpName, newEmpID, newDevID, newGender, newAge, empID], (err, result) => {

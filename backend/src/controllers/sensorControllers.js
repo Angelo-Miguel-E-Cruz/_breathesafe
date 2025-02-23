@@ -44,7 +44,6 @@ export const addSensorData = async (req, res) => {
 export const updateEmployeeReadings = async (req, res) => {
   try {
     const { employeeId, pm25, pm10, pm25Level, pm10Level } = req.body
-    console.log(req.body)
 
     await sensorService.updateEmployeeReadings(employeeId, pm25, pm10, pm25Level, pm10Level)
 
@@ -64,7 +63,6 @@ export const updateEmployee = async (req, res) => {
     const id = req.params.id
     const empData = req.body
     const updatedData = await sensorService.updateEmployeeData(id, empData)
-    windows.confirm("Updated Successfully")
 
     if(!updatedData){
       return res.status(400).json({message: "ID not found"})

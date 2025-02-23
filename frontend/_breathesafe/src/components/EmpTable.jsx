@@ -26,16 +26,17 @@ function EmpTable() {
   }
 
   const handleSelect = (employeeId) => {
-    console.log(employeeId)
     setSelectedEmployee(employeeId)
   }
 
   // TODO: FIX THIS
 
   const handleUpdate = async(id) => {
+    console.log(editEmp)
     try {
       await axios.put(`http://localhost:5000/api/employee_data/${id}`, editEmp)
       window.confirm("Update Successful")
+      window.location.reload()
     } catch (error) {
       console.log(error)
     }
