@@ -89,8 +89,8 @@ function EmpTable() {
                     <th>Employee Gender</th>
                     <th>Latest PM 2.5 Reading</th>
                     <th>Latest PM 10 Reading</th>
-                    <th>Latest PM 2.5 AQI</th>
-                    <th>Latest PM 10 AQI</th>
+                    <th>Latest PM 2.5 AQI Level</th>
+                    <th>Latest PM 10 AQI Level</th>
                     <th>Timestamp</th>
                     <th>View/Edit Data</th>
                   </tr>

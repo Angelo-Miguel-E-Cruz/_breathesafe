@@ -11,4 +11,6 @@ router.post('/add_sensor_data', sensorController.addSensorData)
 
 router.put('/employee_data/:id', sensorController.updateEmployee)
 
+router.put("/update_employee_readings", sensorController.updateEmployeeReadings)
+
 export default router

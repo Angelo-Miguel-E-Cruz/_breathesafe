@@ -31,20 +31,40 @@ export const fetchEmployeeData = async() => {
 export const addSensorData = (pm25, pm10, aqi_pm25, aqi_pm10, aqi_pm25_category, aqi_pm10_category, device_id) => {
   return new Promise((resolve, reject) => {
     const sql = `INSERT INTO sensor_data (pm25, pm10, aqi_pm25, aqi_pm10, aqi_pm25_category, aqi_pm10_category, device_id) 
-                VALUES (?, ?, ?, ?, ?, ?, ?)`;
+                VALUES (?, ?, ?, ?, ?, ?, ?)`
     
     query(sql, [pm25, pm10, aqi_pm25, aqi_pm10, aqi_pm25_category, aqi_pm10_category, device_id], (err, result) => {
       if (err) {
-        console.error("Database Insert Error:", err);
-        reject(err);
+        console.error("Database Insert Error:", err)
+        reject(err)
       } else {
-        resolve({ message: "Sensor data added successfully", result });
+        resolve({ message: "Sensor data added successfully", result })
       }
-    });
-  });
+    })
+  })
 }
 
-// TODO: FIX THISS
+export const updateEmployeeReadings = (employeeId, pm25, pm10, pm25Level, pm10Level) => {
+  return new Promise((resolve, reject) => {
+    query(
+      `UPDATE employees_tb 
+       SET latest_25 = ?, latest_10 = ?, latest_aqi_25 = ?, latest_aqi_10 = ?
+       WHERE emp_id = ?`,
+      [pm25, pm10, pm25Level, pm10Level, employeeId],
+      (err, results) => {
+        if (err) {
+          console.error("Database Update Error:", err)
+          reject(err)
+        } else {
+          resolve(results)
+        }
+      }
+    )
+  })
+}
+
+
+// TODO: FIX THIS
 
 export const updateEmployeeData = (empID, newData) => {
   const newEmpName = newData.emp_name

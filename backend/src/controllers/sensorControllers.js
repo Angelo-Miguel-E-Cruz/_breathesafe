@@ -3,10 +3,9 @@ import * as sensorService from '../services/sensorServices.js'
 export const getSensorData = async (req, res) => {
   try{
     const { employeeID } = req.query
-    console.log(employeeID)
     
     if (!employeeID) {
-      return res.status(400).json({ message: "employeeId is required" });
+      return res.status(400).json({ message: "employeeId is required" })
     }
     const items = await sensorService.getSensorData(employeeID)
     res.status(200).json(items)
@@ -41,6 +40,21 @@ export const addSensorData = async (req, res) => {
     res.status(500).json({ message: "Server Error" })
   }
 }
+
+export const updateEmployeeReadings = async (req, res) => {
+  try {
+    const { employeeId, pm25, pm10, pm25Level, pm10Level } = req.body
+    console.log(req.body)
+
+    await sensorService.updateEmployeeReadings(employeeId, pm25, pm10, pm25Level, pm10Level)
+
+    res.status(200).json({ message: "Employee readings updated successfully" })
+  } catch (err) {
+    console.error(err)
+    res.status(500).json({ message: "Server Error" })
+  }
+}
+
 
 // TODO: FIX THIS
 

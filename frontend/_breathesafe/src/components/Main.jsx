@@ -26,7 +26,6 @@ function Main() {
 
         if (sensorData.length > 0) {
           const latestReading = sensorData[sensorData.length - 1]
-          console.log(latestReading)
           dispatch({ type: "UPDATE", field: "latestPM25", value: latestReading.pm25, timestamp: latestReading.timestamp })
           dispatch({ type: "UPDATE", field: "latestPM10", value: latestReading.pm10, timestamp: latestReading.timestamp })
           dispatch({ type: "UPDATE", field: "latestPM25AQI", value: latestReading.aqi_pm25, timestamp: latestReading.timestamp })
@@ -68,6 +67,27 @@ function Main() {
 
     return () => clearInterval(interval)
   }, [])
+
+  useEffect(() => {
+    if (sensorState.latestPM25.value || sensorState.latestPM10.value || sensorState.latestPM25Level.value || sensorState.latestPM10Level.value){
+      updateEmployeeData();
+    }
+  }, [sensorState.latestPM25.value, sensorState.latestPM10.value, sensorState.latestPM25Level.value, sensorState.latestPM10Level.value])
+
+  const updateEmployeeData = async() =>{
+    console.log(sensorState.latestPM25.value, sensorState.latestPM10.value, sensorState.latestPM25Level.value, sensorState.latestPM10Level.value)
+    try {
+      const response = await axios.put(`http://localhost:5000/api/update_employee_readings`,{
+        employeeId: selectedEmployee,
+        pm25: sensorState.latestPM25.value, 
+        pm10: sensorState.latestPM10.value, 
+        pm25Level: sensorState.latestPM25Level.value,
+        pm10Level: sensorState.latestPM10Level.value
+      })
+    } catch (error) {
+      console.log(error.message)
+    }
+  }
   
   return (
     <main className='absolute inset-0 bg-background h-screen pt-27 overflow-x-auto w-full'>
