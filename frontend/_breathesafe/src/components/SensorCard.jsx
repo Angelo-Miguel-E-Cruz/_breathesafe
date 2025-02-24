@@ -2,18 +2,22 @@ import React from 'react'
 import clsx from 'clsx'
 
 function SensorCard({ label, value, latestVal }) {
+
+  const latestval = latestVal === undefined ? "" : latestVal.toLowerCase()
+
+
   return (
     <div className="card card-border bg-skyblue w-full text-lightgrey shadow-black/50 shadow-md">
 
       <div className="grid grid-cols-[max-content_1fr] card-body p-2 pl-5">
         <div className={clsx('rounded-full w-25 h-25 self-center justify-self-center content-center',
         {
-          'bg-green-600': latestVal === "Good",
-          'bg-amber-300' : latestVal === "Moderate",
-          'bg-orange-600' : latestVal === "Unhealthy for Sensitive Groups",
-          'bg-red-700' : latestVal === "Unhealthy",
-          'bg-pink-900' : latestVal === "Very Unhealthy",
-          'bg-red-950' : latestVal === "Hazardous"
+          'bg-green-600': latestval === "good",
+          'bg-amber-300' : latestval === "moderate",
+          'bg-orange-600' : latestval === "unhealthy for sensitive groups",
+          'bg-red-700' : latestval === "unhealthy",
+          'bg-pink-900' : latestval === "very unhealthy",
+          'bg-red-950' : latestval === "hazardous"
         }
         )}>
           <h2 className='text-center font-bold text-white'>{latestVal}</h2>

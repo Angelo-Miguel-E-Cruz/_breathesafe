@@ -4,6 +4,8 @@ import AlertMsg from './AlertMsg'
 function Alerts({latestVal, sensorType}) {
   const [alerts, setAlerts] = useState([])
 
+  const latestval = latestVal === undefined ? "" : latestVal.toLowerCase()
+
   useEffect (() =>{
     const timer = setInterval(() => {
       const currTime = new Date()
@@ -13,7 +15,7 @@ function Alerts({latestVal, sensorType}) {
         minute: "2-digit"
       }).format(currTime)
 
-      const newAlert = generateAlertMessage(latestVal, formattedTime)
+      const newAlert = generateAlertMessage(latestval, formattedTime)
   
       setAlerts((prevAlerts) => {
         const updatedAlerts = [newAlert, ...prevAlerts]
@@ -28,12 +30,12 @@ function Alerts({latestVal, sensorType}) {
   const generateAlertMessage = (aqiLevel, timestamp) => {
 
     const messages = {
-      "Good": `${timestamp} Good Air Quality detected for ${sensorType}`,
-      "Moderate": `${timestamp} Moderate Air Quality detected for ${sensorType}`,
-      "Unhealthy for Sensitive Groups": `${timestamp} Air Quality for ${sensorType} is Unhealthy for Sensitive Groups`,
-      "Unhealthy": `${timestamp} Unhealthy Air Quality detected for ${sensorType}! Be Advised!`,
-      "Very Unhealthy": `${timestamp} Very Unhealthy Air Quality detected for ${sensorType}! Be Advised!`,
-      "Hazardous": `${timestamp} Hazardous Air Quality detected for ${sensorType}! Be Advised!`,
+      "good": `${timestamp} Good Air Quality detected for ${sensorType}`,
+      "moderate": `${timestamp} Moderate Air Quality detected for ${sensorType}`,
+      "unhealthy for sensitive groups": `${timestamp} ${sensorType} Levels are Unhealthy for Sensitive Groups`,
+      "unhealthy": `${timestamp} Unhealthy Air Quality detected for ${sensorType}`,
+      "very unhealthy": `${timestamp} Very Unhealthy Air Quality detected for ${sensorType}`,
+      "hazardous": `${timestamp} Hazardous Air Quality detected for ${sensorType}`,
     }
 
     return messages[aqiLevel] || `${timestamp} Unknown AQI Level for ${sensorType}`

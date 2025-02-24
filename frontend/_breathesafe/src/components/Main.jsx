@@ -22,6 +22,7 @@ function Main() {
       try {
         const response = await axios.get(`http://localhost:5000/api/sensor_data?employeeID=${selectedEmployee}`)
         const sensorData = response.data
+        
         setEmployeeName(sensorData[0].emp_name)
 
         if (sensorData.length > 0) {
@@ -32,6 +33,9 @@ function Main() {
           dispatch({ type: "UPDATE", field: "latestPM10AQI", value: latestReading.aqi_pm10, timestamp: latestReading.timestamp })
           dispatch({ type: "UPDATE", field: "latestPM25Level", value: latestReading.aqi_pm25_category, timestamp: latestReading.timestamp })
           dispatch({ type: "UPDATE", field: "latestPM10Level", value: latestReading.aqi_pm10_category, timestamp: latestReading.timestamp })
+          const lastReading = sensorData[sensorData.length - 2]
+          dispatch({ type: "UPDATE", field: "lastPM25Level", value: lastReading.aqi_pm25_category, timestamp: latestReading.timestamp })
+          dispatch({ type: "UPDATE", field: "lastPM10Level", value: lastReading.aqi_pm10_category, timestamp: latestReading.timestamp })
         }
 
         const pmChartData = sensorData.reduce((acc, { id, pm25, pm10, timestamp }) => {
@@ -98,6 +102,7 @@ function Main() {
             <SensorCard label="PM 10" value={sensorState.latestPM10.value} latestVal={sensorState.latestPM10Level.value}/>
           </div>
           <div className='grid grid-rows-2'>
+            {/* TODO: ADD CHECK IF LEVEL CHANGED */}
             <Alerts latestVal={sensorState.latestPM25Level.value} sensorType="PM 2.5"/>
             <Alerts latestVal={sensorState.latestPM10Level.value} sensorType="PM 10"/>
           </div>
