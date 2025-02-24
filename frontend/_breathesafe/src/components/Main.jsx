@@ -75,7 +75,6 @@ function Main() {
   }, [sensorState.latestPM25.value, sensorState.latestPM10.value, sensorState.latestPM25Level.value, sensorState.latestPM10Level.value])
 
   const updateEmployeeData = async() =>{
-    console.log(sensorState.latestPM25.value, sensorState.latestPM10.value, sensorState.latestPM25Level.value, sensorState.latestPM10Level.value)
     try {
       const response = await axios.put(`http://localhost:5000/api/update_employee_readings`,{
         employeeId: selectedEmployee,
@@ -93,10 +92,15 @@ function Main() {
     <main className='absolute inset-0 bg-background h-screen pt-27 overflow-x-auto w-full'>
       <NameCard employeeName={employeeName}/>
       <div className='grid grid-cols-[30%_35%_35%] gap-4 pr-4 max-lg:grid-cols-1'>
-        <div className='ml-4 grid grid-rows-[22.5%_22.5%_55%] gap-2'>
-          <SensorCard label="PM 2.5" value={sensorState.latestPM25.value} latestVal={sensorState.latestPM25Level.value}/>
-          <SensorCard label="PM 10" value={sensorState.latestPM10.value} latestVal={sensorState.latestPM10Level.value}/>
-          <Alerts latestPM25={sensorState.latestPM25Level.value} latestPM10={sensorState.latestPM10Level.value}/>
+        <div className='ml-4 grid grid-rows-[39%_61%] gap-2'>
+          <div className='grid grid-rows-2 gap-2'>
+            <SensorCard label="PM 2.5" value={sensorState.latestPM25.value} latestVal={sensorState.latestPM25Level.value}/>
+            <SensorCard label="PM 10" value={sensorState.latestPM10.value} latestVal={sensorState.latestPM10Level.value}/>
+          </div>
+          <div className='grid grid-rows-2'>
+            <Alerts latestVal={sensorState.latestPM25Level.value} sensorType="PM 2.5"/>
+            <Alerts latestVal={sensorState.latestPM10Level.value} sensorType="PM 10"/>
+          </div>
         </div>
         <div className='grid grid-rows-2 gap-2 max-lg:ml-4'>
           <SensorChart chartData={pmChartData} title="Concentration (µg/m³)" type="concentration"/>

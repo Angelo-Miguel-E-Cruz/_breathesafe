@@ -63,22 +63,13 @@ export const updateEmployeeReadings = (employeeId, pm25, pm10, pm25Level, pm10Le
   })
 }
 
-
-// TODO: FIX THIS
-
-export const updateEmployeeData = (empID, newData) => {
-  const newEmpName = newData.emp_name
-  const newEmpID = newData.emp_id
-  const newDevID = newData.device_id
-  const newGender = newData.emp_gender
-  const newAge = newData.emp_age === "" ? 0 : Number(newData.emp_age)
-
+export const updateEmployeeData = (empID, emp_name, emp_id, device_id, emp_gender, emp_age) => {
   return new Promise((resolve, reject) => {
     const sql = `UPDATE employees_tb 
              SET emp_name = ?, emp_id = ?, device_id = ?, emp_gender = ?, emp_age = ?
              WHERE id = ?`
 
-    query(sql, [newEmpName, newEmpID, newDevID, newGender, newAge, empID], (err, result) => {
+    query(sql, [emp_name, emp_id, device_id, emp_gender, emp_age, empID], (err, result) => {
       if (err) {
         console.error("Database Update Error:", err)
         reject(err)

@@ -29,10 +29,7 @@ function EmpTable() {
     setSelectedEmployee(employeeId)
   }
 
-  // TODO: FIX THIS
-
   const handleUpdate = async(id) => {
-    console.log(editEmp)
     try {
       await axios.put(`http://localhost:5000/api/employee_data/${id}`, editEmp)
       window.confirm("Update Successful")
@@ -74,7 +71,7 @@ function EmpTable() {
   }, [])
 
   return (
-    <main>
+    <div>
       <div className='mx-5'>
         <div className="card card-border bg-skyblue w-full text-black shadow-black/50 shadow-md mt-25">
           <div className="card-body">
@@ -166,8 +163,7 @@ function EmpTable() {
           </div>
         </div>
       </dialog>
-
-    </main>
+    </div>
   )
 }
 

@@ -6,7 +6,7 @@ function SensorCard({ label, value, latestVal }) {
     <div className="card card-border bg-skyblue w-full text-lightgrey shadow-black/50 shadow-md">
 
       <div className="grid grid-cols-[max-content_1fr] card-body p-2 pl-5">
-        <div className={clsx('rounded-full w-30 h-30 self-center justify-self-center content-center',
+        <div className={clsx('rounded-full w-25 h-25 self-center justify-self-center content-center',
         {
           'bg-green-600': latestVal === "Good",
           'bg-amber-300' : latestVal === "Moderate",

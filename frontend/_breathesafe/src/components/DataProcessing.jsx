@@ -8,8 +8,8 @@ function DataProcessing(data, type) {
       hour: '2-digit',
       minute: '2-digit',
       second: '2-digit',
-    });
-  };
+    })
+  }
 
   if (type === "25"){
     // Prepare data for PM 2.5 chart
@@ -27,7 +27,7 @@ function DataProcessing(data, type) {
           pointBackgroundColor: 'rgb(254, 75, 75)',
         },
       ],
-    };
+    }
     return pm25ChartData
   }
 
@@ -48,9 +48,9 @@ function DataProcessing(data, type) {
           pointBackgroundColor: 'rgb(15, 12, 195)',
         },
       ],
-    };
+    }
     return pm10ChartData
   }
 }
 
-export default DataProcessing;
+export default DataProcessing

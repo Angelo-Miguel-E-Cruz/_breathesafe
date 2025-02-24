@@ -54,15 +54,11 @@ export const updateEmployeeReadings = async (req, res) => {
   }
 }
 
-
-// TODO: FIX THIS
-
 export const updateEmployee = async (req, res) => {
-  console.log("!")
   try {
     const id = req.params.id
-    const empData = req.body
-    const updatedData = await sensorService.updateEmployeeData(id, empData)
+    const { emp_name, emp_id, device_id, emp_gender, emp_age } = req.body
+    const updatedData = await sensorService.updateEmployeeData(id, emp_name, emp_id, device_id, emp_gender, emp_age)
 
     if(!updatedData){
       return res.status(400).json({message: "ID not found"})
