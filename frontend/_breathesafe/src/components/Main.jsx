@@ -15,6 +15,7 @@ function Main() {
   const [pmChartData, setPMChartData] = useState(null)
   const [aqiChartData, setAQIChartData] = useState(null)
   const [employeeName, setEmployeeName] = useState("")
+  const [formattedTime, setFormattedTime] = useState("")
   const { selectedEmployee } = useEmployee()
 
   useEffect(() => {
@@ -27,6 +28,8 @@ function Main() {
 
         if (sensorData.length > 0) {
           const latestReading = sensorData[sensorData.length - 1]
+          console.log(latestReading)
+          setFormattedTime(formatTimestamp(latestReading.timestamp))
           dispatch({ type: "UPDATE", field: "latestPM25", value: latestReading.pm25, timestamp: latestReading.timestamp })
           dispatch({ type: "UPDATE", field: "latestPM10", value: latestReading.pm10, timestamp: latestReading.timestamp })
           dispatch({ type: "UPDATE", field: "latestPM25AQI", value: latestReading.aqi_pm25, timestamp: latestReading.timestamp })
@@ -34,8 +37,8 @@ function Main() {
           dispatch({ type: "UPDATE", field: "latestPM25Level", value: latestReading.aqi_pm25_category, timestamp: latestReading.timestamp })
           dispatch({ type: "UPDATE", field: "latestPM10Level", value: latestReading.aqi_pm10_category, timestamp: latestReading.timestamp })
           const lastReading = sensorData[sensorData.length - 2]
-          dispatch({ type: "UPDATE", field: "lastPM25Level", value: lastReading.aqi_pm25_category, timestamp: latestReading.timestamp })
-          dispatch({ type: "UPDATE", field: "lastPM10Level", value: lastReading.aqi_pm10_category, timestamp: latestReading.timestamp })
+          dispatch({ type: "UPDATE", field: "lastPM25Level", value: lastReading.aqi_pm25_category, timestamp: lastReading.timestamp })
+          dispatch({ type: "UPDATE", field: "lastPM10Level", value: lastReading.aqi_pm10_category, timestamp: lastReading.timestamp })
         }
 
         const pmChartData = sensorData.reduce((acc, { id, pm25, pm10, timestamp }) => {
@@ -85,7 +88,8 @@ function Main() {
         pm25: sensorState.latestPM25.value, 
         pm10: sensorState.latestPM10.value, 
         pm25Level: sensorState.latestPM25Level.value,
-        pm10Level: sensorState.latestPM10Level.value
+        pm10Level: sensorState.latestPM10Level.value,
+        latest_time: formattedTime
       })
     } catch (error) {
       console.log(error.message)

@@ -44,13 +44,13 @@ export const addSensorData = (pm25, pm10, aqi_pm25, aqi_pm10, aqi_pm25_category,
   })
 }
 
-export const updateEmployeeReadings = (employeeId, pm25, pm10, pm25Level, pm10Level) => {
+export const updateEmployeeReadings = (employeeId, pm25, pm10, pm25Level, pm10Level, latest_time) => {
   return new Promise((resolve, reject) => {
     query(
       `UPDATE employees_tb 
-       SET latest_25 = ?, latest_10 = ?, latest_aqi_25 = ?, latest_aqi_10 = ?
+       SET latest_25 = ?, latest_10 = ?, latest_aqi_25 = ?, latest_aqi_10 = ?, latest_time = ?
        WHERE emp_id = ?`,
-      [pm25, pm10, pm25Level, pm10Level, employeeId],
+      [pm25, pm10, pm25Level, pm10Level, latest_time, employeeId],
       (err, results) => {
         if (err) {
           console.error("Database Update Error:", err)

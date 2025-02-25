@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import axios from 'axios'
-import { MdRemoveRedEye , MdEdit , MdPerson } from "react-icons/md";
-import formatTimeStamp from './functions/formatTimestamp'
+import { MdRemoveRedEye , MdEdit , MdPerson } from "react-icons/md"
 import { useEmployee } from './contexts/EmployeeContext'
 import { Link } from 'react-router-dom'
 
@@ -18,11 +17,11 @@ function EmpTable() {
   }
 
   const handleChange = (e) => {
-    const { id, value } = e.target;
+    const { id, value } = e.target
     setEditEmp((prevItem) => ({
       ...prevItem,
       [id]: value,
-    }));
+    }))
   }
 
   const handleSelect = (employeeId) => {
@@ -44,7 +43,7 @@ function EmpTable() {
       try {
         const response = await axios.get('http://localhost:5000/api/employee_data')
      
-        const chartData = response.data.reduce((acc, { id, emp_id, device_id, emp_name, emp_gender, emp_age, latest_25, latest_10, latest_aqi_25, latest_aqi_10, timestamp }) => {
+        const chartData = response.data.reduce((acc, { id, emp_id, device_id, emp_name, emp_gender, emp_age, latest_25, latest_10, latest_aqi_25, latest_aqi_10, latest_time }) => {
           acc.push({
             id,
             emp_id, 
@@ -56,10 +55,10 @@ function EmpTable() {
             latest_10, 
             latest_aqi_25, 
             latest_aqi_10,
-            timestamp: formatTimeStamp(timestamp),
-          });
-          return acc;
-        }, []);
+            timestamp: latest_time,
+          })
+          return acc
+        }, [])
 
         setChartData(chartData)
 
@@ -96,7 +95,7 @@ function EmpTable() {
                 <tbody>
                   {chartData && Object.keys(chartData).length > 0 ? (
                     Object.keys(chartData).map((key) => {
-                      const item = chartData[key];
+                      const item = chartData[key]
                       return (
                         <tr key={key} className='text-center w-fit even:bg-blue_green/30'>
                           <td>
@@ -117,7 +116,7 @@ function EmpTable() {
                               <button className='btn btn-ghost text-black font-bold text-2xl hover:bg-transparent transition duration-300 ease-in-out' ><MdRemoveRedEye  /></button>
                           </td>
                         </tr>
-                      );
+                      )
                     })
                   ) : (
                     <tr>

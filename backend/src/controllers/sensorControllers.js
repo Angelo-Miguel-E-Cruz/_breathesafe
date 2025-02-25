@@ -43,9 +43,10 @@ export const addSensorData = async (req, res) => {
 
 export const updateEmployeeReadings = async (req, res) => {
   try {
-    const { employeeId, pm25, pm10, pm25Level, pm10Level } = req.body
+    const { employeeId, pm25, pm10, pm25Level, pm10Level, latest_time } = req.body
+    console.log(employeeId)
 
-    await sensorService.updateEmployeeReadings(employeeId, pm25, pm10, pm25Level, pm10Level)
+    await sensorService.updateEmployeeReadings(employeeId, pm25, pm10, pm25Level, pm10Level, latest_time)
 
     res.status(200).json({ message: "Employee readings updated successfully" })
   } catch (err) {
