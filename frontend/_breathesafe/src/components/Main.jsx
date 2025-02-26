@@ -97,7 +97,7 @@ function Main() {
   }
   
   return (
-    <main className='absolute inset-0 bg-background h-screen pt-27 overflow-x-auto w-full'>
+    <div className='absolute inset-0 bg-background h-screen pt-27 overflow-x-auto w-full'>
       <NameCard employeeName={employeeName}/>
       <div className='grid grid-cols-[30%_35%_35%] gap-4 pr-4 max-lg:grid-cols-1'>
         <div className='ml-4 grid grid-rows-[39%_61%] gap-2'>
@@ -120,7 +120,7 @@ function Main() {
           {aqiChartData && <Table tableData={aqiChartData} title="Air Quality Index" type="aqi"/>}
         </div>
       </div>
-    </main>
+    </div>
     
   )
 }

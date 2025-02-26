@@ -1,0 +1,10 @@
+name: breathesafe
+
+services:
+  api:
+    build: 
+     context: ./backend
+     dockerfile: Dockerfile
+    restart: unless-stopped
+    env_file:
+      - ./

@@ -2,9 +2,12 @@ import express from 'express'
 import mysql from 'mysql2'
 import cors from 'cors'
 import sensorRouter from './src/routers/sensorRouters.js'
+import env from 'dotenv'
 
 const app = express()
 const port = 5000
+
+env.config()
 
 app.use(cors({
   origin: "*"
@@ -12,10 +15,10 @@ app.use(cors({
 app.use(express.json())
 
 const db = mysql.createConnection({
-  host: "localhost",
-  user: "root",
-  password: "Jinggoy17@SQL",
-  database: "sensor_db"
+  host: process.env.MS_HOST,
+  user: process.env.MS_USER,
+  password: process.env.MS_PASSWORD,
+  database: process.env.MS_DATABASE
 })
 
 db.connect((err) => {
