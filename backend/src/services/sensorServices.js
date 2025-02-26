@@ -1,81 +1,68 @@
 import { query } from '../../index.js'
 
-export const getSensorData = (employee_id) => {
-  return new Promise((resolve, reject) => {
-    query(`SELECT * FROM sensor_data
-          JOIN employees_tb ON sensor_data.device_id = employees_tb.device_id
-          WHERE employees_tb.emp_id = ?`, [employee_id], (err, results) => {
-      if (err) {
-        console.error("Database Query Error:", err)
-        reject(err)
-      } else {
-        resolve(results)
-      }
-    })
-  })
+export const getSensorData = async (employee_id) => {
+  try {
+    const sql = `SELECT * FROM sensor_data
+                JOIN employees_tb ON sensor_data.device_id = employees_tb.device_id
+                WHERE employees_tb.emp_id = $1`
+  
+    const {rows} = await query(sql, [employee_id])
+    return rows 
+  } catch (error) {
+    console.error("Database Query Error:", error)
+    throw error
+  }
 }
 
 export const fetchEmployeeData = async() => {
-  return new Promise((resolve, reject) => {
-    query('SELECT * FROM employees_tb', [], (err, results) => {
-      if (err) {
-        console.error("Database Query Error:", err)
-        reject(err)
-      } else {
-        resolve(results)
-      }
-    })
-  })
+  try {
+    const sql = 'SELECT * FROM employees_tb'
+    const {rows} = await query(sql, [])
+    return rows 
+  } catch (error) {
+    console.error("Database Query Error:", error)
+    throw error
+  }
 }
 
-export const addSensorData = (pm25, pm10, aqi_pm25, aqi_pm10, aqi_pm25_category, aqi_pm10_category, device_id) => {
-  return new Promise((resolve, reject) => {
+export const addSensorData = async(pm25, pm10, aqi_pm25, aqi_pm10, aqi_pm25_category, aqi_pm10_category, device_id) => {
+  try {
     const sql = `INSERT INTO sensor_data (pm25, pm10, aqi_pm25, aqi_pm10, aqi_pm25_category, aqi_pm10_category, device_id) 
-                VALUES (?, ?, ?, ?, ?, ?, ?)`
-    
-    query(sql, [pm25, pm10, aqi_pm25, aqi_pm10, aqi_pm25_category, aqi_pm10_category, device_id], (err, result) => {
-      if (err) {
-        console.error("Database Insert Error:", err)
-        reject(err)
-      } else {
-        resolve({ message: "Sensor data added successfully", result })
-      }
-    })
-  })
+                VALUES ($1, $2, $3, $4, $5, $6, $7)`
+  
+    const {rows} = await query(sql, [pm25, pm10, aqi_pm25, aqi_pm10, aqi_pm25_category, aqi_pm10_category, device_id])
+    return rows 
+  } catch (error) {
+    console.error("Database Query Error:", error)
+    throw error
+  }
 }
 
-export const updateEmployeeReadings = (employeeId, pm25, pm10, pm25Level, pm10Level, latest_time) => {
-  return new Promise((resolve, reject) => {
-    query(
-      `UPDATE employees_tb 
-       SET latest_25 = ?, latest_10 = ?, latest_aqi_25 = ?, latest_aqi_10 = ?, latest_time = ?
-       WHERE emp_id = ?`,
-      [pm25, pm10, pm25Level, pm10Level, latest_time, employeeId],
-      (err, results) => {
-        if (err) {
-          console.error("Database Update Error:", err)
-          reject(err)
-        } else {
-          resolve(results)
-        }
-      }
-    )
-  })
-}
-
-export const updateEmployeeData = (empID, emp_name, emp_id, device_id, emp_gender, emp_age) => {
-  return new Promise((resolve, reject) => {
+export const updateEmployeeReadings = async(employeeId, pm25, pm10, pm25Level, pm10Level, latest_time) => {
+  try {
     const sql = `UPDATE employees_tb 
-             SET emp_name = ?, emp_id = ?, device_id = ?, emp_gender = ?, emp_age = ?
-             WHERE id = ?`
+                SET latest_25 = $1, latest_10 = $2, latest_aqi_25 = $3, latest_aqi_10 = $4, latest_time = $5
+                WHERE emp_id = $6`
+  
+    const {rows} = await query(sql, [pm25, pm10, pm25Level, pm10Level, latest_time, employeeId])
+    return rows 
+  } catch (error) {
+    console.error("Database Query Error:", error)
+    throw error
+  }
+}
 
-    query(sql, [emp_name, emp_id, device_id, emp_gender, emp_age, empID], (err, result) => {
-      if (err) {
-        console.error("Database Update Error:", err)
-        reject(err)
-      } else{
-        resolve({message: "Edited successfully", result})
-      }
-    })
-  })
+export const updateEmployeeData = async(empID, emp_name, emp_id, device_id, emp_gender, emp_age) => {
+  console.log(typeof(emp_name), emp_name)
+  try {
+    const sql = `UPDATE employees_tb 
+                SET emp_name = $1, emp_id = $2, device_id = $3, emp_gender = $4, emp_age = $5
+                WHERE id = $6`
+  
+    const {rows} = await query(sql, [emp_name, emp_id, device_id, emp_gender, Number(emp_age), empID])
+    return rows 
+  } catch (error) {
+    console.error("Database Query Error:", error)
+    throw error
+  }
 }

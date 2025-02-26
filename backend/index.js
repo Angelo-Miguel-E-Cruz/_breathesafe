@@ -1,5 +1,6 @@
 import express from 'express'
 import mysql from 'mysql2'
+import pg from 'pg'
 import cors from 'cors'
 import sensorRouter from './src/routers/sensorRouters.js'
 import env from 'dotenv'
@@ -14,11 +15,12 @@ app.use(cors({
 }))
 app.use(express.json())
 
-const db = mysql.createConnection({
-  host: process.env.MS_HOST,
-  user: process.env.MS_USER,
-  password: process.env.MS_PASSWORD,
-  database: process.env.MS_DATABASE
+const db = new pg.Client({
+  user: process.env.PG_USER,
+  host: process.env.PG_HOST,
+  database: process.env.PG_DATABASE,
+  password: process.env.PG_PASSWORD,
+  port: process.env.PG_PORT,
 })
 
 db.connect((err) => {
@@ -35,4 +37,4 @@ app.listen(port, () => {
   console.log(`Listening on port ${port}...`)
 })
 
-export const query = (text, params, callback) => { db.query(text, params, callback) }
+export const query = (text, params) => db.query(text, params)
