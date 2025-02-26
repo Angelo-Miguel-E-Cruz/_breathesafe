@@ -30,7 +30,7 @@ function EmpTable() {
 
   const handleUpdate = async(id) => {
     try {
-      await axios.put(`http://localhost:5000/api/employee_data/${id}`, editEmp)
+      await axios.put(`https://breath-o9r9.onrender.com/api/employee_data/${id}`, editEmp)
       window.confirm("Update Successful")
       window.location.reload()
     } catch (error) {
@@ -41,7 +41,7 @@ function EmpTable() {
   useEffect(() =>{
     const fetchData = async () => {
       try {
-        const response = await axios.get('http://localhost:5000/api/employee_data')
+        const response = await axios.get('https://breath-o9r9.onrender.com/api/employee_data')
      
         const chartData = response.data.reduce((acc, { id, emp_id, device_id, emp_name, emp_gender, emp_age, latest_25, latest_10, latest_aqi_25, latest_aqi_10, latest_time }) => {
           acc.push({
