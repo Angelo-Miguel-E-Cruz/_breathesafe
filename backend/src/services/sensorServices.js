@@ -1,12 +1,12 @@
 import { query } from '../../index.js'
 
-export const getSensorData = async (employee_id) => {
+export const getSensorData = async (empID) => {
   try {
     const sql = `SELECT * FROM sensor_data
                 JOIN employees_tb ON sensor_data.device_id = employees_tb.device_id
                 WHERE employees_tb.emp_id = $1`
   
-    const {rows} = await query(sql, [employee_id])
+    const {rows} = await query(sql, [empID])
     return rows 
   } catch (error) {
     console.error("Database Query Error:", error)
@@ -38,13 +38,13 @@ export const addSensorData = async(pm25, pm10, aqi_pm25, aqi_pm10, aqi_pm25_cate
   }
 }
 
-export const updateEmployeeReadings = async(employeeId, pm25, pm10, pm25Level, pm10Level, latest_time) => {
+export const updateEmployeeReadings = async(empID, pm25, pm10, pm25Level, pm10Level, latest_time) => {
   try {
     const sql = `UPDATE employees_tb 
                 SET latest_25 = $1, latest_10 = $2, latest_aqi_25 = $3, latest_aqi_10 = $4, latest_time = $5
                 WHERE emp_id = $6`
   
-    const {rows} = await query(sql, [pm25, pm10, pm25Level, pm10Level, latest_time, employeeId])
+    const {rows} = await query(sql, [pm25, pm10, pm25Level, pm10Level, latest_time, empID])
     return rows 
   } catch (error) {
     console.error("Database Query Error:", error)
