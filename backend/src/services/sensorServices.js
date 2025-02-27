@@ -28,7 +28,7 @@ export const getAllSensorData = async() => {
 
 export const fetchEmployeeData = async() => {
   try {
-    const sql = 'SELECT * FROM employees_tb'
+    const sql = 'SELECT * FROM employees_tb ORDER BY id ASC'
     const {rows} = await query(sql, [])
     return rows 
   } catch (error) {

@@ -5,6 +5,7 @@ const EmployeeContext = createContext()
 export const EmployeeProvider = ({ children }) => {
   const [selectedEmployee, setSelectedEmployee] = useState("1") // TODO: CHANGE BASED ON COMPANY OR MAKE DYNAMIC
 
+  // TODO: FIX THIS
   useEffect(() => {
     const fetchData = async () => {
       try {
