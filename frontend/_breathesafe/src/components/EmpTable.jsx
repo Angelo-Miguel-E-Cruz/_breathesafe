@@ -100,7 +100,7 @@ function EmpTable() {
                       return (
                         <tr key={key} className='text-center w-fit even:bg-blue_green/30'>
                           <td>
-                          <Link to='/' className='btn btn-ghost text-black font-bold text-3xl hover:bg-transparent transition duration-300 ease-in-out' onClick={() => handleSelect(item.emp_id)}><MdPerson  /></Link>
+                          <Link to='/' className='btn btn-ghost text-black font-bold text-3xl hover:bg-transparent transition duration-300 ease-in-out' onClick={() => handleSelect(item.id)}><MdPerson  /></Link>
                           </td>
                           <td>{item.emp_name}</td>
                           <td>{item.emp_id}</td>
