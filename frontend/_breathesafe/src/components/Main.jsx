@@ -16,7 +16,7 @@ function Main() {
   const [aqiChartData, setAQIChartData] = useState(null)
   const [employeeName, setEmployeeName] = useState("")
   const [formattedTime, setFormattedTime] = useState("")
-  const { selectedEmployee } = useEmployee()
+  const { selectedEmployee, setSelectedEmployee } = useEmployee()
 
   useEffect(() => {
 
@@ -24,10 +24,9 @@ function Main() {
       try {
         const firstResponse = await axios.get(`https://breath-o9r9.onrender.com/api/sensor_data/all`)
         const firstData = firstResponse.data
-        console.log(firstData[0].emp_id)
-        //setSelectedEmployee(firstData[0].emp_id)
+        setSelectedEmployee(firstData[0].emp_id)
 
-        const response = await axios.get(`https://breath-o9r9.onrender.com/api/sensor_data?employeeID=${firstData[0].emp_id}`)
+        const response = await axios.get(`https://breath-o9r9.onrender.com/api/sensor_data?employeeID=${selectedEmployee}`)
         const sensorData = response.data
         
         setEmployeeName(sensorData[0].emp_name)
