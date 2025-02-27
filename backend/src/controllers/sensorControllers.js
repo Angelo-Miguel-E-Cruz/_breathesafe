@@ -3,10 +3,8 @@ import * as sensorService from '../services/sensorServices.js'
 export const getSensorData = async (req, res) => {
   try{
     const { employeeID } = req.query
-    
-    if (!employeeID) {
-      return res.status(400).json({ message: "employeeId is required" })
-    }
+    console.log(employeeID)
+
     const items = await sensorService.getSensorData(employeeID)
     res.status(200).json(items)
   } catch (err){

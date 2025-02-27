@@ -1,9 +1,21 @@
-import { createContext, useState, useContext } from "react"
+import { createContext, useState, useContext, useEffect } from "react"
 
 const EmployeeContext = createContext()
 
 export const EmployeeProvider = ({ children }) => {
-  const [selectedEmployee, setSelectedEmployee] = useState("1")
+  const [selectedEmployee, setSelectedEmployee] = useState("1") // TODO: CHANGE BASED ON COMPANY OR MAKE DYNAMIC
+
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const response = await axios.get(`https://breath-o9r9.onrender.com/api/sensor_data?employeeID=${selectedEmployee}`)
+        const sensorData = response.data
+        
+      } catch (error) {
+        console.log(error.message) 
+      }
+    }
+  })
 
   return (
     <EmployeeContext.Provider value={{ selectedEmployee, setSelectedEmployee }}>

@@ -28,7 +28,6 @@ function Main() {
 
         if (sensorData.length > 0) {
           const latestReading = sensorData[sensorData.length - 1]
-          console.log(latestReading)
           setFormattedTime(formatTimestamp(latestReading.timestamp))
           dispatch({ type: "UPDATE", field: "latestPM25", value: latestReading.pm25, timestamp: latestReading.timestamp })
           dispatch({ type: "UPDATE", field: "latestPM10", value: latestReading.pm10, timestamp: latestReading.timestamp })
