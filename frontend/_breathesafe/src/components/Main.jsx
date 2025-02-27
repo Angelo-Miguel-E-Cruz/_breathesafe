@@ -16,7 +16,7 @@ function Main() {
   const [aqiChartData, setAQIChartData] = useState(null)
   const [employeeName, setEmployeeName] = useState("")
   const [formattedTime, setFormattedTime] = useState("")
-  const { selectedEmployee, setSelectedEmployee } = useEmployee()
+  const { selectedEmployee } = useEmployee()
 
   useEffect(() => {
 
@@ -48,7 +48,7 @@ function Main() {
             pm10,
             timestamp: formatTimestamp(timestamp),
           })
-          return acc
+          return acc.slice(-20)
         }, [])
 
         setPMChartData(pmChartData)
@@ -60,7 +60,7 @@ function Main() {
             aqi_pm10,
             timestamp: formatTimestamp(timestamp),
           })
-          return acc
+          return acc.slice(-20)
         }, [])
 
         setAQIChartData(aqiChartData)
