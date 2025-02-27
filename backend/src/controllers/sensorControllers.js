@@ -3,7 +3,7 @@ import * as sensorService from '../services/sensorServices.js'
 export const getSensorData = async (req, res) => {
   try{
     const { employeeID } = req.query
-    console.log(employeeID)
+    console.log("from controllers: " + employeeID)
 
     const items = await sensorService.getSensorData(employeeID)
     res.status(200).json(items)
