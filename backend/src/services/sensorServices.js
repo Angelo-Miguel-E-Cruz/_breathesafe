@@ -15,6 +15,18 @@ export const getSensorData = async (empID) => {
   }
 }
 
+export const getAllSensorData = async() => {
+  try {
+    const sql = `SELECT * FROM sensor_data JOIN employees_tb 
+                ON sensor_data.device_id = employees_tb.device_id`
+    const {rows} = await query(sql, [])
+    return rows 
+  } catch (error) {
+    console.error("Database Query Error:", error)
+    throw error
+  }
+}
+
 export const fetchEmployeeData = async() => {
   try {
     const sql = 'SELECT * FROM employees_tb'
