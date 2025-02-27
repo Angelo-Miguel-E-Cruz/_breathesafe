@@ -22,8 +22,12 @@ function Main() {
 
     const fetchData = async () =>{
       try {
-        console.log("from fetch data: " + selectedEmployee)
-        const response = await axios.get(`https://breath-o9r9.onrender.com/api/sensor_data?employeeID=${selectedEmployee}`)
+        const firstResponse = await axios.get(`https://breath-o9r9.onrender.com/api/sensor_data/all`)
+        const firstData = firstResponse.data
+        console.log(firstData[0].emp_id)
+        //setSelectedEmployee(firstData[0].emp_id)
+
+        const response = await axios.get(`https://breath-o9r9.onrender.com/api/sensor_data?employeeID=${firstData[0].emp_id}`)
         const sensorData = response.data
         
         setEmployeeName(sensorData[0].emp_name)
