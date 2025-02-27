@@ -1,30 +1,33 @@
 import React, { useEffect, useState } from 'react'
 import AlertMsg from './AlertMsg'
 
-function Alerts({latestVal, sensorType}) {
+function Alerts({latestVal, sensorType, willPrint}) {
   const [alerts, setAlerts] = useState([])
 
   const latestval = latestVal === undefined ? "" : latestVal.toLowerCase()
 
   useEffect (() =>{
-    const timer = setInterval(() => {
-      const currTime = new Date()
-
-      const formattedTime = new Intl.DateTimeFormat('en-US', {
-        hour: "2-digit",
-        minute: "2-digit"
-      }).format(currTime)
-
-      const newAlert = generateAlertMessage(latestval, formattedTime)
+    if(willPrint){
+      const timer = setInterval(() => {
+      
+        const currTime = new Date()
   
-      setAlerts((prevAlerts) => {
-        const updatedAlerts = [newAlert, ...prevAlerts]
-        return updatedAlerts.slice(0, 5)
-      })
-
+        const formattedTime = new Intl.DateTimeFormat('en-US', {
+          hour: "2-digit",
+          minute: "2-digit"
+        }).format(currTime)
+  
+        const newAlert = generateAlertMessage(latestval, formattedTime)
+    
+        setAlerts((prevAlerts) => {
+          const updatedAlerts = [newAlert, ...prevAlerts]
+          return updatedAlerts.slice(0, 5)
+        })
+  
       }, 5000) 
-  
+    
       return () => clearInterval(timer)
+    }
   }, [latestVal])
 
   const generateAlertMessage = (aqiLevel, timestamp) => {

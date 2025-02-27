@@ -16,6 +16,8 @@ function Main() {
   const [aqiChartData, setAQIChartData] = useState(null)
   const [employeeName, setEmployeeName] = useState("")
   const [formattedTime, setFormattedTime] = useState("")
+  const [new25Alert, setNew25Alert] = useState(true)
+  const [new10Alert, setNew10Alert] = useState(true)
   const { selectedEmployee } = useEmployee()
 
   useEffect(() => {
@@ -36,9 +38,20 @@ function Main() {
           dispatch({ type: "UPDATE", field: "latestPM10AQI", value: latestReading.aqi_pm10, timestamp: latestReading.timestamp })
           dispatch({ type: "UPDATE", field: "latestPM25Level", value: latestReading.aqi_pm25_category, timestamp: latestReading.timestamp })
           dispatch({ type: "UPDATE", field: "latestPM10Level", value: latestReading.aqi_pm10_category, timestamp: latestReading.timestamp })
+
           const lastReading = sensorData[sensorData.length - 2]
           dispatch({ type: "UPDATE", field: "lastPM25Level", value: lastReading.aqi_pm25_category, timestamp: lastReading.timestamp })
           dispatch({ type: "UPDATE", field: "lastPM10Level", value: lastReading.aqi_pm10_category, timestamp: lastReading.timestamp })
+
+          console.log("latest 25: " + latestReading.aqi_pm25_category)
+          console.log("last 25: " + lastReading.aqi_pm25_category)
+          console.log("latest 10: " + latestReading.aqi_pm10_category)
+          console.log("last 10: " + lastReading.aqi_pm10_category)
+
+          if (latestReading.aqi_pm25_category === lastReading.aqi_pm25_category)
+            setNew25Alert(false)
+          if (latestReading.aqi_pm10_category === lastReading.aqi_pm10_category)
+            setNew10Alert(false)
         }
 
         const pmChartData = sensorData.reduce((acc, { id, pm25, pm10, timestamp }) => {
@@ -51,8 +64,6 @@ function Main() {
           return acc.slice(-20)
         }, [])
 
-        console.log("pm chart data: " + pmChartData)
-
         setPMChartData(pmChartData)
 
         const aqiChartData = sensorData.reduce((acc, { id, aqi_pm25, aqi_pm10, timestamp }) => {
@@ -64,8 +75,6 @@ function Main() {
           })
           return acc.slice(-20)
         }, [])
-
-        console.log("aqi chart data: " + aqiChartData)
 
         setAQIChartData(aqiChartData)
 
@@ -111,8 +120,8 @@ function Main() {
           </div>
           <div className='grid grid-rows-2'>
             {/* TODO: ADD CHECK IF LEVEL CHANGED */}
-            <Alerts latestVal={sensorState.latestPM25Level.value} sensorType="PM 2.5"/>
-            <Alerts latestVal={sensorState.latestPM10Level.value} sensorType="PM 10"/>
+            <Alerts latestVal={sensorState.latestPM25Level.value} sensorType="PM 2.5" willPrint={new25Alert}/>
+            <Alerts latestVal={sensorState.latestPM10Level.value} sensorType="PM 10" willPrint={new10Alert}/>
           </div>
         </div>
         <div className='grid grid-rows-2 gap-2 max-lg:ml-4'>
