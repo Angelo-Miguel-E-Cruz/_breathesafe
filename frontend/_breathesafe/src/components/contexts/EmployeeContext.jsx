@@ -11,9 +11,8 @@ export const EmployeeProvider = ({ children }) => {
     const fetchData = async () => {
       try {
         const response = await axios.get(`https://breath-o9r9.onrender.com/api/sensor_data/all`)
-        const sensorData = response.data
-        console.log(sensorData[0].emp_id)
-        setSelectedEmployee(sensorData[0].emp_id)
+        const firstData = response.data
+        setSelectedEmployee(firstData[0].emp_id)
       } catch (error) {
         console.log(error.message) 
       }
