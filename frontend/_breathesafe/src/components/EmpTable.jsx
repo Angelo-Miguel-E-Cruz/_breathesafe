@@ -28,6 +28,34 @@ function EmpTable() {
     setSelectedEmployee(employeeId)
   }
 
+  const fetchData = async () => {
+    try {
+      const response = await axios.get('https://breath-o9r9.onrender.com/api/employee_data')
+   
+      const chartData = response.data.reduce((acc, { id, emp_id, device_id, emp_name, emp_gender, emp_age, latest_25, latest_10, latest_aqi_25, latest_aqi_10, latest_time }) => {
+        acc.push({
+          id,
+          emp_id, 
+          device_id, 
+          emp_name, 
+          emp_gender, 
+          emp_age, 
+          latest_25, 
+          latest_10, 
+          latest_aqi_25, 
+          latest_aqi_10,
+          timestamp: latest_time,
+        })
+        return acc
+      }, [])
+
+      setChartData(chartData)
+
+    }catch (error) {
+      console.log(error.message) 
+    }
+  }
+
   const handleUpdate = async(id) => {
     try {
       await axios.put(`https://breath-o9r9.onrender.com/api/employee_data/${id}`, editEmp)
@@ -39,33 +67,6 @@ function EmpTable() {
   }
 
   useEffect(() =>{
-    const fetchData = async () => {
-      try {
-        const response = await axios.get('https://breath-o9r9.onrender.com/api/employee_data')
-     
-        const chartData = response.data.reduce((acc, { id, emp_id, device_id, emp_name, emp_gender, emp_age, latest_25, latest_10, latest_aqi_25, latest_aqi_10, latest_time }) => {
-          acc.push({
-            id,
-            emp_id, 
-            device_id, 
-            emp_name, 
-            emp_gender, 
-            emp_age, 
-            latest_25, 
-            latest_10, 
-            latest_aqi_25, 
-            latest_aqi_10,
-            timestamp: latest_time,
-          })
-          return acc
-        }, [])
-
-        setChartData(chartData)
-
-      }catch (error) {
-        console.log(error.message) 
-      }
-    }
     fetchData()
   }, [])
 

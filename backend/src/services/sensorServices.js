@@ -1,7 +1,6 @@
 import { query } from '../../index.js'
 
 export const getSensorData = async (empID) => {
-  console.log("from services: " + empID)
   try {
     const sql = `SELECT * FROM sensor_data
                 JOIN employees_tb ON sensor_data.device_id = employees_tb.device_id
