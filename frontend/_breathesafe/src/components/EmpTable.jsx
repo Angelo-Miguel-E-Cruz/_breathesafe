@@ -32,7 +32,7 @@ function EmpTable() {
     try {
       await axios.put(`https://breath-o9r9.onrender.com/api/employee_data/${id}`, editEmp)
       window.confirm("Update Successful")
-      window.location.reload()
+      fetchData()
     } catch (error) {
       console.log(error)
     }
