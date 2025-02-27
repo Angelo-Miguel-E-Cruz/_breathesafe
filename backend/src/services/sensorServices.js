@@ -3,16 +3,11 @@ import { query } from '../../index.js'
 export const getSensorData = async (empID) => {
   console.log("from services: " + empID)
   try {
-    let sql = `SELECT * FROM sensor_data
-                JOIN employees_tb ON sensor_data.device_id = employees_tb.device_id`
-    let values = []
-
-    if (empID){
-      sql += 'WHERE employees_tb.emp_id = $1'
-      values.push(empID)
-    }
+    const sql = `SELECT * FROM sensor_data
+                JOIN employees_tb ON sensor_data.device_id = employees_tb.device_id
+                WHERE employees_tb.emp_id = $1`
   
-    const {rows} = await query(sql, values)
+    const {rows} = await query(sql, [empID])
     return rows 
   } catch (error) {
     console.error("Database Query Error:", error)
