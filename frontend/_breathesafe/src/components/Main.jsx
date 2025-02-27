@@ -28,6 +28,7 @@ function Main() {
         console.log(error.message) 
       }
     }
+    getFirst
   }, [])
 
   useEffect(() => {
