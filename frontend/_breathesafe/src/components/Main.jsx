@@ -51,6 +51,8 @@ function Main() {
           return acc.slice(-20)
         }, [])
 
+        console.log("pm chart data: " + pmChartData)
+
         setPMChartData(pmChartData)
 
         const aqiChartData = sensorData.reduce((acc, { id, aqi_pm25, aqi_pm10, timestamp }) => {
@@ -62,6 +64,8 @@ function Main() {
           })
           return acc.slice(-20)
         }, [])
+
+        console.log("aqi chart data: " + aqiChartData)
 
         setAQIChartData(aqiChartData)
 
