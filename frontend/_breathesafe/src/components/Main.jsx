@@ -19,13 +19,21 @@ function Main() {
   const { selectedEmployee, setSelectedEmployee } = useEmployee()
 
   useEffect(() => {
-
-    const fetchData = async () =>{
+    const getFirst = async () => {
       try {
         const firstResponse = await axios.get(`https://breath-o9r9.onrender.com/api/sensor_data/all`)
         const firstData = firstResponse.data
         setSelectedEmployee(firstData[0].emp_id)
+      } catch (error) {
+        console.log(error.message) 
+      }
+    }
+  }, [])
 
+  useEffect(() => {
+
+    const fetchData = async () =>{
+      try {
         const response = await axios.get(`https://breath-o9r9.onrender.com/api/sensor_data?employeeID=${selectedEmployee}`)
         const sensorData = response.data
         
@@ -77,7 +85,7 @@ function Main() {
     const interval = setInterval(fetchData, 5000)
 
     return () => clearInterval(interval)
-  }, [])
+  }, [selectedEmployee])
 
   useEffect(() => {
     if (sensorState.latestPM25.value || sensorState.latestPM10.value || sensorState.latestPM25Level.value || sensorState.latestPM10Level.value){
