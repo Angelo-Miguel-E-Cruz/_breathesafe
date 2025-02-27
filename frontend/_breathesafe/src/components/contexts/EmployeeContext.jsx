@@ -12,7 +12,7 @@ export const EmployeeProvider = ({ children }) => {
       try {
         const response = await axios.get(`https://breath-o9r9.onrender.com/api/sensor_data/all`)
         const firstData = response.data
-        setSelectedEmployee(firstData[0].emp_id)
+        //setSelectedEmployee(firstData[0].emp_id)
       } catch (error) {
         console.log(error.message) 
       }
