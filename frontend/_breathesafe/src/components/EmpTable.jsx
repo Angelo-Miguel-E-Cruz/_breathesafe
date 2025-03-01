@@ -118,7 +118,7 @@ function EmpTable() {
             <div className="h-100 overflow-x-auto w-full">
               <table className="table table-pin-rows w-screen">
                 <thead>
-                  <tr className='shadow-black/50 shadow-sm w-fit text-white bg-blue_green text-center'>
+                  <tr className='shadow-black/50 shadow-sm w-fit text-white bg-blue_green text-center z-10'>
                     <th>Select Employee</th>
                     <th>Employee Name</th>
                     <th>Employee ID</th>
@@ -141,7 +141,7 @@ function EmpTable() {
                         <tr key={key} className='text-center w-fit even:bg-blue_green/30'>
                           <td className=''>
                             <Link to='/' className='btn btn-ghost transition duration-300 ease-in-out w-12 p-0
-                                          rounded-full bg-transparent border-black border-1 text-black text-2xl
+                                          rounded-full bg-transparent border-black border-1 text-black text-3xl
                                           avatar avatar-online' 
                                           onClick={() => handleSelect(item.id)}>
                               <MdPerson/>
