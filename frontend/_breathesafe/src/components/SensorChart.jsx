@@ -2,6 +2,9 @@ import React from 'react';
 import { AreaChart, Area, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer } from 'recharts';
 
 function SensorChart({ chartData, title, type }) {
+
+  console.log(chartData[chartData.length-1])
+
   return (
     <div className="card card-border bg-skyblue w-full shadow-black/50 shadow-md">
       <div className="card-body p-2 pt-5">
