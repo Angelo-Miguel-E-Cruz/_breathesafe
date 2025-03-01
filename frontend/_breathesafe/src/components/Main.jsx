@@ -120,8 +120,8 @@ function Main() {
           </div>
           <div className='grid grid-rows-2'>
             {/* TODO: ADD CHECK IF LEVEL CHANGED */}
-            <Alerts latestVal={sensorState.latestPM25Level.value} sensorType="PM 2.5" willPrint={new25Alert}/>
-            <Alerts latestVal={sensorState.latestPM10Level.value} sensorType="PM 10" willPrint={new10Alert}/>
+            <Alerts latestVal={sensorState.latestPM25Level.value} sensorType="PM 2.5" willPrint={new25Alert} setPrint={setNew25Alert}/>
+            <Alerts latestVal={sensorState.latestPM10Level.value} sensorType="PM 10" willPrint={new10Alert} setPrint={setNew10Alert}/>
           </div>
         </div>
         <div className='grid grid-rows-2 gap-2 max-lg:ml-4'>

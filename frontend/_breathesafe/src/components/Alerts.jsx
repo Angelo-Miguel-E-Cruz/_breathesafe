@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import AlertMsg from './AlertMsg'
 
-function Alerts({latestVal, sensorType, willPrint}) {
+function Alerts({latestVal, sensorType, willPrint, setPrint}) {
   const [alerts, setAlerts] = useState([])
 
   const latestval = latestVal === undefined ? "" : latestVal.toLowerCase()
@@ -24,6 +24,8 @@ function Alerts({latestVal, sensorType, willPrint}) {
           const updatedAlerts = [newAlert, ...prevAlerts]
           return updatedAlerts.slice(0, 5)
         })
+
+        setPrint(false)
   
       }, 5000) 
     
