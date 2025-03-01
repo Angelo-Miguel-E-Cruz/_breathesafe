@@ -4,8 +4,6 @@ function Table({tableData, title, type}) {
 
   const newTableData = [...tableData].reverse()
 
-  console.log(newTableData)
-
   return (
     <div className="card card-border bg-skyblue w-full shadow-black/50 shadow-md">
       <div className="card-body">
