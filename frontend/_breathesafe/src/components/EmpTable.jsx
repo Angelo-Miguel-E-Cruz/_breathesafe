@@ -140,13 +140,10 @@ function EmpTable() {
                       return (
                         <tr key={key} className='text-center w-fit even:bg-blue_green/30'>
                           <td>
-                            <Link to='/' className={clsx('btn btn-ghost font-bold text-4xl hover:bg-transparent transition duration-300 ease-in-out',
-                              {
-                                'text-success': selectedEmployee === item.id,
-                                'text-black': selectedEmployee !== item.id
-                              }
-                            )} onClick={() => handleSelect(item.id)}>
-                              <MdPerson  />
+                            <Link to='/' className='btn btn-ghost font-bold text-black text-4xl hover:bg-transparent transition duration-300 ease-in-out' onClick={() => handleSelect(item.id)}>
+                              <div className='rounded-full w-3 h-3 self-center justify-self-center content-center bg-transparent border-black border-1'>
+                                <MdPerson />
+                              </div>
                             </Link>
                           </td>
                           <td>{item.emp_name}</td>
