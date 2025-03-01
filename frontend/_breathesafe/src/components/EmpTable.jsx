@@ -87,6 +87,7 @@ function EmpTable() {
     const emp_age = document.getElementById("add_emp_age")
 
     const data = {emp_name, emp_id, device_id, emp_gender, emp_age}
+    console.log(data)
 
     try {
       await axios.post(`https://breath-o9r9.onrender.com/api/add_employee`, data)
