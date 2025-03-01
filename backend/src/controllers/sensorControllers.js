@@ -48,6 +48,18 @@ export const addSensorData = async (req, res) => {
   }
 }
 
+export const addEmployee = async (req, res) => {
+  try {
+    const { emp_name, emp_id, device_id, emp_gender, emp_age } = req.body
+
+    const result = await sensorService.addEmployee(emp_name, emp_id, device_id, emp_gender, emp_age)
+    res.status(201).json(result)
+  } catch (err) {
+    console.error(err)
+    res.status(500).json({ message: "Server Error" })
+  }
+}
+
 export const updateEmployeeReadings = async (req, res) => {
   try {
     const { employeeId, pm25, pm10, pm25Level, pm10Level, latest_time } = req.body

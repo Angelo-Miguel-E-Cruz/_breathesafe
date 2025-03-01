@@ -50,6 +50,19 @@ export const addSensorData = async(pm25, pm10, aqi_pm25, aqi_pm10, aqi_pm25_cate
   }
 }
 
+export const addEmployee = async(emp_name, emp_id, device_id, emp_gender, emp_age) => {
+  try {
+    const sql = `INSERT INTO sensor_data (emp_name, emp_id, device_id, emp_gender, emp_age) 
+                VALUES ($1, $2, $3, $4, $5)`
+  
+    const {rows} = await query(sql, [emp_name, emp_id, device_id, emp_gender, emp_age])
+    return rows 
+  } catch (error) {
+    console.error("Database Query Error:", error)
+    throw error
+  }
+}
+
 export const updateEmployeeReadings = async(empID, pm25, pm10, pm25Level, pm10Level, latest_time) => {
   try {
     const sql = `UPDATE employees_tb 

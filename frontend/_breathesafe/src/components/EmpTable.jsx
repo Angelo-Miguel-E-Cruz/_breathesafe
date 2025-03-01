@@ -18,7 +18,7 @@ function EmpTable() {
     navigate('/')
     setTimeout(() => {
       navigate('/all')
-    }, 100)
+    }, 50)
   }
   
   const editData = (item) => {
