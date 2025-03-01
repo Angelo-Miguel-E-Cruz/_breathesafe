@@ -163,7 +163,7 @@ function EmpTable() {
           </div>
         </div>
         <button className='btn btn-success' onClick={handleNav}>!</button>
-        <button className='btn btn-warning' onClick={() => addEmployee}>!</button>
+        <button className='btn btn-warning' onClick={addEmployee}>!</button>
       </div>
 
 
