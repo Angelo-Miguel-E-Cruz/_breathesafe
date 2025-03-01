@@ -20,12 +20,17 @@ function SensorChart({ chartData, title, type }) {
               </linearGradient>
             </defs>
             <XAxis dataKey="timestamp"/>
-            <YAxis>
+            <YAxis scale="linear" domain={['auto', 'auto']}>
             </YAxis>
             <CartesianGrid strokeDasharray="8 8" />
             <Tooltip />
-            <Area type="monotone" dataKey={type === "concentration" ? "pm25" : "aqi_pm25"} unit= {type === "concentration" ? "µg/m³" : ""} stroke="#8884d8" fillOpacity={1} fill="url(#colorUv)" dot={{ stroke: 'black', strokeWidth: 1, r: 1 }} activeDot={8} name='PM 2.5' legendType='plainline'/>
-            <Area type="monotone" dataKey={type === "concentration" ? "pm10" : "aqi_pm10"} unit= {type === "concentration" ? "µg/m³" : ""} stroke="#82ca9d" fillOpacity={1} fill="url(#colorPv)" dot={{ stroke: 'black', strokeWidth: 1, r: 1 }} activeDot={8} name='PM 10' legendType='plainline'/>
+            <Area type="monotone" dataKey={type === "concentration" ? "pm25" : "aqi_pm25"} unit= {type === "concentration" ? "µg/m³" : ""} 
+            stroke="#8884d8" fillOpacity={1} fill="url(#colorUv)" dot={{ stroke: 'black', strokeWidth: 1, r: 1 }} 
+            activeDot={8} name='PM 2.5' legendType='plainline'/>
+
+            <Area type="monotone" dataKey={type === "concentration" ? "pm10" : "aqi_pm10"} unit= {type === "concentration" ? "µg/m³" : ""} 
+            stroke="#82ca9d" fillOpacity={1} fill="url(#colorPv)" dot={{ stroke: 'black', strokeWidth: 1, r: 1 }} 
+            activeDot={8} name='PM 10' legendType='plainline'/>
           </AreaChart>
         </ResponsiveContainer>
       </div>
