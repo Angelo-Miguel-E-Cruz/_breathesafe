@@ -144,8 +144,8 @@ function EmpTable() {
                                           rounded-full justify-self-center content-center bg-transparent border-black border-1' 
                                           onClick={() => handleSelect(item.id)}>
                             </Link>
-                            <MdPerson className=''/>
-                            <span className="absolute indicator-item bottom-0 right-0 status status-success size-2"/>
+                            <MdPerson/>
+                            <span className="absolute indicator-item bottom-0 right-0 translate-x-1/2 -translate-y-1/2 status status-success w-2 h-2 "/>
                           </td>
                           <td>{item.emp_name}</td>
                           <td>{item.emp_id}</td>
