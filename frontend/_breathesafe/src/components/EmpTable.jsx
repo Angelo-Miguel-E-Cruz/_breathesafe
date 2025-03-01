@@ -142,10 +142,10 @@ function EmpTable() {
                           <td className=''>
                             <Link to='/' className={clsx(`btn btn-ghost transition duration-300 ease-in-out w-12 p-0
                                           rounded-full bg-transparent border-black border-1 text-black text-3xl
-                                          avatar before:w-[25%] before:h-[25%]`,
+                                          avatar `,
                                         {
                                           'avatar-online' : selectedEmployee === item.id,
-                                          'avatar-offline' : selectedEmployee !== item.id
+                                          'avatar-offline before:bg-grey' : selectedEmployee !== item.id
                                         })} 
                                           onClick={() => handleSelect(item.id)}>
                               <MdPerson/>
