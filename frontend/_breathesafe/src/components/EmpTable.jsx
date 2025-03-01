@@ -131,6 +131,8 @@ function EmpTable() {
         </div>
       </div>
 
+      <Link to='all' className='btn btn-success'>!</Link>
+
       <dialog id="editModal" className="modal">
         <div className="modal-box bg-background text-black border-black border-1">
           <h3 className="font-bold text-lg mb-5">Edit Employee Data</h3>
