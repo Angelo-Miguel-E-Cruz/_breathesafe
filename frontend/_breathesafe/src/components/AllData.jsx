@@ -31,13 +31,13 @@ function AllData() {
           return acc.slice(-20)
         }, [])
 
+        console.log(pm25ChartData)
         setPm25ConData(pm25ChartData)
         
       } catch (error) {
         console.log(error.message) 
       }
     }
-    console.log(pm25ChartData)
     fetchData
     const interval = setInterval(fetchData, 5000)
 

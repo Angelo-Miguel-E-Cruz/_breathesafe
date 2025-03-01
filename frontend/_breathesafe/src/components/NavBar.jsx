@@ -10,8 +10,8 @@ function NavBar() {
     {"id" : 0, "PM25": "0.0 - 9.0", "PM10" : "0 - 54", "AQI": "0 - 50", "Category" : "Good"},
     {"id" : 1, "PM25": "9.1 - 35.4", "PM10" : "55 - 154", "AQI": "51 - 100", "Category" : "Moderate"},
     {"id" : 2, "PM25": "35.5 - 55.4", "PM10" : "155 - 254", "AQI": "101 - 150", "Category" : "Unhealthy for Sensitive Groups"},
-    {"id" : 3, "PM25": "0.0 - 9.0", "PM10" : "255 - 354", "AQI": "151 - 200", "Category" : "Unhealthy"},
-    {"id" : 4, "PM25": "0.0 - 9.0", "PM10" : "355 - 424+", "AQI": "201 - 300", "Category" : "Very Unhealthy"},
+    {"id" : 3, "PM25": "55.5 - 125.4", "PM10" : "255 - 354", "AQI": "151 - 200", "Category" : "Unhealthy"},
+    {"id" : 4, "PM25": "125.5 - 225.4", "PM10" : "355 - 424+", "AQI": "201 - 300", "Category" : "Very Unhealthy"},
     {"id" : 5, "PM25": "225.5+", "PM10" : "425+", "AQI": "301+", "Category" : "Hazardous"}
   ]
 
@@ -40,7 +40,7 @@ function NavBar() {
               'bg-blue_green' : isOpen,
               'bg-darkblue' : !isOpen
             }
-          )} onClick={()=>openModal()}> ! </button>
+          )} onClick={()=>openModal()}> i </button>
           <NavLink to='/' className={({isActive}) => 
             `btn rounded-xl mr-2 shadow-black/50 shadow-md 
             transition duration-300 ease-in-out ${
