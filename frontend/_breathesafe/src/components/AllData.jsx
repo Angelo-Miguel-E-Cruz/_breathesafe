@@ -15,8 +15,23 @@ function AllData() {
       try {
         const response = await axios.get(`https://breath-o9r9.onrender.com/api/sensor_data/all`)
         const sensorData = response.data
+        
+        const pm25ChartData = sensorData.reduce((acc, { id, emp_name, pm25, timestamp }) => {
+          if (!acc[emp_name]) {
+            acc[emp_name] = {
+              emp_name: emp_name,
+              id: id,
+              records: []
+            };
+          }
+          acc[emp_name].records.push({
+            pm25: pm25,
+            timestamp: timestamp
+          });
+          return acc.slice(-20)
+        }, [])
 
-        console.log(sensorData)
+        setPm25ConData(pm25ChartData)
         
         const pm25ChartData = sensorData.reduce((acc, { id, emp_name, pm25, timestamp }) => {
           if (!acc[emp_name]) {
