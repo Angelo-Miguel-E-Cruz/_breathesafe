@@ -139,13 +139,12 @@ function EmpTable() {
                       const item = chartData[key]
                       return (
                         <tr key={key} className='text-center w-fit even:bg-blue_green/30'>
-                          <td className='indicator'>
-                            <Link to='/' className='btn btn-ghost font-bold transition duration-300 ease-in-out size-12 z-0
-                                          rounded-full justify-self-center content-center bg-transparent border-black border-1' 
+                          <td className='avatar avatar-online'>
+                            <Link to='/' className='btn btn-ghost transition duration-300 ease-in-out w-12
+                                          rounded-full bg-transparent border-black border-1' 
                                           onClick={() => handleSelect(item.id)}>
                               <MdPerson/>
                             </Link>
-                            <span className="absolute indicator-item indicator-bottom z-10 status status-success w-2 h-2 "/>
                           </td>
                           <td>{item.emp_name}</td>
                           <td>{item.emp_id}</td>
