@@ -141,7 +141,7 @@ function EmpTable() {
                         <tr key={key} className='text-center w-fit even:bg-blue_green/30'>
                           <td>
                             <Link to='/' className='btn btn-ghost font-bold text-black text-4xl hover:bg-transparent transition duration-300 ease-in-out' onClick={() => handleSelect(item.id)}>
-                              <div className='rounded-full w-3 h-3 self-center justify-self-center content-center bg-transparent border-black border-1'>
+                              <div className='rounded-full w-15 h-15 justify-self-center content-center bg-transparent border-black border-1'>
                                 <MdPerson />
                               </div>
                             </Link>
