@@ -11,7 +11,7 @@ router.get('/employee_data', sensorController.getEmployeeData)
 
 router.post('/add_sensor_data', sensorController.addSensorData)
 
-router.post('/add_employee', sensorController.addSensorData)
+router.post('/add_employee', sensorController.addEmployee)
 
 router.put('/employee_data/:id', sensorController.updateEmployee)
 
