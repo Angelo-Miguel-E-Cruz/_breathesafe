@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import axios from 'axios'
-import { MdRemoveRedEye , MdEdit , MdPerson } from "react-icons/md"
+import clsx from 'clsx'
+import { MdEdit , MdPerson } from "react-icons/md"
 import { useEmployee } from './contexts/EmployeeContext'
 import { Link, useNavigate } from 'react-router-dom'
 
@@ -10,7 +11,7 @@ function EmpTable() {
 
   const [chartData, setChartData] = useState(null)
   const [editEmp, setEditEmp] = useState(null)
-  const { setSelectedEmployee } = useEmployee()
+  const { selectedEmployee, setSelectedEmployee } = useEmployee()
 
   const fetchData = async () => {
     try {
@@ -139,8 +140,12 @@ function EmpTable() {
                       return (
                         <tr key={key} className='text-center w-fit even:bg-blue_green/30'>
                           <td>
-                            <Link to='/' className='relative btn btn-ghost text-black font-bold text-4xl hover:bg-transparent transition duration-300 ease-in-out' onClick={() => handleSelect(item.id)}>
-                              <span className="absolute top-0 right-0 -translate-x-4 translate-y-4 indicator-item status status-success"></span>
+                            <Link to='/' className={clsx('btn btn-ghost font-bold text-4xl hover:bg-transparent transition duration-300 ease-in-out',
+                              {
+                                'text-success': selectedEmployee === item.id,
+                                'text-black': selectedEmployee !== item.id
+                              }
+                            )} onClick={() => handleSelect(item.id)}>
                               <MdPerson  />
                             </Link>
                           </td>
