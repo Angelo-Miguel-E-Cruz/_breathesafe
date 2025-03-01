@@ -12,32 +12,6 @@ function EmpTable() {
   const [editEmp, setEditEmp] = useState(null)
   const { setSelectedEmployee } = useEmployee()
 
-
-  const handleNav = () => {
-    console.log("!")
-    navigate('/')
-    setTimeout(() => {
-      navigate('/all')
-    }, 50)
-  }
-  
-  const editData = (item) => {
-    setEditEmp(item)
-    document.getElementById('editModal').showModal()
-  }
-
-  const handleChange = (e) => {
-    const { id, value } = e.target
-    setEditEmp((prevItem) => ({
-      ...prevItem,
-      [id]: value,
-    }))
-  }
-
-  const handleSelect = (employeeId) => {
-    setSelectedEmployee(employeeId)
-  }
-
   const fetchData = async () => {
     try {
       const response = await axios.get('https://breath-o9r9.onrender.com/api/employee_data')
@@ -66,12 +40,52 @@ function EmpTable() {
     }
   }
 
+  const handleNav = () => {
+    console.log("!")
+    navigate('/')
+    setTimeout(() => {
+      navigate('/all')
+    }, 50)
+  }
+  
+  const addEmployee = () => {
+    document.getElementById('addModal').showModal()
+  }
+
+  const editData = (item) => {
+    setEditEmp(item)
+    document.getElementById('editModal').showModal()
+  }
+
+  const handleChange = (e) => {
+    const { id, value } = e.target
+    setEditEmp((prevItem) => ({
+      ...prevItem,
+      [id]: value,
+    }))
+  }
+
+  const handleSelect = (employeeId) => {
+    setSelectedEmployee(employeeId)
+  }
+
   const handleUpdate = async(id) => {
     try {
       await axios.put(`https://breath-o9r9.onrender.com/api/employee_data/${id}`, editEmp)
       window.confirm("Update Successful")
       fetchData()
     } catch (error) {
+      console.log(error)
+    }
+  }
+
+  const handleAddEmployee = async() => {
+    try {
+      await axios.post(`https://breath-o9r9.onrender.com/api/add_employee`, data)
+      const confirm = window.confirm("Added Successfully!")
+      fetchData()
+    }catch (error) {
+      window.alert("Error adding item: " + error.response?.data?.message || error.message)
       console.log(error)
     }
   }
@@ -140,6 +154,7 @@ function EmpTable() {
           </div>
         </div>
         <button className='btn btn-success' onClick={handleNav}>!</button>
+        <button className='btn btn-warning' onClick={() => addEmployee}>!</button>
       </div>
 
 
@@ -170,6 +185,39 @@ function EmpTable() {
           <div className="modal-action justify-start  ">
             <form method="dialog">
             <button className='btn rounded-xl bg-darkblue hover:bg-blue_green mr-2' onClick={() => handleUpdate(editEmp.id)}>Confirm</button>
+              <button className="btn rounded-xl bg-darkblue hover:bg-blue_green">Close</button>
+            </form>
+          </div>
+        </div>
+      </dialog>
+
+      <dialog id="addModal" className="modal">
+        <div className="modal-box bg-background text-black border-black border-1">
+          <h3 className="font-bold text-lg mb-5">Add Employee</h3>
+
+          <label className="input input-bordered bg-background my-1 border-black"> Employee Name
+            <input type="text" className="grow" id='emp_name'/>
+          </label>
+ 
+          <label className="input input-bordered bg-background my-1 border-black"> Employee ID
+            <input type="text" className="grow" id='emp_id'/>
+          </label>
+
+          <label className="input input-bordered bg-background my-1 border-black"> Device ID
+            <input type="text" className="grow" id='device_id'/>
+          </label>
+
+          <label className="input input-bordered bg-background my-1 border-black"> Employee Gender
+            <input type="text" className="grow" id='emp_gender'/>
+          </label>
+
+          <label className="input input-bordered bg-background my-1 border-black"> Employee Age
+            <input type="number" min="0" className="grow" id='emp_age'/>
+          </label>
+        
+          <div className="modal-action justify-start">
+            <form method="dialog">
+            <button className='btn rounded-xl bg-darkblue hover:bg-blue_green mr-2' onClick={() => handleAddEmployee()}>Confirm</button>
               <button className="btn rounded-xl bg-darkblue hover:bg-blue_green">Close</button>
             </form>
           </div>
