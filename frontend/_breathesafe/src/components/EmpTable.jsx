@@ -80,6 +80,14 @@ function EmpTable() {
   }
 
   const handleAddEmployee = async() => {
+    const emp_name = document.getElementById("add_emp_name")
+    const emp_id = document.getElementById("add_emp_id")
+    const device_id = document.getElementById("add_device_id")
+    const emp_gender = document.getElementById("add_emp_gender")
+    const emp_age = document.getElementById("add_emp_age")
+
+    const data = {emp_name, emp_id, device_id, emp_gender, emp_age}
+
     try {
       await axios.post(`https://breath-o9r9.onrender.com/api/add_employee`, data)
       const confirm = window.confirm("Added Successfully!")
@@ -196,23 +204,23 @@ function EmpTable() {
           <h3 className="font-bold text-lg mb-5">Add Employee</h3>
 
           <label className="input input-bordered bg-background my-1 border-black"> Employee Name
-            <input type="text" className="grow" id='emp_name'/>
+            <input type="text" className="grow" id='add_emp_name'/>
           </label>
  
           <label className="input input-bordered bg-background my-1 border-black"> Employee ID
-            <input type="text" className="grow" id='emp_id'/>
+            <input type="text" className="grow" id='add_emp_id'/>
           </label>
 
           <label className="input input-bordered bg-background my-1 border-black"> Device ID
-            <input type="text" className="grow" id='device_id'/>
+            <input type="text" className="grow" id='add_device_id'/>
           </label>
 
           <label className="input input-bordered bg-background my-1 border-black"> Employee Gender
-            <input type="text" className="grow" id='emp_gender'/>
+            <input type="text" className="grow" id='add_emp_gender'/>
           </label>
 
           <label className="input input-bordered bg-background my-1 border-black"> Employee Age
-            <input type="number" min="0" className="grow" id='emp_age'/>
+            <input type="number" min="0" className="grow" id='add_emp_age'/>
           </label>
         
           <div className="modal-action justify-start">
