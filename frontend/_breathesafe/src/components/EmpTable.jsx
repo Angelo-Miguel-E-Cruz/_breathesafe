@@ -14,6 +14,7 @@ function EmpTable() {
 
 
   const handleNav = () => {
+    console.log("!")
     navigate('/')
     setTimeout(() => {
       navigate('all')
@@ -138,9 +139,9 @@ function EmpTable() {
             </div>
           </div>
         </div>
+        <button className='btn btn-success' onClick={() => handleNav}>!</button>
       </div>
 
-      <button className='btn btn-success' onClick={() => handleNav}>!</button>
 
       <dialog id="editModal" className="modal">
         <div className="modal-box bg-background text-black border-black border-1">
