@@ -139,7 +139,7 @@ function EmpTable() {
                       return (
                         <tr key={key} className='text-center w-fit even:bg-blue_green/30'>
                           <td>
-                          <Link to='/' className='btn btn-ghost text-black font-bold text-3xl hover:bg-transparent transition duration-300 ease-in-out' onClick={() => handleSelect(item.id)}><MdPerson  /></Link>
+                          <Link to='/' className='btn btn-ghost text-black font-bold text-3xl hover:bg-transparent transition duration-300 ease-in-out indicator-item status status-success' onClick={() => handleSelect(item.id)}><MdPerson  /></Link>
                           </td>
                           <td>{item.emp_name}</td>
                           <td>{item.emp_id}</td>
@@ -170,7 +170,6 @@ function EmpTable() {
         <button className='btn btn-success' onClick={handleNav}>!</button>
         <button className='btn btn-warning' onClick={addEmployee}>!</button>
       </div>
-
 
       <dialog id="editModal" className="modal">
         <div className="modal-box bg-background text-black border-black border-1">
