@@ -29,10 +29,12 @@ function AllData() {
             timestamp: timestamp
           });
           console.log("acc jovelle: ", acc["Jovelle"])
-          return acc.slice(-20)
+          return acc
         }, [])
+        
+        const result = Object.values(pm25ChartData).slice(-20)
 
-        console.log(pm25ChartData)
+        console.log(result)
         setPm25ConData(pm25ChartData)
         
       } catch (error) {
