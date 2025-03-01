@@ -4,6 +4,10 @@ import SensorChart from './SensorChart'
 import Table from './Table'
 
 function AllData() {
+  const [pm25ConData, setPm25ConData] = useState(null)
+  const [pm10ConData, setPm10ConData] = useState(null)
+  const [pm25AQIData, setPm25AQIData] = useState(null)
+  const [pm10AQIData, setPm10AQIData] = useState(null)
 
   useEffect(() => {
 
@@ -14,11 +18,28 @@ function AllData() {
 
         console.log(sensorData)
         
+        const pm25ChartData = sensorData.reduce((acc, { id, emp_name, pm25, timestamp }) => {
+          if (!acc[emp_name]) {
+            acc[emp_name] = {
+              emp_name: emp_name,
+              id: id,
+              records: []
+            };
+          }
+          acc[emp_name].records.push({
+            pm25: pm25,
+            timestamp: timestamp
+          });
+          return acc.slice(-20)
+        }, [])
+
+        setPm25ConData(pm25ChartData)
+        
       } catch (error) {
         console.log(error.message) 
       }
     }
-
+    console.log(setPm25ConData)
     fetchData
     const interval = setInterval(fetchData, 5000)
 

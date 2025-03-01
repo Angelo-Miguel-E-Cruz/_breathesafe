@@ -11,8 +11,8 @@ function DataProcessing(data, type) {
     })
   }
 
+  // Prepare data for PM 2.5 chart
   if (type === "25"){
-    // Prepare data for PM 2.5 chart
     const pm25ChartData = {
       labels: data.map((item) => formatTimestamp(item.timestamp)), // X-axis values
       datasets: [
@@ -31,9 +31,8 @@ function DataProcessing(data, type) {
     return pm25ChartData
   }
 
-  
+  // Prepare data for PM 10 chart
   else if (type === "10"){
-    // Prepare data for PM 10 chart
     const pm10ChartData = {
       labels: data.map((item) => formatTimestamp(item.timestamp)), // X-axis values
       datasets: [
