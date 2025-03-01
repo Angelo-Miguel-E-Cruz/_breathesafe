@@ -3,7 +3,7 @@ import { AreaChart, Area, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContai
 
 function SensorChart({ chartData, title, type }) {
 
-  console.log(chartData[chartData.length-1])
+  console.log(chartData)
 
   return (
     <div className="card card-border bg-skyblue w-full shadow-black/50 shadow-md">
