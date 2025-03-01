@@ -23,7 +23,7 @@ function SensorChart({ chartData, title, type }) {
               </linearGradient>
             </defs>
             <XAxis dataKey="timestamp"/>
-            <YAxis scale="linear" domain={['auto', 'auto']}>
+            <YAxis>
             </YAxis>
             <CartesianGrid strokeDasharray="8 8" />
             <Tooltip />
