@@ -94,7 +94,7 @@ function EmpTable() {
       const confirm = window.confirm("Added Successfully!")
       fetchData()
     }catch (error) {
-      window.alert("Error adding item: " + error.response?.data?.message || error.message)
+      window.alert("Error adding item: " + error)
       console.log(error)
     }
   }
