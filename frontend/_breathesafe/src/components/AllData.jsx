@@ -31,9 +31,15 @@ function AllData() {
           return acc
         }, [])
         
-        const result = Object.values(pm25ChartData).slice(-20)
+        const trimmedData = Object.keys(pm25ChartData).reduce((acc, emp_name) => {
+          acc[emp_name] = {
+            ...pm25ChartData[emp_name],
+            records: pm25ChartData[emp_name].records.slice(-20) 
+          };
+          return acc;
+        }, {})
 
-        console.log(result)
+        console.log(trimmedData)
         setPm25ConData(result)
         
       } catch (error) {
