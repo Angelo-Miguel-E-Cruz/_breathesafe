@@ -28,7 +28,7 @@ function AllData() {
             pm25: pm25,
             timestamp: timestamp
           });
-          console.log("acc: ", acc)
+          console.log("acc jovelle: ", acc["Jovelle"])
           return acc.slice(-20)
         }, [])
 
