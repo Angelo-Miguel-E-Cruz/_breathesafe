@@ -37,7 +37,7 @@ function AllData() {
         console.log(error.message) 
       }
     }
-    console.log(setPm25ConData)
+    console.log(pm25ChartData)
     fetchData
     const interval = setInterval(fetchData, 5000)
 
