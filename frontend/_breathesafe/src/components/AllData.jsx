@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import axios from 'axios'
+import formatTimestamp from './functions/formatTimestamp'
 import SensorChart from './SensorChart'
 import Table from './Table'
 
