@@ -7,7 +7,7 @@ function Alerts({latestVal, sensorType, willPrint, setPrint}) {
   const latestval = latestVal === undefined ? "" : latestVal.toLowerCase()
 
   useEffect (() =>{
-    console.log("will print?: " + willPrint)
+    console.log(sensorType + " will print?: " + willPrint)
     if(willPrint){
       const timer = setInterval(() => {
       

@@ -75,7 +75,7 @@ function EmpTable() {
       <div className='mx-5'>
         <div className="card card-border bg-skyblue w-full text-black shadow-black/50 shadow-md mt-25">
           <div className="card-body">
-            <div className="h-90 overflow-x-auto w-full">
+            <div className="h-100 overflow-x-auto w-full">
               <table className="table table-pin-rows w-screen">
                 <thead>
                   <tr className='shadow-black/50 shadow-sm w-fit text-white bg-blue_green text-center'>
