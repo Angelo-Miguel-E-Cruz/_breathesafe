@@ -2,14 +2,23 @@ import React, { useEffect, useState } from 'react'
 import axios from 'axios'
 import { MdRemoveRedEye , MdEdit , MdPerson } from "react-icons/md"
 import { useEmployee } from './contexts/EmployeeContext'
-import { Link } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
 
 function EmpTable() {
+
+  const navigate = useNavigate()
 
   const [chartData, setChartData] = useState(null)
   const [editEmp, setEditEmp] = useState(null)
   const { setSelectedEmployee } = useEmployee()
 
+
+  const handleNav = () => {
+    navigate('/')
+    setTimeout(() => {
+      navigate('all')
+    }, 100)
+  }
   
   const editData = (item) => {
     setEditEmp(item)
@@ -131,7 +140,7 @@ function EmpTable() {
         </div>
       </div>
 
-      <Link to='/all' className='btn btn-success'>!</Link>
+      <button className='btn btn-success' onClick={() => handleNav}>!</button>
 
       <dialog id="editModal" className="modal">
         <div className="modal-box bg-background text-black border-black border-1">
