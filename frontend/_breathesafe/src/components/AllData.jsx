@@ -39,7 +39,7 @@ function AllData() {
           return acc;
         }, {})
 
-        console.log(trimmedData)
+        console.log(trimmedData[2].records)
         setPm25ConData(trimmedData)
         
       } catch (error) {
