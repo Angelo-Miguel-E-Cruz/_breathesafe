@@ -17,30 +17,30 @@ function AllData() {
         const sensorData = response.data
         
         const pm25ChartData = sensorData.reduce((acc, { id, emp_name, pm25, timestamp }) => {
-          if (!acc[emp_name]) {
-            acc[emp_name] = {
+          if (!acc[id]) {
+            acc[id] = {
               emp_name: emp_name,
               id: id,
               records: []
             };
           }
-          acc[emp_name].records.push({
+          acc[id].records.push({
             pm25: pm25,
             timestamp: timestamp
           });
           return acc
         }, [])
         
-        const trimmedData = Object.keys(pm25ChartData).reduce((acc, emp_name) => {
-          acc[emp_name] = {
-            ...pm25ChartData[emp_name],
-            records: pm25ChartData[emp_name].records.slice(-20) 
+        const trimmedData = Object.keys(pm25ChartData).reduce((acc, id) => {
+          acc[id] = {
+            ...pm25ChartData[id],
+            records: pm25ChartData[id].records.slice(-20) 
           };
           return acc;
         }, {})
 
         console.log(trimmedData)
-        setPm25ConData(result)
+        setPm25ConData(trimmedData)
         
       } catch (error) {
         console.log(error.message) 
