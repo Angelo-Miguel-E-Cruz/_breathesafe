@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import Clock from './Clock'
 import clsx from 'clsx'
-import { NavLink } from 'react-router-dom'
+import { NavLink, useLocation } from 'react-router-dom'
 import { RiHome9Fill  } from "react-icons/ri"
 import { IoNewspaper } from "react-icons/io5"
 
@@ -16,6 +16,8 @@ function NavBar() {
   ]
 
   const [isOpen, setIsOpen] = useState(false)
+
+  const location = useLocation()
 
   const openModal = () => {
     setIsOpen(true)
@@ -39,10 +41,11 @@ function NavBar() {
               'bg-darkblue' : !isOpen
             }
           )} onClick={()=>openModal()}> ! </button>
-          <NavLink to='/' className={({isActive}) =>
+          <NavLink to='/' className={({isActive}) => 
             `btn rounded-xl mr-2 shadow-black/50 shadow-md 
             transition duration-300 ease-in-out ${
-            isActive ? 'bg-blue_green' : 'bg-darkblue hover:bg-white/20'}`}> <RiHome9Fill /> Home</NavLink>
+            isActive || location.pathname.startsWith('/all') ?  
+            'bg-blue_green' : 'bg-darkblue hover:bg-white/20'}`}> <RiHome9Fill /> Home</NavLink>
           <NavLink to='records' className={({isActive}) =>
             `btn rounded-xl mr-2 shadow-black/50 shadow-md
             transition duration-300 ease-in-out ${
