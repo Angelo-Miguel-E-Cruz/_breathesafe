@@ -1,6 +1,9 @@
 import React from 'react'
 
 function Table({tableData, title, type}) {
+
+  const newTableData = [...tableData].reverse()
+
   return (
     <div className="card card-border bg-skyblue w-full shadow-black/50 shadow-md">
       <div className="card-body">
@@ -15,9 +18,9 @@ function Table({tableData, title, type}) {
               </tr>
             </thead>
             <tbody>
-              {tableData && Object.keys(tableData).length > 0 ? (
-                Object.keys(tableData).map((key) => {
-                  const item = tableData[key];
+              {newTableData && Object.keys(newTableData).length > 0 ? (
+                Object.keys(newTableData).map((key) => {
+                  const item = newTableData[key];
                   return (
                     <tr key={key} className='even:bg-blue_green/10 text-center text-black'>
                       <th>{item.timestamp}</th>
