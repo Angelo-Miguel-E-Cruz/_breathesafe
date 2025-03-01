@@ -27,9 +27,7 @@ function NavBar() {
   return (
     <div className="flex navbar sticky top-0 z-10 mt-1.5 mx-1.5 h-24 w-[99%] bg-darkblue text-white rounded-2xl shadow-black/50 shadow-md">
       <div className="navbar-start mt-3">
-        <div className='bg-black flex items-center'>
-          <img src='longlogo.png'/>
-        </div>
+        <img src='longlogo.png'/>
         <div className='flex flex-col pl-5'>
           <a className="font-bold text-3xl ml-2">Air Quality Monitor</a>
           <Clock />
