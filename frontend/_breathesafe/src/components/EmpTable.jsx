@@ -142,7 +142,7 @@ function EmpTable() {
                           <td className=''>
                             <Link to='/' className='btn btn-ghost transition duration-300 ease-in-out w-12 p-0
                                           rounded-full bg-transparent border-black border-1 text-black text-3xl
-                                          avatar avatar-online' 
+                                          avatar avatar-online [&.online]:before:size-<20%>' 
                                           onClick={() => handleSelect(item.id)}>
                               <MdPerson/>
                             </Link>
