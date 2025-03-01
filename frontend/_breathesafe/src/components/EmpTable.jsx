@@ -80,11 +80,17 @@ function EmpTable() {
   }
 
   const handleAddEmployee = async() => {
-    const emp_name = document.getElementById("add_emp_name")
-    const emp_id = document.getElementById("add_emp_id")
-    const device_id = document.getElementById("add_device_id")
-    const emp_gender = document.getElementById("add_emp_gender")
-    const emp_age = document.getElementById("add_emp_age")
+    const emp_name_field = document.getElementById("add_emp_name")
+    const emp_id_field = document.getElementById("add_emp_id")
+    const device_id_field = document.getElementById("add_device_id")
+    const emp_gender_field = document.getElementById("add_emp_gender")
+    const emp_age_field = document.getElementById("add_emp_age")
+    
+    const emp_name = emp_name_field.value
+    const emp_id = emp_id_field.value
+    const device_id = device_id_field.value
+    const emp_gender = emp_gender_field.value
+    const emp_age = emp_age_field.value
 
     const data = {emp_name, emp_id, device_id, emp_gender, emp_age}
     console.log(data)
