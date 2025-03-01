@@ -20,7 +20,7 @@ function AllData() {
           acc.push({
             id,
             pm25,
-            pm10,
+            emp_name,
             timestamp: formatTimestamp(timestamp),
           })
           /*if (!acc[id]) {
