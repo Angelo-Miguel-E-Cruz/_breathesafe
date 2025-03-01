@@ -131,7 +131,7 @@ function EmpTable() {
         </div>
       </div>
 
-      <Link to='all' className='btn btn-success'>!</Link>
+      <Link to='/all' className='btn btn-success'>!</Link>
 
       <dialog id="editModal" className="modal">
         <div className="modal-box bg-background text-black border-black border-1">
