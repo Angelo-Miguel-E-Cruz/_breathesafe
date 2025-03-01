@@ -49,7 +49,6 @@ function EmpTable() {
   }
   
   const addEmployee = () => {
-    console.log("hi")
     document.getElementById('addModal').showModal()
   }
 
@@ -123,7 +122,7 @@ function EmpTable() {
                     <th>Latest PM 2.5 AQI Level</th>
                     <th>Latest PM 10 AQI Level</th>
                     <th>Timestamp</th>
-                    <th>View/Edit Data</th>
+                    <th>Edit Data</th>
                   </tr>
                 </thead>
                 <tbody>
@@ -147,7 +146,6 @@ function EmpTable() {
                           <td>{item.timestamp}</td>
                           <td className='flex align-middle gap-1'>
                               <button className='btn btn-ghost text-black font-bold text-2xl hover:bg-transparent transition duration-300 ease-in-out' onClick={() => editData(item)}><MdEdit /></button>
-                              <button className='btn btn-ghost text-black font-bold text-2xl hover:bg-transparent transition duration-300 ease-in-out' ><MdRemoveRedEye  /></button>
                           </td>
                         </tr>
                       )

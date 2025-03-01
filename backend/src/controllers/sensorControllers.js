@@ -52,6 +52,10 @@ export const addEmployee = async (req, res) => {
   try {
     const { emp_name, emp_id, device_id, emp_gender, emp_age } = req.body
 
+    if (!emp_name || !emp_id || !device_id || !emp_gender || !emp_age){
+      return res.status(400).json({message: "Fill all data"})
+    }
+
     const result = await sensorService.addEmployee(emp_name, emp_id, device_id, emp_gender, emp_age)
     res.status(201).json(result)
   } catch (err) {
