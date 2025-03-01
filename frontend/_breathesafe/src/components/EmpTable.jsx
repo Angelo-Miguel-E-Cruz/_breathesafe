@@ -49,6 +49,7 @@ function EmpTable() {
   }
   
   const addEmployee = () => {
+    console.log("hi")
     document.getElementById('addModal').showModal()
   }
 
