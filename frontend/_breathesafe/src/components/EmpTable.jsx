@@ -17,7 +17,7 @@ function EmpTable() {
     console.log("!")
     navigate('/')
     setTimeout(() => {
-      navigate('all')
+      navigate('/all')
     }, 100)
   }
   
