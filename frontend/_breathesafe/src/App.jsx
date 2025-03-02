@@ -12,11 +12,11 @@ function App() {
       <EmployeeProvider>
         <BrowserRouter>
           <Routes>
-          <Route path="/" element={<Layout />}>
-            <Route index element={<Main />} />
-            <Route path="records" element={<Records />} />
-            <Route path="all" element={<AllData />} />
-          </Route>
+            <Route path="/" element={<Layout />}>
+              <Route index element={<Main />} />
+              <Route path="records" element={<Records />} />
+              <Route path="all" element={<AllData />} />
+            </Route>
           </Routes>
         </BrowserRouter>
       </EmployeeProvider>

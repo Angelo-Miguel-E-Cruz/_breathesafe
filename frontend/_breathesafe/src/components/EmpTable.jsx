@@ -13,8 +13,6 @@ function EmpTable() {
   const [editEmp, setEditEmp] = useState(null)
   const { selectedEmployee, setSelectedEmployee } = useEmployee()
 
-  console.log(selectedEmployee)
-
   const fetchData = async () => {
     try {
       const response = await axios.get('https://breath-o9r9.onrender.com/api/employee_data')
@@ -141,7 +139,7 @@ function EmpTable() {
                       const item = chartData[key]
                       return (
                         <tr key={key} className='text-center w-fit even:bg-blue_green/30'>
-                          <td className=''>
+                          <td>
                             <Link to='/' className={clsx(`btn btn-ghost transition duration-300 ease-in-out w-12 p-0
                                           rounded-full bg-transparent border-black border-1 text-black text-3xl
                                           avatar before:w-[25%] before:h-[25%] before:right-[6%]`,

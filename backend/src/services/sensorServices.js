@@ -90,3 +90,10 @@ export const updateEmployeeData = async(empID, emp_name, emp_id, device_id, emp_
     throw error
   }
 }
+
+export const removeEmployee = async(id) => {
+  const {rowCount} = await query(
+    'DELETE FROM employees_tb WHERE id = $1',
+    [id])
+  return rowCount > 0
+}
