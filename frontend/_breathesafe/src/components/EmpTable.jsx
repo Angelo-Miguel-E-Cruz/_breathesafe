@@ -124,7 +124,7 @@ function EmpTable() {
 
   return (
     <div>
-      <div className='mx-5 pt-25'>
+      <div className='mx-5 pt-25 relative'>
         
         <div className="card card-border bg-skyblue w-full text-black shadow-black/50 shadow-md">
           <div className="card-body">
