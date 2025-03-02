@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import axios from 'axios'
 import clsx from 'clsx'
-import { MdEdit , MdPerson, MdDeleteForever } from "react-icons/md"
+import { MdEdit , MdPerson, MdDeleteForever, MdSearch  } from "react-icons/md"
 import { useEmployee } from './contexts/EmployeeContext'
 import { Link, useNavigate } from 'react-router-dom'
 
@@ -125,6 +125,12 @@ function EmpTable() {
   return (
     <div>
       <div className='mx-5'>
+
+      <label className="input">
+        <input type="search" className="grow" placeholder="Search" />
+        <MdSearch />
+      </label>
+
         <div className="card card-border bg-skyblue w-full text-black shadow-black/50 shadow-md mt-25">
           <div className="card-body">
             <div className="h-100 overflow-x-auto w-full">
