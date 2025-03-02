@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import axios from 'axios'
 import clsx from 'clsx'
-import { MdEdit , MdPerson } from "react-icons/md"
+import { MdEdit , MdPerson, MdDeleteForever } from "react-icons/md"
 import { useEmployee } from './contexts/EmployeeContext'
 import { Link, useNavigate } from 'react-router-dom'
 
@@ -53,12 +53,12 @@ function EmpTable() {
     document.getElementById('addModal').showModal()
   }
 
-  const editData = (item) => {
+  const openEditModal = (item) => {
     setEditEmp(item)
     document.getElementById('editModal').showModal()
   }
 
-  const handleChange = (e) => {
+  const handleChangeFormData = (e) => {
     const { id, value } = e.target
     setEditEmp((prevItem) => ({
       ...prevItem,
@@ -70,7 +70,7 @@ function EmpTable() {
     setSelectedEmployee(employeeId)
   }
 
-  const handleUpdate = async(id) => {
+  const handleUpdateEmpInfo = async(id) => {
     try {
       await axios.put(`https://breath-o9r9.onrender.com/api/employee_data/${id}`, editEmp)
       window.confirm("Update Successful")
@@ -106,6 +106,17 @@ function EmpTable() {
     }
   }
 
+  const handleRemoveEmployee = async (id) => {
+    const confirmDelete = window.confirm("Delete this item?")
+    if (confirmDelete){
+      try {
+        await axios.delete(`https://breath-o9r9.onrender.com/api/employee_data/${id}`)
+      }catch (error) {
+        console.log(error)
+      }
+    }
+  }
+
   useEffect(() =>{
     fetchData()
   }, [])
@@ -131,6 +142,7 @@ function EmpTable() {
                     <th>Latest PM 10 AQI Level</th>
                     <th>Timestamp</th>
                     <th>Edit Data</th>
+                    <th>Remove Employee</th>
                   </tr>
                 </thead>
                 <tbody>
@@ -161,8 +173,11 @@ function EmpTable() {
                           <td>{item.latest_aqi_25}</td>
                           <td>{item.latest_aqi_10}</td>
                           <td>{item.timestamp}</td>
-                          <td className='flex align-middle gap-1'>
-                              <button className='btn btn-ghost text-black font-bold text-2xl hover:bg-transparent transition duration-300 ease-in-out' onClick={() => editData(item)}><MdEdit /></button>
+                          <td className='btn btn-ghost text-black font-bold text-2xl hover:bg-transparent transition duration-300 ease-in-out' onClick={() => openEditModal(item)}>
+                              <MdEdit/>
+                          </td>
+                          <td className='btn btn-ghost text-black font-bold text-2xl hover:bg-transparent transition duration-300 ease-in-out' onClick={() => handleRemoveEmployee()}>
+                              <MdDeleteForever />
                           </td>
                         </tr>
                       )
@@ -186,28 +201,28 @@ function EmpTable() {
           <h3 className="font-bold text-lg mb-5">Edit Employee Data</h3>
 
           <label className="input input-bordered bg-background my-1 border-black"> Employee Name
-            <input type="text" className="grow" id='emp_name' value={editEmp?.emp_name || ""} onChange={handleChange} />
+            <input type="text" className="grow" id='emp_name' value={editEmp?.emp_name || ""} onChange={handleChangeFormData} />
           </label>
  
           <label className="input input-bordered bg-background my-1 border-black"> Employee ID
-            <input type="text" className="grow" id='emp_id' value={editEmp?.emp_id || ""} onChange={handleChange} />
+            <input type="text" className="grow" id='emp_id' value={editEmp?.emp_id || ""} onChange={handleChangeFormData} />
           </label>
 
           <label className="input input-bordered bg-background my-1 border-black"> Device ID
-            <input type="text" className="grow" id='device_id' value={editEmp?.device_id || ""} onChange={handleChange} />
+            <input type="text" className="grow" id='device_id' value={editEmp?.device_id || ""} onChange={handleChangeFormData} />
           </label>
 
           <label className="input input-bordered bg-background my-1 border-black"> Employee Gender
-            <input type="text" className="grow" id='emp_gender' value={editEmp?.emp_gender || ""} onChange={handleChange} />
+            <input type="text" className="grow" id='emp_gender' value={editEmp?.emp_gender || ""} onChange={handleChangeFormData} />
           </label>
 
           <label className="input input-bordered bg-background my-1 border-black"> Employee Age
-            <input type="number" min="0" className="grow" id='emp_age' value={editEmp?.emp_age || ""} onChange={handleChange} />
+            <input type="number" min="0" className="grow" id='emp_age' value={editEmp?.emp_age || ""} onChange={handleChangeFormData} />
           </label>
         
           <div className="modal-action justify-start  ">
             <form method="dialog">
-            <button className='btn rounded-xl bg-darkblue hover:bg-blue_green mr-2' onClick={() => handleUpdate(editEmp.id)}>Confirm</button>
+            <button className='btn rounded-xl bg-darkblue hover:bg-blue_green mr-2' onClick={() => handleUpdateEmpInfo(editEmp.id)}>Confirm</button>
               <button className="btn rounded-xl bg-darkblue hover:bg-blue_green">Close</button>
             </form>
           </div>
