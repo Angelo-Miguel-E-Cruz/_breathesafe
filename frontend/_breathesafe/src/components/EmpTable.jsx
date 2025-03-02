@@ -111,11 +111,11 @@ function EmpTable() {
     if (confirmDelete){
       try {
         await axios.delete(`https://breath-o9r9.onrender.com/api/employee_data/${id}`)
-        fetchData()
       }catch (error) {
         console.log(error)
       }
     }
+    fetchData()
   }
 
   useEffect(() =>{

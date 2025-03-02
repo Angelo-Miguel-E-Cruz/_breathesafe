@@ -19,4 +19,6 @@ router.put("/update_employee_readings", sensorController.updateEmployeeReadings)
 
 router.delete('/employee_data/:id', sensorController.removeEmployee)
 
+router.get('/employee_data/search', sensorController.searchEmployee)
+
 export default router

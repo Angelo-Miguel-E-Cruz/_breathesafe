@@ -105,3 +105,14 @@ export const removeEmployee = async (req, res) => {
     res.status(500).json({message: "Server Error"})
   }
 }
+
+export const searchEmployee = async (req, res) => {
+  try{
+    const searchTerm = req.query.q
+    const employee = await sensorService.searchEmployee(searchTerm)
+    res.status(200).json(employee)
+  } catch (err){
+    console.error(err)
+    res.status(500).json({message: "Server Error"})
+  }
+}
