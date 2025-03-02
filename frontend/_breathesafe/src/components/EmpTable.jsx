@@ -10,6 +10,7 @@ function EmpTable() {
   const navigate = useNavigate()
 
   const [chartData, setChartData] = useState(null)
+  const [firstData, setFirstData] = useState(null)
   const [editEmp, setEditEmp] = useState(null)
   const [searchTerm, setSearchTerm] = useState('')
   const { selectedEmployee, setSelectedEmployee } = useEmployee()
@@ -36,6 +37,7 @@ function EmpTable() {
       }, [])
 
       setChartData(chartData)
+      setFirstData(chartData)
 
     }catch (error) {
       console.log(error.message) 
@@ -131,7 +133,7 @@ function EmpTable() {
     const fetchFilteredData = async () => {
       try {
         if (!searchTerm) {
-          setChartData(chartData)
+          setChartData(firstData)
         } else {
           const response = await axios.get(
             `https://breath-o9r9.onrender.com/api/employee_data/search?q=${searchTerm}`
@@ -225,8 +227,8 @@ function EmpTable() {
         </div>
         <button className='btn btn-success' onClick={handleNav}>!</button>
         <button className='btn btn-warning' onClick={addEmployee}>!</button>
-        <label className="input input-bordered border-black text-black bg-skyblue shadow-black/50 shadow-md 
-                          flex items-center gap-2 bg-none absolute top-23 right-0 ">
+        <label className="input input-bordered border-black text-black bg-background shadow-black/50 shadow-md 
+                          flex items-center gap-2 absolute top-23 right-0 ">
           <input type="search" className="grow " placeholder="Search" onChange={handleSearchChange} />
           <MdSearch />
         </label>

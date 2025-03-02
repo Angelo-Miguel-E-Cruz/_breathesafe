@@ -100,7 +100,7 @@ export const removeEmployee = async(id) => {
 
 export const searchEmployee = async(searchTerm) => {
   const {rows} = await query(
-    `SELECT * FROM employees_tb WHERE emp_name LIKE $1 OR emp_id LIKE $1 OR device_id LIKE $1 ORDER BY id ASC`,
+    `SELECT * FROM employees_tb WHERE emp_name ILIKE $1 OR emp_id ILIKE $1 OR device_id ILIKE $1 ORDER BY id ASC`,
     [`%${searchTerm}%`])
   return rows
 }
