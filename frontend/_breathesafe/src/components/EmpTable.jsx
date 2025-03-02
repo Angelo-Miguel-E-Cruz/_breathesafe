@@ -111,6 +111,7 @@ function EmpTable() {
     if (confirmDelete){
       try {
         await axios.delete(`https://breath-o9r9.onrender.com/api/employee_data/${id}`)
+        fetchData()
       }catch (error) {
         console.log(error)
       }
@@ -173,15 +174,16 @@ function EmpTable() {
                           <td>{item.latest_aqi_25}</td>
                           <td>{item.latest_aqi_10}</td>
                           <td>{item.timestamp}</td>
-                          <td className='btn btn-ghost text-black font-bold text-2xl 
+                          <td>
+                              <button className='btn btn-ghost text-black font-bold text-2xl 
                                         hover:bg-transparent transition duration-300 ease-in-out' 
-                                        onClick={() => openEditModal(item)}>
-                              <MdEdit/>
+                                        onClick={() => openEditModal(item)}> <MdEdit/> </button>
+                              
                           </td>
-                          <td className='btn btn-ghost text-black font-bold text-2xl 
-                                        hover:bg-transparent transition duration-300 ease-in-out' 
-                                        onClick={() => handleRemoveEmployee(item.id)}>
-                              <MdDeleteForever />
+                          <td>
+                            <button className='btn btn-ghost text-black font-bold text-2xl 
+                                    hover:bg-transparent transition duration-300 ease-in-out' 
+                                    onClick={() => handleRemoveEmployee(item.id)}><MdDeleteForever /></button>
                           </td>
                         </tr>
                       )
