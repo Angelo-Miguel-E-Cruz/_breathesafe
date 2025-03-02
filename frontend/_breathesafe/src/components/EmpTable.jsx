@@ -150,7 +150,7 @@ function EmpTable() {
                     Object.keys(chartData).map((key) => {
                       const item = chartData[key]
                       return (
-                        <tr key={key} className='text-center w-fit even:bg-blue_green/30'>
+                        <tr key={key} className='text-center even:bg-blue_green/30'>
                           <td>
                             <Link to='/' className={clsx(`btn btn-ghost transition duration-300 ease-in-out w-12 p-0
                                           rounded-full bg-transparent border-black border-1 text-black text-3xl
@@ -173,10 +173,14 @@ function EmpTable() {
                           <td>{item.latest_aqi_25}</td>
                           <td>{item.latest_aqi_10}</td>
                           <td>{item.timestamp}</td>
-                          <td className='btn btn-ghost text-black font-bold text-2xl hover:bg-transparent transition duration-300 ease-in-out' onClick={() => openEditModal(item)}>
+                          <td className='btn btn-ghost text-black font-bold text-2xl 
+                                        hover:bg-transparent transition duration-300 ease-in-out' 
+                                        onClick={() => openEditModal(item)}>
                               <MdEdit/>
                           </td>
-                          <td className='btn btn-ghost text-black font-bold text-2xl hover:bg-transparent transition duration-300 ease-in-out' onClick={() => handleRemoveEmployee()}>
+                          <td className='btn btn-ghost text-black font-bold text-2xl 
+                                        hover:bg-transparent transition duration-300 ease-in-out' 
+                                        onClick={() => handleRemoveEmployee(item.id)}>
                               <MdDeleteForever />
                           </td>
                         </tr>
@@ -184,7 +188,7 @@ function EmpTable() {
                     })
                   ) : (
                     <tr>
-                      <td colSpan="11" className="text-center">No data available</td>
+                      <td colSpan="12" className="text-center">No data available</td>
                     </tr>
                   )}
                 </tbody>
