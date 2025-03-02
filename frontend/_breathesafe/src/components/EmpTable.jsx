@@ -126,11 +126,6 @@ function EmpTable() {
     <div>
       <div className='mx-5'>
 
-      <label className="input input-bordered flex items-center gap-2 bg-none bg-white">
-        <input type="search" className="grow text-black" placeholder="Search" />
-        <MdSearch />
-      </label>
-
         <div className="card card-border bg-skyblue w-full text-black shadow-black/50 shadow-md mt-25">
           <div className="card-body">
             <div className="h-100 overflow-x-auto w-full">
@@ -273,6 +268,11 @@ function EmpTable() {
           </div>
         </div>
       </dialog>
+
+      <label className="input input-bordered flex items-center gap-2 bg-none bg-white">
+        <input type="search" className="grow text-black" placeholder="Search" />
+        <MdSearch />
+      </label>
     </div>
   )
 }
