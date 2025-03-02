@@ -126,8 +126,8 @@ function EmpTable() {
     <div>
       <div className='mx-5'>
 
-      <label className="input">
-        <input type="search" className="grow" placeholder="Search" />
+      <label className="input input-bordered flex items-center gap-2 bg-none bg-white">
+        <input type="search" className="grow text-black" placeholder="Search" />
         <MdSearch />
       </label>
 
