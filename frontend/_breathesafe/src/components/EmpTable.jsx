@@ -126,7 +126,7 @@ function EmpTable() {
     <div>
       <div className='mx-5 pt-25 relative'>
         
-        <div className="card card-border bg-skyblue w-full text-black shadow-black/50 shadow-md">
+        <div className="card card-border bg-skyblue w-full text-black shadow-black/50 shadow-md mt-10">
           <div className="card-body">
             <div className="h-100 overflow-x-auto w-full">
               <table className="table table-pin-rows w-screen">
@@ -201,7 +201,7 @@ function EmpTable() {
         </div>
         <button className='btn btn-success' onClick={handleNav}>!</button>
         <button className='btn btn-warning' onClick={addEmployee}>!</button>
-        <label className="input input-bordered text-black bg-white flex items-center gap-2 bg-none absolute top-23.5 right-0 ">
+        <label className="input input-bordered border-black text-black bg-white flex items-center gap-2 bg-none absolute top-23.5 right-0 ">
           <input type="search" className="grow " placeholder="Search" />
           <MdSearch />
         </label>
