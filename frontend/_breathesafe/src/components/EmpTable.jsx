@@ -201,7 +201,7 @@ function EmpTable() {
         </div>
         <button className='btn btn-success' onClick={handleNav}>!</button>
         <button className='btn btn-warning' onClick={addEmployee}>!</button>
-        <label className="input input-bordered text-black bg-white flex items-center gap-2 bg-none absolute top-0 right-0 ">
+        <label className="input input-bordered text-black bg-white flex items-center gap-2 bg-none absolute top-23.5 right-0 ">
           <input type="search" className="grow " placeholder="Search" />
           <MdSearch />
         </label>
