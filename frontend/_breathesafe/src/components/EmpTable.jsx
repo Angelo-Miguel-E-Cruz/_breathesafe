@@ -124,9 +124,13 @@ function EmpTable() {
 
   return (
     <div>
-      <div className='mx-5'>
-
-        <div className="card card-border bg-skyblue w-full text-black shadow-black/50 shadow-md mt-25">
+      <div className='mx-5 pt-25'>
+        <label className="input input-bordered text-black bg-white flex items-center gap-2 bg-none absolute top-0 right-0 ">
+          <input type="search" className="grow " placeholder="Search" />
+          <MdSearch />
+        </label>
+        
+        <div className="card card-border bg-skyblue w-full text-black shadow-black/50 shadow-md">
           <div className="card-body">
             <div className="h-100 overflow-x-auto w-full">
               <table className="table table-pin-rows w-screen">
@@ -201,6 +205,8 @@ function EmpTable() {
         </div>
         <button className='btn btn-success' onClick={handleNav}>!</button>
         <button className='btn btn-warning' onClick={addEmployee}>!</button>
+
+        
       </div>
 
       <dialog id="editModal" className="modal">
@@ -268,11 +274,6 @@ function EmpTable() {
           </div>
         </div>
       </dialog>
-
-      <label className="input input-bordered flex items-center gap-2 bg-none bg-white">
-        <input type="search" className="grow text-black" placeholder="Search" />
-        <MdSearch />
-      </label>
     </div>
   )
 }
