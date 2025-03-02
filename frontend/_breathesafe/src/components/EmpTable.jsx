@@ -11,6 +11,7 @@ function EmpTable() {
 
   const [chartData, setChartData] = useState(null)
   const [editEmp, setEditEmp] = useState(null)
+  const [searchTerm, setSearchTerm] = useState('')
   const { selectedEmployee, setSelectedEmployee } = useEmployee()
 
   const fetchData = async () => {
@@ -118,9 +119,32 @@ function EmpTable() {
     fetchData()
   }
 
+  const handleSearchChange = (e) =>{
+    setSearchTerm(e.target.value)
+  }
+
   useEffect(() =>{
     fetchData()
   }, [])
+  
+  useEffect(() => {
+    const fetchFilteredData = async () => {
+      try {
+        if (!searchTerm) {
+          setChartData(chartData)
+        } else {
+          const response = await axios.get(
+            `https://breath-o9r9.onrender.com/api/employee_data/search?q=${searchTerm}`
+          )
+          setChartData(response.data)
+        }
+      } catch (error) {
+        console.error('Error fetching filtered data:', error)
+      }
+    }
+  
+    fetchFilteredData()
+  }, [searchTerm])
 
   return (
     <div>
@@ -201,8 +225,9 @@ function EmpTable() {
         </div>
         <button className='btn btn-success' onClick={handleNav}>!</button>
         <button className='btn btn-warning' onClick={addEmployee}>!</button>
-        <label className="input input-bordered border-black text-black bg-white flex items-center gap-2 bg-none absolute top-23.5 right-0 ">
-          <input type="search" className="grow " placeholder="Search" />
+        <label className="input input-bordered border-black text-black bg-skyblue shadow-black/50 shadow-md 
+                          flex items-center gap-2 bg-none absolute top-23 right-0 ">
+          <input type="search" className="grow " placeholder="Search" onChange={handleSearchChange} />
           <MdSearch />
         </label>
 
