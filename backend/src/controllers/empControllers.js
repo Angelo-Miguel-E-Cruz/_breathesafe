@@ -4,7 +4,7 @@ import * as empServices from '../services/empServices.js'
 
 export const getEmployeeData = async (req, res) => {
   try{
-    const items = await sensorService.fetchEmployeeData()
+    const items = await empServices.fetchEmployeeData()
     res.status(200).json(items)
   } catch (err){
     console.error(err)
@@ -15,7 +15,7 @@ export const getEmployeeData = async (req, res) => {
 export const searchEmployee = async (req, res) => {
   try{
     const searchTerm = req.query.q
-    const employee = await sensorService.searchEmployee(searchTerm)
+    const employee = await empServices.searchEmployee(searchTerm)
     res.status(200).json(employee)
   } catch (err){
     console.error(err)
@@ -33,7 +33,7 @@ export const addEmployee = async (req, res) => {
       return res.status(400).json({message: "Fill all data"})
     }
 
-    const result = await sensorService.addEmployee(emp_name, emp_id, device_id, emp_gender, emp_age)
+    const result = await empServices.addEmployee(emp_name, emp_id, device_id, emp_gender, emp_age)
     res.status(201).json(result)
   } catch (err) {
     console.error(err)
@@ -47,7 +47,7 @@ export const updateEmployeeReadings = async (req, res) => {
   try {
     const { employeeId, pm25, pm10, pm25Level, pm10Level, latest_time } = req.body
 
-    await sensorService.updateEmployeeReadings(employeeId, pm25, pm10, pm25Level, pm10Level, latest_time)
+    await empServices.updateEmployeeReadings(employeeId, pm25, pm10, pm25Level, pm10Level, latest_time)
 
     res.status(200).json({ message: "Employee readings updated successfully" })
   } catch (err) {
@@ -60,7 +60,7 @@ export const updateEmployee = async (req, res) => {
   try {
     const id = req.params.id
     const { emp_name, emp_id, device_id, emp_gender, emp_age } = req.body
-    const updatedData = await sensorService.updateEmployeeData(id, emp_name, emp_id, device_id, emp_gender, emp_age)
+    const updatedData = await empServices.updateEmployeeData(id, emp_name, emp_id, device_id, emp_gender, emp_age)
 
     if(!updatedData){
       return res.status(400).json({message: "ID not found"})
@@ -77,7 +77,7 @@ export const updateEmployee = async (req, res) => {
 export const removeEmployee = async (req, res) => {
   try{
     const id = req.params.id
-    const removedEmployee = await sensorService.removeEmployee(id)
+    const removedEmployee = await empServices.removeEmployee(id)
     if (!removedEmployee)
       return res.status(404).json({message: "ID not found"})
     res.status(200).send()
