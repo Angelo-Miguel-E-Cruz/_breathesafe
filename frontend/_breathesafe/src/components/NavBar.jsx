@@ -1,9 +1,10 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import Clock from './Clock'
 import clsx from 'clsx'
 import { NavLink, useLocation } from 'react-router-dom'
 import { RiHome9Fill  } from "react-icons/ri"
 import { IoNewspaper } from "react-icons/io5"
+import * as timer from './functions/timer'
 
 function NavBar() {
   const data = [
@@ -23,6 +24,10 @@ function NavBar() {
     setIsOpen(true)
     document.getElementById('aqi_info_modal').showModal()
   }
+
+  useEffect(() => {
+    timer.startLoopingCountdown(300, timer.onTimerEnd)
+  }, [])
 
   return (
     <div className="flex navbar pl-0 pt-0 sticky top-0 z-10 mt-1.5 mx-1.5 h-24 w-[99%] bg-darkblue text-white rounded-2xl shadow-black/50 shadow-md">
