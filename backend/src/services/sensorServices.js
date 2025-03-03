@@ -33,8 +33,8 @@ export const getDatainRange = async (interval) => {
   try {
     const sql = `SELECT pm25, pm10, aqi_pm25, aqi_pm10
                 FROM sensor_data 
-                WHERE timestamp >= NOW() - INTERVAL $1 `
-    const {rows} = await query(sql, [interval])
+                WHERE timestamp >= NOW() - INTERVAL '${interval}' `
+    const {rows} = await query(sql)
     return rows 
   } catch (error) {
     console.error("Database Query Error:", error)
