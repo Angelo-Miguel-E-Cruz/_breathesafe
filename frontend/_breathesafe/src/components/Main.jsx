@@ -6,6 +6,7 @@ import Table from './Table'
 import Alerts from './Alerts'
 import axios from 'axios'
 import formatTimestamp from './functions/formatTimestamp'
+import * as timer from './functions/timer'
 import { useEmployee } from './contexts/EmployeeContext'
 import { dataReducer, INITIAL_STATE } from './functions/dataReducer'
 
@@ -85,6 +86,8 @@ function Main() {
     }
     fetchData()
     const interval = setInterval(fetchData, 5000)
+
+    timer.startLoopingCountdown(300, timer.onTimerEnd)
 
     return () => clearInterval(interval)
   }, []) 

@@ -25,8 +25,6 @@ function Clock() {
     setCurrentDate(`${formattedDate}`)
     setCurrentTime(`${formattedTime}`)
 
-    console.log(formattedTime)
-
     }, 1000);
 
     return () => clearInterval(timer);
