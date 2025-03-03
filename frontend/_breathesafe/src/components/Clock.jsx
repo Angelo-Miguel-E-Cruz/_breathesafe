@@ -25,9 +25,10 @@ function Clock() {
     setCurrentDate(`${formattedDate}`)
     setCurrentTime(`${formattedTime}`)
 
-    }, 1000); // Update every second
+    console.log(formattedTime)
 
-    // Clean up the interval when the component is unmounted
+    }, 1000);
+
     return () => clearInterval(timer);
   }, []);
 

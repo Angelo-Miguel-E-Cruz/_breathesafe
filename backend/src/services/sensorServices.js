@@ -92,15 +92,25 @@ export const updateEmployeeData = async(empID, emp_name, emp_id, device_id, emp_
 }
 
 export const removeEmployee = async(id) => {
-  const {rowCount} = await query(
-    'DELETE FROM employees_tb WHERE id = $1',
-    [id])
-  return rowCount > 0
+  try {
+    const {rowCount} = await query(
+      'DELETE FROM employees_tb WHERE id = $1',
+      [id])
+    return rowCount > 0
+  } catch (error) {
+    console.error("Database Query Error:", error)
+    throw error
+  }
 }
 
 export const searchEmployee = async(searchTerm) => {
-  const {rows} = await query(
-    `SELECT * FROM employees_tb WHERE emp_name ILIKE $1 OR emp_id ILIKE $1 OR device_id ILIKE $1 ORDER BY id ASC`,
-    [`%${searchTerm}%`])
-  return rows
+  try {
+    const {rows} = await query(
+      `SELECT * FROM employees_tb WHERE emp_name ILIKE $1 OR emp_id ILIKE $1 OR device_id ILIKE $1 ORDER BY id ASC`,
+      [`%${searchTerm}%`])
+    return rows
+  } catch (error) {
+    console.error("Database Query Error:", error)
+    throw error
+  }
 }
