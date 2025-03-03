@@ -1,3 +1,5 @@
+import axios from 'axios'
+
 export const startLoopingCountdown = (durationInSeconds, callback) => {
   function runTimer() {
       let timeLeft = durationInSeconds
@@ -10,7 +12,7 @@ export const startLoopingCountdown = (durationInSeconds, callback) => {
 
           if (timeLeft <= 0) {
               clearInterval(timer)
-              
+
               if (callback) callback()
 
               setTimeout(runTimer, 1000)
@@ -23,6 +25,6 @@ export const startLoopingCountdown = (durationInSeconds, callback) => {
   runTimer() 
 }
 
-export const onTimerEnd = () => {
+export const onTimerEnd = async() => {
   
 }

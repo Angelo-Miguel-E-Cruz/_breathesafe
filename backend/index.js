@@ -1,7 +1,7 @@
 import express from 'express'
 import pg from 'pg'
 import cors from 'cors'
-import sensorRouter from './src/routers/sensorRouters.js'
+import dashboardRouters from './src/routers/dashboardRouters.js'
 import env from 'dotenv'
 
 const app = express()
@@ -32,7 +32,7 @@ db.connect((err) => {
   }
 });
 
-app.use('/api', sensorRouter)
+app.use('/api', dashboardRouters)
 
 app.listen(port, () => {
   console.log(`Listening on port ${port}...`)
