@@ -33,8 +33,33 @@ export const onTimerEnd = async(durationInSeconds) => {
 
   try {
     const response = await axios.get(`https://breath-o9r9.onrender.com/api/interval_data`,  interval)
-    console.log(response.data[0].result)
+    const result = response.data[0].result
+    processResult(0, result)
   } catch (error) {
     console.log(error.message)
   }
 }
+
+// TODO: REMOVE LOGS WHEN FINISHED
+const processResult = async (index, resultArray) => {
+  if (index >= resultArray.length) {
+    console.log("All items processed.")
+    return
+  }
+
+  const singleArray = [resultArray[index]] 
+  console.log(`Processing item ${index + 1}:`, singleArray)
+
+  /*try {
+    // Simulated API operation (replace with actual API call)
+    const response = await axios
+
+    const data = await response.json()
+    console.log(`API Response for item ${index + 1}:`, data)
+
+    processResult(index + 1, resultArray)
+  } catch (error) {
+    console.error("API Error:", error)
+  }*/
+}
+
