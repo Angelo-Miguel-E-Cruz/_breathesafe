@@ -33,8 +33,12 @@ export const onTimerEnd = async(durationInSeconds) => {
 
   try {
     const response = await axios.get(`https://breath-o9r9.onrender.com/api/interval_data`,  interval)
-    const result = response.data[0].result
-    processResult(0, result)
+    console.log(response)
+    console.log(response.data)
+    console.log(response.data[0])
+    console.log(response.data[0].result)
+    //const result = response.data[0].result
+    //processResult(0, result)
   } catch (error) {
     console.log(error.message)
   }

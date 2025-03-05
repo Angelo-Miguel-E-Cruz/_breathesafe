@@ -28,7 +28,7 @@ export const getDatainRange = async (req, res) => {
   try{
     const { interval } = req.body
     console.log("interval: ", interval)
-    const items = await sensorService.getDatainRange(interval) // change dynamically
+    const items = await sensorService.getDatainRange(interval)
     res.status(200).json(items)
   } catch (err){
     console.error(err)
