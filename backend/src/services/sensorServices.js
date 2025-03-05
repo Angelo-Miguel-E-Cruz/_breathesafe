@@ -39,10 +39,10 @@ export const getDatainRange = async (interval) => {
                           AVG(aqi_pm25)::NUMERIC(10, 2) AS avg_aqi_pm25, 
                           AVG(aqi_pm10)::NUMERIC(10, 2) AS avg_aqi_pm10
                     FROM sensor_data
-                    WHERE timestamp >= NOW() - INTERVAL '${interval}'
+                    WHERE timestamp >= NOW() - ($1::INTERVAL)
                     GROUP BY device_id
                 ) AS results `
-    const {rows} = await query(sql)
+    const {rows} = await query(sql, [interval])
     return rows 
   } catch (error) {
     console.error("Database Query Error:", error)
