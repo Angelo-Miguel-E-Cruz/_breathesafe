@@ -57,9 +57,9 @@ const processResult = async (index, resultArray) => {
     const data = await response.json()
     console.log(`API Response for item ${index + 1}:`, data)
 
-    processResult(index + 1, resultArray)
   } catch (error) {
     console.error("API Error:", error)
   }*/
+    processResult(index + 1, resultArray)
 }
 
