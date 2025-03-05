@@ -13,7 +13,7 @@ export const startLoopingCountdown = (durationInSeconds, callback) => {
           if (timeLeft <= 0) {
               clearInterval(timer)
 
-              if (callback) callback()
+              if (callback) callback(durationInSeconds)
 
               setTimeout(runTimer, 1000)
           } else {
@@ -25,7 +25,7 @@ export const startLoopingCountdown = (durationInSeconds, callback) => {
   runTimer() 
 }
 
-export const onTimerEnd = async() => {
+export const onTimerEnd = async(durationInSeconds) => {
   const interval = durationInSeconds === 300 ? '5 minutes' : 
                   durationInSeconds === 3600 ? '1 hour' :  null
 
@@ -34,6 +34,7 @@ export const onTimerEnd = async() => {
   console.log(interval)
   try {
     const response = await axios.get(`https://breath-o9r9.onrender.com/api/interval_data`,  interval)
+    console.log(response)
   } catch (error) {
     console.log(error.message)
   }
