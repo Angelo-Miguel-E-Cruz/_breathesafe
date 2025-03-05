@@ -31,9 +31,17 @@ export const getAllSensorData = async() => {
 
 export const getDatainRange = async (interval) => {
   try {
-    const sql = `SELECT pm25, pm10, aqi_pm25, aqi_pm10
-                FROM sensor_data 
-                WHERE timestamp >= NOW() - INTERVAL '${interval}' `
+    const sql = `SELECT json_agg(results) AS result
+                FROM (
+                    SELECT device_id,
+                          AVG(pm25)::NUMERIC(10, 2) AS avg_pm25, 
+                          AVG(pm10)::NUMERIC(10, 2) AS avg_pm10, 
+                          AVG(aqi_pm25)::NUMERIC(10, 2) AS avg_aqi_pm25, 
+                          AVG(aqi_pm10)::NUMERIC(10, 2) AS avg_aqi_pm10
+                    FROM sensor_data
+                    WHERE timestamp >= NOW() - INTERVAL '${interval}'
+                    GROUP BY device_id
+                ) AS results `
     const {rows} = await query(sql)
     return rows 
   } catch (error) {
