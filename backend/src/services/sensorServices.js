@@ -39,7 +39,7 @@ export const getDatainRange = async (interval) => {
                           AVG(aqi_pm25)::NUMERIC(10, 2) AS avg_aqi_pm25, 
                           AVG(aqi_pm10)::NUMERIC(10, 2) AS avg_aqi_pm10
                     FROM sensor_data
-                    WHERE timestamp >= NOW() - ($1::INTERVAL)
+                    WHERE timestamp >= NOW() - CAST ($1 AS INTERVAL)
                     GROUP BY device_id
                 ) AS results `
     const {rows} = await query(sql, [interval])
