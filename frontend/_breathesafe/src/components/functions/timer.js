@@ -26,18 +26,14 @@ export const startLoopingCountdown = (durationInSeconds, callback) => {
 }
 
 export const onTimerEnd = async() => {
-  const interval = durationInSeconds === 300 ? '5 minutes' : ''
+  const interval = durationInSeconds === 300 ? '5 minutes' : 
+                  durationInSeconds === 3600 ? '1 hour' :  null
+
+  if (!interval) return null
+
+  console.log(interval)
   try {
     const response = await axios.get(`https://breath-o9r9.onrender.com/api/interval_data`,  interval)
-    /*const pm25Array = data.map(item => parseFloat(item.pm25))
-    const pm10Array = data.map(item => parseFloat(item.pm10))
-    const aqiPm25Array = data.map(item => item.aqi_pm25)
-    const aqiPm10Array = data.map(item => item.aqi_pm10)
-
-    console.log("pm25Array:", pm25Array)
-    console.log("pm10Array:", pm10Array)
-    console.log("aqiPm25Array:", aqiPm25Array)
-    console.log("aqiPm10Array:", aqiPm10Array)*/
   } catch (error) {
     console.log(error.message)
   }
