@@ -3,20 +3,43 @@ import Layout from './components/Layout'
 import Main from './components/Main'
 import Records from './components/Records'
 import AllData from './components/AllData'
+import ProtectedRoute from './components/ProtectedRoute'
+import Login from './components/Login'
 import { EmployeeProvider } from './components/contexts/EmployeeContext'
 import {BrowserRouter, Routes, Route} from 'react-router-dom'
 
 function App() {
+  
+  const [isAuthenticated, setIsAuthenticated]  = useState()
+  const role  = window.localStorage.getItem("role")
+
+  useEffect(() => {
+    const token = window.localStorage.getItem("token")
+    setIsAuthenticated(!!token)
+  },[])
+
   return (
     <main>
       <EmployeeProvider>
         <BrowserRouter>
           <Routes>
-            <Route path="/" element={<Layout />}>
-              <Route index element={<Main />} />
-              <Route path="records" element={<Records />} />
-              <Route path="all" element={<AllData />} />
+            {!isAuthenticated && (
+              <>
+                <Route path="/" element={<Login />} />
+                <Route path="/login" element={<Navigate to="/" />} />
+              </>
+            )}
+
+            <Route element={<ProtectedRoute setAuth={setIsAuthenticated}/>}>
+              <Route path="/" element={role === "Admin" ? <Navigate to="/admin"/> : 
+                                      <Navigate to="/dashboard"/>} />
+              <Route path="/login" element={<Navigate to="/" />} />
+              <Route path="/admin" element={role === "Admin" ? <Main setAuth={setIsAuthenticated}/> : <Navigate to="/" />} />
+              <Route path="/records" element={role === "Admin" ? <Records setAuth={setIsAuthenticated}/> : <Navigate to="/" />} />
+              <Route path="/dashboard" element={role === "User" ? <User setAuth={setIsAuthenticated}/> : <Navigate to="/" />} />
             </Route>
+            
+            <Route path="*" element={<Navigate to="/" />} />
           </Routes>
         </BrowserRouter>
       </EmployeeProvider>
