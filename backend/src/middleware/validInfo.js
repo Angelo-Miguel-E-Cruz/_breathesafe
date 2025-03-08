@@ -1,23 +1,15 @@
 const valid = (req, res, next) =>{
 
-  const { name, email, password, role } = req.body
-
-  function validEmail (userEmail){
-    return /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test(userEmail)
-  }
+  const { name, password, role } = req.body
 
   if(req.path === "/register"){
-    if(![email, name, password, role].every(Boolean)){
+    if(![name, password, role].every(Boolean)){
       return res.status(401).json("Missing Credentials")
-    } else if (!validEmail(email)){
-      return res.status(401).json("Invalid Email")
-    }
+    } 
   } else if (req.path === "/login"){
-    if(![email, password].every(Boolean)){
+    if(![password].every(Boolean)){
       return res.status(401).json("Missing Credentials")
-    } else if (!validEmail(email)){
-      return res.status(401).json("Invalid Email")
-    }
+    } 
   }
   next()
 }
