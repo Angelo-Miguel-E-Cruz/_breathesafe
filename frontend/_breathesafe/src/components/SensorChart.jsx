@@ -21,8 +21,7 @@ function SensorChart({ chartData, title, type }) {
               </linearGradient>
             </defs>
             <XAxis dataKey="timestamp"/>
-            <YAxis>
-            </YAxis>
+            <YAxis domain={['dataMin', 'dataMax']}/>
             <CartesianGrid strokeDasharray="8 8" />
             <Tooltip />
             <Area type="monotone" dataKey={type === "concentration" ? "pm25" : "aqi_pm25"} unit= {type === "concentration" ? "µg/m³" : ""} 
