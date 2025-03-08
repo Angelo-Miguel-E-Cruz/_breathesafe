@@ -36,8 +36,8 @@ export const getDatainRange = async (interval) => {
                     SELECT device_id,
                           AVG(pm25)::NUMERIC(10, 2) AS avg_pm25, 
                           AVG(pm10)::NUMERIC(10, 2) AS avg_pm10, 
-                          AVG(aqi_pm25)::NUMERIC(10, 2) AS avg_aqi_pm25, 
-                          AVG(aqi_pm10)::NUMERIC(10, 2) AS avg_aqi_pm10
+                          AVG(aqi_pm25)::NUMERIC(10, 0) AS avg_aqi_pm25, 
+                          AVG(aqi_pm10)::NUMERIC(10, 0) AS avg_aqi_pm10
                     FROM sensor_data
                     WHERE timestamp >= NOW() - CAST ($1 AS INTERVAL)
                     GROUP BY device_id

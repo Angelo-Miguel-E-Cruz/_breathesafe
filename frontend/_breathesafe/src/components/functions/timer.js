@@ -40,11 +40,21 @@ export const onTimerEnd = async(durationInSeconds) => {
     console.log("first object: ", results[0])
     console.log("second object: ", results[1])
 
-    results.forEach(sensor => {
-      console.log(`Device ${sensor.device_id}:`)
-      console.log(`  - PM10 AQI: ${sensor.avg_aqi_pm10}`)
-      console.log(`  - PM2.5 AQI: ${sensor.avg_aqi_pm25}`)
-  })
+    const formattedResults = results.map(({ 
+      avg_pm25: pm25, 
+      avg_pm10: pm10, 
+      avg_aqi_pm25: aqi_pm25, 
+      avg_aqi_pm10: aqi_pm10, 
+      device_id 
+    }) => ({
+      pm25,
+      pm10,
+      aqi_pm25,
+      aqi_pm10,
+      device_id
+    }))
+  
+  console.log(formattedResults)
 
   } catch (error) {
     console.log(error.message)
