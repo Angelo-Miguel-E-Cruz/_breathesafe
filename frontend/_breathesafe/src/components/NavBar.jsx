@@ -88,7 +88,8 @@ function NavBar({role, setAuth}) {
               </ul>
             </div> 
             :  
-            <button onClick={() => logOut()} className='bg-darkblue hover:bg-white/20'>
+            <button onClick={() => logOut()} className='btn rounded-full w-8 h-8 text-lg center mr-2 shadow-black/50 shadow-md 
+            bg-darkblue hover:bg-white/20 transition duration-300 ease-in-ou'>
               <MdLogout /> Logout
             </button>}
         </div>
