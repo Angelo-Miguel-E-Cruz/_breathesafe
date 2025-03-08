@@ -57,19 +57,19 @@ function NavBar({role}) {
             isActive || location.pathname.startsWith('/admin') || location.pathname.startsWith('/dashboard') ?  
             'bg-blue_green' : 'bg-darkblue hover:bg-white/20'}`} onClick={() => setSettingsOpen(false)}> <RiHome9Fill /> Home</NavLink>
           {role === "Admin" ? 
-          <div className="relative inline-block text-left">
-            <button className='btn rounded-xl mr-2 shadow-black/50 shadow-md
+          <div className="relative block text-left rounded-b-full">
+            <button className='btn rounded-xl mr-2 shadow-black/50 shadow-md bg-darkblue hover:bg-white/20
               transition duration-300 ease-in-out' onClick={() => setSettingsOpen(!settingsOpen)}> <IoSettingsSharp /> Settings</button>
             {settingsOpen ?
             <ul>
               <li> 
                   <NavLink to='records' className={({isActive}) => 
-                    `block ${isActive ? 'bg-blue_green' : 'bg-darkblue hover:bg-white/20'}`} onClick={() => setSettingsOpen(false)}> <IoNewspaper /> Records
+                    `${isActive ? 'bg-blue_green' : 'bg-darkblue hover:bg-white/20'}`} onClick={() => setSettingsOpen(false)}> <IoNewspaper /> Records
                   </NavLink>
               </li>
               <li> 
                   <NavLink to='register' className={({isActive}) => 
-                    `block ${isActive ? 'bg-blue_green' : 'bg-darkblue hover:bg-white/20'}`} onClick={() => setSettingsOpen(false)}> <MdPersonAdd /> Add Employee
+                    `${isActive ? 'bg-blue_green' : 'bg-darkblue hover:bg-white/20'}`} onClick={() => setSettingsOpen(false)}> <MdPersonAdd /> Add Employee
                   </NavLink>
               </li>
             </ul> : <></>}
