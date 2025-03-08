@@ -39,11 +39,11 @@ function Main() {
         break
       case "5 Minutes":
         fetch5mAvg()
-        fetchInterval = setInterval(fetch5mAvg, 300000)
+        fetchInterval = setInterval(fetch5mAvg, 5000)
         break
       case "1 Hour":
         fetch1hrAvg()
-        fetchInterval = setInterval(fetch1hrAvg, 3600000)
+        fetchInterval = setInterval(fetch1hrAvg, 5000)
         break
     }
     return () => clearInterval(fetchInterval)
