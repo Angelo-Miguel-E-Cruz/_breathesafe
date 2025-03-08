@@ -4,7 +4,7 @@ import clsx from 'clsx'
 import { NavLink, useLocation } from 'react-router-dom'
 import { RiHome9Fill  } from "react-icons/ri"
 import { IoNewspaper, IoSettingsSharp  } from "react-icons/io5"
-import { MdPersonAdd } from "react-icons/md"
+import { MdManageAccounts } from "react-icons/md"
 import * as timer from './functions/timer'
 
 function NavBar({role}) {
@@ -58,24 +58,21 @@ function NavBar({role}) {
             'bg-blue_green' : 'bg-darkblue hover:bg-white/20'}`} onClick={() => setSettingsOpen(false)}> <RiHome9Fill /> Home</NavLink>
           {role === "Admin" ? 
             <div className="dropdown dropdown-end">
-              <div tabIndex={0} role="button" className="btn btn-ghost btn-circle avatar">
-                <div className="w-10 rounded-full">
-                  <img
-                    alt="Tailwind CSS Navbar component"
-                    src="https://img.daisyui.com/images/stock/photo-1534528741775-53994a69daeb.webp" />
-                </div>
+              <div role="button" className="btn btn-ghost btn-circle avatar">
+                <IoSettingsSharp /> Settings
               </div>
               <ul
-                tabIndex={0}
                 className="menu menu-sm dropdown-content bg-base-100 rounded-box z-1 mt-3 w-52 p-2 shadow">
                 <li>
-                  <a className="justify-between">
-                    Profile
-                    <span className="badge">New</span>
-                  </a>
+                  <NavLink to="records">
+                    <IoNewspaper /> Records
+                  </NavLink>
                 </li>
-                <li><a>Settings</a></li>
-                <li><a>Logout</a></li>
+                <li>
+                  <NavLink to="settings">
+                    <MdManageAccounts /> Account Settings
+                  </NavLink>
+                </li>
               </ul>
             </div>:  <></>}
         </div>

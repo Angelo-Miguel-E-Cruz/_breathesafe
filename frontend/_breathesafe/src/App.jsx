@@ -3,7 +3,7 @@ import Main from './components/Main'
 import Records from './components/Records'
 import User from './components/User'
 import AllData from './components/AllData'
-import Register from './components/Register'
+import AccountSettings from './components/AccountSettings'
 import ProtectedRoute from './components/ProtectedRoute'
 import Login from './components/Login'
 import { EmployeeProvider } from './components/contexts/EmployeeContext'
@@ -37,7 +37,7 @@ function App() {
               <Route path="/login" element={<Navigate to="/" />} />
               <Route path="/admin" element={role === "Admin" ? <Main setAuth={setIsAuthenticated}/> : <Navigate to="/" />} />
               <Route path="/records" element={role === "Admin" ? <Records setAuth={setIsAuthenticated}/> : <Navigate to="/" />} />
-              <Route path="/register" element={role === "Admin" ? <Register setAuth={setIsAuthenticated}/> : <Navigate to="/" />} />
+              <Route path="/settings" element={role === "Admin" ? <AccountSettings setAuth={setIsAuthenticated}/> : <Navigate to="/" />} />
               <Route path="/dashboard" element={role === "User" ? <User setAuth={setIsAuthenticated}/> : <Navigate to="/" />} />
             </Route>
 
