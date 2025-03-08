@@ -55,7 +55,7 @@ export const addSensorData = async (req, res) => {
 
 export const add5mAverage = async (req, res) => {
   try {
-    const data = req.body
+    let data = req.body
     console.log("data: ", data)
 
     if (!Array.isArray(data)) {
