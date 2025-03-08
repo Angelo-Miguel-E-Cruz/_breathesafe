@@ -206,11 +206,11 @@ function Main() {
             <Alerts latestVal={sensorState.latestPM10Level.value} sensorType="PM 10" willPrint={new10Alert} setPrint={setNew10Alert}/>
           </div>
         </div>
-        <div className='grid grid-rows-2 gap-2 max-lg:ml-4'>
+        <div className='grid grid-rows-2 gap-2 max-lg:ml-4 max-lg:grid-rows-1 max-lg:grid-cols-2'>
           <SensorChart chartData={pmChartData} title="Concentration (µg/m³)" type="concentration"/>
           <SensorChart chartData={aqiChartData} title="Air Quality Index" type="aqi"/>
         </div>
-        <div className='grid grid-rows-2 gap-2 max-lg:ml-4'>
+        <div className='grid grid-rows-2 gap-2 max-lg:ml-4 max-lg:grid-rows-1 max-lg:grid-cols-2'>
           {pmChartData && <Table tableData={pmChartData} title="Concentration (µg/m³)" type="concentration"/>}
           {aqiChartData && <Table tableData={aqiChartData} title="Air Quality Index" type="aqi"/>}
         </div>
