@@ -55,7 +55,7 @@ function NavBar({role}) {
             `btn rounded-xl mr-2 shadow-black/50 shadow-md 
             transition duration-300 ease-in-out ${
             isActive || location.pathname.startsWith('/admin') || location.pathname.startsWith('/dashboard') ?  
-            'bg-blue_green' : 'bg-darkblue hover:bg-white/20'}`}> <RiHome9Fill /> Home</NavLink>
+            'bg-blue_green' : 'bg-darkblue hover:bg-white/20'}`} onClick={() => setSettingsOpen(false)}> <RiHome9Fill /> Home</NavLink>
           {role === "Admin" ? 
           <div>
             <button className='btn rounded-xl mr-2 shadow-black/50 shadow-md
@@ -63,13 +63,13 @@ function NavBar({role}) {
             {settingsOpen ?
             <ul>
               <li> 
-                  <NavLink to='records' className={({isActive}) =>
-                    isActive ? 'bg-blue_green' : 'bg-darkblue hover:bg-white/20'} onClick={() => setSettingsOpen(false)}> <IoNewspaper /> Records
+                  <NavLink to='records' className={({isActive}) => 
+                    `block ${isActive ? 'bg-blue_green' : 'bg-darkblue hover:bg-white/20'}`} onClick={() => setSettingsOpen(false)}> <IoNewspaper /> Records
                   </NavLink>
               </li>
               <li> 
-                  <NavLink to='register' className={({isActive}) =>
-                    isActive ? 'bg-blue_green' : 'bg-darkblue hover:bg-white/20'} onClick={() => setSettingsOpen(false)}> <MdPersonAdd /> Add Employee
+                  <NavLink to='register' className={({isActive}) => 
+                    `block ${isActive ? 'bg-blue_green' : 'bg-darkblue hover:bg-white/20'}`} onClick={() => setSettingsOpen(false)}> <MdPersonAdd /> Add Employee
                   </NavLink>
               </li>
             </ul> : <></>}
