@@ -57,7 +57,7 @@ function NavBar({role}) {
             isActive || location.pathname.startsWith('/admin') || location.pathname.startsWith('/dashboard') ?  
             'bg-blue_green' : 'bg-darkblue hover:bg-white/20'}`} onClick={() => setSettingsOpen(false)}> <RiHome9Fill /> Home</NavLink>
           {role === "Admin" ? 
-          <div>
+          <div className="relative inline-block text-left">
             <button className='btn rounded-xl mr-2 shadow-black/50 shadow-md
               transition duration-300 ease-in-out' onClick={() => setSettingsOpen(!settingsOpen)}> <IoSettingsSharp /> Settings</button>
             {settingsOpen ?
