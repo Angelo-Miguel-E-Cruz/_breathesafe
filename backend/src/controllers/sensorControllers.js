@@ -55,14 +55,16 @@ export const addSensorData = async (req, res) => {
 
 export const add5mAverage = async (req, res) => {
   try {
-    const { pm25, pm10, aqi_pm25, aqi_pm10, device_id } = req.body
+    const data = req.body
+    console.log("data: ", data)
+    /*const { pm25, pm10, aqi_pm25, aqi_pm10, device_id } = req.body
 
     if (pm25 === undefined || pm10 === undefined) {
       return res.status(400).json({ message: "Missing sensor data" })
     }
 
-    const result = await sensorService.add5mAverage(pm25, pm10, aqi_pm25, aqi_pm10, device_id)
-    res.status(201).json(result)
+    const result = await sensorService.add5mAverage(pm25, pm10, aqi_pm25, aqi_pm10, device_id)*/
+    res.status(201).json({message: "Sakses"})
   } catch (err) {
     console.error(err)
     res.status(500).json({ message: "Server Error" })

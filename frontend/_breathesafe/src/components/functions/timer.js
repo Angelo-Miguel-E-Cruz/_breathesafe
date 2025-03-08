@@ -56,30 +56,19 @@ export const onTimerEnd = async(durationInSeconds) => {
   
   console.log(formattedResults)
 
+  update5mAvg(formattedResults)
+
   } catch (error) {
     console.log(error.message)
   }
 }
 
-// TODO: REMOVE LOGS WHEN FINISHED
-const processResult = async (index, resultArray) => {
-  if (index >= resultArray.length) {
-    console.log("All items processed.")
-    return
-  }
-
-  const singleArray = [resultArray[index]] 
-  console.log(`Processing item ${index + 1}:`, singleArray)
-
-  /*try {
-    const response = await axios
-
-    const data = await response.json()
-    console.log(`API Response for item ${index + 1}:`, data)
-
+const update5mAvg = async(data) => {
+  try {
+    const result = await axios.put(`https://breath-o9r9.onrender.com/api/avg_5m`, data)
+    console.log(result)
   } catch (error) {
-    console.error("API Error:", error)
-  }*/
-    processResult(index + 1, resultArray)
+    console.log(error)
+  }
 }
 
