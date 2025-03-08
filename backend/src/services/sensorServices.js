@@ -4,9 +4,9 @@ import { query } from '../../index.js'
 
 export const getSensorData = async (empID) => {
   try {
-    const sql = `SELECT * FROM sensor_data
+    const sql = `SELECT * FROM sensor_datas
                 JOIN employees_tb ON sensor_data.device_id = employees_tb.device_id
-                WHERE employees_tb.id = $1 ORDER BY sensor_data.id DESC LIMIT 25`
+                WHERE employees_tb.id = $1 ORDER BY sensor_data.timestamp DESC LIMIT 25`
   
     const {rows} = await query(sql, [empID])
     return rows 
@@ -53,7 +53,7 @@ export const get5mAvg = async (empID) => {
   try {
     const sql = `SELECT * FROM avg_5m
                 JOIN employees_tb ON avg_5m.device_id = employees_tb.device_id
-                WHERE employees_tb.id = $1 ORDER BY avg_5m.id DESC LIMIT 25`
+                WHERE employees_tb.id = $1 ORDER BY avg_5m.timestamp DESC LIMIT 25`
   
     const {rows} = await query(sql, [empID])
     return rows 
@@ -67,7 +67,7 @@ export const get1hrAvg = async (empID) => {
   try {
     const sql = `SELECT * FROM avg_1hr
                 JOIN employees_tb ON avg_1hr.device_id = employees_tb.device_id
-                WHERE employees_tb.id = $1 ORDER BY avg_1hr.id DESC LIMIT 25`
+                WHERE employees_tb.id = $1 ORDER BY avg_1hr.timestamp DESC LIMIT 25`
   
     const {rows} = await query(sql, [empID])
     return rows 
