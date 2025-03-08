@@ -4,6 +4,7 @@ import clsx from 'clsx'
 import { NavLink, useLocation } from 'react-router-dom'
 import { RiHome9Fill  } from "react-icons/ri"
 import { IoNewspaper } from "react-icons/io5"
+import { MdPersonAdd } from "react-icons/md"
 import * as timer from './functions/timer'
 
 function NavBar({role}) {
@@ -54,10 +55,23 @@ function NavBar({role}) {
             transition duration-300 ease-in-out ${
             isActive || location.pathname.startsWith('/admin') || location.pathname.startsWith('/dashboard') ?  
             'bg-blue_green' : 'bg-darkblue hover:bg-white/20'}`}> <RiHome9Fill /> Home</NavLink>
-          {role === "Admin" ? <NavLink to='records' className={({isActive}) =>
-            `btn rounded-xl mr-2 shadow-black/50 shadow-md
-            transition duration-300 ease-in-out ${
-            isActive ? 'bg-blue_green' : 'bg-darkblue hover:bg-white/20'}`}> <IoNewspaper /> Records</NavLink>: <></>}
+          {role === "Admin" ? 
+          <div>
+            <button className='btn rounded-xl mr-2 shadow-black/50 shadow-md
+              transition duration-300 ease-in-out'> Settings</button>
+            <ul>
+              <li> 
+                  <NavLink to='records' className={({isActive}) =>
+                    isActive ? 'bg-blue_green' : 'bg-darkblue hover:bg-white/20'}> <IoNewspaper /> Records
+                  </NavLink>
+              </li>
+              <li> 
+                  <NavLink to='register' className={({isActive}) =>
+                    isActive ? 'bg-blue_green' : 'bg-darkblue hover:bg-white/20'}> <MdPersonAdd /> Add Employee
+                  </NavLink>
+              </li>
+            </ul>
+          </div> :  <></>}
         </div>
       </div>
 
