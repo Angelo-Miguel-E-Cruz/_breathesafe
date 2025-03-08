@@ -61,7 +61,7 @@ function Main() {
     const fetchInterval = setInterval(fetchSensorData, 5000)
 
     return () => clearInterval(fetchInterval)
-  }, [timestampValue]) 
+  }, [timestampValue, selectedEmployee]) 
 
   useEffect(() => {
     if (sensorState.latestPM25.value || sensorState.latestPM10.value || sensorState.latestPM25Level.value || sensorState.latestPM10Level.value){
