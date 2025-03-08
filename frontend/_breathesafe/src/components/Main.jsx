@@ -51,10 +51,11 @@ function Main() {
       }
   
       if (sensorData){
-        console.log(sensorData)
         setEmployeeName(sensorData[0].emp_name)
-        setChartsData((sensorData))
       }
+      
+      console.log(sensorData)
+      setChartsData((sensorData))
     }
 
     fetchSensorData()
