@@ -39,9 +39,13 @@ function Main() {
           if (sensorData.length > 0) setLatest(sensorData)
           break
         case "5 Minutes":
+          sensorData = await fetchData()
+          if (sensorData.length > 0) setLatest(sensorData)
           sensorData = await fetch5mAvg()
           break
         case "1 Hour":
+          sensorData = await fetchData()
+          if (sensorData.length > 0) setLatest(sensorData)
           sensorData = await fetch1hrAvg()
           break
       }
