@@ -16,12 +16,12 @@ app.use(express.json())
 
 const db = new pg.Client({
   //TODO: CHANGE BEFORE PUSH
-  user: process.env.PG_USER,
-  host: process.env.PG_HOST,
-  database: process.env.PG_DATABASE,
-  password: process.env.PG_PASSWORD,
-  port: process.env.PG_PORT,
-  //connectionString: process.env.DATABASE_URL
+  //user: process.env.PG_USER,
+  //host: process.env.PG_HOST,
+  //database: process.env.PG_DATABASE,
+  //password: process.env.PG_PASSWORD,
+  //port: process.env.PG_PORT,
+  connectionString: process.env.DATABASE_URL
 })
 
 db.connect((err) => {
