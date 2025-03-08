@@ -5,21 +5,22 @@ export const startLoopingCountdown = (durationInSeconds, callback) => {
       let timeLeft = durationInSeconds
 
       const timer = setInterval(() => {
-          const minutes = Math.floor(timeLeft / 60)
-          const seconds = timeLeft % 60
+        const hours = Math.floor(timeLeft / 3600)
+        const minutes = Math.floor((timeLeft % 3600) / 60)
+        const seconds = timeLeft % 60
 
-          durationInSeconds === 300 ? 
-            console.log(`${String(minutes).padStart(2, '0')}:${String(seconds).padStart(2, '0')}`) : ""
+        durationInSeconds === 3600 ? 
+          console.log(`${String(hours).padStart(2, '0')}:${String(minutes).padStart(2, '0')}:${String(seconds).padStart(2, '0')}`) : ""
 
-          if (timeLeft <= 0) {
-              clearInterval(timer)
+        if (timeLeft <= 0) {
+            clearInterval(timer)
 
-              if (callback) callback(durationInSeconds)
+            if (callback) callback(durationInSeconds)
 
-              setTimeout(runTimer, 1000)
-          } else {
-              timeLeft--
-          }
+            setTimeout(runTimer, 1000)
+        } else {
+            timeLeft--
+        }
       }, 1000)
   }
 
