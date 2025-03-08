@@ -64,3 +64,29 @@ export const addSensorData = async(pm25, pm10, aqi_pm25, aqi_pm10, aqi_pm25_cate
     throw error
   }
 }
+
+export const add5mAverage = async(pm25, pm10, aqi_pm25, aqi_pm10, device_id) => {
+  try {
+    const sql = `INSERT INTO avg_5m (pm25, pm10, aqi_pm25, aqi_pm10, device_id) 
+                VALUES ($1, $2, $3, $4, $5)`
+  
+    const {rows} = await query(sql, [pm25, pm10, aqi_pm25, aqi_pm10, device_id])
+    return rows 
+  } catch (error) {
+    console.error("Database Query Error:", error)
+    throw error
+  }
+}
+
+export const add1hrAverage = async(pm25, pm10, aqi_pm25, aqi_pm10, device_id) => {
+  try {
+    const sql = `INSERT INTO avg_1hr (pm25, pm10, aqi_pm25, aqi_pm10, device_id) 
+                VALUES ($1, $2, $3, $4, $5)`
+  
+    const {rows} = await query(sql, [pm25, pm10, aqi_pm25, aqi_pm10, device_id])
+    return rows 
+  } catch (error) {
+    console.error("Database Query Error:", error)
+    throw error
+  }
+}

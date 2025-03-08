@@ -22,6 +22,10 @@ router.post('/add_sensor_data', sensorController.addSensorData)
 
 router.post('/add_employee', empController.addEmployee)
 
+router.post('/avg_5m', sensorController.add5mAverage)
+
+router.post('/avg_1hr', sensorController.add1hrAverage)
+
 // PUTS
 
 router.put('/employee_data/:id', empController.updateEmployee)
