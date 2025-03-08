@@ -88,7 +88,7 @@ function NavBar({role, setAuth}) {
               </ul>
             </div> 
             :  
-            <button onClick={() => logOut()} className='btn rounded-xl mr-2 shadow-black/50 shadow-md transition duration-300 ease-in-out'>
+            <button onClick={() => logOut()} className='btn rounded-xl mr-2 bg-darkblue shadow-black/50 shadow-md transition duration-300 ease-in-out'>
               <MdLogout /> Logout
             </button>}
         </div>

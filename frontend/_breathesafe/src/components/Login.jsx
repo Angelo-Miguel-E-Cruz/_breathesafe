@@ -1,5 +1,6 @@
 import React, { useState } from 'react'
 import axios from 'axios'
+import { useEmployee } from './contexts/EmployeeContext'
 
 const Login = () => {
 
@@ -10,6 +11,8 @@ const Login = () => {
   const [showPassword, setShowPassword] = useState(false)
 
   const { name, password } = inputs
+
+  const { setSelectedEmployee } = useEmployee()
 
   const onChange = (e) => {
     setInputs({...inputs, [e.target.name]: e.target.value})
@@ -33,6 +36,7 @@ const Login = () => {
         }
         else if(user.role === "User"){
           console.log("from login.jsx: ", user.role, typeof(user.role))
+          setSelectedEmployee(user.id)
           window.location.href = "/dashboard";
         }
       }

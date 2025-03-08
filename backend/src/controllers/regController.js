@@ -58,7 +58,7 @@ export const logIn = async (req, res) => {
     // Create user token
     const token = jwtGenerator(doesExist[0].user_id)
     
-    return res.status(201).json({message: "Login Succesful", token: token, role: doesExist[0].user_role})
+    return res.status(201).json({message: "Login Succesful", token: token, role: doesExist[0].user_role, id: doesExist[0].emp_id})
   } catch (error) {
     console.log(error.message)
     return res.status(500).json({message: "Server Error", error: error.message})
