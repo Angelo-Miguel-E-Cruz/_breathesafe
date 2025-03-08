@@ -33,7 +33,7 @@ const Login = () => {
         }
         else if(user.role === "User"){
           console.log("from login.jsx: ", user.role, typeof(user.role))
-          window.location.href = "/voting";
+          window.location.href = "/user";
         }
       }
 
