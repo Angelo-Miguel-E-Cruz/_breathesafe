@@ -65,13 +65,13 @@ function NavBar({role}) {
                 className="menu menu-sm dropdown-content bg-darkblue rounded-box z-1 mt-3 w-52 p-2 shadow-black/50 shadow-md">
                 <li>
                   <NavLink to="records" className={({isActive}) =>
-                    `text-xl ${isActive ? 'bg-blue_green' : 'bg-darkblue hover:bg-white/20'}`}>
+                    `text-lg ${isActive ? 'bg-blue_green' : 'bg-darkblue hover:bg-white/20'}`}>
                     <IoNewspaper /> Records
                   </NavLink>
                 </li>
                 <li>
                   <NavLink to="settings" className={({isActive}) =>
-                    `text-xl ${isActive ? 'bg-blue_green' : 'bg-darkblue hover:bg-white/20'}`}>
+                    `text-lg ${isActive ? 'bg-blue_green' : 'bg-darkblue hover:bg-white/20'}`}>
                     <MdManageAccounts /> Account Settings
                   </NavLink>
                 </li>
