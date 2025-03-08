@@ -54,7 +54,6 @@ function Main() {
         setEmployeeName(sensorData[0].emp_name)
       }
 
-      console.log(sensorData)
       setChartsData((sensorData))
     }
 
@@ -110,6 +109,9 @@ function Main() {
     const lastReading = sensorData[sensorData.length - 2]
     dispatch({ type: "UPDATE", field: "lastPM25Level", value: lastReading.aqi_pm25_category, timestamp: lastReading.timestamp })
     dispatch({ type: "UPDATE", field: "lastPM10Level", value: lastReading.aqi_pm10_category, timestamp: lastReading.timestamp })
+
+    console.log("latest: ", latestReading.aqi_pm25_category)
+    console.log("last: ", lastReading.aqi_pm25_category)
 
     //console.log(latestReading.aqi_pm25_category === lastReading.aqi_pm25_category ?
     //  "" : "latest 25: " + latestReading.aqi_pm25_category +" last 25: " + lastReading.aqi_pm25_category)
