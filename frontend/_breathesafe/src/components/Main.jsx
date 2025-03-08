@@ -31,17 +31,23 @@ function Main() {
 
   useEffect(() => {
     console.log(timestampValue)
+    let fetchInterval
 
     switch (timestampValue){
       case "Real-Time":
         fetchData()
-        const fetchInterval = setInterval(fetchData, 5000)
-        return () => clearInterval(fetchInterval)
+        fetchInterval = setInterval(fetchData, 5000)
+        break
       case "5 Minutes":
+        fetch5mAvg()
+        fetchInterval = setInterval(fetch5mAvg, 300000)
         break
       case "1 Hour":
+        fetch1hrAvg()
+        fetchInterval = setInterval(fetch1hrAvg, 3600000)
         break
     }
+    return () => clearInterval(fetchInterval)
   }, [timestampValue]) 
 
 
@@ -51,6 +57,27 @@ function Main() {
     }
   }, [sensorState.latestPM25.value, sensorState.latestPM10.value, sensorState.latestPM25Level.value, sensorState.latestPM10Level.value])
 
+  const fetch5mAvg = async () => {
+    try {
+      const response = await axios.get(`https://breath-o9r9.onrender.com/api/5m_avg?employeeID=${selectedEmployee}`)
+      const sensorData = response.data
+
+      console.log(sensorData[0])
+    } catch (error) {
+      console.log(error.message) 
+    }
+  }
+
+  const fetch1hrAvg = async () => {
+    try {
+      const response = await axios.get(`https://breath-o9r9.onrender.com/api/1hr_avg?employeeID=${selectedEmployee}`)
+      const sensorData = response.data
+
+      console.log(sensorData[0])
+    } catch (error) {
+      console.log(error.message) 
+    }
+  }
 
   const fetchData = async () =>{
     try {

@@ -26,7 +26,7 @@ export const startLoopingCountdown = (durationInSeconds, callback) => {
 }
 
 export const onTimerEnd = async(durationInSeconds) => {
-  const interval = durationInSeconds === 20 ? '5 minutes' : //set to 300
+  const interval = durationInSeconds === 300 ? '5 minutes' : //set to 300
                   durationInSeconds === 3600 ? '1 hour' :  null
 
   if (!interval) return null
