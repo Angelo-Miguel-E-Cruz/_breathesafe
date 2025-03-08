@@ -53,7 +53,7 @@ export const get5mAvg = async (empID) => {
   try {
     const sql = `SELECT * FROM avg_5m
                 JOIN employees_tb ON avg_5m.device_id = employees_tb.device_id
-                WHERE employees_tb.id = $1 ORDER BY avg_5m.timestamp DESC LIMIT 25`
+                WHERE employees_tb.id = $1`
   
     const {rows} = await query(sql, [empID])
     return rows 
@@ -67,7 +67,7 @@ export const get1hrAvg = async (empID) => {
   try {
     const sql = `SELECT * FROM avg_1hr
                 JOIN employees_tb ON avg_1hr.device_id = employees_tb.device_id
-                WHERE employees_tb.id = $1 ORDER BY avg_1hr.timestamp DESC LIMIT 25`
+                WHERE employees_tb.id = $1`
   
     const {rows} = await query(sql, [empID])
     return rows 
