@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import Layout from './components/Layout'
 import Main from './components/Main'
 import Records from './components/Records'
