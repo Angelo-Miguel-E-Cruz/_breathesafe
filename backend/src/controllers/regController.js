@@ -1,6 +1,6 @@
 import * as regServices from '../services/regServices.js'
 import jwtGenerator  from '../services/jwtGenerator.js'
-import bcrypt from 'bcrypt'
+import bcrypt from 'bcryptjs'
 
 // Register user
 export const regUser = async (req, res) => {
