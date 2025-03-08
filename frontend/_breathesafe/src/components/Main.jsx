@@ -18,9 +18,9 @@ function Main() {
   const [formattedTime, setFormattedTime] = useState("")
   const [new25Alert, setNew25Alert] = useState(true)
   const [new10Alert, setNew10Alert] = useState(true)
-  const [timestampValue, setTimestampValue] = useState()
+  const [timestampValue, setTimestampValue] = useState("Real-Time")
   const { selectedEmployee } = useEmployee()
-
+  
   useEffect(() => {
     fetchData()
     getTimestamp()
@@ -33,6 +33,11 @@ function Main() {
       clearInterval(timestampInterval)
     }
   }, []) 
+
+  useEffect(() => {
+    console.log(timestampValue)
+  }, [timestampValue]) 
+
 
   useEffect(() => {
     if (sensorState.latestPM25.value || sensorState.latestPM10.value || sensorState.latestPM25Level.value || sensorState.latestPM10Level.value){
@@ -121,7 +126,6 @@ function Main() {
     const timestampField = document.getElementById("time_select")
     const timestampVal = timestampField.value
 
-    console.log(timestampVal)
     setTimestampValue(timestampVal)
   }
   
@@ -131,9 +135,8 @@ function Main() {
         <NameCard employeeName={employeeName}/>
         <div className='justify-self-end align-self-center h-fit rounded-box 
                     border-black border-1 bg-skyblue text-black shadow-black/50 shadow-md'>
-          <select defaultValue="Timestamp" className="select select-ghost h-16 focus:bg-transparent focus:text-black focus:rounded-box" 
+          <select defaultValue="Real-Time" className="select select-ghost h-16 focus:bg-transparent focus:text-black focus:rounded-box" 
                   id='time_select'>
-            <option disabled={true} className='text-black'>Timestamp</option>
             <option className='text-black'>Real-Time</option>
             <option className='text-black'>5 Minutes</option>
             <option className='text-black'>1 Hour</option>
