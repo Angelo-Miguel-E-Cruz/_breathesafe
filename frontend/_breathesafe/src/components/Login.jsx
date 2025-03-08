@@ -51,7 +51,7 @@ const Login = () => {
         
         <label className="fieldset-label">Name</label>
         <input type="name" name='name' className="input" placeholder="Name"
-        value={email} onChange={e => onChange(e)} />
+        value={name} onChange={e => onChange(e)} />
         
         <label className="fieldset-label">Password</label>
         <input type={showPassword ? "text" : "password"} name="password"className="input" placeholder="Password"
