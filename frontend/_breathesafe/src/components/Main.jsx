@@ -89,6 +89,7 @@ function Main() {
 
   const fetchData = async () =>{
     try {
+      console.log("main emp id: ", selectedEmployee)
       const response = await axios.get(`https://breath-o9r9.onrender.com/api/sensor_data?employeeID=${selectedEmployee}`)
       return response.data
     }catch (error) {
