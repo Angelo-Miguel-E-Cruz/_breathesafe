@@ -2,6 +2,7 @@ import express from 'express'
 import pg from 'pg'
 import cors from 'cors'
 import dashboardRouters from './src/routers/dashboardRouters.js'
+import verifyRoutes from './src/routers/regRoutes.js'
 import env from 'dotenv'
 
 const app = express()
@@ -33,6 +34,7 @@ db.connect((err) => {
 });
 
 app.use('/api', dashboardRouters)
+app.use('/auth', verifyRoutes)
 
 app.listen(port, () => {
   console.log(`Listening on port ${port}...`)
