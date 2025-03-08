@@ -24,10 +24,9 @@ export const regUser = async (req, res) => {
     const register = await regServices.registerUser(name, bcryptPassword, role, id)
 
     // Create user token
-    if (register[0].user_role === "User" && !id)
+    if (register[0].user_role === "User" && !id){
       return res.status(401).json({message: "Employee must have Employee ID"})
-
-
+    }
     const token = jwtGenerator(register[0].user_id)
 
     return res.status(201).json({message: "User Added", token: token})
