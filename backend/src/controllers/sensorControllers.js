@@ -26,7 +26,7 @@ export const getAllSensorData = async (req, res) => {
 
 export const getDatainRange = async (req, res) => {
   try{
-    const { interval } = req.bodys
+    const { interval } = req.body
     const items = await sensorService.getDatainRange(interval)
     res.status(200).json({result: items, interval: interval, type: typeof(interval)})
   } catch (err){
