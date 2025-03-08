@@ -8,7 +8,8 @@ export const startLoopingCountdown = (durationInSeconds, callback) => {
           const minutes = Math.floor(timeLeft / 60)
           const seconds = timeLeft % 60
 
-          //console.log(`${String(minutes).padStart(2, '0')}:${String(seconds).padStart(2, '0')}`)
+          durationInSeconds === 300 ? 
+            console.log(`${String(minutes).padStart(2, '0')}:${String(seconds).padStart(2, '0')}`) : ""
 
           if (timeLeft <= 0) {
               clearInterval(timer)
@@ -26,7 +27,7 @@ export const startLoopingCountdown = (durationInSeconds, callback) => {
 }
 
 export const onTimerEnd = async(durationInSeconds) => {
-  const interval = durationInSeconds === 300 ? '5 minutes' : //set to 300
+  const interval = durationInSeconds === 300 ? '5 minutes' :
                   durationInSeconds === 3600 ? '1 hour' :  null
 
   if (!interval) return null
@@ -51,8 +52,7 @@ export const onTimerEnd = async(durationInSeconds) => {
       device_id
     }))
   
-
-  update5mAvg(formattedResults)
+    durationInSeconds === 300 ? update5mAvg(formattedResults) : update1hrAvg(formattedResults)
 
   } catch (error) {
     console.log(error.message)
@@ -62,6 +62,14 @@ export const onTimerEnd = async(durationInSeconds) => {
 const update5mAvg = async(data) => {
   try {
     const result = await axios.post(`https://breath-o9r9.onrender.com/api/avg_5m`, data)
+  } catch (error) {
+    console.log(error)
+  }
+}
+
+const update1hrAvg = async(data) => {
+  try {
+    const result = await axios.post(`https://breath-o9r9.onrender.com/api/avg_1hr`, data)
   } catch (error) {
     console.log(error)
   }
