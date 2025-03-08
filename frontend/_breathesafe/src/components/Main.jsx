@@ -23,14 +23,14 @@ function Main() {
 
   useEffect(() => {
     fetchData()
-    getTimestamp()
+    //getTimestamp()
 
     const fetchInterval = setInterval(fetchData, 5000)
-    const timestampInterval = setInterval(getTimestamp, 500)
+    //const timestampInterval = setInterval(getTimestamp, 500)
 
     return () => {
       clearInterval(fetchInterval)
-      clearInterval(timestampInterval)
+      //clearInterval(timestampInterval)
     }
   }, []) 
 
@@ -68,6 +68,8 @@ function Main() {
       setEmployeeName(sensorData[0].emp_name)
 
       if (sensorData.length > 0) setLatest(sensorData)
+
+      getTimestamp()
 
       console.log(timestampValue)
       switch (timestampValue){
