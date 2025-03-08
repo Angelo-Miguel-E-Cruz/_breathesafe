@@ -22,73 +22,16 @@ function Main() {
   const { selectedEmployee } = useEmployee()
 
   useEffect(() => {
-
-    const fetchData = async () =>{
-      try {
-        const response = await axios.get(`https://breath-o9r9.onrender.com/api/sensor_data?employeeID=${selectedEmployee}`)
-        const sensorData = response.data
-        
-        setEmployeeName(sensorData[0].emp_name)
-
-        if (sensorData.length > 0) {
-          const latestReading = sensorData[sensorData.length - 1]
-          setFormattedTime(formatTimestamp(latestReading.timestamp))
-          dispatch({ type: "UPDATE", field: "latestPM25", value: latestReading.pm25, timestamp: latestReading.timestamp })
-          dispatch({ type: "UPDATE", field: "latestPM10", value: latestReading.pm10, timestamp: latestReading.timestamp })
-          dispatch({ type: "UPDATE", field: "latestPM25AQI", value: latestReading.aqi_pm25, timestamp: latestReading.timestamp })
-          dispatch({ type: "UPDATE", field: "latestPM10AQI", value: latestReading.aqi_pm10, timestamp: latestReading.timestamp })
-          dispatch({ type: "UPDATE", field: "latestPM25Level", value: latestReading.aqi_pm25_category, timestamp: latestReading.timestamp })
-          dispatch({ type: "UPDATE", field: "latestPM10Level", value: latestReading.aqi_pm10_category, timestamp: latestReading.timestamp })
-
-          const lastReading = sensorData[sensorData.length - 2]
-          dispatch({ type: "UPDATE", field: "lastPM25Level", value: lastReading.aqi_pm25_category, timestamp: lastReading.timestamp })
-          dispatch({ type: "UPDATE", field: "lastPM10Level", value: lastReading.aqi_pm10_category, timestamp: lastReading.timestamp })
-
-          //console.log(latestReading.aqi_pm25_category === lastReading.aqi_pm25_category ?
-          //  "" : "latest 25: " + latestReading.aqi_pm25_category +" last 25: " + lastReading.aqi_pm25_category)
-
-          //console.log(latestReading.aqi_pm10_category === lastReading.aqi_pm10_category ?
-          //  "" : "latest 10: " + latestReading.aqi_pm10_category +" last 10: " + lastReading.aqi_pm10_category)
-
-          if (latestReading.aqi_pm25_category === lastReading.aqi_pm25_category)
-            setNew25Alert(false)
-          if (latestReading.aqi_pm10_category === lastReading.aqi_pm10_category)
-            setNew10Alert(false)
-        }
-
-        const pmChartData = sensorData.reduce((acc, { id, pm25, pm10, timestamp }) => {
-          acc.push({
-            id,
-            pm25,
-            pm10,
-            timestamp: formatTimestamp(timestamp),
-          })
-          return acc.slice(-20)
-        }, [])
-
-        setPMChartData(pmChartData)
-
-        const aqiChartData = sensorData.reduce((acc, { id, aqi_pm25, aqi_pm10, timestamp }) => {
-          acc.push({
-            id,
-            aqi_pm25,
-            aqi_pm10,
-            timestamp: formatTimestamp(timestamp),
-          })
-          return acc.slice(-20)
-        }, [])
-
-        setAQIChartData(aqiChartData)
-
-      }catch (error) {
-       console.log(error.message) 
-      }
-    }
     fetchData()
-    const interval = setInterval(fetchData, 5000)
+    getTimestamp()
 
+    const fetchInterval = setInterval(fetchData, 5000)
+    const timestampInterval = setInterval(getTimestamp, 500)
 
-    return () => clearInterval(interval)
+    return () => {
+      clearInterval(fetchInterval)
+      clearInterval(timestampInterval)
+    }
   }, []) 
 
   useEffect(() => {
@@ -97,6 +40,68 @@ function Main() {
     }
   }, [sensorState.latestPM25.value, sensorState.latestPM10.value, sensorState.latestPM25Level.value, sensorState.latestPM10Level.value])
 
+
+  const fetchData = async () =>{
+    try {
+      const response = await axios.get(`https://breath-o9r9.onrender.com/api/sensor_data?employeeID=${selectedEmployee}`)
+      const sensorData = response.data
+      
+      setEmployeeName(sensorData[0].emp_name)
+
+      if (sensorData.length > 0) {
+        const latestReading = sensorData[sensorData.length - 1]
+        setFormattedTime(formatTimestamp(latestReading.timestamp))
+        dispatch({ type: "UPDATE", field: "latestPM25", value: latestReading.pm25, timestamp: latestReading.timestamp })
+        dispatch({ type: "UPDATE", field: "latestPM10", value: latestReading.pm10, timestamp: latestReading.timestamp })
+        dispatch({ type: "UPDATE", field: "latestPM25AQI", value: latestReading.aqi_pm25, timestamp: latestReading.timestamp })
+        dispatch({ type: "UPDATE", field: "latestPM10AQI", value: latestReading.aqi_pm10, timestamp: latestReading.timestamp })
+        dispatch({ type: "UPDATE", field: "latestPM25Level", value: latestReading.aqi_pm25_category, timestamp: latestReading.timestamp })
+        dispatch({ type: "UPDATE", field: "latestPM10Level", value: latestReading.aqi_pm10_category, timestamp: latestReading.timestamp })
+
+        const lastReading = sensorData[sensorData.length - 2]
+        dispatch({ type: "UPDATE", field: "lastPM25Level", value: lastReading.aqi_pm25_category, timestamp: lastReading.timestamp })
+        dispatch({ type: "UPDATE", field: "lastPM10Level", value: lastReading.aqi_pm10_category, timestamp: lastReading.timestamp })
+
+        //console.log(latestReading.aqi_pm25_category === lastReading.aqi_pm25_category ?
+        //  "" : "latest 25: " + latestReading.aqi_pm25_category +" last 25: " + lastReading.aqi_pm25_category)
+
+        //console.log(latestReading.aqi_pm10_category === lastReading.aqi_pm10_category ?
+        //  "" : "latest 10: " + latestReading.aqi_pm10_category +" last 10: " + lastReading.aqi_pm10_category)
+
+        if (latestReading.aqi_pm25_category === lastReading.aqi_pm25_category)
+          setNew25Alert(false)
+        if (latestReading.aqi_pm10_category === lastReading.aqi_pm10_category)
+          setNew10Alert(false)
+      }
+
+      const pmChartData = sensorData.reduce((acc, { id, pm25, pm10, timestamp }) => {
+        acc.push({
+          id,
+          pm25,
+          pm10,
+          timestamp: formatTimestamp(timestamp),
+        })
+        return acc.slice(-20)
+      }, [])
+
+      setPMChartData(pmChartData)
+
+      const aqiChartData = sensorData.reduce((acc, { id, aqi_pm25, aqi_pm10, timestamp }) => {
+        acc.push({
+          id,
+          aqi_pm25,
+          aqi_pm10,
+          timestamp: formatTimestamp(timestamp),
+        })
+        return acc.slice(-20)
+      }, [])
+
+      setAQIChartData(aqiChartData)
+
+    }catch (error) {
+     console.log(error.message) 
+    }
+  }
   const updateEmployeeData = async() =>{
     try {
       const response = await axios.put(`https://breath-o9r9.onrender.com/api/update_employee_readings`,{
@@ -110,6 +115,14 @@ function Main() {
     } catch (error) {
       console.log(error.message)
     }
+  }
+
+  const getTimestamp = () => {
+    const timestampField = document.getElementById("time_select")
+    const timestampVal = timestampField.value
+
+    console.log(timestampVal)
+    setTimestampValue(timestampVal)
   }
   
   return (
