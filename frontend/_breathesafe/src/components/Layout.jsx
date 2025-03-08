@@ -5,7 +5,7 @@ import NavBar from './NavBar'
 function Layout({setAuth, role}) {
   return (
     <div>
-      <NavBar role={role}/>
+      <NavBar role={role} setAuth={setAuth}/>
       <Outlet /> 
     </div>
   );

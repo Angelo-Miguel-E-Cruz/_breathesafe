@@ -4,10 +4,10 @@ import clsx from 'clsx'
 import { NavLink, useLocation } from 'react-router-dom'
 import { RiHome9Fill  } from "react-icons/ri"
 import { IoNewspaper, IoSettingsSharp  } from "react-icons/io5"
-import { MdManageAccounts } from "react-icons/md"
+import { MdManageAccounts, MdLogout  } from "react-icons/md"
 import * as timer from './functions/timer'
 
-function NavBar({role}) {
+function NavBar({role, setAuth}) {
   const data = [
     {"id" : 0, "PM25": "0.0 - 9.0", "PM10" : "0 - 54", "AQI": "0 - 50", "Category" : "Good"},
     {"id" : 1, "PM25": "9.1 - 35.4", "PM10" : "55 - 154", "AQI": "51 - 100", "Category" : "Moderate"},
@@ -18,7 +18,13 @@ function NavBar({role}) {
   ]
 
   const [isOpen, setIsOpen] = useState(false)
-  const [settingsOpen, setSettingsOpen] = useState(false)
+
+  const logOut = () => {
+    window.alert("Logging out...")
+    localStorage.removeItem("role")
+    localStorage.removeItem("token")
+    setAuth(false)
+  }
 
   const location = useLocation()
 
@@ -55,7 +61,7 @@ function NavBar({role}) {
             `btn rounded-xl mr-2 shadow-black/50 shadow-md 
             transition duration-300 ease-in-out ${
             isActive || location.pathname.startsWith('/admin') || location.pathname.startsWith('/dashboard') ?  
-            'bg-blue_green' : 'bg-darkblue hover:bg-white/20'}`} onClick={() => setSettingsOpen(false)}> <RiHome9Fill /> Home</NavLink>
+            'bg-blue_green' : 'bg-darkblue hover:bg-white/20'}`}> <RiHome9Fill /> Home</NavLink>
           {role === "Admin" ? 
             <div className="dropdown dropdown-end">
               <div tabIndex={0} role="button" className="btn rounded-xl mr-2 bg-darkblue shadow-black/50 shadow-md transition duration-300 ease-in-out">
@@ -65,15 +71,20 @@ function NavBar({role}) {
                 className="menu menu-sm dropdown-content bg-darkblue rounded-box z-1 mt-3 w-52 p-2 shadow-black/50 shadow-md">
                 <li>
                   <NavLink to="records" className={({isActive}) =>
-                    `text-lg ${isActive ? 'bg-blue_green' : 'bg-darkblue hover:bg-white/20'}`}>
+                    {isActive ? 'bg-blue_green' : 'bg-darkblue hover:bg-white/20'}}>
                     <IoNewspaper /> Records
                   </NavLink>
                 </li>
                 <li>
                   <NavLink to="settings" className={({isActive}) =>
-                    `text-lg ${isActive ? 'bg-blue_green' : 'bg-darkblue hover:bg-white/20'}`}>
+                    isActive ? 'bg-blue_green' : 'bg-darkblue hover:bg-white/20'}>
                     <MdManageAccounts /> Account Settings
                   </NavLink>
+                </li>
+                <li>
+                  <button onClick={() => logOut()} className='bg-darkblue hover:bg-white/20'>
+                    <MdLogout /> Logout
+                  </button>
                 </li>
               </ul>
             </div>:  <></>}
