@@ -29,8 +29,6 @@ export const onTimerEnd = async(durationInSeconds) => {
   const interval = durationInSeconds === 20 ? '5 minutes' : 
                   durationInSeconds === 3600 ? '1 hour' :  null
 
-  console.log(typeof(interval))
-
   if (!interval) return null
 
   try {
