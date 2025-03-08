@@ -26,7 +26,7 @@ export const getAllSensorData = async (req, res) => {
 
 export const getDatainRange = async (req, res) => {
   try{
-    const { interval } = req.query.interval
+    const interval = req.query.interval
     console.log("request: ", req.query)
     console.log("body: ", req.query.interval)
     console.log("interval: ", interval)
