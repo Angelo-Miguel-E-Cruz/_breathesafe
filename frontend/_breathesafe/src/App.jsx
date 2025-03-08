@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from 'react'
 import Main from './components/Main'
 import Records from './components/Records'
-import User from './components/User'
 import AllData from './components/AllData'
 import AccountSettings from './components/AccountSettings'
 import ProtectedRoute from './components/ProtectedRoute'

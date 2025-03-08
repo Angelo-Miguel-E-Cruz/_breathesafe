@@ -32,10 +32,12 @@ const Login = () => {
         window.localStorage.setItem("role", user.role)
         if(user.role === "Admin"){
           console.log("from login.jsx: ", user.role, typeof(user.role))
+          setSelectedEmployee(1)
           window.location.href = "/admin";
         }
         else if(user.role === "User"){
           console.log("from login.jsx: ", user.role, typeof(user.role))
+          console.log("employee id: ", user.id)
           setSelectedEmployee(user.id)
           window.location.href = "/dashboard";
         }
