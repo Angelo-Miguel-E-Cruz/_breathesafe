@@ -22,33 +22,17 @@ function Main() {
   const { selectedEmployee } = useEmployee()
 
   useEffect(() => {
+    fetchData()
     getTimestamp()
 
+    const fetchInterval = setInterval(getTimestamp, 5000)
     const timestampInterval = setInterval(getTimestamp, 500)
 
-    return () => clearInterval(timestampInterval)
-  }, []) 
-
-  useEffect(() => {
-    let fetchInterval
-
-    switch (timestampValue){
-      case "Real-Time":
-        fetchData()
-        fetchInterval = setInterval(fetchData, 5000)
-        break
-      case "5 Minutes":
-        fetch5mAvg()
-        fetchInterval = setInterval(fetch5mAvg, 5000)
-        break
-      case "1 Hour":
-        fetch1hrAvg()
-        fetchInterval = setInterval(fetch1hrAvg, 5000)
-        break
+    return () => {
+      clearInterval(fetchInterval)
+      clearInterval(timestampInterval)
     }
-    return () => clearInterval(fetchInterval)
-  }, [timestampValue]) 
-
+  }, []) 
 
   useEffect(() => {
     if (sensorState.latestPM25.value || sensorState.latestPM10.value || sensorState.latestPM25Level.value || sensorState.latestPM10Level.value){
@@ -59,10 +43,8 @@ function Main() {
   const fetch5mAvg = async () => {
     try {
       const response = await axios.get(`https://breath-o9r9.onrender.com/api/5m_avg?employeeID=${selectedEmployee}`)
-      const sensorData = response.data
+      return response.data
 
-      console.log(sensorData[0])
-      setChartsData(sensorData)
     } catch (error) {
       console.log(error.message) 
     }
@@ -71,10 +53,8 @@ function Main() {
   const fetch1hrAvg = async () => {
     try {
       const response = await axios.get(`https://breath-o9r9.onrender.com/api/1hr_avg?employeeID=${selectedEmployee}`)
-      const sensorData = response.data
+      return response.data
 
-      console.log(sensorData[0])
-      setChartsData(sensorData)
     } catch (error) {
       console.log(error.message) 
     }
@@ -83,7 +63,7 @@ function Main() {
   const fetchData = async () =>{
     try {
       const response = await axios.get(`https://breath-o9r9.onrender.com/api/sensor_data?employeeID=${selectedEmployee}`)
-      const sensorData = response.data
+      let sensorData = response.data
       
       setEmployeeName(sensorData[0].emp_name)
 
@@ -113,6 +93,17 @@ function Main() {
           setNew10Alert(false)
       }
 
+      switch (timestampValue){
+        case "Real-Time":
+          break
+        case "5 Minutes":
+          sensorData = fetch5mAvg()
+          break
+        case "1 Hour":
+          sensorData = fetch1hrAvg()
+          break
+      }
+      console.log(sensorData)
       setChartsData((sensorData))
     }catch (error) {
      console.log(error.message) 
