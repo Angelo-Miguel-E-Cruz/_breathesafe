@@ -34,7 +34,9 @@ export const onTimerEnd = async(durationInSeconds) => {
   try {
     console.log("interval: ", interval)  
     console.log("type: ", typeof(interval))  
-    const response = await axios.get(`https://breath-o9r9.onrender.com/api/interval_data`,  interval)
+    const response = await axios.get(`https://breath-o9r9.onrender.com/api/interval_data`,  {
+      params: { interval }
+    })
     console.log("response.data: ", response.data)
     console.log(response.data[0])
     console.log(response.data[0].result) // current state: logs null
