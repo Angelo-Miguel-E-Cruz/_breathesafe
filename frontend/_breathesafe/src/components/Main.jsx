@@ -115,8 +115,9 @@ function Main() {
     <div className='absolute inset-0 bg-background h-screen pt-27 overflow-x-auto w-full'>
       <div className='grid grid-cols-2'>
         <NameCard employeeName={employeeName}/>
-        <div className='justify-self-end h-fit border-black bg-skyblue text-lightgrey shadow-black/50 shadow-md'>
-          <select defaultValue="Timestamp" className="select select-ghost focus:bg-skyblue" id='time_select'>
+        <div className='justify-self-end align-self-center h-fit rounded-box 
+                    border-black border-1 bg-skyblue text-black shadow-black/50 shadow-md'>
+          <select defaultValue="Timestamp" className="select select-ghost h-28 focus:bg-skyblue" id='time_select'>
             <option disabled={true}>Timestamp</option>
             <option>Real-Time</option>
             <option>5 Minutes</option>
