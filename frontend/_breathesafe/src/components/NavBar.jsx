@@ -64,12 +64,12 @@ function NavBar({role}) {
             <ul className='absolute left-0 top-full'>
               <li> 
                   <NavLink to='records' className={({isActive}) => 
-                    `w-28flex items-center gap-2 px-4 py-2 ${isActive ? 'bg-blue_green' : 'bg-darkblue hover:bg-white/20'}`} onClick={() => setSettingsOpen(false)}> <IoNewspaper /> Records
+                    `w-28 flex items-center gap-2 px-4 py-2 z-10 ${isActive ? 'bg-blue_green' : 'bg-darkblue hover:bg-white/20'}`} onClick={() => setSettingsOpen(false)}> <IoNewspaper /> Records
                   </NavLink>
               </li>
               <li> 
                   <NavLink to='register' className={({isActive}) => 
-                    `w-28 flex items-center gap-2 px-4 py-2 ${isActive ? 'bg-blue_green' : 'bg-darkblue hover:bg-white/20'}`} onClick={() => setSettingsOpen(false)}> <MdPersonAdd /> Add Employee
+                    `w-28 flex items-center gap-2 px-4 py-2 z-10 ${isActive ? 'bg-blue_green' : 'bg-darkblue hover:bg-white/20'}`} onClick={() => setSettingsOpen(false)}> <MdPersonAdd /> Add Employee
                   </NavLink>
               </li>
             </ul> : <></>}
