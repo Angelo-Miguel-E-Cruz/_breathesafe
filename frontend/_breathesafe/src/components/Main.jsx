@@ -25,7 +25,7 @@ function Main() {
     fetchData()
     getTimestamp()
 
-    const fetchInterval = setInterval(getTimestamp, 5000)
+    const fetchInterval = setInterval(fetchData, 5000)
     const timestampInterval = setInterval(getTimestamp, 500)
 
     return () => {
@@ -69,6 +69,7 @@ function Main() {
 
       if (sensorData.length > 0) setLatest(sensorData)
 
+      console.log(timestampValue)
       switch (timestampValue){
         case "Real-Time":
           break
@@ -80,7 +81,6 @@ function Main() {
           break
       }
 
-      console.log(sensorData)
       setChartsData((sensorData))
     }catch (error) {
      console.log(error.message) 
