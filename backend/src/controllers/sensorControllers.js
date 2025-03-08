@@ -29,7 +29,7 @@ export const getDatainRange = async (req, res) => {
     const { interval } = req.body
     const items = await sensorService.getDatainRange(interval)
     res.status(200).json({result: items, interval: interval, type: typeof(interval),
-                          request, req, body: req.body})
+                          body: req.body})
   } catch (err){
     console.error(err)
     res.status(500).json({message: "Server Error"})
