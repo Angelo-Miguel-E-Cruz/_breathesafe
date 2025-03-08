@@ -1,6 +1,5 @@
 import { query } from '../../index.js'
 
-
 // GETS
 
 export const getSensorData = async (empID) => {
@@ -43,6 +42,34 @@ export const getDatainRange = async (interval) => {
                     GROUP BY device_id
                 ) AS results `
     const {rows} = await query(sql, [interval])
+    return rows 
+  } catch (error) {
+    console.error("Database Query Error:", error)
+    throw error
+  }
+}
+
+export const get5mAvg = async (empID) => {
+  try {
+    const sql = `SELECT * FROM avg_5m
+                JOIN employees_tb ON avg_5m.device_id = employees_tb.device_id
+                WHERE employees_tb.id = $1`
+  
+    const {rows} = await query(sql, [empID])
+    return rows 
+  } catch (error) {
+    console.error("Database Query Error:", error)
+    throw error
+  }
+}
+
+export const get1hrAvg = async (empID) => {
+  try {
+    const sql = `SELECT * FROM avg_1hr
+                JOIN employees_tb ON avg_1hr.device_id = employees_tb.device_id
+                WHERE employees_tb.id = $1`
+  
+    const {rows} = await query(sql, [empID])
     return rows 
   } catch (error) {
     console.error("Database Query Error:", error)

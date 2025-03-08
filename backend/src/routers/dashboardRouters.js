@@ -16,6 +16,10 @@ router.get('/employee_data/search', empController.searchEmployee)
 
 router.get('/interval_data', sensorController.getDatainRange)
 
+router.get('/5m_avg', sensorController.get5mAvg)
+
+router.get('/1hr_avg', sensorController.get1hrAvg)
+
 // POSTS
 
 router.post('/add_sensor_data', sensorController.addSensorData)
