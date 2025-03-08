@@ -13,10 +13,7 @@ function Alerts({latestVal, sensorType, willPrint, setPrint}) {
       
         const currTime = new Date()
   
-        const formattedTime = new Intl.DateTimeFormat('en-US', {
-          hour: "2-digit",
-          minute: "2-digit"
-        }).format(currTime)
+        const formattedTime = formatTime(currTime)
   
         const newAlert = generateAlertMessage(latestval, formattedTime)
     
@@ -45,6 +42,13 @@ function Alerts({latestVal, sensorType, willPrint, setPrint}) {
     }
 
     return messages[aqiLevel] || `${timestamp} Unknown AQI Level for ${sensorType}`
+  }
+
+  const formatTime = (time) => {
+    return new Intl.DateTimeFormat('en-US', {
+      hour: "2-digit",
+      minute: "2-digit"
+    }).format(time)
   }
   
   return (

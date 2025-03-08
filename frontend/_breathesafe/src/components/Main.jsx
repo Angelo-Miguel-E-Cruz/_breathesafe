@@ -119,8 +119,13 @@ function Main() {
     //console.log(latestReading.aqi_pm10_category === lastReading.aqi_pm10_category ?
     //  "" : "latest 10: " + latestReading.aqi_pm10_category +" last 10: " + lastReading.aqi_pm10_category)
 
-    if (latestReading.aqi_pm25_category === lastReading.aqi_pm25_category) setNew25Alert(false)
-      else setNew25Alert(true)
+    if (latestReading.aqi_pm25_category === lastReading.aqi_pm25_category){
+      console.log("setting 25 to false")
+      setNew25Alert(false)
+    } else {
+      console.log("setting 25 to true")
+      setNew25Alert(true)
+    }
     if (latestReading.aqi_pm10_category === lastReading.aqi_pm10_category) setNew10Alert(false)
       else setNew10Alert(true)
   }
