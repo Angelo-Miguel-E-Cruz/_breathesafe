@@ -58,20 +58,20 @@ function NavBar({role}) {
             'bg-blue_green' : 'bg-darkblue hover:bg-white/20'}`} onClick={() => setSettingsOpen(false)}> <RiHome9Fill /> Home</NavLink>
           {role === "Admin" ? 
             <div className="dropdown dropdown-end">
-              <div tabIndex={0} role="button" className="btn rounded-xl mr-2 shadow-black/50 shadow-md transition duration-300 ease-in-out">
+              <div tabIndex={0} role="button" className="btn rounded-xl mr-2 bg-darkblue shadow-black/50 shadow-md transition duration-300 ease-in-out">
                 <IoSettingsSharp /> Settings
               </div>
               <ul tabIndex={0}
-                className="menu menu-sm dropdown-content bg-base-100 rounded-box z-1 mt-3 w-52 p-2 shadow">
+                className="menu menu-sm dropdown-content bg-darkblue rounded-box z-1 mt-3 w-52 p-2 shadow-black/50 shadow-md">
                 <li>
                   <NavLink to="records" className={({isActive}) =>
-                    isActive ? 'bg-blue_green' : 'bg-darkblue hover:bg-white/20'}>
+                    `text-xl ${isActive ? 'bg-blue_green' : 'bg-darkblue hover:bg-white/20'}`}>
                     <IoNewspaper /> Records
                   </NavLink>
                 </li>
                 <li>
                   <NavLink to="settings" className={({isActive}) =>
-                    isActive ? 'bg-blue_green' : 'bg-darkblue hover:bg-white/20'}>
+                    `text-xl ${isActive ? 'bg-blue_green' : 'bg-darkblue hover:bg-white/20'}`}>
                     <MdManageAccounts /> Account Settings
                   </NavLink>
                 </li>
