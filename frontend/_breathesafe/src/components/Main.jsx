@@ -20,22 +20,28 @@ function Main() {
   const [new10Alert, setNew10Alert] = useState(true)
   const [timestampValue, setTimestampValue] = useState("Real-Time")
   const { selectedEmployee } = useEmployee()
-  
+
   useEffect(() => {
-    fetchData()
     getTimestamp()
 
-    const fetchInterval = setInterval(fetchData, 5000)
     const timestampInterval = setInterval(getTimestamp, 500)
 
-    return () => {
-      clearInterval(fetchInterval)
-      clearInterval(timestampInterval)
-    }
+    return () => clearInterval(timestampInterval)
   }, []) 
 
   useEffect(() => {
     console.log(timestampValue)
+
+    switch (timestampValue){
+      case "Real-Time":
+        fetchData()
+        const fetchInterval = setInterval(fetchData, 5000)
+        return () => clearInterval(fetchInterval)
+      case "5 Minutes":
+        break
+      case "1 Hour":
+        break
+    }
   }, [timestampValue]) 
 
 
@@ -107,6 +113,7 @@ function Main() {
      console.log(error.message) 
     }
   }
+  
   const updateEmployeeData = async() =>{
     try {
       const response = await axios.put(`https://breath-o9r9.onrender.com/api/update_employee_readings`,{
