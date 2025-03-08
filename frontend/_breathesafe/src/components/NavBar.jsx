@@ -3,7 +3,7 @@ import Clock from './Clock'
 import clsx from 'clsx'
 import { NavLink, useLocation } from 'react-router-dom'
 import { RiHome9Fill  } from "react-icons/ri"
-import { IoNewspaper } from "react-icons/io5"
+import { IoNewspaper, IoSettingsSharp  } from "react-icons/io5"
 import { MdPersonAdd } from "react-icons/md"
 import * as timer from './functions/timer'
 
@@ -18,6 +18,7 @@ function NavBar({role}) {
   ]
 
   const [isOpen, setIsOpen] = useState(false)
+  const [settingsOpen, setSettingsOpen] = useState(false)
 
   const location = useLocation()
 
@@ -58,19 +59,20 @@ function NavBar({role}) {
           {role === "Admin" ? 
           <div>
             <button className='btn rounded-xl mr-2 shadow-black/50 shadow-md
-              transition duration-300 ease-in-out'> Settings</button>
+              transition duration-300 ease-in-out' onClick={() => setSettingsOpen(!settingsOpen)}> <IoSettingsSharp /> Settings</button>
+            {settingsOpen ?
             <ul>
               <li> 
                   <NavLink to='records' className={({isActive}) =>
-                    isActive ? 'bg-blue_green' : 'bg-darkblue hover:bg-white/20'}> <IoNewspaper /> Records
+                    isActive ? 'bg-blue_green' : 'bg-darkblue hover:bg-white/20'} onClick={() => setSettingsOpen(false)}> <IoNewspaper /> Records
                   </NavLink>
               </li>
               <li> 
                   <NavLink to='register' className={({isActive}) =>
-                    isActive ? 'bg-blue_green' : 'bg-darkblue hover:bg-white/20'}> <MdPersonAdd /> Add Employee
+                    isActive ? 'bg-blue_green' : 'bg-darkblue hover:bg-white/20'} onClick={() => setSettingsOpen(false)}> <MdPersonAdd /> Add Employee
                   </NavLink>
               </li>
-            </ul>
+            </ul> : <></>}
           </div> :  <></>}
         </div>
       </div>
