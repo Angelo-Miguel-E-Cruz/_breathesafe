@@ -67,31 +67,7 @@ function Main() {
       
       setEmployeeName(sensorData[0].emp_name)
 
-      if (sensorData.length > 0) {
-        const latestReading = sensorData[sensorData.length - 1]
-        setFormattedTime(formatTimestamp(latestReading.timestamp))
-        dispatch({ type: "UPDATE", field: "latestPM25", value: latestReading.pm25, timestamp: latestReading.timestamp })
-        dispatch({ type: "UPDATE", field: "latestPM10", value: latestReading.pm10, timestamp: latestReading.timestamp })
-        dispatch({ type: "UPDATE", field: "latestPM25AQI", value: latestReading.aqi_pm25, timestamp: latestReading.timestamp })
-        dispatch({ type: "UPDATE", field: "latestPM10AQI", value: latestReading.aqi_pm10, timestamp: latestReading.timestamp })
-        dispatch({ type: "UPDATE", field: "latestPM25Level", value: latestReading.aqi_pm25_category, timestamp: latestReading.timestamp })
-        dispatch({ type: "UPDATE", field: "latestPM10Level", value: latestReading.aqi_pm10_category, timestamp: latestReading.timestamp })
-
-        const lastReading = sensorData[sensorData.length - 2]
-        dispatch({ type: "UPDATE", field: "lastPM25Level", value: lastReading.aqi_pm25_category, timestamp: lastReading.timestamp })
-        dispatch({ type: "UPDATE", field: "lastPM10Level", value: lastReading.aqi_pm10_category, timestamp: lastReading.timestamp })
-
-        //console.log(latestReading.aqi_pm25_category === lastReading.aqi_pm25_category ?
-        //  "" : "latest 25: " + latestReading.aqi_pm25_category +" last 25: " + lastReading.aqi_pm25_category)
-
-        //console.log(latestReading.aqi_pm10_category === lastReading.aqi_pm10_category ?
-        //  "" : "latest 10: " + latestReading.aqi_pm10_category +" last 10: " + lastReading.aqi_pm10_category)
-
-        if (latestReading.aqi_pm25_category === lastReading.aqi_pm25_category)
-          setNew25Alert(false)
-        if (latestReading.aqi_pm10_category === lastReading.aqi_pm10_category)
-          setNew10Alert(false)
-      }
+      if (sensorData.length > 0) setLatest(sensorData)
 
       switch (timestampValue){
         case "Real-Time":
@@ -103,6 +79,7 @@ function Main() {
           sensorData = fetch1hrAvg()
           break
       }
+
       console.log(sensorData)
       setChartsData((sensorData))
     }catch (error) {
@@ -110,6 +87,32 @@ function Main() {
     }
   }
   
+  const setLatest = (sensorData) => {
+    const latestReading = sensorData[sensorData.length - 1]
+    setFormattedTime(formatTimestamp(latestReading.timestamp))
+    dispatch({ type: "UPDATE", field: "latestPM25", value: latestReading.pm25, timestamp: latestReading.timestamp })
+    dispatch({ type: "UPDATE", field: "latestPM10", value: latestReading.pm10, timestamp: latestReading.timestamp })
+    dispatch({ type: "UPDATE", field: "latestPM25AQI", value: latestReading.aqi_pm25, timestamp: latestReading.timestamp })
+    dispatch({ type: "UPDATE", field: "latestPM10AQI", value: latestReading.aqi_pm10, timestamp: latestReading.timestamp })
+    dispatch({ type: "UPDATE", field: "latestPM25Level", value: latestReading.aqi_pm25_category, timestamp: latestReading.timestamp })
+    dispatch({ type: "UPDATE", field: "latestPM10Level", value: latestReading.aqi_pm10_category, timestamp: latestReading.timestamp })
+
+    const lastReading = sensorData[sensorData.length - 2]
+    dispatch({ type: "UPDATE", field: "lastPM25Level", value: lastReading.aqi_pm25_category, timestamp: lastReading.timestamp })
+    dispatch({ type: "UPDATE", field: "lastPM10Level", value: lastReading.aqi_pm10_category, timestamp: lastReading.timestamp })
+
+    //console.log(latestReading.aqi_pm25_category === lastReading.aqi_pm25_category ?
+    //  "" : "latest 25: " + latestReading.aqi_pm25_category +" last 25: " + lastReading.aqi_pm25_category)
+
+    //console.log(latestReading.aqi_pm10_category === lastReading.aqi_pm10_category ?
+    //  "" : "latest 10: " + latestReading.aqi_pm10_category +" last 10: " + lastReading.aqi_pm10_category)
+
+    if (latestReading.aqi_pm25_category === lastReading.aqi_pm25_category)
+      setNew25Alert(false)
+    if (latestReading.aqi_pm10_category === lastReading.aqi_pm10_category)
+      setNew10Alert(false)
+  }
+
   const setChartsData = (sensorData) => {
 
     const pmChartData = sensorData.reduce((acc, { id, pm25, pm10, timestamp }) => {
