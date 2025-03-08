@@ -67,7 +67,7 @@ export const get1hrAvg = async (empID) => {
   try {
     const sql = `SELECT * FROM avg_1hr
                 JOIN employees_tb ON avg_1hr.device_id = employees_tb.device_id
-                WHERE employees_tb.id = $1 ORDER BY sensor_data.id DESC LIMIT 25`
+                WHERE employees_tb.id = $1 ORDER BY sensor_data.timestamp DESC LIMIT 25`
   
     const {rows} = await query(sql, [empID])
     return rows 
