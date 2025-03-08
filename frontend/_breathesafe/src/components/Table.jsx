@@ -31,7 +31,7 @@ function Table({tableData, title, type}) {
                 })
               ) : (
                 <tr>
-                  <td colSpan="3" className="text-center">No data available</td>
+                  <td colSpan="3" className="text-center text-black">No data available</td>
                 </tr>
               )}
             </tbody>
