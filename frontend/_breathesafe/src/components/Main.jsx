@@ -117,11 +117,11 @@ function Main() {
         <NameCard employeeName={employeeName}/>
         <div className='justify-self-end align-self-center h-fit rounded-box 
                     border-black border-1 bg-skyblue text-black shadow-black/50 shadow-md'>
-          <select defaultValue="Timestamp" className="select select-ghost h-28 focus:bg-skyblue" id='time_select'>
-            <option disabled={true}>Timestamp</option>
-            <option>Real-Time</option>
-            <option>5 Minutes</option>
-            <option>1 Hour</option>
+          <select defaultValue="Timestamp" className="select select-ghost h-18 focus:bg-skyblue" id='time_select'>
+            <option disabled={true} className='text-black'>Timestamp</option>
+            <option className='text-black'>Real-Time</option>
+            <option className='text-black'>5 Minutes</option>
+            <option className='text-black'>1 Hour</option>
           </select>
         </div>
       </div>
