@@ -118,7 +118,7 @@ function Main() {
         <NameCard employeeName={employeeName}/>
         <div className='justify-self-end align-self-center h-fit rounded-box 
                     border-black border-1 bg-skyblue text-black shadow-black/50 shadow-md'>
-          <select defaultValue="Timestamp" className="select select-ghost h-16 focus:bg-skyblue focus:text-black focus:rounded-box" 
+          <select defaultValue="Timestamp" className="select select-ghost h-16 focus:bg-transparent focus:text-black focus:rounded-box" 
                   id='time_select'>
             <option disabled={true} className='text-black'>Timestamp</option>
             <option className='text-black'>Real-Time</option>
@@ -128,7 +128,7 @@ function Main() {
         </div>
       </div>
 
-      <div className='grid grid-cols-[30%_35%_35%] gap-4 pr-4 mt-4 max-lg:grid-cols-1'>
+      <div className='grid grid-cols-[30%_35%_35%] gap-4 pr-4 max-lg:grid-cols-1'>
         <div className='ml-4 grid grid-rows-[39%_61%] gap-2'>
           <div className='grid grid-rows-2 gap-2'>
             <SensorCard label="PM 2.5" value={sensorState.latestPM25.value} latestVal={sensorState.latestPM25Level.value}/>
