@@ -26,7 +26,7 @@ function NavBar() {
   }
 
   useEffect(() => {
-    timer.startLoopingCountdown(300, timer.onTimerEnd)
+    timer.startLoopingCountdown(20, timer.onTimerEnd)
   }, [])
 
   return (

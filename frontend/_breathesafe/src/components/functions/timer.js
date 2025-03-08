@@ -26,7 +26,7 @@ export const startLoopingCountdown = (durationInSeconds, callback) => {
 }
 
 export const onTimerEnd = async(durationInSeconds) => {
-  const interval = durationInSeconds === 300 ? '5 minutes' : 
+  const interval = durationInSeconds === 20 ? '5 minutes' : 
                   durationInSeconds === 3600 ? '1 hour' :  null
 
   if (!interval) return null
@@ -36,7 +36,7 @@ export const onTimerEnd = async(durationInSeconds) => {
     console.log(response)
     console.log(response.data)
     console.log(response.data[0])
-    console.log(response.data[0].result)
+    console.log(response.data[0].result) // current state: logs null
     //const result = response.data[0].result
     //processResult(0, result)
   } catch (error) {
