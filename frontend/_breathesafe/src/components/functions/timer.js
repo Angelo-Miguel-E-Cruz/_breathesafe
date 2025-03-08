@@ -8,7 +8,7 @@ export const startLoopingCountdown = (durationInSeconds, callback) => {
           const minutes = Math.floor(timeLeft / 60)
           const seconds = timeLeft % 60
 
-          console.log(`${String(minutes).padStart(2, '0')}:${String(seconds).padStart(2, '0')}`)
+          //console.log(`${String(minutes).padStart(2, '0')}:${String(seconds).padStart(2, '0')}`)
 
           if (timeLeft <= 0) {
               clearInterval(timer)
@@ -26,7 +26,7 @@ export const startLoopingCountdown = (durationInSeconds, callback) => {
 }
 
 export const onTimerEnd = async(durationInSeconds) => {
-  const interval = durationInSeconds === 20 ? '5 minutes' : 
+  const interval = durationInSeconds === 20 ? '5 minutes' : //set to 300
                   durationInSeconds === 3600 ? '1 hour' :  null
 
   if (!interval) return null
