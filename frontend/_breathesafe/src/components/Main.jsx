@@ -184,7 +184,8 @@ function Main() {
       <div className='grid grid-cols-2'>
         <NameCard employeeName={employeeName}/>
         <div className='justify-self-end align-self-center h-fit rounded-box 
-                    border-black border-1 bg-skyblue text-black shadow-black/50 shadow-md'>
+                    border-black border-1 bg-skyblue text-black shadow-black/50 shadow-md
+                    max-lg:mr-4'>
           <select defaultValue="Real-Time" className="select select-ghost h-16 focus:bg-transparent focus:text-black focus:rounded-box" 
                   id='time_select'>
             <option className='text-black'>Real-Time</option>
