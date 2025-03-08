@@ -30,35 +30,32 @@ function Main() {
   }, []) 
 
   useEffect(() => {
-    let fetchInterval
 
     const fetchSensorData = async () => {
-      let sensorData
+      let sensorData = []
       switch (timestampValue){
         case "Real-Time":
           sensorData = await fetchData()
           if (sensorData.length > 0) setLatest(sensorData)
-          fetchInterval = setInterval(fetchData, 5000)
           break
         case "5 Minutes":
           sensorData = await fetch5mAvg()
-          fetchInterval = setInterval(fetch5mAvg, 5000)
           break
         case "1 Hour":
           sensorData = await fetch1hrAvg()
-          fetchInterval = setInterval(fetch1hrAvg, 5000)
           break
       }
   
       if (sensorData){
         setEmployeeName(sensorData[0].emp_name)
       }
-      
+
       console.log(sensorData)
       setChartsData((sensorData))
     }
 
     fetchSensorData()
+    const fetchInterval = setInterval(fetchSensorData, 5000)
 
     return () => clearInterval(fetchInterval)
   }, [timestampValue]) 
