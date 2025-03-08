@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState } from 'react'
 import Layout from './components/Layout'
 import Main from './components/Main'
 import Records from './components/Records'
@@ -38,7 +38,7 @@ function App() {
               <Route path="/records" element={role === "Admin" ? <Records setAuth={setIsAuthenticated}/> : <Navigate to="/" />} />
               <Route path="/dashboard" element={role === "User" ? <User setAuth={setIsAuthenticated}/> : <Navigate to="/" />} />
             </Route>
-            
+
             <Route path="*" element={<Navigate to="/" />} />
           </Routes>
         </BrowserRouter>
