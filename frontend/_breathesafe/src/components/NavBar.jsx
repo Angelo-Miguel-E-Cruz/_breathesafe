@@ -6,7 +6,7 @@ import { RiHome9Fill  } from "react-icons/ri"
 import { IoNewspaper } from "react-icons/io5"
 import * as timer from './functions/timer'
 
-function NavBar() {
+function NavBar({role}) {
   const data = [
     {"id" : 0, "PM25": "0.0 - 9.0", "PM10" : "0 - 54", "AQI": "0 - 50", "Category" : "Good"},
     {"id" : 1, "PM25": "9.1 - 35.4", "PM10" : "55 - 154", "AQI": "51 - 100", "Category" : "Moderate"},
@@ -54,10 +54,10 @@ function NavBar() {
             transition duration-300 ease-in-out ${
             isActive || location.pathname.startsWith('/admin') || location.pathname.startsWith('/dashboard') ?  
             'bg-blue_green' : 'bg-darkblue hover:bg-white/20'}`}> <RiHome9Fill /> Home</NavLink>
-          <NavLink to='records' className={({isActive}) =>
+          {role === "Admin" ? <NavLink to='records' className={({isActive}) =>
             `btn rounded-xl mr-2 shadow-black/50 shadow-md
             transition duration-300 ease-in-out ${
-            isActive ? 'bg-blue_green' : 'bg-darkblue hover:bg-white/20'}`}> <IoNewspaper /> Records</NavLink>
+            isActive ? 'bg-blue_green' : 'bg-darkblue hover:bg-white/20'}`}> <IoNewspaper /> Records</NavLink>: <></>}
         </div>
       </div>
 

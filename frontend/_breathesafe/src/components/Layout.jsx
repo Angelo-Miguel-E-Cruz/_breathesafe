@@ -2,10 +2,10 @@ import React from 'react';
 import { Outlet } from 'react-router-dom';
 import NavBar from './NavBar'
 
-function Layout() {
+function Layout({setAuth, role}) {
   return (
     <div>
-      <NavBar />
+      <NavBar role={role}/>
       <Outlet /> 
     </div>
   );

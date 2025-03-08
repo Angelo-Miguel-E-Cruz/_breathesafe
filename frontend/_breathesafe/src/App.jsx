@@ -31,7 +31,7 @@ function App() {
               </>
             )}
 
-            <Route element={<ProtectedRoute setAuth={setIsAuthenticated}/>}>
+            <Route element={<ProtectedRoute setAuth={setIsAuthenticated} role={role}/>}>
               <Route path="/" element={role === "Admin" ? <Navigate to="/admin"/> : 
                                       <Navigate to="/dashboard"/>} />
               <Route path="/login" element={<Navigate to="/" />} />
