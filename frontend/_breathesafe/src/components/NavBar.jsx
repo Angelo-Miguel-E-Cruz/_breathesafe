@@ -52,7 +52,7 @@ function NavBar() {
           <NavLink to='/' className={({isActive}) => 
             `btn rounded-xl mr-2 shadow-black/50 shadow-md 
             transition duration-300 ease-in-out ${
-            isActive || location.pathname.startsWith('/all') ?  
+            isActive || location.pathname.startsWith('/admin') || location.pathname.startsWith('/dashboard') ?  
             'bg-blue_green' : 'bg-darkblue hover:bg-white/20'}`}> <RiHome9Fill /> Home</NavLink>
           <NavLink to='records' className={({isActive}) =>
             `btn rounded-xl mr-2 shadow-black/50 shadow-md
