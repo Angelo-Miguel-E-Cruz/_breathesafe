@@ -63,7 +63,7 @@ export const add5mAverage = async (req, res) => {
   }
     
     for (const obj of data) {
-      const { pm25, pm10, aqi_pm25, aqi_pm10, device_id } = obj;
+      let { pm25, pm10, aqi_pm25, aqi_pm10, device_id } = obj;
 
       if (pm25 === undefined || pm10 === undefined) {
           return res.status(400).json({ message: "Missing sensor data" });
