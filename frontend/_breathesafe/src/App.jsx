@@ -38,7 +38,7 @@ function App() {
               <Route path="/admin" element={role === "Admin" ? <Main setAuth={setIsAuthenticated}/> : <Navigate to="/" />} />
               <Route path="/records" element={role === "Admin" ? <Records setAuth={setIsAuthenticated}/> : <Navigate to="/" />} />
               <Route path="/settings" element={role === "Admin" ? <AccountSettings setAuth={setIsAuthenticated}/> : <Navigate to="/" />} />
-              <Route path="/dashboard" element={role === "User" ? <User setAuth={setIsAuthenticated}/> : <Navigate to="/" />} />
+              <Route path="/dashboard" element={role === "User" ? <Main setAuth={setIsAuthenticated}/> : <Navigate to="/" />} />
             </Route>
 
             <Route path="*" element={<Navigate to="/" />} />
