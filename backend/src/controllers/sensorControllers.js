@@ -57,15 +57,19 @@ export const add5mAverage = async (req, res) => {
   try {
     const data = req.body
     console.log("data: ", data)
-    data.forEach(({ pm25, pm10, aqi_pm25, aqi_pm10, device_id }) => {
-      console.log(pm25, pm10, aqi_pm25, aqi_pm10, device_id);
-  })
+    
+    for (const obj of data) {
+      const { pm25, pm10, aqi_pm25, aqi_pm10, device_id } = obj;
 
-    /*if (pm25 === undefined || pm10 === undefined) {
-      return res.status(400).json({ message: "Missing sensor data" })
-    }*/
+      if (pm25 === undefined || pm10 === undefined) {
+          return res.status(400).json({ message: "Missing sensor data" });
+      }
 
-    const result = await sensorService.add5mAverage(pm25, pm10, aqi_pm25, aqi_pm10, device_id)
+      console.log(`Processing Device: ${device_id}, PM2.5: ${pm25}, PM10: ${pm10}, AQI_PM2.5: ${aqi_pm25}, AQI_PM10: ${aqi_pm10}`);
+
+      await sensorService.add5mAverage(pm25, pm10, aqi_pm25, aqi_pm10, device_id);
+    }
+    
     res.status(201).json({message: "Sakses"})
   } catch (err) {
     console.error(err)
