@@ -20,7 +20,6 @@ function NavBar({role, setAuth}) {
   const [isOpen, setIsOpen] = useState(false)
 
   const logOut = () => {
-    window.alert("Logging out...")
     localStorage.removeItem("role")
     localStorage.removeItem("token")
     setAuth(false)
@@ -87,7 +86,11 @@ function NavBar({role, setAuth}) {
                   </button>
                 </li>
               </ul>
-            </div>:  <></>}
+            </div> 
+            :  
+            <button onClick={() => logOut()} className='bg-darkblue hover:bg-white/20'>
+              <MdLogout /> Logout
+            </button>}
         </div>
       </div>
 
