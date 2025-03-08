@@ -64,12 +64,14 @@ function NavBar({role}) {
               <ul tabIndex={0}
                 className="menu menu-sm dropdown-content bg-base-100 rounded-box z-1 mt-3 w-52 p-2 shadow">
                 <li>
-                  <NavLink to="records">
+                  <NavLink to="records" className={({isActive}) =>
+                    isActive ? 'bg-blue_green' : 'bg-darkblue hover:bg-white/20'}>
                     <IoNewspaper /> Records
                   </NavLink>
                 </li>
                 <li>
-                  <NavLink to="settings">
+                  <NavLink to="settings" className={({isActive}) =>
+                    isActive ? 'bg-blue_green' : 'bg-darkblue hover:bg-white/20'}>
                     <MdManageAccounts /> Account Settings
                   </NavLink>
                 </li>
