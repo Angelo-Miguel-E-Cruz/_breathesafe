@@ -57,19 +57,19 @@ function NavBar({role}) {
             isActive || location.pathname.startsWith('/admin') || location.pathname.startsWith('/dashboard') ?  
             'bg-blue_green' : 'bg-darkblue hover:bg-white/20'}`} onClick={() => setSettingsOpen(false)}> <RiHome9Fill /> Home</NavLink>
           {role === "Admin" ? 
-          <div className="relative block text-left p-2">
+          <div className="relative block text-left p-2 w-28">
             <button className='btn rounded-xl mr-2 shadow-black/50 shadow-md bg-darkblue hover:bg-white/20
               transition duration-300 ease-in-out' onClick={() => setSettingsOpen(!settingsOpen)}> <IoSettingsSharp /> Settings</button>
             {settingsOpen ?
             <ul className='absolute left-0 top-full'>
               <li> 
                   <NavLink to='records' className={({isActive}) => 
-                    `flex items-center gap-2 px-4 py-2 ${isActive ? 'bg-blue_green' : 'bg-darkblue hover:bg-white/20'}`} onClick={() => setSettingsOpen(false)}> <IoNewspaper /> Records
+                    `w-28flex items-center gap-2 px-4 py-2 ${isActive ? 'bg-blue_green' : 'bg-darkblue hover:bg-white/20'}`} onClick={() => setSettingsOpen(false)}> <IoNewspaper /> Records
                   </NavLink>
               </li>
               <li> 
                   <NavLink to='register' className={({isActive}) => 
-                    `flex items-center gap-2 px-4 py-2 ${isActive ? 'bg-blue_green' : 'bg-darkblue hover:bg-white/20'}`} onClick={() => setSettingsOpen(false)}> <MdPersonAdd /> Add Employee
+                    `w-28 flex items-center gap-2 px-4 py-2 ${isActive ? 'bg-blue_green' : 'bg-darkblue hover:bg-white/20'}`} onClick={() => setSettingsOpen(false)}> <MdPersonAdd /> Add Employee
                   </NavLink>
               </li>
             </ul> : <></>}
