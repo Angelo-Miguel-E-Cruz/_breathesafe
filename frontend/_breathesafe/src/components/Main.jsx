@@ -131,8 +131,8 @@ function Main() {
           <SensorChart chartData={aqiChartData} title="Air Quality Index" type="aqi"/>
         </div>
         <div className='grid grid-rows-2 gap-2 max-lg:ml-4'>
-          {pmChartData && <Table tableData={pmChartData} title="Concentration (µg/m³)" type="concentration"/>}
-          {aqiChartData && <Table tableData={aqiChartData} title="Air Quality Index" type="aqi"/>}
+          <Table tableData={pmChartData} title="Concentration (µg/m³)" type="concentration"/>
+          <Table tableData={aqiChartData} title="Air Quality Index" type="aqi"/>
         </div>
       </div>
     </div>

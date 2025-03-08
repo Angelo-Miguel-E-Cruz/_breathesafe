@@ -37,11 +37,17 @@ export const onTimerEnd = async(durationInSeconds) => {
     const response = await axios.get(`https://breath-o9r9.onrender.com/api/interval_data`,  {
       params: { interval }
     })
-    console.log("response.data: ", response.data)
-    console.log(response.data[0])
-    console.log(response.data[0].result) // current state: logs null
-    //const result = response.data[0].result
-    //processResult(0, result)
+    const results = response.data.result
+    
+    console.log("first object: ", results[0])
+    console.log("second object: ", results[1])
+
+    results.forEach((sensor, index) => {
+      console.log(`Device ${sensor.device_id}:`)
+      console.log(`  - PM10 AQI: ${sensor.avg_aqi_pm10}`)
+      console.log(`  - PM2.5 AQI: ${sensor.avg_aqi_pm25}`)
+  })
+
   } catch (error) {
     console.log(error.message)
   }
