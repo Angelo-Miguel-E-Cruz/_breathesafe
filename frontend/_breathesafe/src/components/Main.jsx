@@ -49,6 +49,7 @@ function Main() {
         break
     }
 
+    console.log(sensorData)
     setEmployeeName(sensorData[0].emp_name)
     setChartsData((sensorData))
     return () => clearInterval(fetchInterval)
