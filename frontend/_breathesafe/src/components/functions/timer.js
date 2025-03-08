@@ -29,6 +29,8 @@ export const onTimerEnd = async(durationInSeconds) => {
   const interval = durationInSeconds === 20 ? '5 minutes' : 
                   durationInSeconds === 3600 ? '1 hour' :  null
 
+  console.log(typeof(interval))
+
   if (!interval) return null
 
   try {
@@ -54,7 +56,6 @@ const processResult = async (index, resultArray) => {
   console.log(`Processing item ${index + 1}:`, singleArray)
 
   /*try {
-    // Simulated API operation (replace with actual API call)
     const response = await axios
 
     const data = await response.json()
