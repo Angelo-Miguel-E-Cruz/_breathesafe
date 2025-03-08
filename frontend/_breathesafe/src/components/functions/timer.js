@@ -62,7 +62,7 @@ export const onTimerEnd = async(durationInSeconds) => {
 const update5mAvg = async(data) => {
   try {
     console.log("sending: ", data)
-    const result = await axios.put(`https://breath-o9r9.onrender.com/api/avg_5m`, data)
+    const result = await axios.post(`https://breath-o9r9.onrender.com/api/avg_5m`, data)
     console.log(result)
   } catch (error) {
     console.log(error)
