@@ -22,17 +22,37 @@ function Main() {
   const { selectedEmployee } = useEmployee()
 
   useEffect(() => {
-    fetchData()
-    //getTimestamp()
+    getTimestamp()
 
-    const fetchInterval = setInterval(fetchData, 5000)
-    //const timestampInterval = setInterval(getTimestamp, 500)
+    const timestampInterval = setInterval(getTimestamp, 500)
 
-    return () => {
-      clearInterval(fetchInterval)
-      //clearInterval(timestampInterval)
-    }
+    return () => clearInterval(timestampInterval)
   }, []) 
+
+  useEffect(() => {
+    let fetchInterval
+    let sensorData
+
+    switch (timestampValue){
+      case "Real-Time":
+        sensorData = fetchData()
+        if (sensorData.length > 0) setLatest(sensorData)
+        fetchInterval = setInterval(fetchData, 5000)
+        break
+      case "5 Minutes":
+        sensorData = fetch5mAvg()
+        fetchInterval = setInterval(fetch5mAvg, 5000)
+        break
+      case "1 Hour":
+        sensorData = fetch1hrAvg()
+        fetchInterval = setInterval(fetch1hrAvg, 5000)
+        break
+    }
+
+    setEmployeeName(sensorData[0].emp_name)
+    setChartsData((sensorData))
+    return () => clearInterval(fetchInterval)
+  }, [timestampValue]) 
 
   useEffect(() => {
     if (sensorState.latestPM25.value || sensorState.latestPM10.value || sensorState.latestPM25Level.value || sensorState.latestPM10Level.value){
@@ -44,7 +64,6 @@ function Main() {
     try {
       const response = await axios.get(`https://breath-o9r9.onrender.com/api/5m_avg?employeeID=${selectedEmployee}`)
       return response.data
-
     } catch (error) {
       console.log(error.message) 
     }
@@ -54,7 +73,6 @@ function Main() {
     try {
       const response = await axios.get(`https://breath-o9r9.onrender.com/api/1hr_avg?employeeID=${selectedEmployee}`)
       return response.data
-
     } catch (error) {
       console.log(error.message) 
     }
@@ -63,27 +81,7 @@ function Main() {
   const fetchData = async () =>{
     try {
       const response = await axios.get(`https://breath-o9r9.onrender.com/api/sensor_data?employeeID=${selectedEmployee}`)
-      let sensorData = response.data
-      
-      setEmployeeName(sensorData[0].emp_name)
-
-      if (sensorData.length > 0) setLatest(sensorData)
-
-      getTimestamp()
-
-      console.log(timestampValue)
-      switch (timestampValue){
-        case "Real-Time":
-          break
-        case "5 Minutes":
-          sensorData = fetch5mAvg()
-          break
-        case "1 Hour":
-          sensorData = fetch1hrAvg()
-          break
-      }
-
-      setChartsData((sensorData))
+      return sensorData = response.data
     }catch (error) {
      console.log(error.message) 
     }
