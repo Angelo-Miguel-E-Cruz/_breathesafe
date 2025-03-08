@@ -57,6 +57,10 @@ export const add5mAverage = async (req, res) => {
   try {
     const data = req.body
     console.log("data: ", data)
+
+    if (!Array.isArray(data)) {
+      data = [data]; 
+  }
     
     for (const obj of data) {
       const { pm25, pm10, aqi_pm25, aqi_pm10, device_id } = obj;
@@ -69,11 +73,11 @@ export const add5mAverage = async (req, res) => {
 
       await sensorService.add5mAverage(pm25, pm10, aqi_pm25, aqi_pm10, device_id);
     }
-    
+
     res.status(201).json({message: "Sakses"})
   } catch (err) {
     console.error(err)
-    res.status(500).json({ message: "Server Error" })
+    res.status(500).json({ message: "Server Error", error: err.message})
   }
 }
 

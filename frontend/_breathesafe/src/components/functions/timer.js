@@ -36,9 +36,6 @@ export const onTimerEnd = async(durationInSeconds) => {
       params: { interval }
     })
     const results = response.data.result[0].result
-    
-    console.log("first object: ", results[0])
-    console.log("second object: ", results[1])
 
     const formattedResults = results.map(({ 
       avg_pm25: pm25, 
@@ -54,7 +51,6 @@ export const onTimerEnd = async(durationInSeconds) => {
       device_id
     }))
   
-  console.log(formattedResults)
 
   update5mAvg(formattedResults)
 
@@ -65,6 +61,7 @@ export const onTimerEnd = async(durationInSeconds) => {
 
 const update5mAvg = async(data) => {
   try {
+    console.log("sending: ", data)
     const result = await axios.put(`https://breath-o9r9.onrender.com/api/avg_5m`, data)
     console.log(result)
   } catch (error) {
