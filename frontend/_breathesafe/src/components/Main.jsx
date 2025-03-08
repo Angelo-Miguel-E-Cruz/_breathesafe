@@ -30,7 +30,6 @@ function Main() {
   }, []) 
 
   useEffect(() => {
-    console.log(timestampValue)
     let fetchInterval
 
     switch (timestampValue){
@@ -63,6 +62,7 @@ function Main() {
       const sensorData = response.data
 
       console.log(sensorData[0])
+      setChartsData(sensorData)
     } catch (error) {
       console.log(error.message) 
     }
@@ -74,6 +74,7 @@ function Main() {
       const sensorData = response.data
 
       console.log(sensorData[0])
+      setChartsData(sensorData)
     } catch (error) {
       console.log(error.message) 
     }
@@ -112,35 +113,39 @@ function Main() {
           setNew10Alert(false)
       }
 
-      const pmChartData = sensorData.reduce((acc, { id, pm25, pm10, timestamp }) => {
-        acc.push({
-          id,
-          pm25,
-          pm10,
-          timestamp: formatTimestamp(timestamp),
-        })
-        return acc.slice(-20)
-      }, [])
-
-      setPMChartData(pmChartData)
-
-      const aqiChartData = sensorData.reduce((acc, { id, aqi_pm25, aqi_pm10, timestamp }) => {
-        acc.push({
-          id,
-          aqi_pm25,
-          aqi_pm10,
-          timestamp: formatTimestamp(timestamp),
-        })
-        return acc.slice(-20)
-      }, [])
-
-      setAQIChartData(aqiChartData)
-
+      setChartsData((sensorData))
     }catch (error) {
      console.log(error.message) 
     }
   }
   
+  const setChartsData = (sensorData) => {
+
+    const pmChartData = sensorData.reduce((acc, { id, pm25, pm10, timestamp }) => {
+      acc.push({
+        id,
+        pm25,
+        pm10,
+        timestamp: formatTimestamp(timestamp),
+      })
+      return acc.slice(-20)
+    }, [])
+
+    setPMChartData(pmChartData)
+
+    const aqiChartData = sensorData.reduce((acc, { id, aqi_pm25, aqi_pm10, timestamp }) => {
+      acc.push({
+        id,
+        aqi_pm25,
+        aqi_pm10,
+        timestamp: formatTimestamp(timestamp),
+      })
+      return acc.slice(-20)
+    }, [])
+
+    setAQIChartData(aqiChartData)
+  }
+
   const updateEmployeeData = async() =>{
     try {
       const response = await axios.put(`https://breath-o9r9.onrender.com/api/update_employee_readings`,{
