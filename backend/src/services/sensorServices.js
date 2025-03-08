@@ -6,7 +6,7 @@ export const getSensorData = async (empID) => {
   try {
     const sql = `SELECT * FROM sensor_data
                 JOIN employees_tb ON sensor_data.device_id = employees_tb.device_id
-                WHERE employees_tb.id = $1 ORDER BY sensor_data.timestamp DESC LIMIT 25`
+                WHERE employees_tb.id = $1`
   
     const {rows} = await query(sql, [empID])
     return rows 
