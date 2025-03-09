@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react'
 import Main from './components/Main'
-import Records from './components/Records'
+import EmpTable from './components/EmpTable'
 import AllData from './components/AllData'
 import AccountSettings from './components/AccountSettings'
 import ProtectedRoute from './components/ProtectedRoute'
@@ -40,7 +40,7 @@ function App() {
               <Route path="/login" element={<Navigate to="/" />} />
               <Route path="/admin" element={role === "Admin" ? <Main setAuth={setIsAuthenticated}/> : <Navigate to="/" />} />
               <Route path="/admin/all" element={role === "Admin" ? <AllData setAuth={setIsAuthenticated}/> : <Navigate to="/" />} />
-              <Route path="/records" element={role === "Admin" ? <Records setAuth={setIsAuthenticated}/> : <Navigate to="/" />} />
+              <Route path="/records" element={role === "Admin" ? <EmpTable setAuth={setIsAuthenticated}/> : <Navigate to="/" />} />
               <Route path="/settings" element={role === "Admin" ? <AccountSettings setAuth={setIsAuthenticated}/> : <Navigate to="/" />} />
               <Route path="/dashboard" element={role === "User" ? <Main setAuth={setIsAuthenticated}/> : <Navigate to="/" />} />
             </Route>

@@ -149,7 +149,7 @@ function EmpTable() {
   }, [searchTerm])
 
   return (
-    <div>
+    <div className='absolute inset-0 bg-background min-h-screen overflow-auto pt-5'>
       <div className='mx-5 pt-25 relative'>
         
         <div className="card card-border bg-skyblue w-full text-black shadow-black/50 shadow-md mt-10">
