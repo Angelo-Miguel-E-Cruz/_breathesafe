@@ -43,6 +43,7 @@ function NavBar({role, setAuth}) {
         </div>
         
       </div>
+      
       <div className="navbar-end">
         <div className='flex flex-row mr-1 items-center'>
           {/* Info Modal */}
@@ -66,13 +67,13 @@ function NavBar({role, setAuth}) {
               <ul tabIndex={0}
                 className="menu menu-sm dropdown-content bg-darkblue rounded-box z-1 mt-3 w-52 p-2 shadow-black/50 shadow-md">
                 <li>
-                  <NavLink to="admin" className={({isActive}) =>
-                    {isActive ? 'bg-blue_green' : 'bg-darkblue hover:bg-white/20'}}>
+                  <NavLink to="/admin" className={({isActive}) =>
+                    isActive ? 'bg-blue_green' : 'bg-darkblue hover:bg-white/20'}>
                     <RiHome9Fill /> Home
                   </NavLink>
                 </li>
                 <li>
-                  <NavLink to="admin/all" className={({isActive}) =>
+                  <NavLink to="/admin/all" className={({isActive}) =>
                     isActive ? 'bg-blue_green' : 'bg-darkblue hover:bg-white/20'}>
                     <IoBarChartSharp  /> All Data
                   </NavLink>
@@ -80,7 +81,7 @@ function NavBar({role, setAuth}) {
               </ul>
             </div> 
             :  
-            <NavLink to='dashboard' className={({isActive}) => 
+            <NavLink to='/dashboard' className={({isActive}) => 
               `btn rounded-xl mr-2 shadow-black/50 shadow-md 
               transition duration-300 ease-in-out ${
               isActive?  'bg-blue_green' : 'bg-darkblue hover:bg-white/20'}`}> <RiHome9Fill /> Home
@@ -96,13 +97,13 @@ function NavBar({role, setAuth}) {
               <ul tabIndex={0}
                 className="menu menu-sm dropdown-content bg-darkblue rounded-box z-1 mt-3 w-52 p-2 shadow-black/50 shadow-md">
                 <li>
-                  <NavLink to="records" className={({isActive}) =>
-                    {isActive ? 'bg-blue_green' : 'bg-darkblue hover:bg-white/20'}}>
+                  <NavLink to="/records" className={({isActive}) =>
+                    isActive ? 'bg-blue_green' : 'bg-darkblue hover:bg-white/20'}>
                     <IoNewspaper /> Records
                   </NavLink>
                 </li>
                 <li>
-                  <NavLink to="settings" className={({isActive}) =>
+                  <NavLink to="/settings" className={({isActive}) =>
                     isActive ? 'bg-blue_green' : 'bg-darkblue hover:bg-white/20'}>
                     <MdManageAccounts /> Manage Employees
                   </NavLink>
@@ -122,8 +123,8 @@ function NavBar({role, setAuth}) {
               <ul tabIndex={0}
                 className="menu menu-sm dropdown-content bg-darkblue rounded-box z-1 mt-3 w-52 p-2 shadow-black/50 shadow-md">
                 <li>
-                  <NavLink to="records" className={({isActive}) =>
-                    {isActive ? 'bg-blue_green' : 'bg-darkblue hover:bg-white/20'}}>
+                  <NavLink to="/records" className={({isActive}) =>
+                    isActive ? 'bg-blue_green' : 'bg-darkblue hover:bg-white/20'}>
                     <IoMdSettings  /> Change Password
                   </NavLink>
                 </li>
