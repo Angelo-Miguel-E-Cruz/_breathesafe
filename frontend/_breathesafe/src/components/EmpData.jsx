@@ -7,7 +7,7 @@ function EmpData() {
   const [firstData, setFirstData] = useState(null)
   const [editEmp, setEditEmp] = useState(null)
   const [searchTerm, setSearchTerm] = useState('')
-  const [userEmp, setUserEmp] = useState(false)
+  const [userEmp, setUserEmp] = useState(true)
   const [showPassword, setShowPassword] = useState(false)
 
   const fetchData = async () => {
@@ -244,12 +244,12 @@ function EmpData() {
           </label>
             
           <label className="fieldset-label mt-2">
-            <input type="checkbox" className="checkbox rounded-none" onChange={() => setShowPassword(!showPassword)}/>
+            <input type="checkbox" className="checkbox rounded-none text-black border-black" onChange={() => setShowPassword(!showPassword)}/>
             Show Password
           </label>
 
           <label className="fieldset-label">Role</label>
-          <select defaultValue="User" className="select bg-base-200" id='user_role' onChange={() => userRoleChange()}>
+          <select defaultValue="User" className="input input-bordered bg-background my-1 border-black" id='user_role' onChange={() => userRoleChange()}>
             <option>User</option>
             <option>Admin</option>
           </select>
