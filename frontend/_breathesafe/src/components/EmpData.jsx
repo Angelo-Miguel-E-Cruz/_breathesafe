@@ -7,6 +7,8 @@ function EmpData() {
   const [firstData, setFirstData] = useState(null)
   const [editEmp, setEditEmp] = useState(null)
   const [searchTerm, setSearchTerm] = useState('')
+  const [userEmp, setUserEmp] = useState(false)
+  const [showPassword, setShowPassword] = useState(false)
 
   const fetchData = async () => {
     try {
@@ -101,6 +103,12 @@ function EmpData() {
     setSearchTerm(e.target.value)
   }
 
+  const userRoleChange = () => {
+    const role_field = document.getElementById("user_role")
+    const role = role_field.value
+    role === "User" ? setUserEmp(true) : setUserEmp(false)
+  }
+
   useEffect(() =>{
     fetchData()
   }, [])
@@ -178,14 +186,14 @@ function EmpData() {
             </div>
           </div>
         </div>
+
         <button className='btn btn-warning' onClick={addEmployee}>Add Employee</button>
+
         <label className="input input-bordered border-black text-black bg-background shadow-black/50 shadow-sm
                           flex items-center gap-2 absolute top-23 right-0">
           <input type="search" className="grow" placeholder="Search" onChange={handleSearchChange} />
           <MdSearch />
         </label>
-
-        
       </div>
 
       <dialog id="editModal" className="modal">
@@ -223,7 +231,26 @@ function EmpData() {
 
       <dialog id="addModal" className="modal">
         <div className="modal-box bg-background text-black border-black border-1">
-          <h3 className="font-bold text-lg mb-5">Add Employee</h3>
+          <h3 className="font-bold text-lg mb-5">Add User</h3>
+
+          <label className="input input-bordered bg-background my-1 border-black"> Name
+            <input type="text" className="grow" id='add_name'/>
+          </label>
+
+          <label className="input input-bordered bg-background my-1 border-black"> Password
+            <input type={showPassword ? "text" : "password"} className="grow" id='add_password'/>
+          </label>
+            
+          <label className="fieldset-label mt-2">
+            <input type="checkbox" className="checkbox rounded-none" onChange={() => setShowPassword(!showPassword)}/>
+            Show Password
+          </label>
+
+          <label className="fieldset-label">Role</label>
+          <select defaultValue="User" className="select bg-base-200" id='user_role' onChange={() => userRoleChange()}>
+            <option>User</option>
+            <option>Admin</option>
+          </select>
 
           <label className="input input-bordered bg-background my-1 border-black"> Employee Name
             <input type="text" className="grow" id='add_emp_name'/>
