@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react'
+import React, { useState } from 'react'
 import Clock from './Clock'
 import clsx from 'clsx'
 import { NavLink, useLocation } from 'react-router-dom'
