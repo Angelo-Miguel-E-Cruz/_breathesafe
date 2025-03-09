@@ -43,7 +43,7 @@ function NavBar({role, setAuth}) {
         </div>
         
       </div>
-      
+
       <div className="navbar-end">
         <div className='flex flex-row mr-1 items-center'>
           {/* Info Modal */}
@@ -58,6 +58,7 @@ function NavBar({role, setAuth}) {
           {/* Dashboard/Home Button */}
           {role === "Admin" ? 
             <div className="dropdown dropdown-end">
+              {console.log(location.pathname)}
               <div tabIndex={0} role="button" className={clsx(`btn rounded-xl mr-2 bg-darkblue shadow-black/50 shadow-md transition duration-300 ease-in-out`, {
                 'bg-blue_green' : location.pathname.startsWith('/admin'),
                 'bg-darkblue' : !location.pathname.startsWith('/admin')
@@ -67,7 +68,7 @@ function NavBar({role, setAuth}) {
               <ul tabIndex={0}
                 className="menu menu-sm dropdown-content bg-darkblue rounded-box z-1 mt-3 w-52 p-2 shadow-black/50 shadow-md">
                 <li>
-                  <NavLink to="/admin" className={({isActive}) =>
+                  <NavLink to="/admin" end className={({isActive}) =>
                     isActive ? 'bg-blue_green' : 'bg-darkblue hover:bg-white/20'}>
                     <RiHome9Fill /> Home
                   </NavLink>
