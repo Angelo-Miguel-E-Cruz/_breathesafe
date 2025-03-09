@@ -1,9 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import axios from 'axios'
-import clsx from 'clsx'
-import { MdEdit , MdPerson, MdDeleteForever, MdSearch  } from "react-icons/md"
-import { useEmployee } from './contexts/EmployeeContext'
-import { Link } from 'react-router-dom'
+import { MdEdit , MdDeleteForever, MdSearch  } from "react-icons/md"
 
 function EmpData() {
   const [chartData, setChartData] = useState(null)
@@ -15,7 +12,7 @@ function EmpData() {
     try {
       const response = await axios.get('https://breath-o9r9.onrender.com/api/employee_data')
    
-      const chartData = response.data.reduce((acc, { id, emp_id, device_id, emp_name, emp_gender, emp_age, latest_25, latest_10, latest_aqi_25, latest_aqi_10, latest_time }) => {
+      const chartData = response.data.reduce((acc, { id, emp_id, device_id, emp_name, emp_gender, emp_age}) => {
         acc.push({
           id,
           emp_id, 
