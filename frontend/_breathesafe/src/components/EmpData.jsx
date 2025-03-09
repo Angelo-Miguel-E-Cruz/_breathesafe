@@ -245,7 +245,7 @@ function EmpData() {
             
           <label className="fieldset-label mt-2">
             <input type="checkbox" className="checkbox rounded-none text-black border-black" onChange={() => setShowPassword(!showPassword)}/>
-            Show Password
+            <span className="text-black">Show Password</span>
           </label>
 
           <label className="fieldset-label">Role</label>
