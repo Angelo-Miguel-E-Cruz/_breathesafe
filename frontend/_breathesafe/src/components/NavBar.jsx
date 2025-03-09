@@ -7,7 +7,6 @@ import { IoNewspaper, IoBarChartSharp  } from "react-icons/io5"
 import { IoMdSettings } from "react-icons/io"
 import { GiHamburgerMenu } from "react-icons/gi"
 import { MdManageAccounts, MdLogout, MdDashboard   } from "react-icons/md"
-import * as timer from './functions/timer'
 
 function NavBar({role, setAuth}) {
   const data = [
