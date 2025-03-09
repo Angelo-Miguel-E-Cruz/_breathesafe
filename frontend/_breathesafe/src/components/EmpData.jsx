@@ -248,8 +248,8 @@ function EmpData() {
             <span className="text-black text-sm font-light">Show Password</span>
           </label>
 
-          <label className="fieldset-label text-black"> Role
-            <select defaultValue="User" className="input input-bordered bg-background my-1 border-black" id='user_role' onChange={() => userRoleChange()}>
+          <label className="fieldset-label text-black input input-bordered bg-background my-1 border-black"> Role
+            <select defaultValue="User" id='user_role' onChange={() => userRoleChange()}>
               <option>User</option>
               <option>Admin</option>
             </select>
