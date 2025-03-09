@@ -3,15 +3,11 @@ import axios from 'axios'
 import clsx from 'clsx'
 import { MdEdit , MdPerson, MdDeleteForever, MdSearch  } from "react-icons/md"
 import { useEmployee } from './contexts/EmployeeContext'
-import { Link, useNavigate } from 'react-router-dom'
+import { Link } from 'react-router-dom'
 
 function EmpTable() {
-
-  const navigate = useNavigate()
-
   const [chartData, setChartData] = useState(null)
   const [firstData, setFirstData] = useState(null)
-  const [editEmp, setEditEmp] = useState(null)
   const [searchTerm, setSearchTerm] = useState('')
   const { selectedEmployee, setSelectedEmployee } = useEmployee()
 
@@ -23,10 +19,7 @@ function EmpTable() {
         acc.push({
           id,
           emp_id, 
-          device_id, 
           emp_name, 
-          emp_gender, 
-          emp_age, 
           latest_25, 
           latest_10, 
           latest_aqi_25, 
@@ -44,81 +37,8 @@ function EmpTable() {
     }
   }
 
-  const handleNav = () => {
-    console.log("!")
-    navigate('/')
-    setTimeout(() => {
-      navigate('/all')
-    }, 50)
-  }
-  
-  const addEmployee = () => {
-    document.getElementById('addModal').showModal()
-  }
-
-  const openEditModal = (item) => {
-    setEditEmp(item)
-    document.getElementById('editModal').showModal()
-  }
-
-  const handleChangeFormData = (e) => {
-    const { id, value } = e.target
-    setEditEmp((prevItem) => ({
-      ...prevItem,
-      [id]: value,
-    }))
-  }
-
   const handleSelect = (employeeId) => {
     setSelectedEmployee(employeeId)
-  }
-
-  const handleUpdateEmpInfo = async(id) => {
-    try {
-      await axios.put(`https://breath-o9r9.onrender.com/api/employee_data/${id}`, editEmp)
-      window.confirm("Update Successful")
-      fetchData()
-    } catch (error) {
-      console.log(error)
-    }
-  }
-
-  const handleAddEmployee = async() => {
-    const emp_name_field = document.getElementById("add_emp_name")
-    const emp_id_field = document.getElementById("add_emp_id")
-    const device_id_field = document.getElementById("add_device_id")
-    const emp_gender_field = document.getElementById("add_emp_gender")
-    const emp_age_field = document.getElementById("add_emp_age")
-    
-    const emp_name = emp_name_field.value
-    const emp_id = emp_id_field.value
-    const device_id = device_id_field.value
-    const emp_gender = emp_gender_field.value
-    const emp_age = emp_age_field.value
-
-    const data = {emp_name, emp_id, device_id, emp_gender, emp_age}
-    console.log(data)
-
-    try {
-      await axios.post(`https://breath-o9r9.onrender.com/api/add_employee`, data)
-      const confirm = window.confirm("Added Successfully!")
-      fetchData()
-    }catch (error) {
-      window.alert("Error adding item: " + error)
-      console.log(error)
-    }
-  }
-
-  const handleRemoveEmployee = async (id) => {
-    const confirmDelete = window.confirm("Delete this item?")
-    if (confirmDelete){
-      try {
-        await axios.delete(`https://breath-o9r9.onrender.com/api/employee_data/${id}`)
-      }catch (error) {
-        console.log(error)
-      }
-    }
-    fetchData()
   }
 
   const handleSearchChange = (e) =>{
@@ -160,17 +80,12 @@ function EmpTable() {
                   <tr className='shadow-black/50 shadow-sm w-fit text-white bg-blue_green text-center z-10'>
                     <th>Select Employee</th>
                     <th>Employee Name</th>
-                    <th>Employee ID</th>
                     <th>Device ID</th>
-                    <th>Employee Age</th>
-                    <th>Employee Gender</th>
                     <th>Latest PM 2.5 Reading</th>
                     <th>Latest PM 10 Reading</th>
                     <th>Latest PM 2.5 AQI Level</th>
                     <th>Latest PM 10 AQI Level</th>
                     <th>Timestamp</th>
-                    <th>Edit Data</th>
-                    <th>Remove Employee</th>
                   </tr>
                 </thead>
                 <tbody>
@@ -192,32 +107,18 @@ function EmpTable() {
                             </Link>
                           </td>
                           <td>{item.emp_name}</td>
-                          <td>{item.emp_id}</td>
                           <td>{item.device_id}</td>
-                          <td>{item.emp_age}</td>
-                          <td>{item.emp_gender}</td>
                           <td>{item.latest_25} µg/m³</td>
                           <td>{item.latest_10} µg/m³</td>
                           <td>{item.latest_aqi_25}</td>
                           <td>{item.latest_aqi_10}</td>
                           <td>{item.timestamp}</td>
-                          <td>
-                              <button className='btn btn-ghost text-black font-bold text-2xl 
-                                        hover:bg-transparent transition duration-300 ease-in-out' 
-                                        onClick={() => openEditModal(item)}> <MdEdit/> </button>
-                              
-                          </td>
-                          <td>
-                            <button className='btn btn-ghost text-black font-bold text-2xl 
-                                    hover:bg-transparent transition duration-300 ease-in-out' 
-                                    onClick={() => handleRemoveEmployee(item.id)}><MdDeleteForever /></button>
-                          </td>
                         </tr>
                       )
                     })
                   ) : (
                     <tr>
-                      <td colSpan="12" className="text-center">No data available</td>
+                      <td colSpan="8" className="text-center">No data available</td>
                     </tr>
                   )}
                 </tbody>
@@ -225,82 +126,12 @@ function EmpTable() {
             </div>
           </div>
         </div>
-        <button className='btn btn-success' onClick={handleNav}>!</button>
-        <button className='btn btn-warning' onClick={addEmployee}>!</button>
         <label className="input input-bordered border-black text-black bg-background shadow-black/50 shadow-sm
                           flex items-center gap-2 absolute top-23 right-0">
           <input type="search" className="grow" placeholder="Search" onChange={handleSearchChange} />
           <MdSearch />
         </label>
-
-        
       </div>
-
-      <dialog id="editModal" className="modal">
-        <div className="modal-box bg-background text-black border-black border-1">
-          <h3 className="font-bold text-lg mb-5">Edit Employee Data</h3>
-
-          <label className="input input-bordered bg-background my-1 border-black"> Employee Name
-            <input type="text" className="grow" id='emp_name' value={editEmp?.emp_name || ""} onChange={handleChangeFormData} />
-          </label>
- 
-          <label className="input input-bordered bg-background my-1 border-black"> Employee ID
-            <input type="text" className="grow" id='emp_id' value={editEmp?.emp_id || ""} onChange={handleChangeFormData} />
-          </label>
-
-          <label className="input input-bordered bg-background my-1 border-black"> Device ID
-            <input type="text" className="grow" id='device_id' value={editEmp?.device_id || ""} onChange={handleChangeFormData} />
-          </label>
-
-          <label className="input input-bordered bg-background my-1 border-black"> Employee Gender
-            <input type="text" className="grow" id='emp_gender' value={editEmp?.emp_gender || ""} onChange={handleChangeFormData} />
-          </label>
-
-          <label className="input input-bordered bg-background my-1 border-black"> Employee Age
-            <input type="number" min="0" className="grow" id='emp_age' value={editEmp?.emp_age || ""} onChange={handleChangeFormData} />
-          </label>
-        
-          <div className="modal-action justify-start  ">
-            <form method="dialog">
-            <button className='btn rounded-xl bg-darkblue hover:bg-blue_green mr-2' onClick={() => handleUpdateEmpInfo(editEmp.id)}>Confirm</button>
-              <button className="btn rounded-xl bg-darkblue hover:bg-blue_green">Close</button>
-            </form>
-          </div>
-        </div>
-      </dialog>
-
-      <dialog id="addModal" className="modal">
-        <div className="modal-box bg-background text-black border-black border-1">
-          <h3 className="font-bold text-lg mb-5">Add Employee</h3>
-
-          <label className="input input-bordered bg-background my-1 border-black"> Employee Name
-            <input type="text" className="grow" id='add_emp_name'/>
-          </label>
- 
-          <label className="input input-bordered bg-background my-1 border-black"> Employee ID
-            <input type="text" className="grow" id='add_emp_id'/>
-          </label>
-
-          <label className="input input-bordered bg-background my-1 border-black"> Device ID
-            <input type="text" className="grow" id='add_device_id'/>
-          </label>
-
-          <label className="input input-bordered bg-background my-1 border-black"> Employee Gender
-            <input type="text" className="grow" id='add_emp_gender'/>
-          </label>
-
-          <label className="input input-bordered bg-background my-1 border-black"> Employee Age
-            <input type="number" min="0" className="grow" id='add_emp_age'/>
-          </label>
-        
-          <div className="modal-action justify-start">
-            <form method="dialog">
-            <button className='btn rounded-xl bg-darkblue hover:bg-blue_green mr-2' onClick={() => handleAddEmployee()}>Confirm</button>
-              <button className="btn rounded-xl bg-darkblue hover:bg-blue_green">Close</button>
-            </form>
-          </div>
-        </div>
-      </dialog>
     </div>
   )
 }
