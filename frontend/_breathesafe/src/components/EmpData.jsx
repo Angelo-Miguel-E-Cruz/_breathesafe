@@ -249,7 +249,7 @@ function EmpData() {
           </label>
 
           <label className="fieldset-label text-black input input-bordered bg-background my-1 border-black"> Role
-            <select defaultValue="User" id='user_role' onChange={() => userRoleChange()}>
+            <select defaultValue="User" id='user_role' className='border-none w-fit h-fit' onChange={() => userRoleChange()}>
               <option>User</option>
               <option>Admin</option>
             </select>
