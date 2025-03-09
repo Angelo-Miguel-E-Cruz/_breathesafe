@@ -3,7 +3,8 @@ import Clock from './Clock'
 import clsx from 'clsx'
 import { NavLink, useLocation } from 'react-router-dom'
 import { RiHome9Fill  } from "react-icons/ri"
-import { IoNewspaper, IoMdSettings, IoBarChartSharp  } from "react-icons/io5"
+import { IoNewspaper, IoBarChartSharp  } from "react-icons/io5"
+import { IoMdSettings } from "react-icons/io"
 import { GiHamburgerMenu } from "react-icons/gi"
 import { MdManageAccounts, MdLogout, MdDashboard   } from "react-icons/md"
 import * as timer from './functions/timer'
@@ -84,10 +85,6 @@ function NavBar({role, setAuth}) {
               'bg-blue_green' : 'bg-darkblue hover:bg-white/20'}`}> <RiHome9Fill /> Home
             </NavLink>
           }
-
-
-
-          
 
           {/* Options Button */}
           {role === "Admin" ? 
