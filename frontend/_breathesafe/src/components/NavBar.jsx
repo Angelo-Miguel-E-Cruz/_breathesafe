@@ -3,8 +3,9 @@ import Clock from './Clock'
 import clsx from 'clsx'
 import { NavLink, useLocation } from 'react-router-dom'
 import { RiHome9Fill  } from "react-icons/ri"
-import { IoNewspaper, IoSettingsSharp  } from "react-icons/io5"
-import { MdManageAccounts, MdLogout  } from "react-icons/md"
+import { IoNewspaper, IoMdSettings, IoBarChartSharp  } from "react-icons/io5"
+import { GiHamburgerMenu } from "react-icons/gi"
+import { MdManageAccounts, MdLogout, MdDashboard   } from "react-icons/md"
 import * as timer from './functions/timer'
 
 function NavBar({role, setAuth}) {
@@ -32,11 +33,6 @@ function NavBar({role, setAuth}) {
     document.getElementById('aqi_info_modal').showModal()
   }
 
-  useEffect(() => {
-    timer.startLoopingCountdown(300, timer.onTimerEnd) // Get 5 minutes average
-    timer.startLoopingCountdown(3600, timer.onTimerEnd) // Get 1 hour average
-  }, [])
-
   return (
     <div className="flex navbar pl-0 pt-0 sticky top-0 z-10 mt-1.5 mx-1.5 h-24 w-[99%] bg-darkblue text-white rounded-2xl shadow-black/50 shadow-md">
       <div className="navbar-start mt-2.5">
@@ -49,6 +45,7 @@ function NavBar({role, setAuth}) {
       </div>
       <div className="navbar-end">
         <div className='flex flex-row mr-1 items-center'>
+          {/* Info Modal */}
           <button className={clsx(`btn rounded-full w-8 h-8 text-lg center mr-2 shadow-black/50 shadow-md 
           hover:bg-white/20 transition duration-300 ease-in-out`,
             {
@@ -56,15 +53,47 @@ function NavBar({role, setAuth}) {
               'bg-darkblue' : !isOpen
             }
           )} onClick={()=>openModal()}> i </button>
-          <NavLink to='/' className={({isActive}) => 
-            `btn rounded-xl mr-2 shadow-black/50 shadow-md 
-            transition duration-300 ease-in-out ${
-            isActive || location.pathname.startsWith('/admin') || location.pathname.startsWith('/dashboard') ?  
-            'bg-blue_green' : 'bg-darkblue hover:bg-white/20'}`}> <RiHome9Fill /> Home</NavLink>
+
+          {/* Dashboard/Home Button */}
           {role === "Admin" ? 
             <div className="dropdown dropdown-end">
               <div tabIndex={0} role="button" className="btn rounded-xl mr-2 bg-darkblue shadow-black/50 shadow-md transition duration-300 ease-in-out">
-                <IoSettingsSharp /> Settings
+                <MdDashboard  /> Dashboard
+              </div>
+              <ul tabIndex={0}
+                className="menu menu-sm dropdown-content bg-darkblue rounded-box z-1 mt-3 w-52 p-2 shadow-black/50 shadow-md">
+                <li>
+                  <NavLink to="/" className={({isActive}) =>
+                    {isActive ? 'bg-blue_green' : 'bg-darkblue hover:bg-white/20'}}>
+                    <RiHome9Fill /> Home
+                  </NavLink>
+                </li>
+                <li>
+                  <NavLink to="admin/all" className={({isActive}) =>
+                    isActive ? 'bg-blue_green' : 'bg-darkblue hover:bg-white/20'}>
+                    <IoBarChartSharp  /> All Data
+                  </NavLink>
+                </li>
+              </ul>
+            </div> 
+            :  
+            <NavLink to='/' className={({isActive}) => 
+              `btn rounded-xl mr-2 shadow-black/50 shadow-md 
+              transition duration-300 ease-in-out ${
+              isActive || location.pathname.startsWith('/dashboard') ?  
+              'bg-blue_green' : 'bg-darkblue hover:bg-white/20'}`}> <RiHome9Fill /> Home
+            </NavLink>
+          }
+
+
+
+          
+
+          {/* Options Button */}
+          {role === "Admin" ? 
+            <div className="dropdown dropdown-end">
+              <div tabIndex={0} role="button" className="btn rounded-xl mr-2 bg-darkblue shadow-black/50 shadow-md transition duration-300 ease-in-out">
+                <GiHamburgerMenu /> Options
               </div>
               <ul tabIndex={0}
                 className="menu menu-sm dropdown-content bg-darkblue rounded-box z-1 mt-3 w-52 p-2 shadow-black/50 shadow-md">
@@ -77,7 +106,7 @@ function NavBar({role, setAuth}) {
                 <li>
                   <NavLink to="settings" className={({isActive}) =>
                     isActive ? 'bg-blue_green' : 'bg-darkblue hover:bg-white/20'}>
-                    <MdManageAccounts /> Account Settings
+                    <MdManageAccounts /> Manage Employees
                   </NavLink>
                 </li>
                 <li>
@@ -88,9 +117,26 @@ function NavBar({role, setAuth}) {
               </ul>
             </div> 
             :  
-            <button onClick={() => logOut()} className='btn rounded-xl mr-2 bg-darkblue shadow-black/50 shadow-md transition duration-300 ease-in-out'>
-              <MdLogout /> Logout
-            </button>}
+            <div className="dropdown dropdown-end">
+              <div tabIndex={0} role="button" className="btn rounded-xl mr-2 bg-darkblue shadow-black/50 shadow-md transition duration-300 ease-in-out">
+                <GiHamburgerMenu /> Options
+              </div>
+              <ul tabIndex={0}
+                className="menu menu-sm dropdown-content bg-darkblue rounded-box z-1 mt-3 w-52 p-2 shadow-black/50 shadow-md">
+                <li>
+                  <NavLink to="records" className={({isActive}) =>
+                    {isActive ? 'bg-blue_green' : 'bg-darkblue hover:bg-white/20'}}>
+                    <IoMdSettings  /> Change Password
+                  </NavLink>
+                </li>
+                <li>
+                  <button onClick={() => logOut()} className='bg-darkblue hover:bg-white/20'>
+                    <MdLogout /> Logout
+                  </button>
+                </li>
+              </ul>
+            </div> 
+          }
         </div>
       </div>
 

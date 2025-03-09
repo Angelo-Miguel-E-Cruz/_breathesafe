@@ -16,6 +16,9 @@ function App() {
   useEffect(() => {
     const token = window.localStorage.getItem("token")
     setIsAuthenticated(!!token)
+    
+    timer.startLoopingCountdown(300, timer.onTimerEnd) // Get 5 minutes average
+    timer.startLoopingCountdown(3600, timer.onTimerEnd) // Get 1 hour average
   },[])
 
   return (
@@ -35,6 +38,7 @@ function App() {
                                       <Navigate to="/dashboard"/>} />
               <Route path="/login" element={<Navigate to="/" />} />
               <Route path="/admin" element={role === "Admin" ? <Main setAuth={setIsAuthenticated}/> : <Navigate to="/" />} />
+              <Route path="/admin/all" element={role === "Admin" ? <AllData setAuth={setIsAuthenticated}/> : <Navigate to="/" />} />
               <Route path="/records" element={role === "Admin" ? <Records setAuth={setIsAuthenticated}/> : <Navigate to="/" />} />
               <Route path="/settings" element={role === "Admin" ? <AccountSettings setAuth={setIsAuthenticated}/> : <Navigate to="/" />} />
               <Route path="/dashboard" element={role === "User" ? <Main setAuth={setIsAuthenticated}/> : <Navigate to="/" />} />
