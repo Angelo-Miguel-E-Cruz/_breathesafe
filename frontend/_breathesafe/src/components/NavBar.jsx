@@ -105,7 +105,7 @@ function NavBar({role, setAuth}) {
                   </NavLink>
                 </li>
                 <li>
-                  <NavLink to="/settings" className={({isActive}) =>
+                  <NavLink to="/employees" className={({isActive}) =>
                     isActive ? 'bg-blue_green' : 'bg-darkblue hover:bg-white/20'}>
                     <MdManageAccounts /> Manage Employees
                   </NavLink>
