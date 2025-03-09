@@ -106,6 +106,8 @@ function EmpData() {
   const userRoleChange = () => {
     const role_field = document.getElementById("user_role")
     const role = role_field.value
+
+    console.log(role)
     role === "User" ? setUserEmp(true) : setUserEmp(false)
   }
 
@@ -252,25 +254,28 @@ function EmpData() {
             <option>Admin</option>
           </select>
 
-          <label className="input input-bordered bg-background my-1 border-black"> Employee Name
-            <input type="text" className="grow" id='add_emp_name'/>
-          </label>
- 
-          <label className="input input-bordered bg-background my-1 border-black"> Employee ID
-            <input type="text" className="grow" id='add_emp_id'/>
-          </label>
+          <div className={userEmp ? '' : 'hidden'} >
+            <label className="input input-bordered bg-background my-1 border-black"> Employee Name
+              <input type="text" className="grow" id='add_emp_name'/>
+            </label>
+  
+            <label className="input input-bordered bg-background my-1 border-black"> Employee ID
+              <input type="text" className="grow" id='add_emp_id'/>
+            </label>
 
-          <label className="input input-bordered bg-background my-1 border-black"> Device ID
-            <input type="text" className="grow" id='add_device_id'/>
-          </label>
+            <label className="input input-bordered bg-background my-1 border-black"> Device ID
+              <input type="text" className="grow" id='add_device_id'/>
+            </label>
 
-          <label className="input input-bordered bg-background my-1 border-black"> Employee Gender
-            <input type="text" className="grow" id='add_emp_gender'/>
-          </label>
+            <label className="input input-bordered bg-background my-1 border-black"> Employee Gender
+              <input type="text" className="grow" id='add_emp_gender'/>
+            </label>
 
-          <label className="input input-bordered bg-background my-1 border-black"> Employee Age
-            <input type="number" min="0" className="grow" id='add_emp_age'/>
-          </label>
+            <label className="input input-bordered bg-background my-1 border-black"> Employee Age
+              <input type="number" min="0" className="grow" id='add_emp_age'/>
+            </label>
+          </div>
+          
         
           <div className="modal-action justify-start">
             <form method="dialog">
