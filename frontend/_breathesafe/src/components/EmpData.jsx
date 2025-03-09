@@ -245,14 +245,15 @@ function EmpData() {
             
           <label className="fieldset-label mt-2">
             <input type="checkbox" className="checkbox rounded-none text-black border-black" onChange={() => setShowPassword(!showPassword)}/>
-            <span className="text-black">Show Password</span>
+            <span className="text-black text-sm font-light">Show Password</span>
           </label>
 
-          <label className="fieldset-label">Role</label>
-          <select defaultValue="User" className="input input-bordered bg-background my-1 border-black" id='user_role' onChange={() => userRoleChange()}>
-            <option>User</option>
-            <option>Admin</option>
-          </select>
+          <label className="fieldset-label text-black"> Role
+            <select defaultValue="User" className="input input-bordered bg-background my-1 border-black" id='user_role' onChange={() => userRoleChange()}>
+              <option>User</option>
+              <option>Admin</option>
+            </select>
+          </label>
 
           <div className={userEmp ? '' : 'hidden'} >
             <label className="input input-bordered bg-background my-1 border-black"> Employee Name
