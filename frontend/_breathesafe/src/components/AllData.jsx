@@ -1,8 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import axios from 'axios'
 import formatTimestamp from './functions/formatTimestamp'
-import SensorChart from './SensorChart'
-import Table from './Table'
+import AvgGraph from './AvgGraph'
 
 function AllData() {
   const [pm25ConData, setPm25ConData] = useState(null)
@@ -81,10 +80,12 @@ function AllData() {
   }
 
   return (
-    <div className='absolute inset-0 bg-background h-screen pt-27 overflow-x-auto w-full'>
+    <div className='absolute inset-0 bg-background h-screen pt-29 overflow-x-auto w-full'>
       <div className='grid grid-cols-2 gap-4 px-4 max-lg:grid-cols-1'>
         <div className='grid grid-rows-4 gap-4 max-lg:grid-cols-1'>
-          <div className='bg-red-500'>1</div>
+          <div className='bg-red-500'>
+            <AvgGraph data={pm25ConData} />
+          </div>
           <div className='bg-green-500'>2</div>
           <div className='bg-blue-500'>3</div>
           <div className='bg-yellow-500'>4</div>
