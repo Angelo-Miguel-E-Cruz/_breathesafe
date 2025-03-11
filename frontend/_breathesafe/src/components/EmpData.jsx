@@ -248,12 +248,22 @@ function EmpData() {
             <span className="text-black text-sm font-light">Show Password</span>
           </label>
 
-          <label className="fieldset-label text-black input input-bordered bg-background my-1 border-black"> Role
-            <select defaultValue="User" id='user_role' className='border-none w-fit h-fit' onChange={() => userRoleChange()}>
+          <label className="fieldset-label text-black input input-bordered bg-background mt-2 mb-1 border-black"> Role
+            <select defaultValue="User" id='user_role' className='border-none' onChange={() => userRoleChange()}>
               <option>User</option>
               <option>Admin</option>
             </select>
           </label>
+
+          {/* Check Alternate Dropdown
+            <div className='flex pl-2 gap-1 border-gray-400/50 border-1 rounded-sm h-12 w-50 align-middle'>
+            <h3 className='mt-3'>Role</h3>
+              <select defaultValue="User" id='user_role' className='border-none ml-5 text-left font-normal' onChange={() => userRoleChange()}>
+                <option>User</option>
+                <option>Admin</option>
+              </select>
+            </div>
+          */}
 
           <div className={userEmp ? '' : 'hidden'} >
             <label className="input input-bordered bg-background my-1 border-black"> Employee Name

@@ -58,8 +58,6 @@ function NavBar({role, setAuth}) {
           {/* Dashboard/Home Button */}
           {role === "Admin" ? 
             <div className="dropdown dropdown-end">
-              {console.log("includes: ", location.pathname.includes('/admin'))}
-              {console.log("starts with: ", location.pathname.startsWith('/admin'))}
               <div tabIndex={0} role="button" className={clsx(`btn rounded-xl mr-2 bg-darkblue shadow-black/50 shadow-md transition duration-300 ease-in-out`, {
                 'bg-blue_green' : location.pathname.includes('/admin'),
                 'bg-darkblue' : !location.pathname.includes('/admin')

@@ -22,7 +22,7 @@ function AddUserModal({handleSubmitUser}) {
           
           <label className="fieldset-label">Role</label>
           <select defaultValue="User" className="select bg-base-200" id='user_role'>
-          <option>User</option>
+            <option>User</option>
             <option>Admin</option>
           </select>
         </fieldset>
