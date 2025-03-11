@@ -16,29 +16,18 @@ function AllData() {
       try {
         const response = await axios.get(`https://breath-o9r9.onrender.com/api/5m_avg/graph`)
         const sensorData = response.data
-
-        console.log(sensorData)
         
-        const con25ChartData = sensorData.reduce((acc, { id, emp_name, pm25, timestamp }) => {
+        const con25ChartData = sensorData.reduce((acc, { device_id, emp_name, pm25, timestamp }) => {
           acc.push({
-            id,
+            id: device_id,
             pm25,
             emp_name,
             timestamp: formatTimestamp(timestamp),
           })
-          /*if (!acc[id]) {
-            acc[id] = {
-              emp_name: emp_name,
-              id: id,
-              records: []
-            };
-          }
-          acc[id].records.push({
-            pm25: pm25,
-            timestamp: timestamp
-          });*/
           return acc
         }, [])
+
+        console.log(con25ChartData)
         
         /*const trimmedData = Object.keys(con25ChartData).reduce((acc, id) => {
           acc[id] = {
