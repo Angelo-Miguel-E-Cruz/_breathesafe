@@ -52,7 +52,7 @@ function AllData() {
       return acc
     }, [])
 
-    setPm25ConData(aqi25ChartData)
+    setPm25AQIData(aqi25ChartData)
     
     const con10ChartData = sensorData.reduce((acc, { device_id, emp_name, pm10, timestamp }) => {
       acc.push({
@@ -76,7 +76,7 @@ function AllData() {
       return acc
     }, [])
 
-    setPm10ConData(aqi10ChartData)
+    setPm10AQIData(aqi10ChartData)
   }
 
   return (
