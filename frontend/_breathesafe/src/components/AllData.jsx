@@ -84,11 +84,17 @@ function AllData() {
       <div className='grid grid-cols-2 gap-4 px-4 max-lg:grid-cols-1'>
         <div className='grid grid-rows-4 gap-4 max-lg:grid-cols-1'>
           <div className='border-red-500 border-1'>
-            <AvgGraph data={pm25ConData || []} />
+            <AvgGraph data={pm25ConData || []} unit="µg/m³" specimen="2.5"/>
           </div>
-          <div className='border-green-500 border-1'>2</div>
-          <div className='border-blue-500 border-1'>3</div>
-          <div className='border-yellow-500 border-1'>4</div>
+          <div className='border-green-500 border-1'>
+            <AvgGraph data={pm25AQIData || []} unit="" specimen="2.5"/>
+          </div>
+          <div className='border-blue-500 border-1'>
+            <AvgGraph data={pm10ConData || []} unit="µg/m³" specimen="10"/>
+          </div>
+          <div className='border-yellow-500 border-1'>
+            <AvgGraph data={pm10AQIData || []} unit="" specimen="10"/>
+          </div>
         </div>
         <div className='grid grid-rows-4 gap-4 max-lg:grid-cols-1'>
           <div className='border-pink-500 border-1'>5</div>
