@@ -83,18 +83,18 @@ function AllData() {
     <div className='absolute inset-0 bg-background h-screen pt-29 overflow-x-auto w-full'>
       <div className='grid grid-cols-2 gap-4 px-4 max-lg:grid-cols-1'>
         <div className='grid grid-rows-4 gap-4 max-lg:grid-cols-1'>
-          <div className='bg-red-500'>
+          <div className='border-red-500 border-1'>
             <AvgGraph data={pm25ConData || []} />
           </div>
-          <div className='bg-green-500'>2</div>
-          <div className='bg-blue-500'>3</div>
-          <div className='bg-yellow-500'>4</div>
+          <div className='border-green-500 border-1'>2</div>
+          <div className='border-blue-500 border-1'>3</div>
+          <div className='border-yellow-500 border-1'>4</div>
         </div>
         <div className='grid grid-rows-4 gap-4 max-lg:grid-cols-1'>
-          <div className='bg-pink-500'>5</div>
-          <div className='bg-orange-500'>6</div>
-          <div className='bg-emerald-950'>7</div>
-          <div className='bg-cyan-500'>8</div>
+          <div className='border-pink-500 border-1'>5</div>
+          <div className='border-orange-500 border-1'>6</div>
+          <div className='border-emerald-950 border-1'>7</div>
+          <div className='border-cyan-500 border-1'>8</div>
         </div>
       </div>
     </div>

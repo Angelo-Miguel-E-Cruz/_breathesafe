@@ -10,11 +10,15 @@ function AvgGraph({data}) {
     groupedData[item.emp_name].push(item)
   })
 
+  console.log(groupedData)
+
   // Convert grouped data into array of series
   const series = Object.keys(groupedData).map((emp_name) => ({
     name: emp_name,
     data: groupedData[emp_name],
   }))
+
+  console.log(series)
 
   return (
     <ResponsiveContainer width="100%" height={400}>
