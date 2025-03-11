@@ -17,28 +17,7 @@ function AllData() {
         const response = await axios.get(`https://breath-o9r9.onrender.com/api/5m_avg/graph`)
         const sensorData = response.data
         
-        const con25ChartData = sensorData.reduce((acc, { device_id, emp_name, pm25, timestamp }) => {
-          acc.push({
-            id: device_id,
-            pm25,
-            emp_name,
-            timestamp: formatTimestamp(timestamp),
-          })
-          return acc
-        }, [])
-
-        console.log(con25ChartData)
-        
-        /*const trimmedData = Object.keys(con25ChartData).reduce((acc, id) => {
-          acc[id] = {
-            ...con25ChartData[id],
-            records: con25ChartData[id].records.slice(-20) 
-          };
-          return acc;
-        }, {})*/
-
-        //console.log(con25ChartData)
-        //setPm25ConData(trimmedData)
+        setCharts(sensorData)
         
       } catch (error) {
         console.log(error.message) 
@@ -51,16 +30,66 @@ function AllData() {
 
   })
 
+  const setCharts = (sensorData) => {
+    const con25ChartData = sensorData.reduce((acc, { device_id, emp_name, pm25, timestamp }) => {
+      acc.push({
+        id: device_id,
+        pm25,
+        emp_name,
+        timestamp: formatTimestamp(timestamp),
+      })
+      return acc
+    }, [])
+
+    setPm25ConData(con25ChartData)
+    
+    const aqi25ChartData = sensorData.reduce((acc, { device_id, emp_name, aqi_pm25, timestamp }) => {
+      acc.push({
+        id: device_id,
+        aqi_pm25,
+        emp_name,
+        timestamp: formatTimestamp(timestamp),
+      })
+      return acc
+    }, [])
+
+    setPm25ConData(aqi25ChartData)
+    
+    const con10ChartData = sensorData.reduce((acc, { device_id, emp_name, pm10, timestamp }) => {
+      acc.push({
+        id: device_id,
+        pm10,
+        emp_name,
+        timestamp: formatTimestamp(timestamp),
+      })
+      return acc
+    }, [])
+
+    setPm10ConData(con10ChartData)
+    
+    const aqi10ChartData = sensorData.reduce((acc, { device_id, emp_name, aqi_pm10, timestamp }) => {
+      acc.push({
+        id: device_id,
+        aqi_pm10,
+        emp_name,
+        timestamp: formatTimestamp(timestamp),
+      })
+      return acc
+    }, [])
+
+    setPm10ConData(aqi10ChartData)
+  }
+
   return (
     <div className='absolute inset-0 bg-background h-screen pt-27 overflow-x-auto w-full'>
-      <div className='grid grid-cols-2 gap-4 pr-4 max-lg:grid-cols-1'>
-        <div className='grid grid-rows-4 gap-4 pr-4 max-lg:grid-cols-1'>
+      <div className='grid grid-cols-2 gap-4 px-4 max-lg:grid-cols-1'>
+        <div className='grid grid-rows-4 gap-4 max-lg:grid-cols-1'>
           <div className='bg-red-500'>1</div>
           <div className='bg-green-500'>2</div>
           <div className='bg-blue-500'>3</div>
           <div className='bg-yellow-500'>4</div>
         </div>
-        <div className='grid grid-rows-4 gap-4 pr-4 max-lg:grid-cols-1'>
+        <div className='grid grid-rows-4 gap-4 max-lg:grid-cols-1'>
           <div className='bg-pink-500'>5</div>
           <div className='bg-orange-500'>6</div>
           <div className='bg-emerald-950'>7</div>
