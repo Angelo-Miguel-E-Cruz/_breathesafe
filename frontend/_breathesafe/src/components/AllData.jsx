@@ -48,7 +48,7 @@ function AllData() {
           return acc;
         }, {})*/
 
-        console.log(con25ChartData)
+        //console.log(con25ChartData)
         //setPm25ConData(trimmedData)
         
       } catch (error) {

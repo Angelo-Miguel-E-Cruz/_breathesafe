@@ -3,6 +3,7 @@ import axios from 'axios'
 import { MdEdit , MdDeleteForever, MdSearch  } from "react-icons/md"
 
 function EmpData() {
+  // TODO: FIX ADD USER
   const [chartData, setChartData] = useState(null)
   const [firstData, setFirstData] = useState(null)
   const [editEmp, setEditEmp] = useState(null)
