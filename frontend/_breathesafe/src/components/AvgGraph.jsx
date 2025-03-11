@@ -29,10 +29,12 @@ function AvgGraph({data}) {
   }
 
   const chartData = transformData(data)
+  const referenceData = chartData[0]?.data.map((d) => ({ timestamp: d.timestamp })) || []
+  console.log(referenceData)
 
   return (
     <ResponsiveContainer width="100%" height={400}>
-      <LineChart>
+      <LineChart data={referenceData}>
         <XAxis dataKey="timestamp" />
         <YAxis domain={[0, 'dataMax']}/>
         <Tooltip />
@@ -40,12 +42,12 @@ function AvgGraph({data}) {
 
         {chartData.map((entry, index) => (
           <Line
-            key={entry.name}
+            key={entry.emp_name}
             type="monotone"
             dataKey="pm25" 
             data={entry.data}
             unit=" µg/m³"
-            name={`${entry.name} PM 2.5 Concentration`} // Legend Name
+            name={`${entry.emp_name} PM 2.5 Concentration`} // Legend Name
             stroke={`hsl(${index * 60}, 70%, 50%)`} // Different colors
           />
         ))}
