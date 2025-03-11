@@ -84,7 +84,7 @@ function AllData() {
       <div className='grid grid-cols-2 gap-4 px-4 max-lg:grid-cols-1'>
         <div className='grid grid-rows-4 gap-4 max-lg:grid-cols-1'>
           <div className='bg-red-500'>
-            <AvgGraph data={pm25ConData} />
+            <AvgGraph data={pm25ConData || []} />
           </div>
           <div className='bg-green-500'>2</div>
           <div className='bg-blue-500'>3</div>
