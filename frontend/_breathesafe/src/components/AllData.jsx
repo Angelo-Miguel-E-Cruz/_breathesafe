@@ -16,6 +16,8 @@ function AllData() {
       try {
         const response = await axios.get(`https://breath-o9r9.onrender.com/api/sensor_data/all`)
         const sensorData = response.data
+
+        console.log(sensorData)
         
         const con25ChartData = sensorData.reduce((acc, { id, emp_name, pm25, timestamp }) => {
           acc.push({

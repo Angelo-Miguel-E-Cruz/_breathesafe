@@ -91,6 +91,20 @@ export const get5mGraph = async () => {
   }
 }
 
+export const get1hrGraph = async () => {
+  try {
+    const sql = `SELECT avg_1hr.device_id, emp_name, pm25, pm10, aqi_pm25, aqi_pm10, timestamp
+                FROM avg_1hr JOIN employees_tb ON avg_1hr.device_id = employees_tb.device_id
+                ORDER BY avg_1hr.timestamp DESC LIMIT 20`
+  
+    const {rows} = await query(sql, [])
+    return rows 
+  } catch (error) {
+    console.error("Database Query Error:", error)
+    throw error
+  }
+}
+
 // POSTS
 
 export const addSensorData = async(pm25, pm10, aqi_pm25, aqi_pm10, aqi_pm25_category, aqi_pm10_category, device_id) => {

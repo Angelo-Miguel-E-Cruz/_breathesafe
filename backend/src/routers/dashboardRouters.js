@@ -22,6 +22,8 @@ router.get('/1hr_avg', sensorController.get1hrAvg)
 
 router.get('/5m_avg/graph', sensorController.get5mGraph)
 
+router.get('/1hr_avg/graph', sensorController.get1hrGraph)
+
 // POSTS
 
 router.post('/add_sensor_data', sensorController.addSensorData)
