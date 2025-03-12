@@ -29,7 +29,12 @@ function AvgTable({data, unit, specimen}) {
 
   return (
     <div className="card card-border bg-skyblue w-full shadow-black/50 shadow-md">
-      <div className="card-body p-2 pt-5">
+      <div className="card-body p-4 pt-5">
+        <h1 className='text-lightgrey font-bold self-center text-3xl'>
+          {unit === "µg/m³" 
+            ? (specimen === "2.5" ? "PM2.5 Concentration" :"PM10 Concentration") 
+            : (specimen === "2.5" ? "PM2.5 AQI" :"PM10 AQI")}
+        </h1>
         <table className="table table-pin-rows">
           <thead>
             <tr className='shadow-black/50 shadow-sm w-100 bg-blue_green text-center text-white'>
