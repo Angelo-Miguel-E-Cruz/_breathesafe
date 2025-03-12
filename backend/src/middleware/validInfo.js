@@ -1,6 +1,7 @@
 const valid = (req, res, next) =>{
 
   const { name, password, role } = req.body
+  console.log(req.body)
 
   if(req.path === "/register"){
     if(![name, password, role].every(Boolean)){
