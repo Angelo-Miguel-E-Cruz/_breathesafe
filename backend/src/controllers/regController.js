@@ -5,7 +5,8 @@ import bcrypt from 'bcryptjs'
 // Register user
 export const regUser = async (req, res) => {
   try {
-    const { emp_name, password, role } = req.body
+    console.log(req.body)
+    /*const { emp_name, password, role } = req.body
 
     // Check if user exists
     const doesExist = await regServices.checkExists(emp_name)
@@ -24,9 +25,10 @@ export const regUser = async (req, res) => {
     const register = await regServices.registerUser(emp_name, bcryptPassword, role)
 
     // Create user token
-    const token = jwtGenerator(register[0].user_id)
+    const token = jwtGenerator(register[0].user_id)*/
 
-    return res.status(201).json({message: "User Added", token: token})
+    //return res.status(201).json({message: "User Added", token: token})
+    return res.status(201).json({message: "User Added"})
   } catch (error) {
     console.log(error.message)
     return res.status(500).json({message: "Server Error", error: error.message})

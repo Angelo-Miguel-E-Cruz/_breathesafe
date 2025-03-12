@@ -91,14 +91,14 @@ function EmpData() {
     }
     console.log(data)
 
-    /*try {
+    try {
       await axios.post(`https://breath-o9r9.onrender.com/api/add_employee`, data)
       const confirm = window.confirm("Added Successfully!")
       fetchData()
     }catch (error) {
       window.alert("Error adding item: " + error)
       console.log(error)
-    }*/
+    }
   }
 
   const handleRemoveEmployee = async (id) => {
