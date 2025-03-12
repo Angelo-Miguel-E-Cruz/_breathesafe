@@ -1,10 +1,10 @@
 const valid = (req, res, next) =>{
 
-  const { name, password, role } = req.body
+  const { emp_name, emp_password, emp_role } = req.body
   console.log(req.body)
 
   if(req.path === "/register"){
-    if(![name, password, role].every(Boolean)){
+    if(![emp_name, emp_password, emp_role].every(Boolean)){
       return res.status(401).json("Missing Credentials")
     } 
   } else if (req.path === "/login"){
