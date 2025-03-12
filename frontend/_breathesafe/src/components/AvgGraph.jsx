@@ -40,27 +40,29 @@ function AvgGraph({data, unit, specimen}) {
             ? (specimen === "2.5" ? "PM2.5 Concentration" :"PM10 Concentration") 
             : (specimen === "2.5" ? "PM2.5 AQI" :"PM10 AQI")}
         </h1>
-        <ResponsiveContainer width="100%" height={400}>
-          <LineChart data={referenceData}>
-            <XAxis dataKey="timestamp" />
-            <YAxis domain={[0, (dataMax) => dataMax + 1]} />
-            <Tooltip contentStyle={{ color: "white", backgroundColor: "black" }} />
-            <Legend />
+        <div className='max-h-96 overflow-y-scroll'>
+          <ResponsiveContainer width="100%" height={400}>
+            <LineChart data={referenceData}>
+              <XAxis dataKey="timestamp" />
+              <YAxis domain={[0, (dataMax) => dataMax + 1]} />
+              <Tooltip contentStyle={{ color: "white", backgroundColor: "black" }} />
+              <Legend />
 
-            {chartData.map((entry, index) => (
-              <Line 
-                connectNulls
-                key={entry.emp_name}
-                type="monotone"
-                dataKey="chartData" 
-                data={entry.data}
-                unit={unit === "µg/m³" ? ` ${unit}` : ""}
-                name={`${entry.emp_name}`}
-                stroke={`hsl(${index * 60}, 70%, 50%)`}
-              />
-            ))}
-          </LineChart>
-        </ResponsiveContainer>
+              {chartData.map((entry, index) => (
+                <Line 
+                  connectNulls
+                  key={entry.emp_name}
+                  type="monotone"
+                  dataKey="chartData" 
+                  data={entry.data}
+                  unit={unit === "µg/m³" ? ` ${unit}` : ""}
+                  name={`${entry.emp_name}`}
+                  stroke={`hsl(${index * 60}, 70%, 50%)`}
+                />
+              ))}
+            </LineChart>
+          </ResponsiveContainer>
+        </div>
       </div>
     </div>
   )
