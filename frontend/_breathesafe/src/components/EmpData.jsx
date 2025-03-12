@@ -92,7 +92,7 @@ function EmpData() {
     console.log(data)
 
     try {
-      await axios.post(`https://breath-o9r9.onrender.com/api/add_employee`, data)
+      await axios.post(`https://breath-o9r9.onrender.com/auth/register`, data)
       const confirm = window.confirm("Added Successfully!")
       fetchData()
     }catch (error) {
