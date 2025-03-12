@@ -84,25 +84,33 @@ function AllData() {
     <div className='absolute inset-0 bg-background h-screen pt-29 overflow-x-auto w-full'>
       <div className='grid grid-cols-2 gap-4 px-4 max-lg:grid-cols-1'>
         <div className='grid grid-rows-4 gap-4 max-lg:grid-cols-1'>
-          <div className='border-red-500 border-1'>
+          <div className='p-4'>
             <AvgGraph data={pm25ConData || []} unit="µg/m³" specimen="2.5"/>
           </div>
-          <div className='border-green-500 border-1'>
+          <div className='p-4'>
             <AvgGraph data={pm25AQIData || []} unit="" specimen="2.5"/>
           </div>
-          <div className='border-blue-500 border-1'>
+          <div className='p-4'>
             <AvgGraph data={pm10ConData || []} unit="µg/m³" specimen="10"/>
           </div>
-          <div className='border-yellow-500 border-1'>
+          <div className='p-4'>
             <AvgGraph data={pm10AQIData || []} unit="" specimen="10"/>
           </div>
         </div>
+
         <div className='grid grid-rows-4 gap-4 max-lg:grid-cols-1'>
-          <div className='border-pink-500 border-1'>
-            <AvgTable data={pm25ConData || []} unit="µg/m³" specimen="2.5"/></div>
-          <div className='border-orange-500 border-1'>6</div>
-          <div className='border-emerald-950 border-1'>7</div>
-          <div className='border-cyan-500 border-1'>8</div>
+          <div className='p-4'>
+            <AvgTable data={pm25ConData || []} unit="µg/m³" specimen="2.5"/>
+          </div>
+          <div className='p-4'>
+            <AvgGraph data={pm25AQIData || []} unit="" specimen="2.5"/>
+          </div>
+          <div className='p-4'>
+            <AvgGraph data={pm10ConData || []} unit="µg/m³" specimen="10"/>
+          </div>
+          <div className='p-4'>
+            <AvgGraph data={pm10AQIData || []} unit="" specimen="10"/>
+          </div>
         </div>
       </div>
     </div>
