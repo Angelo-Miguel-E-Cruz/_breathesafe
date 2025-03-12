@@ -26,36 +26,38 @@ function AvgGraph({data, unit, specimen}) {
       })),
     }))
 
-    console.log(result)
     return result
   }
 
   const chartData = transformData(data)
   const referenceData = chartData[0]?.data.map((d) => ({ timestamp: d.timestamp })) || []
-  console.log(referenceData)
 
   return (
-    <ResponsiveContainer width="100%" height={400}>
-      <LineChart data={referenceData}>
-        <XAxis dataKey="timestamp" />
-        <YAxis domain={[0, (dataMax) => dataMax + 1]} />
-        <Tooltip contentStyle={{ color: "white", backgroundColor: "black" }} />
-        <Legend />
+    <div className="card card-border bg-skyblue w-full shadow-black/50 shadow-md">
+      <div className="card-body p-2 pt-5">
+        <ResponsiveContainer width="100%" height={400}>
+          <LineChart data={referenceData}>
+            <XAxis dataKey="timestamp" />
+            <YAxis domain={[0, (dataMax) => dataMax + 1]} />
+            <Tooltip contentStyle={{ color: "white", backgroundColor: "black" }} />
+            <Legend />
 
-        {chartData.map((entry, index) => (
-          <Line 
-            connectNulls
-            key={entry.emp_name}
-            type="monotone"
-            dataKey="chartData" 
-            data={entry.data}
-            unit={unit === "µg/m³" ? ` ${unit}` : ""}
-            name={`${entry.emp_name}`}
-            stroke={`hsl(${index * 60}, 70%, 50%)`}
-          />
-        ))}
-      </LineChart>
-    </ResponsiveContainer>
+            {chartData.map((entry, index) => (
+              <Line 
+                connectNulls
+                key={entry.emp_name}
+                type="monotone"
+                dataKey="chartData" 
+                data={entry.data}
+                unit={unit === "µg/m³" ? ` ${unit}` : ""}
+                name={`${entry.emp_name}`}
+                stroke={`hsl(${index * 60}, 70%, 50%)`}
+              />
+            ))}
+          </LineChart>
+        </ResponsiveContainer>
+      </div>
+    </div>
   )
 }
 

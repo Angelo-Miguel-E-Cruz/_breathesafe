@@ -28,26 +28,30 @@ function AvgTable({data, unit, specimen}) {
   const { tableData, uniqueEmployees } = transformToTableFormat(data)
 
   return (
-    <table border="1" cellPadding="8" style={{ borderCollapse: "collapse", width: "100%" }}>
-      <thead>
-        <tr>
-          {uniqueEmployees.map((emp) => (
-            <th key={emp}>{emp}</th>
-          ))}
-          <th>Timestamp</th>
-        </tr>
-      </thead>
-      <tbody>
-        {tableData.map((row, index) => (
-          <tr key={index}>
-            {uniqueEmployees.map((emp) => (
-              <td key={emp}>{row[emp] !== null ? row[emp] : "null"}</td>
+    <div className="card card-border bg-skyblue w-full shadow-black/50 shadow-md">
+      <div className="card-body p-2 pt-5">
+        <table className="table table-pin-rows">
+          <thead>
+            <tr className='shadow-black/50 shadow-sm w-100 bg-blue_green text-center text-white'>
+              {uniqueEmployees.map((emp) => (
+                <th key={emp}>{emp}</th>
+              ))}
+              <th>Timestamp</th>
+            </tr>
+          </thead>
+          <tbody>
+            {tableData.map((row, index) => (
+              <tr key={index} className='even:bg-blue_green/10 text-center text-black'>
+                {uniqueEmployees.map((emp) => (
+                  <td key={emp}>{row[emp] !== null ? row[emp] : "null"}</td>
+                ))}
+                <td>{row.timestamp}</td>
+              </tr>
             ))}
-            <td>{row.timestamp}</td>
-          </tr>
-        ))}
-      </tbody>
-    </table>
+          </tbody>
+        </table>
+      </div>
+    </div>
   )
 }
 
