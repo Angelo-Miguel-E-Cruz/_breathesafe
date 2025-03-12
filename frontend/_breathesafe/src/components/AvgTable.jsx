@@ -35,26 +35,28 @@ function AvgTable({data, unit, specimen}) {
             ? (specimen === "2.5" ? "PM2.5 Concentration" :"PM10 Concentration") 
             : (specimen === "2.5" ? "PM2.5 AQI" :"PM10 AQI")}
         </h1>
-        <table className="table table-pin-rows">
-          <thead>
-            <tr className='shadow-black/50 shadow-sm w-100 bg-blue_green text-center text-white'>
-              {uniqueEmployees.map((emp) => (
-                <th key={emp}>{emp}</th>
-              ))}
-              <th>Timestamp</th>
-            </tr>
-          </thead>
-          <tbody>
-            {tableData.map((row, index) => (
-              <tr key={index} className='even:bg-blue_green/10 text-center text-black'>
+        <div className='overflow-y-scroll'>
+          <table className="table table-pin-rows">
+            <thead>
+              <tr className='shadow-black/50 shadow-sm w-100 bg-blue_green text-center text-white'>
                 {uniqueEmployees.map((emp) => (
-                  <td key={emp}>{row[emp] !== null ? row[emp] : "null"}</td>
+                  <th key={emp}>{emp}</th>
                 ))}
-                <td>{row.timestamp}</td>
+                <th>Timestamp</th>
               </tr>
-            ))}
-          </tbody>
-        </table>
+            </thead>
+            <tbody>
+              {tableData.map((row, index) => (
+                <tr key={index} className='even:bg-blue_green/10 text-center text-black'>
+                  {uniqueEmployees.map((emp) => (
+                    <td key={emp}>{row[emp] !== null ? row[emp] : "null"}</td>
+                  ))}
+                  <td>{row.timestamp}</td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
       </div>
     </div>
   )
