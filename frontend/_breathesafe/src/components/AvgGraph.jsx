@@ -41,7 +41,7 @@ function AvgGraph({data, unit, specimen}) {
             : (specimen === "2.5" ? "PM2.5 AQI" :"PM10 AQI")}
         </h1>
         <div className='max-h-96 overflow-y-scroll'>
-          <ResponsiveContainer width="100%" height={400}>
+          <ResponsiveContainer width="100%" height={384}>
             <LineChart data={referenceData}>
               <XAxis dataKey="timestamp" />
               <YAxis domain={[0, (dataMax) => dataMax + 1]} />
