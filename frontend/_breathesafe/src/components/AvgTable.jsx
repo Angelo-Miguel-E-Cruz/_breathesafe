@@ -35,7 +35,7 @@ function AvgTable({data, unit, specimen}) {
             ? (specimen === "2.5" ? "PM2.5 Concentration" :"PM10 Concentration") 
             : (specimen === "2.5" ? "PM2.5 AQI" :"PM10 AQI")}
         </h1>
-        <div className='max-h-full overflow-y-scroll'>
+        <div className='max-h-96 overflow-y-scroll'>
           <table className="table table-pin-rows">
             <thead>
               <tr className='shadow-black/50 shadow-sm w-100 bg-blue_green text-center text-white'>
