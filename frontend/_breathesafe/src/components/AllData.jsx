@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react'
 import axios from 'axios'
 import formatTimestamp from './functions/formatTimestamp'
 import AvgGraph from './AvgGraph'
+import AvgTable from './AvgTable'
 
 function AllData() {
   const [pm25ConData, setPm25ConData] = useState(null)
@@ -97,7 +98,8 @@ function AllData() {
           </div>
         </div>
         <div className='grid grid-rows-4 gap-4 max-lg:grid-cols-1'>
-          <div className='border-pink-500 border-1'>5</div>
+          <div className='border-pink-500 border-1'>
+            <AvgTable data={pm25ConData || []} unit="µg/m³" specimen="2.5"/></div>
           <div className='border-orange-500 border-1'>6</div>
           <div className='border-emerald-950 border-1'>7</div>
           <div className='border-cyan-500 border-1'>8</div>

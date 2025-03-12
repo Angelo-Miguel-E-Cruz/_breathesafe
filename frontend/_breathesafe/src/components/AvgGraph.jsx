@@ -3,10 +3,9 @@ import { LineChart, Line, XAxis, YAxis, Tooltip, Legend, ResponsiveContainer } f
 
 function AvgGraph({data, unit, specimen}) {
   const transformData = (rawData) => {
-    // Step 1: Extract all unique timestamps
+    
     const uniqueTimestamps = [...new Set(rawData.map((item) => item.timestamp))].sort()
 
-    // Step 2: Group data by emp_name
     const groupedData = {}
     rawData.forEach((item) => {
       if (!groupedData[item.emp_name]) {
@@ -19,7 +18,6 @@ function AvgGraph({data, unit, specimen}) {
     
     })
 
-    // Step 3: Ensure each employee has all timestamps, filling missing values with null
     const result = Object.keys(groupedData).map((emp_name) => ({
       emp_name,
       data: uniqueTimestamps.map((timestamp) => ({
@@ -51,9 +49,9 @@ function AvgGraph({data, unit, specimen}) {
             type="monotone"
             dataKey="chartData" 
             data={entry.data}
-            unit={unit === "µg/m³" ? unit : ""}
-            name={`${entry.emp_name}`} // Legend Name
-            stroke={`hsl(${index * 60}, 70%, 50%)`} // Different colors
+            unit={unit === "µg/m³" ? ` ${unit}` : ""}
+            name={`${entry.emp_name}`}
+            stroke={`hsl(${index * 60}, 70%, 50%)`}
           />
         ))}
       </LineChart>
