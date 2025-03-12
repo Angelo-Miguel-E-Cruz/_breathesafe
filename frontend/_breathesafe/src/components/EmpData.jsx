@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import axios from 'axios'
 import { MdEdit , MdDeleteForever, MdSearch  } from "react-icons/md"
+import EditEmpModal from './modals/EditEmpModal'
 
 function EmpData() {
   // TODO: FIX ADD USER
@@ -63,29 +64,41 @@ function EmpData() {
   }
 
   const handleAddEmployee = async() => {
-    const emp_name_field = document.getElementById("add_emp_name")
-    const emp_id_field = document.getElementById("add_emp_id")
-    const device_id_field = document.getElementById("add_device_id")
-    const emp_gender_field = document.getElementById("add_emp_gender")
-    const emp_age_field = document.getElementById("add_emp_age")
-    
-    const emp_name = emp_name_field.value
-    const emp_id = emp_id_field.value
-    const device_id = device_id_field.value
-    const emp_gender = emp_gender_field.value
-    const emp_age = emp_age_field.value
+    let data
 
-    const data = {emp_name, emp_id, device_id, emp_gender, emp_age}
+    const emp_name_field = document.getElementById("add_emp_name")
+    const emp_password_field = document.getElementById("add_emp_password")
+    const emp_role_field = document.getElementById("add_emp_role")
+
+    const emp_name = emp_name_field.value
+    const emp_password = emp_password_field.value
+    const emp_role = emp_role_field.value
+
+    if (emp_role === "User"){
+      const emp_id_field = document.getElementById("add_emp_id")
+      const device_id_field = document.getElementById("add_device_id")
+      const emp_gender_field = document.getElementById("add_emp_gender")
+      const emp_age_field = document.getElementById("add_emp_age")
+      
+      const emp_id = emp_id_field.value
+      const device_id = device_id_field.value
+      const emp_gender = emp_gender_field.value
+      const emp_age = emp_age_field.value
+  
+      data = {emp_name, emp_password, emp_role, emp_id, device_id, emp_gender, emp_age}
+    } else {
+      data = {emp_name, emp_password, emp_role}
+    }
     console.log(data)
 
-    try {
+    /*try {
       await axios.post(`https://breath-o9r9.onrender.com/api/add_employee`, data)
       const confirm = window.confirm("Added Successfully!")
       fetchData()
     }catch (error) {
       window.alert("Error adding item: " + error)
       console.log(error)
-    }
+    }*/
   }
 
   const handleRemoveEmployee = async (id) => {
@@ -169,7 +182,6 @@ function EmpData() {
                               <button className='btn btn-ghost text-black font-bold text-2xl 
                                         hover:bg-transparent transition duration-300 ease-in-out' 
                                         onClick={() => openEditModal(item)}> <MdEdit/> </button>
-                              
                           </td>
                           <td>
                             <button className='btn btn-ghost text-black font-bold text-2xl 
@@ -199,49 +211,18 @@ function EmpData() {
         </label>
       </div>
 
-      <dialog id="editModal" className="modal">
-        <div className="modal-box bg-background text-black border-black border-1">
-          <h3 className="font-bold text-lg mb-5">Edit Employee Data</h3>
-
-          <label className="input input-bordered bg-background my-1 border-black"> Employee Name
-            <input type="text" className="grow" id='emp_name' value={editEmp?.emp_name || ""} onChange={handleChangeFormData} />
-          </label>
- 
-          <label className="input input-bordered bg-background my-1 border-black"> Employee ID
-            <input type="text" className="grow" id='emp_id' value={editEmp?.emp_id || ""} onChange={handleChangeFormData} />
-          </label>
-
-          <label className="input input-bordered bg-background my-1 border-black"> Device ID
-            <input type="text" className="grow" id='device_id' value={editEmp?.device_id || ""} onChange={handleChangeFormData} />
-          </label>
-
-          <label className="input input-bordered bg-background my-1 border-black"> Employee Gender
-            <input type="text" className="grow" id='emp_gender' value={editEmp?.emp_gender || ""} onChange={handleChangeFormData} />
-          </label>
-
-          <label className="input input-bordered bg-background my-1 border-black"> Employee Age
-            <input type="number" min="0" className="grow" id='emp_age' value={editEmp?.emp_age || ""} onChange={handleChangeFormData} />
-          </label>
-        
-          <div className="modal-action justify-start  ">
-            <form method="dialog">
-            <button className='btn rounded-xl bg-darkblue hover:bg-blue_green mr-2' onClick={() => handleUpdateEmpInfo(editEmp.id)}>Confirm</button>
-              <button className="btn rounded-xl bg-darkblue hover:bg-blue_green">Close</button>
-            </form>
-          </div>
-        </div>
-      </dialog>
+      <EditEmpModal handleChangeFormData={handleChangeFormData} handleUpdateEmpInfo={handleUpdateEmpInfo} editEmp={editEmp} />
 
       <dialog id="addModal" className="modal">
         <div className="modal-box bg-background text-black border-black border-1">
           <h3 className="font-bold text-lg mb-5">Add User</h3>
 
           <label className="input input-bordered bg-background my-1 border-black"> Name
-            <input type="text" className="grow" id='add_name'/>
+            <input type="text" className="grow" id='add_emp_name'/>
           </label>
 
           <label className="input input-bordered bg-background my-1 border-black"> Password
-            <input type={showPassword ? "text" : "password"} className="grow" id='add_password'/>
+            <input type={showPassword ? "text" : "password"} className="grow" id='add_emp_password'/>
           </label>
             
           <label className="fieldset-label mt-2">
@@ -250,27 +231,13 @@ function EmpData() {
           </label>
 
           <label className="fieldset-label text-black input input-bordered bg-background mt-2 mb-1 border-black"> Role
-            <select defaultValue="User" id='user_role' className='border-none' onChange={() => userRoleChange()}>
+            <select defaultValue="User" id='add_emp_role' className='border-none' onChange={() => userRoleChange()}>
               <option>User</option>
               <option>Admin</option>
             </select>
           </label>
 
-          {/* Check Alternate Dropdown
-            <div className='flex pl-2 gap-1 border-gray-400/50 border-1 rounded-sm h-12 w-50 align-middle'>
-            <h3 className='mt-3'>Role</h3>
-              <select defaultValue="User" id='user_role' className='border-none ml-5 text-left font-normal' onChange={() => userRoleChange()}>
-                <option>User</option>
-                <option>Admin</option>
-              </select>
-            </div>
-          */}
-
           <div className={userEmp ? '' : 'hidden'} >
-            <label className="input input-bordered bg-background my-1 border-black"> Employee Name
-              <input type="text" className="grow" id='add_emp_name'/>
-            </label>
-  
             <label className="input input-bordered bg-background my-1 border-black"> Employee ID
               <input type="text" className="grow" id='add_emp_id'/>
             </label>
