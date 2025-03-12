@@ -118,10 +118,9 @@ function EmpData() {
   }
 
   const userRoleChange = () => {
-    const role_field = document.getElementById("user_role")
+    const role_field = document.getElementById("add_emp_role")
     const role = role_field.value
 
-    console.log(role)
     role === "User" ? setUserEmp(true) : setUserEmp(false)
   }
 
