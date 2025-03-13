@@ -68,7 +68,7 @@ function UserData() {
     const password = user_password_field.value
     const role = user_role_field.value
 
-    const data = {user_name, user_password, user_role}
+    const data = {name, password, role}
 
     console.log(data)
 
@@ -192,7 +192,7 @@ function UserData() {
             <input type={showPassword ? "text" : "password"} className="grow" id='add_user_password'/>
           </label>        
           
-          <label className="fieldset-label mt-2">
+          <label className="fieldset-label my-1 text-black">
             <input type="checkbox" className="checkbox rounded-none text-black border-black" onChange={() => setShowPassword(!showPassword)}/>
             Show Password
           </label>
