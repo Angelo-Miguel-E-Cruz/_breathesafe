@@ -4,13 +4,11 @@ import { MdEdit , MdDeleteForever, MdSearch  } from "react-icons/md"
 import EditEmpModal from './modals/EditEmpModal'
 
 function EmpData() {
-  // TODO: FIX ADD USER
+  
   const [chartData, setChartData] = useState(null)
   const [firstData, setFirstData] = useState(null)
   const [editEmp, setEditEmp] = useState(null)
   const [searchTerm, setSearchTerm] = useState('')
-  const [userEmp, setUserEmp] = useState(true)
-  const [showPassword, setShowPassword] = useState(false)
 
   const fetchData = async () => {
     try {
@@ -64,35 +62,25 @@ function EmpData() {
   }
 
   const handleAddEmployee = async() => {
-    let data
 
     const emp_name_field = document.getElementById("add_emp_name")
-    const emp_password_field = document.getElementById("add_emp_password")
-    const emp_role_field = document.getElementById("add_emp_role")
+    const emp_id_field = document.getElementById("add_emp_id")
+    const device_id_field = document.getElementById("add_device_id")
+    const emp_gender_field = document.getElementById("add_emp_gender")
+    const emp_age_field = document.getElementById("add_emp_age")
 
     const emp_name = emp_name_field.value
-    const emp_password = emp_password_field.value
-    const emp_role = emp_role_field.value
+    const emp_id = emp_id_field.value
+    const device_id = device_id_field.value
+    const emp_gender = emp_gender_field.value
+    const emp_age = emp_age_field.value
 
-    if (emp_role === "User"){
-      const emp_id_field = document.getElementById("add_emp_id")
-      const device_id_field = document.getElementById("add_device_id")
-      const emp_gender_field = document.getElementById("add_emp_gender")
-      const emp_age_field = document.getElementById("add_emp_age")
-      
-      const emp_id = emp_id_field.value
-      const device_id = device_id_field.value
-      const emp_gender = emp_gender_field.value
-      const emp_age = emp_age_field.value
-  
-      data = {emp_name, emp_password, emp_role, emp_id, device_id, emp_gender, emp_age}
-    } else {
-      data = {emp_name, emp_password, emp_role}
-    }
+    const data = {emp_name, emp_id, device_id, emp_gender, emp_age}
+
     console.log(data)
 
     try {
-      await axios.post(`https://breath-o9r9.onrender.com/auth/register`, data)
+      await axios.post(`https://breath-o9r9.onrender.com/api/add_employee`, data)
       const confirm = window.confirm("Added Successfully!")
       fetchData()
     }catch (error) {
@@ -115,13 +103,6 @@ function EmpData() {
 
   const handleSearchChange = (e) =>{
     setSearchTerm(e.target.value)
-  }
-
-  const userRoleChange = () => {
-    const role_field = document.getElementById("add_emp_role")
-    const role = role_field.value
-
-    role === "User" ? setUserEmp(true) : setUserEmp(false)
   }
 
   useEffect(() =>{
@@ -220,39 +201,21 @@ function EmpData() {
             <input type="text" className="grow" id='add_emp_name'/>
           </label>
 
-          <label className="input input-bordered bg-background my-1 border-black"> Password
-            <input type={showPassword ? "text" : "password"} className="grow" id='add_emp_password'/>
-          </label>
-            
-          <label className="fieldset-label mt-2">
-            <input type="checkbox" className="checkbox rounded-none text-black border-black" onChange={() => setShowPassword(!showPassword)}/>
-            <span className="text-black text-sm font-light">Show Password</span>
+          <label className="input input-bordered bg-background my-1 border-black"> Employee ID
+            <input type="text" className="grow" id='add_emp_id'/>
           </label>
 
-          <label className="fieldset-label text-black input input-bordered bg-background mt-2 mb-1 border-black"> Role
-            <select defaultValue="User" id='add_emp_role' className='border-none' onChange={() => userRoleChange()}>
-              <option>User</option>
-              <option>Admin</option>
-            </select>
+          <label className="input input-bordered bg-background my-1 border-black"> Device ID
+            <input type="text" className="grow" id='add_device_id'/>
           </label>
 
-          <div className={userEmp ? '' : 'hidden'} >
-            <label className="input input-bordered bg-background my-1 border-black"> Employee ID
-              <input type="text" className="grow" id='add_emp_id'/>
-            </label>
+          <label className="input input-bordered bg-background my-1 border-black"> Employee Gender
+            <input type="text" className="grow" id='add_emp_gender'/>
+          </label>
 
-            <label className="input input-bordered bg-background my-1 border-black"> Device ID
-              <input type="text" className="grow" id='add_device_id'/>
-            </label>
-
-            <label className="input input-bordered bg-background my-1 border-black"> Employee Gender
-              <input type="text" className="grow" id='add_emp_gender'/>
-            </label>
-
-            <label className="input input-bordered bg-background my-1 border-black"> Employee Age
-              <input type="number" min="0" className="grow" id='add_emp_age'/>
-            </label>
-          </div>
+          <label className="input input-bordered bg-background my-1 border-black"> Employee Age
+            <input type="number" min="0" className="grow" id='add_emp_age'/>
+          </label>
           
         
           <div className="modal-action justify-start">

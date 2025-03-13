@@ -15,7 +15,7 @@ export const fetchEmployeeData = async() => {
 
 export const fetchUserData = async() => {
   try {
-    const sql = 'SELECT * FROM users ORDER BY user_role, user_id ASC'
+    const sql = 'SELECT user_id, user_name, user_role FROM users ORDER BY user_role, user_id ASC'
     const {rows} = await query(sql, [])
     return rows 
   } catch (error) {
