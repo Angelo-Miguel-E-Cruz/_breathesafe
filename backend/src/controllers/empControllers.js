@@ -31,17 +31,17 @@ export const addEmployee = async (req, res) => {
 
     const doesExist = await empServices.employeeExists(emp_name)
 
-    console.log(doesExist.count)
+    console.log(doesExist[0].count)
 
-    if (doesExist.count !== 0){
+    if (Number(doesExist[0].count) !== 0){
       return res.status(400).json({message: "Employee already exists"})
     }
 
     const userExists = await empServices.userExists(emp_name)
 
-    console.log(userExists.count)
+    console.log(userExists[0].count)
 
-    if (userExists.count === 0){
+    if (Number(userExists[0].count) === 0){
       return res.status(400).json({message: "Name not in user database. Add as user first"})
     }
 
