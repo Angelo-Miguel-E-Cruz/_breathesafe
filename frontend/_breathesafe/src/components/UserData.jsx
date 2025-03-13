@@ -190,10 +190,15 @@ function UserData() {
 
           <label className="input input-bordered bg-background my-1 border-black"> Password
             <input type={showPassword ? "text" : "password"} className="grow" id='add_user_password'/>
+          </label>        
+          
+          <label className="fieldset-label mt-2">
+            <input type="checkbox" className="checkbox rounded-none" onChange={() => setShowPassword(!showPassword)}/>
+            Show Password
           </label>
 
           <label className="input input-bordered bg-background my-1 border-black"> User Role
-            <select defaultValue="User" className="select bg-transparent" id='add_user_password'>
+            <select defaultValue="User" className="select bg-transparent" id='add_user_role'>
               <option>User</option>
               <option>Admin</option>
             </select>
