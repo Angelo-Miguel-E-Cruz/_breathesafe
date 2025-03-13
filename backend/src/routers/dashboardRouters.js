@@ -44,9 +44,9 @@ router.put("/update_employee_readings", empController.updateEmployeeReadings)
 
 // DELETES
 
-router.delete('/employee_data/:id', empController.removeEmployee)
+router.delete('/employee_data/:id', empController.removeUser)
 
-router.delete('/users/:id', empController.removeEmployee)
+router.delete('/users/:id', empController.removeUser)
 
 
 export default router

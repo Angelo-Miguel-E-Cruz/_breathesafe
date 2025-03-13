@@ -116,7 +116,6 @@ export const removeEmployee = async (req, res) => {
 export const removeUser = async (req, res) => {
   try{
     const id = req.params.id
-    console.log(id)
     const removedEmployee = await empServices.removeUser(id)
     if (!removedEmployee)
       return res.status(404).json({message: "ID not found"})
