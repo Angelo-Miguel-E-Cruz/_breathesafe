@@ -193,7 +193,7 @@ function UserData() {
           </label>        
           
           <label className="fieldset-label mt-2">
-            <input type="checkbox" className="checkbox rounded-none" onChange={() => setShowPassword(!showPassword)}/>
+            <input type="checkbox" className="checkbox rounded-none text-black border-black" onChange={() => setShowPassword(!showPassword)}/>
             Show Password
           </label>
 
@@ -202,11 +202,6 @@ function UserData() {
               <option>User</option>
               <option>Admin</option>
             </select>
-          </label>
-
-          <label className="fieldset-label mt-2">
-            <input type="checkbox" className="checkbox rounded-none" onChange={() => setShowPassword(!showPassword)}/>
-            Show Password
           </label>
           
           <div className="modal-action justify-start">
