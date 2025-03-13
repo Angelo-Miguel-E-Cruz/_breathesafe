@@ -3,25 +3,22 @@ import axios from 'axios'
 import { MdEdit , MdDeleteForever, MdSearch  } from "react-icons/md"
 import EditEmpModal from './modals/EditEmpModal'
 
-function EmpData() {
+function UserData() {
   
   const [chartData, setChartData] = useState(null)
   const [firstData, setFirstData] = useState(null)
   const [editEmp, setEditEmp] = useState(null)
+  const [showPassword, setShowPassword] = useState(false)
   const [searchTerm, setSearchTerm] = useState('')
 
   const fetchData = async () => {
     try {
-      const response = await axios.get('https://breath-o9r9.onrender.com/api/employee_data')
+      const response = await axios.get('https://breath-o9r9.onrender.com/api/users')
    
-      const chartData = response.data.reduce((acc, { id, emp_id, device_id, emp_name, emp_gender, emp_age}) => {
+      const chartData = response.data.reduce((acc, { user_id, user_name, user_role}) => {
         acc.push({
-          id,
-          emp_id, 
-          device_id, 
-          emp_name, 
-          emp_gender, 
-          emp_age, 
+          name: user_name, 
+          role: user_role
         })
         return acc
       }, [])
@@ -63,19 +60,15 @@ function EmpData() {
 
   const handleAddEmployee = async() => {
 
-    const emp_name_field = document.getElementById("add_emp_name")
-    const emp_id_field = document.getElementById("add_emp_id")
-    const device_id_field = document.getElementById("add_device_id")
-    const emp_gender_field = document.getElementById("add_emp_gender")
-    const emp_age_field = document.getElementById("add_emp_age")
+    const user_name_field = document.getElementById("add_user_name")
+    const user_password_field = document.getElementById("add_user_password")
+    const user_role_field = document.getElementById("add_user_role")
+    
+    const user_name = user_name_field.value
+    const user_password = user_password_field.value
+    const user_role = user_role_field.value
 
-    const emp_name = emp_name_field.value
-    const emp_id = emp_id_field.value
-    const device_id = device_id_field.value
-    const emp_gender = emp_gender_field.value
-    const emp_age = emp_age_field.value
-
-    const data = {emp_name, emp_id, device_id, emp_gender, emp_age}
+    const data = {user_name, user_password, user_role, emp_gender, emp_age}
 
     console.log(data)
 
@@ -138,11 +131,8 @@ function EmpData() {
               <table className="table table-pin-rows w-screen">
                 <thead>
                   <tr className='shadow-black/50 shadow-sm w-fit text-white bg-blue_green text-center z-10'>
-                    <th>Employee Name</th>
-                    <th>Employee ID</th>
-                    <th>Device ID</th>
-                    <th>Employee Age</th>
-                    <th>Employee Gender</th>
+                    <th>User Name</th>
+                    <th>User Role</th>
                     <th>Edit Data</th>
                     <th>Remove Employee</th>
                   </tr>
@@ -153,11 +143,8 @@ function EmpData() {
                       const item = chartData[key]
                       return (
                         <tr key={key} className='text-center even:bg-blue_green/30'>
-                          <td>{item.emp_name}</td>
-                          <td>{item.emp_id}</td>
-                          <td>{item.device_id}</td>
-                          <td>{item.emp_age}</td>
-                          <td>{item.emp_gender}</td>
+                          <td>{item.name}</td>
+                          <td>{item.role}</td>
                           <td>
                               <button className='btn btn-ghost text-black font-bold text-2xl 
                                         hover:bg-transparent transition duration-300 ease-in-out' 
@@ -173,7 +160,7 @@ function EmpData() {
                     })
                   ) : (
                     <tr>
-                      <td colSpan="7" className="text-center">No data available</td>
+                      <td colSpan="4" className="text-center">No data available</td>
                     </tr>
                   )}
                 </tbody>
@@ -195,29 +182,28 @@ function EmpData() {
 
       <dialog id="addModal" className="modal">
         <div className="modal-box bg-background text-black border-black border-1">
-          <h3 className="font-bold text-lg mb-5">Add Employee</h3>
+          <h3 className="font-bold text-lg mb-5">Add User</h3>
 
           <label className="input input-bordered bg-background my-1 border-black"> Name
-            <input type="text" className="grow" id='add_emp_name'/>
+            <input type="text" className="grow" id='add_user_name'/>
           </label>
 
-          <label className="input input-bordered bg-background my-1 border-black"> Employee ID
-            <input type="text" className="grow" id='add_emp_id'/>
+          <label className="input input-bordered bg-background my-1 border-black"> Password
+            <input type={showPassword ? "text" : "password"} className="grow" id='add_user_password'/>
           </label>
 
-          <label className="input input-bordered bg-background my-1 border-black"> Device ID
-            <input type="text" className="grow" id='add_device_id'/>
+          <label className="input input-bordered bg-background my-1 border-black"> User Role
+            <select defaultValue="User" className="select bg-base-200" id='add_user_password'>
+              <option>User</option>
+              <option>Admin</option>
+            </select>
           </label>
 
-          <label className="input input-bordered bg-background my-1 border-black"> Employee Gender
-            <input type="text" className="grow" id='add_emp_gender'/>
-          </label>
-
-          <label className="input input-bordered bg-background my-1 border-black"> Employee Age
-            <input type="number" min="0" className="grow" id='add_emp_age'/>
+          <label className="fieldset-label mt-2">
+            <input type="checkbox" className="checkbox rounded-none" onChange={() => setShowPassword(!showPassword)}/>
+            Show Password
           </label>
           
-        
           <div className="modal-action justify-start">
             <form method="dialog">
             <button className='btn rounded-xl bg-darkblue hover:bg-blue_green mr-2' onClick={() => handleAddEmployee()}>Confirm</button>
@@ -230,4 +216,4 @@ function EmpData() {
   )
 }
 
-export default EmpData
+export default UserData
