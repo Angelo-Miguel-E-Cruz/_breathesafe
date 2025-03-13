@@ -5,10 +5,13 @@ import bcrypt from 'bcryptjs'
 // Register user
 export const regUser = async (req, res) => {
   try {
-    const { emp_name, emp_password, emp_role } = req.body
+    const { name, password, role } = req.body
+    
+    console.log(req.body)
+    console.log(name, password, role )
 
     // Check if user exists
-    const doesExist = await regServices.checkExists(emp_name)
+    const doesExist = await regServices.checkExists(name)
 
     // Notify if user exists
     if (doesExist != 0){
@@ -18,10 +21,10 @@ export const regUser = async (req, res) => {
     // Encrypt password
     const saltRound = 10
     const salt = await bcrypt.genSalt(saltRound)
-    const bcryptPassword = await bcrypt.hash(emp_password, salt)
+    const bcryptPassword = await bcrypt.hash(password, salt)
 
     // Register new user
-    const register = await regServices.registerUser(emp_name, bcryptPassword, emp_role)
+    const register = await regServices.registerUser(name, bcryptPassword, role)
     
     // Create user token
     const token = jwtGenerator(register[0].user_id)
