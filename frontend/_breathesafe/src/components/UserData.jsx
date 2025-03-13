@@ -14,6 +14,8 @@ function UserData() {
   const fetchData = async () => {
     try {
       const response = await axios.get('https://breath-o9r9.onrender.com/api/users')
+
+      console.log(response.data)
    
       const chartData = response.data.reduce((acc, { user_id, user_name, user_role}) => {
         acc.push({
@@ -68,7 +70,7 @@ function UserData() {
     const user_password = user_password_field.value
     const user_role = user_role_field.value
 
-    const data = {user_name, user_password, user_role, emp_gender, emp_age}
+    const data = {user_name, user_password, user_role}
 
     console.log(data)
 
@@ -193,7 +195,7 @@ function UserData() {
           </label>
 
           <label className="input input-bordered bg-background my-1 border-black"> User Role
-            <select defaultValue="User" className="select bg-base-200" id='add_user_password'>
+            <select defaultValue="User" className="select bg-transparent" id='add_user_password'>
               <option>User</option>
               <option>Admin</option>
             </select>
