@@ -120,7 +120,7 @@ export const removeEmployee = async(id) => {
 export const removeUser = async(id) => {
   try {
     const {rowCount} = await query(
-      'DELETE FROM users WHERE id = $1',
+      'DELETE FROM users WHERE user_id = $1',
       [id])
     return rowCount > 0
   } catch (error) {
