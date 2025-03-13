@@ -112,3 +112,16 @@ export const removeEmployee = async (req, res) => {
     res.status(500).json({message: "Server Error"})
   }
 }
+
+export const removeUser = async (req, res) => {
+  try{
+    const id = req.params.id
+    const removedEmployee = await empServices.removeUser(id)
+    if (!removedEmployee)
+      return res.status(404).json({message: "ID not found"})
+    res.status(200).send()
+  } catch (err){
+    console.error(err)
+    res.status(500).json({message: "Server Error"})
+  }
+}

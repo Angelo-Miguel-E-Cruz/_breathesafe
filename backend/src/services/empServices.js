@@ -15,7 +15,7 @@ export const fetchEmployeeData = async() => {
 
 export const fetchUserData = async() => {
   try {
-    const sql = 'SELECT user_id, user_name, user_role FROM users ORDER BY user_role, user_id ASC'
+    const sql = 'SELECT user_id, user_name, user_role FROM users ORDER BY user_role, user_name ASC'
     const {rows} = await query(sql, [])
     return rows 
   } catch (error) {
@@ -109,6 +109,18 @@ export const removeEmployee = async(id) => {
   try {
     const {rowCount} = await query(
       'DELETE FROM employees_tb WHERE id = $1',
+      [id])
+    return rowCount > 0
+  } catch (error) {
+    console.error("Database Query Error:", error)
+    throw error
+  }
+}
+
+export const removeUser = async(id) => {
+  try {
+    const {rowCount} = await query(
+      'DELETE FROM users WHERE id = $1',
       [id])
     return rowCount > 0
   } catch (error) {

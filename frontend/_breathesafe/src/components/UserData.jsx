@@ -70,8 +70,6 @@ function UserData() {
 
     const data = {name, password, role}
 
-    console.log(data)
-
     try {
       await axios.post(`https://breath-o9r9.onrender.com/auth/register`, data)
       const confirm = window.confirm("Added Successfully!")
@@ -82,11 +80,11 @@ function UserData() {
     }
   }
 
-  const handleRemoveEmployee = async (id) => {
+  const handleRemoveUser = async (id) => {
     const confirmDelete = window.confirm("Delete this item?")
     if (confirmDelete){
       try {
-        await axios.delete(`https://breath-o9r9.onrender.com/api/employee_data/${id}`)
+        await axios.delete(`https://breath-o9r9.onrender.com/api/users/${id}`)
       }catch (error) {
         console.log(error)
       }
@@ -153,7 +151,7 @@ function UserData() {
                           <td>
                             <button className='btn btn-ghost text-black font-bold text-2xl 
                                     hover:bg-transparent transition duration-300 ease-in-out' 
-                                    onClick={() => handleRemoveEmployee(item.id)}><MdDeleteForever /></button>
+                                    onClick={() => handleRemoveUser(item.id)}><MdDeleteForever /></button>
                           </td>
                         </tr>
                       )

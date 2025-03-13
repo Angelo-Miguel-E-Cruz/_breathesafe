@@ -7,9 +7,6 @@ export const regUser = async (req, res) => {
   try {
     const { name, password, role } = req.body
     
-    console.log(req.body)
-    console.log(name, password, role )
-
     // Check if user exists
     const doesExist = await regServices.checkExists(name)
 
