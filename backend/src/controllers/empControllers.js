@@ -31,6 +31,8 @@ export const addEmployee = async (req, res) => {
 
     const doesExist = await empServices.employeeExists(emp_name)
 
+    console.log(doesExist)
+
     if (doesExist !== 0){
       return res.status(400).json({message: "Employee already exists"})
     }
