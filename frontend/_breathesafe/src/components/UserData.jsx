@@ -15,9 +15,7 @@ function UserData() {
     try {
       const response = await axios.get('https://breath-o9r9.onrender.com/api/users')
 
-      console.log(response.data.result)
-   
-      const chartData = response.data.result.reduce((acc, { user_id, user_name, user_role}) => {
+      const chartData = response.data.result.reduce((acc, { user_name, user_role}) => {
         acc.push({
           name: user_name, 
           role: user_role
@@ -75,7 +73,7 @@ function UserData() {
     console.log(data)
 
     try {
-      await axios.post(`https://breath-o9r9.onrender.com/api/add_employee`, data)
+      await axios.post(`https://breath-o9r9.onrender.com/auth/register`, data)
       const confirm = window.confirm("Added Successfully!")
       fetchData()
     }catch (error) {
