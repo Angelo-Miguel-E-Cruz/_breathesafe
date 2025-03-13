@@ -64,9 +64,9 @@ function UserData() {
     const user_password_field = document.getElementById("add_user_password")
     const user_role_field = document.getElementById("add_user_role")
     
-    const user_name = user_name_field.value
-    const user_password = user_password_field.value
-    const user_role = user_role_field.value
+    const name = user_name_field.value
+    const password = user_password_field.value
+    const role = user_role_field.value
 
     const data = {user_name, user_password, user_role}
 
