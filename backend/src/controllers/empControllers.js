@@ -29,12 +29,24 @@ export const addEmployee = async (req, res) => {
   try {
     const { emp_name, emp_id, device_id, emp_gender, emp_age } = req.body
 
+    const doesExist = await empServices.employeeExists(emp_name)
+
+    if (doesExist !== 0){
+      return res.status(400).json({message: "Employee already exists"})
+    }
+
+    const userExists = await empServices.userExists(emp_name)
+
+    if (userExists === 0){
+      return res.status(400).json({message: "Name not in user database. Add as user first"})
+    }
+
     if (!emp_name || !emp_id || !device_id || !emp_gender || !emp_age){
-      return res.status(400).json({message: "Fill all data"})
+      return res.status(400).json({message: "Missing Credentials"})
     }
 
     const result = await empServices.addEmployee(emp_name, emp_id, device_id, emp_gender, emp_age)
-    res.status(201).json(result)
+    res.status(201).json({result: result})
   } catch (err) {
     console.error(err)
     res.status(500).json({ message: "Server Error" })

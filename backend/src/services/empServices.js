@@ -25,6 +25,28 @@ export const searchEmployee = async(searchTerm) => {
   }
 }
 
+export const employeeExists = async(emp_name) => {
+  try {
+    const sql = 'SELECT COUNT(*) FROM employees_tb WHERE emp_name = $1'
+    const {rows} = await query(sql, [emp_name])
+    return rows 
+  } catch (error) {
+    console.error("Database Query Error:", error)
+    throw error
+  }
+}
+
+export const userExists = async(emp_name) => {
+  try {
+    const sql = 'SELECT COUNT(*) FROM users WHERE user_name = $1 AND user_role = $2'
+    const {rows} = await query(sql, [emp_name, 'User'])
+    return rows 
+  } catch (error) {
+    console.error("Database Query Error:", error)
+    throw error
+  }
+}
+
 // POSTS
 
 export const addEmployee = async(emp_name, emp_id, device_id, emp_gender, emp_age) => {
