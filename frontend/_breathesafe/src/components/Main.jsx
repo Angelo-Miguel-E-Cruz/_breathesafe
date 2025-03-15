@@ -195,14 +195,20 @@ function Main() {
     <div className='absolute inset-0 bg-background h-screen pt-27 overflow-x-auto w-full'>
       <div className='grid grid-cols-2'>
         <NameCard employeeName={employeeName}/>
-        <div className='justify-self-end align-self-center h-fit rounded-box 
-                    border-black border-1 bg-skyblue text-black shadow-black/50 shadow-md
-                    max-lg:mr-4'>
-          <select defaultValue="Real-Time" className="select select-ghost h-16 focus:bg-transparent focus:text-black focus:rounded-box" 
-                  id='time_select'>
-            <option className='text-black'>Real-Time</option>
-            <option className='text-black'>5 Minutes</option>
-            <option className='text-black'>1 Hour</option>
+        <div className='justify-self-end align-self-center h-fit rounded-box border-lightblack border-1 bg-skyblue text-black shadow-black/50 shadow-md max-lg:mr-4'>
+          <select defaultValue="Real-Time" className="select select-ghost h-16 focus:bg-transparent focus:text-black focus:rounded-box" id='time_select'>
+            <option className={clsx(`text-black`,
+            {
+              'bg-skyblue' : timestampValue === "Real-Time"
+            })}>Real-Time</option>
+            <option className={clsx(`text-black`,
+            {
+              'bg-skyblue' : timestampValue === "5 Minutes"
+            })}>5 Minutes</option>
+            <option className={clsx(`text-black`,
+            {
+              'bg-skyblue' : timestampValue === "1 Hour"
+            })}>1 Hour</option>
           </select>
         </div>
       </div>
