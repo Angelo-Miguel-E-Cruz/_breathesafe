@@ -22,13 +22,13 @@ function Main() {
   
   const role  = window.localStorage.getItem("role")
 
-  const { emp } = useEmployee()
+  const { selectedEmployee } = useEmployee()
 
-  console.log(emp)
+  console.log(selectedEmployee)
 
-  let selectedEmp = role === "User" ? window.localStorage.getItem("employeeID") : emp
+  let selectedEmp = role === "User" ? window.localStorage.getItem("employeeID") : selectedEmployee
   
-  const selectedEmployee = selectedEmp;
+  const empSelected = selectedEmp;
   
 
   useEffect(() => {
@@ -99,8 +99,8 @@ function Main() {
 
   const fetchData = async () =>{
     try {
-      console.log("main emp id: ", selectedEmployee)
-      const response = await axios.get(`https://breath-o9r9.onrender.com/api/sensor_data?employeeID=${selectedEmployee}`)
+      console.log("main emp id: ", empSelected)
+      const response = await axios.get(`https://breath-o9r9.onrender.com/api/sensor_data?employeeID=${empSelected}`)
       return response.data
     }catch (error) {
      console.log(error.message) 
