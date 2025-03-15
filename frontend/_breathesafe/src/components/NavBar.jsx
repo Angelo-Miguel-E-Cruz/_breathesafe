@@ -57,11 +57,11 @@ function NavBar({role, setAuth}) {
             })}>
                 i
             </div>
-            <div className="dropdown-content bg-darkblue border-black border-1 p-4">
-              <h3 className="font-bold text-lg text-white mb-5">Category</h3>
+            <div className="dropdown-content bg-darkblue border-black w-80 border-1 p-4">
+              <h3 className="font-semibold text-[10px] text-white mb-5">Category</h3>
               <table className="table rounded-2xl">
                 <thead>
-                  <tr className='bg-blue_green text-white text-center border-black border-1 text-xs'>
+                  <tr className='bg-blue_green font-semibold text-white text-center border-black border-1 text-[10px]'>
                     <th>PM 2.5</th>
                     <th>PM 10</th>
                     <th>AQI</th>
@@ -79,7 +79,7 @@ function NavBar({role, setAuth}) {
                       item.Category === "Very Unhealthy" ? "bg-pink-900" :
                       item.Category === "Hazardous" ? "bg-red-950" :
                       "bg-white"}
-                      text-xs font-bold border-black border-1
+                      text-[10px] font-semibold
                     `}>
                       <td className='w-30 text-center'>{item.PM25}</td>
                       <td className='w-30 text-center'>{item.PM10}</td>
