@@ -1,9 +1,11 @@
 import React from 'react'
 import clsx from 'clsx'
 
-function SensorCard({ label, value, latestVal }) {
+function SensorCard({ label, value, latestVal, lastVal }) {
 
   const latestval = latestVal === undefined ? "" : latestVal.toLowerCase()
+
+  const difference = latestVal - lastVal
 
   return (
     <div className="card card-border border-lightblack bg-skyblue w-full text-lightgrey shadow-black/50 shadow-md max-lg:h-fit">
@@ -25,10 +27,22 @@ function SensorCard({ label, value, latestVal }) {
           <h2 className='text-start pb-2 font-bold text-3xl'>{value} µg/m³</h2>
           <p className='text-start pb-2 italic text-md text-lightgrey font-semibold'>{label} Concentration</p>
           <div className='flex'>
-            <div className='bg-lightred/30 rounded-md h-6 px-2'>
-              <p className='text-start pt-0.5 pb-1.5 font-bold text-lightred'>+5 µg/m³</p>
+            <div className={clsx('rounded-md h-fit p-2',
+              {
+                'bg-lightred/30': difference > 0,
+                'bg-brightgreen/30' : difference <= 0
+              }
+              )}>
+                <p className={clsx('text-start pt-0.5 pb-1.5 font-bold',
+              {
+                'text-lightred': difference > 0,
+                'text-brightgreen' : difference <= 0
+              }
+              )}>
+              {difference >= 0 ? "+" : "-"} {difference} µg/m³
+            </p>
             </div>
-            <p className='text-start text-grey/45 font-semi-bold italic pb-2 ml-1'>compared to the last hour</p>
+            <p className='text-start text-grey/45 font-semi-bold italic pb-2 ml-1'>compared to the last reading</p>
           </div>
         </div>
       </div>
