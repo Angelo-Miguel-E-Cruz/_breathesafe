@@ -4,7 +4,7 @@
 @theme {
   --color-background: #F0F0F0;
   --color-lightblue: #D3EEEE;
-  --color-skyblue: #a3d8d7;
+  --color-sky_blue: #a3d8d7;
   --color-darkblue: #2D2D2D;
   --color-blue_green: #27A19F;
   --color-darkblue_green: #126665;
@@ -13,5 +13,6 @@
   --color-grey: #393E44;
   --color-lightred: #800000;
   --color-lightblack: #CDD5D6;
+  --color-lightgray: #d6dddd;
 }
 
