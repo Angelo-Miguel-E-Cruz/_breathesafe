@@ -62,10 +62,10 @@ function NavBar({role, setAuth}) {
               <table className="table rounded-2xl">
                 <thead>
                   <tr className='bg-blue_green font-semibold text-white text-center border-black border-0 border-b-1 text-[10px] px-3 py-2.5'>
-                    <th>PM 2.5</th>
-                    <th>PM 10</th>
-                    <th>AQI</th>
-                    <th>Category</th>
+                    <th className='px-3 py-2.5'>PM 2.5</th>
+                    <th className='px-3 py-2.5'>PM 10</th>
+                    <th className='px-3 py-2.5'>AQI</th>
+                    <th className='px-3 py-2.5'>Category</th>
                   </tr>
                 </thead>
                 <tbody>
@@ -79,12 +79,12 @@ function NavBar({role, setAuth}) {
                       item.Category === "Very Unhealthy" ? "bg-pink-900" :
                       item.Category === "Hazardous" ? "bg-red-950" :
                       "bg-white"}
-                      text-[10px] font-semibold px-3 py-2.5
+                      text-[10px] font-semibold
                     `}>
-                      <td className='w-10 text-center'>{item.PM25}</td>
-                      <td className='w-10 text-center'>{item.PM10}</td>
-                      <td className='w-10 text-center'>{item.AQI}</td>
-                      <td className='w-50 text-center'>{item.Category}</td>
+                      <td className='w-10 px-3 py-2.5 text-center'>{item.PM25}</td>
+                      <td className='w-10 px-3 py-2.5 text-center'>{item.PM10}</td>
+                      <td className='w-10 px-3 py-2.5 text-center'>{item.AQI}</td>
+                      <td className='w-50 px-3 py-2.5 text-center'>{item.Category}</td>
                     </tr>
                   ))}
                 </tbody>
