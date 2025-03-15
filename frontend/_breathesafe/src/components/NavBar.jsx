@@ -91,7 +91,7 @@ function NavBar({role, setAuth}) {
 
           {/* Options Button */}
           {role === "Admin" ? 
-            <div className="dropdown dropdown-end">
+            <div className="dropdown dropdown-end z-20">
               <div tabIndex={0} role="button" className="btn rounded-xl mr-2 bg-darkblue shadow-black/50 shadow-md transition duration-300 ease-in-out">
                 <GiHamburgerMenu /> Options
               </div>
