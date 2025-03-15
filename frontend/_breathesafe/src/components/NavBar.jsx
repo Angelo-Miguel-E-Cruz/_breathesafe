@@ -49,7 +49,7 @@ function NavBar({role, setAuth}) {
         <div className='flex flex-row mr-1 items-center'>
           {/* Info Modal */}
           <div className="dropdown dropdown-end z-20">
-            <div tabIndex={0} onClick={()=>toggleModal()} role="button" className={clsx(`btn rounded-full w-8 h-8 text-lg center mr-2 shadow-black/50 shadow-md border-white border-2
+            <div tabIndex={0} onClick={()=>toggleModal()} role="button" className={clsx(`btn rounded-full w-8 h-8 text-lg center mr-[15px] shadow-black/50 shadow-md border-white border-2
             hover:bg-white hover:border-blue_green hover:text-blue_green transition duration-300 ease-in-out`,
             {
               'bg-blue_green' : !isOpen,
