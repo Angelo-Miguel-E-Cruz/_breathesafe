@@ -32,6 +32,9 @@ function AvgGraph({data, unit, specimen}) {
   const chartData = transformData(data)
   const referenceData = chartData[0]?.data.map((d) => ({ timestamp: d.timestamp })) || []
 
+  console.log(chartData)
+  console.log(referenceData)
+
   return (
     <div className="card card-border bg-skyblue w-full shadow-black/50 shadow-md">
       <div className="card-body p-4 pt-5">
