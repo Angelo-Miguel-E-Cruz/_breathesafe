@@ -129,7 +129,7 @@ function UserData() {
             <div className="h-100 overflow-x-auto w-full">
               <table className="table table-pin-rows w-full">
                 <thead>
-                  <tr className='shadow-black/50 shadow-sm w-fit text-white bg-blue_green text-center z-10'>
+                  <tr className='w-fit text-white bg-blue_green text-center z-10'>
                     <th>User Name</th>
                     <th>User Role</th>
                     <th>Edit Data</th>

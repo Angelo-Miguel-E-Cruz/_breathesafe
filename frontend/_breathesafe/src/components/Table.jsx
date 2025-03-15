@@ -11,7 +11,7 @@ function Table({tableData, title, type}) {
         <div className="h-65 overflow-x-auto">
           <table className="table table-pin-rows">
             <thead>
-              <tr className='shadow-black/50 shadow-sm w-100 bg-blue_green text-center text-white'>
+              <tr className='w-100 bg-blue_green text-center text-white'>
                 <th>Time</th>
                 <th>PM 2.5</th>
                 <th>PM 10</th>

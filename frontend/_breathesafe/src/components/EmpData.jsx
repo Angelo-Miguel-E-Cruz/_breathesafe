@@ -138,7 +138,7 @@ function EmpData() {
             <div className="h-100 overflow-x-auto w-full">
               <table className="table table-pin-rows w-screen">
                 <thead>
-                  <tr className='shadow-black/50 shadow-sm w-fit text-white bg-blue_green text-center'>
+                  <tr className='w-fit text-white bg-blue_green text-center'>
                     <th>Employee Name</th>
                     <th>Employee ID</th>
                     <th>Device ID</th>

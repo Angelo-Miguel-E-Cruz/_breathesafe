@@ -38,7 +38,7 @@ function AvgTable({data, unit, specimen}) {
         <div className='max-h-96 overflow-y-scroll'>
           <table className="table table-pin-rows">
             <thead>
-              <tr className='shadow-black/50 shadow-sm w-100 bg-blue_green text-center text-white'>
+              <tr className='w-100 bg-blue_green text-center text-white'>
                 {uniqueEmployees.map((emp) => (
                   <th key={emp}>{emp}</th>
                 ))}

@@ -78,7 +78,7 @@ function EmpTable() {
             <div className="h-100 overflow-x-auto w-full">
               <table className="table table-pin-rows w-screen">
                 <thead>
-                  <tr className='shadow-black/50 shadow-sm w-fit text-white bg-blue_green text-center'>
+                  <tr className='w-fit text-white bg-blue_green text-center'>
                     <th>Select Employee</th>
                     <th>Employee Name</th>
                     <th>Device ID</th>
