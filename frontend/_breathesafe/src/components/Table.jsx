@@ -8,7 +8,7 @@ function Table({tableData, title, type}) {
     <div className="card card-border border-lightblack bg-skyblue w-full shadow-black/50 shadow-md">
       <div className="card-body">
         <h1 className='text-lightgrey font-bold self-center text-3xl'>{title}</h1>
-        <div className="h-fit overflow-x-auto">
+        <div className="h-auto overflow-x-auto">
           <table className="table table-pin-rows">
             <thead>
               <tr className='w-100 bg-blue_green text-center text-white'>
