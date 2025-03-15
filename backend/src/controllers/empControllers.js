@@ -84,13 +84,14 @@ export const updateEmployeeReadings = async (req, res) => {
   try {
     const { employeeId, pm25, pm10, pm25Level, pm10Level, latest_time } = req.body
 
-    console.log(latest_time)
+    console.log(employeeId, pm25, pm10, pm25Level, pm10Level, latest_time)
 
     await empServices.updateEmployeeReadings(employeeId, pm25, pm10, pm25Level, pm10Level, latest_time)
 
     res.status(200).json({ message: "Employee readings updated successfully" })
   } catch (err) {
-    res.status(500).json({ message: "Server Error" })
+    console.error(err)
+    res.status(500).json({ message: "Server Error", error: err.message })
   }
 }
 

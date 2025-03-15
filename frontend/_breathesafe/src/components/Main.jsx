@@ -116,7 +116,10 @@ function Main() {
         latest_time: formattedTime
       })
     } catch (error) {
-      console.log(error.message)
+      console.log(error)
+      console.log(error.response)
+      console.log(error.response.data)
+      console.log(error.response.data.error)
     }
   }
 
