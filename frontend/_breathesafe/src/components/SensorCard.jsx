@@ -42,7 +42,7 @@ function SensorCard({ label, value, latestVal, latestReading, lastReading }) {
                 'text-lightred' : difference > 0
               }
               )}>
-              {difference > 0 ? "+" : ""} {difference.toFixed(2)} µg/m³
+              {difference > 0 ? "+" : ""} {difference.toFixed(0)} µg/m³
             </p>
             </div>
             <p className='text-start text-grey/45 font-semi-bold italic ml-1'>compared to the last reading</p>
