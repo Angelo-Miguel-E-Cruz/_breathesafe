@@ -127,13 +127,13 @@ function UserData() {
         <div className="card card-border bg-skyblue w-full text-black shadow-black/50 shadow-md mt-10">
           <div className="card-body">
             <div className="h-100 overflow-x-auto w-full">
-              <table className="table table-pin-rows w-screen">
+              <table className="table table-pin-rows w-full">
                 <thead>
                   <tr className='shadow-black/50 shadow-sm w-fit text-white bg-blue_green text-center z-10'>
                     <th>User Name</th>
                     <th>User Role</th>
                     <th>Edit Data</th>
-                    <th>Remove Employee</th>
+                    <th>Remove User</th>
                   </tr>
                 </thead>
                 <tbody>
@@ -144,12 +144,12 @@ function UserData() {
                         <tr key={key} className='text-center even:bg-blue_green/30'>
                           <td>{item.name}</td>
                           <td>{item.role}</td>
-                          <td>
+                          <td className='w-fit'>
                               <button className='btn btn-ghost text-black font-bold text-2xl 
                                         hover:bg-transparent transition duration-300 ease-in-out' 
                                         onClick={() => openEditModal(item)}> <MdEdit/> </button>
                           </td>
-                          <td>
+                          <td className='w-fit'>
                             <button className='btn btn-ghost text-black font-bold text-2xl 
                                     hover:bg-transparent transition duration-300 ease-in-out' 
                                     onClick={() => handleRemoveUser(item.id)}><MdDeleteForever /></button>
