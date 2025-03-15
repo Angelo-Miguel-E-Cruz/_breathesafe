@@ -106,7 +106,7 @@ function Main() {
   
   const updateEmployeeData = async() =>{
     try {
-      const response = await axios.put(`https://breath-o9r9.onrender.com/api/employee_data/update`,{
+      const response = await axios.put(`https://breath-o9r9.onrender.com/api/update_employee_data`,{
         employeeId: empSelected,
         pm25: sensorState.latestPM25.value, 
         pm10: sensorState.latestPM10.value, 

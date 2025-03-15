@@ -50,7 +50,7 @@ router.post('/employee_data/add', empController.addEmployee)
 
 router.put('/employee_data/:id', empController.updateEmployee)
 
-router.put("/employee_data/update", empController.updateEmployeeReadings)
+router.put("/update_employee_data", empController.updateEmployeeReadings)
 
 router.put('/users/:id', empController.updateUser)
 
