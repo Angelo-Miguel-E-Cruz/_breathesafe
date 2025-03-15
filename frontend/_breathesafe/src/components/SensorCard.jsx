@@ -11,9 +11,9 @@ function SensorCard({ label, value, latestVal, latestReading, lastReading }) {
   const difference = latestNum - lastNum
 
   return (
-    <div className="card card-border border-lightblack bg-skyblue w-full text-lightgrey shadow-black/50 shadow-md max-lg:h-fit">
+    <div className="card card-border border-lightblack bg-skyblue w-full text-lightgrey shadow-black/50 shadow-md h-fit">
       <div className="grid grid-cols-[max-content_1fr] card-body p-2 pl-5">
-        <div className={clsx('rounded-full w-25 h-25 self-center justify-self-center content-center',
+        <div className={clsx('rounded-full w-fit h-25 self-center justify-self-center content-center',
         {
           'bg-green-600': latestval === "good",
           'bg-amber-300' : latestval === "moderate",
