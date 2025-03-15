@@ -38,8 +38,8 @@ function NavBar({role, setAuth}) {
     <div className="flex navbar pl-0 pt-0 sticky top-0 z-10 mt-1.5 mx-2.5 w-[98.5%] h-24 bg-darkblue text-white rounded-2xl shadow-black/50 shadow-md">
       <div className="navbar-start mt-2.5">
         <img src='longlogo.png'/>
-        <div className='flex flex-col pl-5 mt-0.5 pt-[8px]'>
-          <a className="font-bold text-3xl ml-2">Air Quality Monitor</a>
+        <div className='flex flex-col pl-5'>
+          <a className="font-bold text-2xl ml-2">Air Quality Monitor</a>
           <Clock />
         </div>
         

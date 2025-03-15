@@ -32,9 +32,9 @@ function Clock() {
 
   return (
     <div className='mr-5 ml-2 flex'>
-      <h5 className='text-blue_green mr-2 flex-none'>{currentDay}</h5>
-      <h5 className='mr-5 flex-none'>{currentDate}</h5>
-      <h5 className='text-lightblue flex-none'>{currentTime}</h5>
+      <h5 className='text-blue_green mr-2 text-[13px] flex-none'>{currentDay}</h5>
+      <h5 className='mr-5 text-[13px] flex-none'>{currentDate}</h5>
+      <h5 className='text-lightblue text-[13px] flex-none'>{currentTime}</h5>
     </div>
   );
 }
