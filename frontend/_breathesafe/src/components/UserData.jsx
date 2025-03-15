@@ -17,9 +17,9 @@ function UserData() {
 
       const chartData = response.data.result.reduce((acc, { user_id, user_name, user_role}) => {
         acc.push({
-          id: user_id,
-          name: user_name, 
-          role: user_role
+          user_id,
+          user_name, 
+          user_role
         })
         return acc
       }, [])
@@ -142,8 +142,8 @@ function UserData() {
                       const item = chartData[key]
                       return (
                         <tr key={key} className='text-center even:bg-blue_green/30'>
-                          <td>{item.name}</td>
-                          <td>{item.role}</td>
+                          <td>{item.user_name}</td>
+                          <td>{item.user_role}</td>
                           <td className='w-fit'>
                               <button className='btn btn-ghost text-black font-bold text-2xl 
                                         hover:bg-transparent transition duration-300 ease-in-out' 
@@ -152,7 +152,7 @@ function UserData() {
                           <td className='w-fit'>
                             <button className='btn btn-ghost text-black font-bold text-2xl 
                                     hover:bg-transparent transition duration-300 ease-in-out' 
-                                    onClick={() => handleRemoveUser(item.id)}><MdDeleteForever /></button>
+                                    onClick={() => handleRemoveUser(item.user_id)}><MdDeleteForever /></button>
                           </td>
                         </tr>
                       )
