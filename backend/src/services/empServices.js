@@ -39,7 +39,7 @@ export const searchEmployee = async(searchTerm) => {
 export const searchUser = async(searchTerm) => {
   try {
     const {rows} = await query(
-      `SELECT * FROM users WHERE user_name ILIKE $1 OR user_role ILIKE $1 ORDER BY id ASC`,
+      `SELECT * FROM users WHERE user_name ILIKE $1 OR user_role ILIKE $1 ORDER BY user_id ASC`,
       [`%${searchTerm}%`])
     return rows
   } catch (error) {

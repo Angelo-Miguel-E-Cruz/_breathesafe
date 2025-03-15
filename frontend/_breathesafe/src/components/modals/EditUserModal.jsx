@@ -1,6 +1,9 @@
 import React from 'react'
 
 function EditUserModal({handleChangeFormData, handleUpdateUserInfo, editUser}) {
+
+  console.log(editUser)
+
   return (
     <dialog id="editModal" className="modal">
       <div className="modal-box bg-background text-black border-black border-1">
