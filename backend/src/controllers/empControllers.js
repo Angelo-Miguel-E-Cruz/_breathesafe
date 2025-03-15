@@ -86,10 +86,8 @@ export const updateEmployeeReadings = async (req, res) => {
 
     const pm25Num = Number(pm25) || 0; // Convert NaN to 0
     const pm10Num = Number(pm10) || 0;
-    const pm25LevelNum = Number(pm25Level) || 0;
-    const pm10LevelNum = Number(pm10Level) || 0;
     
-    await empServices.updateEmployeeReadings(employeeId, pm25Num, pm10Num, pm25LevelNum, pm10LevelNum, latest_time)
+    await empServices.updateEmployeeReadings(employeeId, pm25Num, pm10Num, pm25Level, pm10Level, latest_time)
 
     res.status(200).json({ message: "Employee readings updated successfully" })
   } catch (err) {
