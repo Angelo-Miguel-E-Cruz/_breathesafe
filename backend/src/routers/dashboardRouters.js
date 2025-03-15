@@ -56,7 +56,7 @@ router.put('/users/:id', empController.updateUser)
 
 // DELETES
 
-router.delete('/employee_data/:id', empController.removeUser)
+router.delete('/employee_data/:id', empController.removeEmployee)
 
 router.delete('/users/:id', empController.removeUser)
 
