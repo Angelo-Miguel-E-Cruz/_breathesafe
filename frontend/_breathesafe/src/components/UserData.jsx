@@ -32,7 +32,7 @@ function UserData() {
     }
   }
   
-  const addEmployee = () => {
+  const addUser = () => {
     document.getElementById('addModal').showModal()
   }
 
@@ -59,7 +59,7 @@ function UserData() {
     }
   }
 
-  const handleAddEmployee = async() => {
+  const handleAddUser = async() => {
 
     const user_name_field = document.getElementById("add_user_name")
     const user_password_field = document.getElementById("add_user_password")
@@ -82,7 +82,7 @@ function UserData() {
   }
 
   const handleRemoveUser = async (id) => {
-    const confirmDelete = window.confirm("Delete this item?")
+    const confirmDelete = window.confirm("Remove User?")
     if (confirmDelete){
       try {
         await axios.delete(`https://breath-o9r9.onrender.com/api/users/${id}`)
@@ -168,7 +168,7 @@ function UserData() {
           </div>
         </div>
 
-        <button className='btn btn-warning' onClick={addEmployee}>Add Employee</button>
+        <button className='btn btn-warning' onClick={addUser}>Add User</button>
 
         <label className="input input-bordered border-black text-black bg-background shadow-black/50 shadow-sm
                           flex items-center gap-2 absolute top-23 right-0">
@@ -205,7 +205,7 @@ function UserData() {
           
           <div className="modal-action justify-start">
             <form method="dialog">
-            <button className='btn rounded-xl bg-darkblue hover:bg-blue_green mr-2' onClick={() => handleAddEmployee()}>Confirm</button>
+            <button className='btn rounded-xl bg-darkblue hover:bg-blue_green mr-2' onClick={() => handleAddUser()}>Confirm</button>
               <button className="btn rounded-xl bg-darkblue hover:bg-blue_green">Close</button>
             </form>
           </div>

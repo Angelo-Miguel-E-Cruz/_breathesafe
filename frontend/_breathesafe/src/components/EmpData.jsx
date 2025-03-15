@@ -90,7 +90,7 @@ function EmpData() {
   }
 
   const handleRemoveEmployee = async (id) => {
-    const confirmDelete = window.confirm("Delete this item?")
+    const confirmDelete = window.confirm("Remove Employee?")
     if (confirmDelete){
       try {
         await axios.delete(`https://breath-o9r9.onrender.com/api/employee_data/${id}`)
