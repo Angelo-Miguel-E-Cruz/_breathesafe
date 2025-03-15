@@ -133,10 +133,11 @@ export const updateUser = async (req, res) => {
 export const removeEmployee = async (req, res) => {
   try{
     const id = req.params.id
+    console.log(id)
     const removedEmployee = await empServices.removeEmployee(id)
     if (!removedEmployee)
       return res.status(404).json({message: "ID not found"})
-    res.status(200).send()
+    res.status(200).json({message: `Removed Employee ${id}`})
   } catch (err){
     console.error(err)
     res.status(500).json({message: "Server Error"})
@@ -149,7 +150,7 @@ export const removeUser = async (req, res) => {
     const removedEmployee = await empServices.removeUser(id)
     if (!removedEmployee)
       return res.status(404).json({message: "ID not found"})
-    res.status(200).send()
+    res.status(200).json({message: `Removed Employee ${id}`})
   } catch (err){
     console.error(err)
     res.status(500).json({message: "Server Error"})
