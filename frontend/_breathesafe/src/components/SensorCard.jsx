@@ -5,8 +5,8 @@ function SensorCard({ label, value, latestVal, latestReading, lastReading }) {
 
   const latestval = latestVal === undefined ? "" : latestVal.toLowerCase()
 
-  const latestNum = Number(latestReading.toFixed(2))
-  const lastNum = Number(lastReading.toFixed(2))
+  const latestNum = Math.round(latestReading * 100) / 100
+  const lastNum = Math.round(lastReading * 100) / 100
 
   const difference = latestNum - lastNum
 
