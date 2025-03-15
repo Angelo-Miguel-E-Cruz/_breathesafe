@@ -5,14 +5,10 @@ function SensorCard({ label, value, latestVal, latestReading, lastReading }) {
 
   const latestval = latestVal === undefined ? "" : latestVal.toLowerCase()
 
-  console.log(latestVal, lastReading)
-
-  const latestNum = parseFloat(latestReading)
-  const lastNum = parseFloat(lastReading)
+  const latestNum = parseInt(latestReading)
+  const lastNum = parseInt(lastReading)
 
   const difference = latestNum - lastNum
-
-  console.log(typeof(latestReading), typeof(lastReading), difference, typeof(difference))
 
   return (
     <div className="card card-border border-lightblack bg-skyblue w-full text-lightgrey shadow-black/50 shadow-md max-lg:h-fit">
@@ -36,14 +32,14 @@ function SensorCard({ label, value, latestVal, latestReading, lastReading }) {
           <div className='flex'>
             <div className={clsx('rounded-md h-fit p-2',
               {
-                'bg-brightgreen/30': difference > 0,
-                'bg-lightred/30' : difference <= 0
+                'bg-brightgreen/30': difference <= 0,
+                'bg-lightred/30' : difference > 0
               }
               )}>
                 <p className={clsx('text-start pt-0.5 pb-1.5 font-bold',
               {
-                'text-brightgreen': difference > 0,
-                'text-lightred' : difference <= 0
+                'text-brightgreen': difference <= 0,
+                'text-lightred' : difference > 0
               }
               )}>
               {difference > 0 ? "+" : ""} {difference.toFixed(0)} µg/m³
