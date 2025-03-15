@@ -45,7 +45,7 @@ function AvgGraph({data, unit, specimen}) {
         </h1>
         <div className='max-h-96 overflow-y-scroll'>
           <ResponsiveContainer width="100%" height={384}>
-            <LineChart data={referenceData}>
+            <LineChart data={chartData}>
               <XAxis dataKey="timestamp" />
               <YAxis domain={[0, 'dataMax']} />
               <Tooltip contentStyle={{ color: "white", backgroundColor: "black" }} />

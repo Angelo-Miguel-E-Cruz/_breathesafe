@@ -103,7 +103,7 @@ function EmpTable() {
                                           'avatar-online' : Number(selectedEmployee) === Number(item.id),
                                           'avatar-offline before:bg-grey' : Number(selectedEmployee) !== Number(item.id)
                                         })} 
-                                          onClick={() => handleSelect(item.id)}>
+                                          onClick={() => handleSelect(item.device_id)}>
                               <MdPerson/>
                             </Link>
                           </td>

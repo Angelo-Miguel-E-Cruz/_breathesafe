@@ -137,7 +137,7 @@ export const updateUserData = async(uid, user_name, user_role, ) => {
 export const removeEmployee = async(id) => {
   try {
     const {rowCount} = await query(
-      'DELETE FROM employees_tb WHERE id = $1',
+      'DELETE FROM employees_tb WHERE device_id = $1',
       [id])
     return rowCount > 0
   } catch (error) {
