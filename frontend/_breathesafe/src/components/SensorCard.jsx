@@ -5,8 +5,8 @@ function SensorCard({ label, value, latestVal, latestReading, lastReading }) {
 
   const latestval = latestVal === undefined ? "" : latestVal.toLowerCase()
 
-  const latestNum = parseInt(latestReading)
-  const lastNum = parseInt(lastReading)
+  const latestNum = Number(latestReading.toFixed(2))
+  const lastNum = Number(lastReading.toFixed(2))
 
   const difference = latestNum - lastNum
 
@@ -42,7 +42,7 @@ function SensorCard({ label, value, latestVal, latestReading, lastReading }) {
                 'text-lightred' : difference > 0
               }
               )}>
-              {difference > 0 ? "+" : ""} {difference.toFixed(0)} µg/m³
+              {difference > 0 ? "+" : ""} {difference.toFixed(2)} µg/m³
             </p>
             </div>
             <p className='text-start text-grey/45 font-semi-bold italic ml-1'>compared to the last reading</p>
