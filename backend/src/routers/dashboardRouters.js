@@ -18,9 +18,9 @@ router.get('/sensor_data/5m_avg', sensorController.get5mAvg)
 
 router.get('/sensor_data/1hr_avg', sensorController.get1hrAvg)
 
-router.get('/sensor_data/5m_avg/graph', sensorController.get5mGraph)
+router.get('/5m_avg/graph', sensorController.get5mGraph)
 
-router.get('/sensor_data/1hr_avg/graph', sensorController.get1hrGraph)
+router.get('/1hr_avg/graph', sensorController.get1hrGraph)
 
 // EMPLOYEES & USERS
 
@@ -38,9 +38,9 @@ router.get('/users/search', empController.searchUser)
 
 router.post('/add_sensor_data', sensorController.addSensorData)
 
-router.post('/sensor_data/5m_avg/add', sensorController.add5mAverage)
+router.post('/5m_avg/add', sensorController.add5mAverage)
 
-router.post('/sensor_data/1hr_avg/add', sensorController.add1hrAverage)
+router.post('/1hr_avg/add', sensorController.add1hrAverage)
 
 // EMPLOYEES & USERS
 

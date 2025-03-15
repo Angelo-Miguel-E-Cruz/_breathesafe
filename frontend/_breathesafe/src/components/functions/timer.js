@@ -62,7 +62,7 @@ export const onTimerEnd = async(durationInSeconds) => {
 
 const update5mAvg = async(data) => {
   try {
-    const result = await axios.post(`https://breath-o9r9.onrender.com/api/sensor_data/5m_avg/add'`, data)
+    const result = await axios.post(`https://breath-o9r9.onrender.com/api/5m_avg/add'`, data)
   } catch (error) {
     console.log(error)
   }
@@ -70,7 +70,7 @@ const update5mAvg = async(data) => {
 
 const update1hrAvg = async(data) => {
   try {
-    const result = await axios.post(`https://breath-o9r9.onrender.com/api/sensor_data/1hr_avg/add`, data)
+    const result = await axios.post(`https://breath-o9r9.onrender.com/api/1hr_avg/add`, data)
   } catch (error) {
     console.log(error)
   }

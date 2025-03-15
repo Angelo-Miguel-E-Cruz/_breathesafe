@@ -88,7 +88,7 @@ export const updateEmployeeReadings = async (req, res) => {
     const pm10Num = Number(pm10) || 0;
     const pm25LevelNum = Number(pm25Level) || 0;
     const pm10LevelNum = Number(pm10Level) || 0;
-    console.log("Executing query with:", pm25Num, pm10Num, pm25LevelNum, pm10LevelNum, latest_time, employeeId)
+    
     await empServices.updateEmployeeReadings(employeeId, pm25Num, pm10Num, pm25LevelNum, pm10LevelNum, latest_time)
 
     res.status(200).json({ message: "Employee readings updated successfully" })
