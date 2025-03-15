@@ -44,7 +44,7 @@ function AvgGraph({data, unit, specimen}) {
           <ResponsiveContainer width="100%" height={384}>
             <LineChart data={referenceData}>
               <XAxis dataKey="timestamp" />
-              <YAxis domain={[0, (dataMax) => dataMax + 1]} />
+              <YAxis domain={[0, 'dataMax']} />
               <Tooltip contentStyle={{ color: "white", backgroundColor: "black" }} />
               <Legend />
 
