@@ -66,7 +66,7 @@ function NavBar({role, setAuth}) {
                 <MdDashboard  /> Dashboard
               </div>
               <ul tabIndex={0}
-                className="menu menu-sm dropdown-content bg-darkblue rounded-box z-1 mt-3 w-52 p-2 shadow-black/50 shadow-md">
+                className="menu menu-sm dropdown-content bg-darkblue rounded-box z-1 mt-1 w-52 p-2 shadow-black/50 shadow-md">
                 <li>
                   <NavLink to="/admin" end className={({isActive}) =>
                     isActive ? 'bg-blue_green' : 'bg-darkblue hover:bg-white/20'}>
@@ -96,7 +96,7 @@ function NavBar({role, setAuth}) {
                 <GiHamburgerMenu /> Options
               </div>
               <ul tabIndex={0}
-                className="menu menu-sm dropdown-content bg-darkblue rounded-box z-20 mt-3 w-52 p-2 shadow-black/50 shadow-md">
+                className="menu menu-sm dropdown-content bg-darkblue rounded-box z-20 mt-1 w-52 p-2 shadow-black/50 shadow-md">
                 <li>
                   <NavLink to="/records" className={({isActive}) =>
                     isActive ? 'bg-blue_green' : 'bg-darkblue hover:bg-white/20'}>
