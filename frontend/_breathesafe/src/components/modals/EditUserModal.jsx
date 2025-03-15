@@ -10,8 +10,11 @@ function EditUserModal({handleChangeFormData, handleUpdateUserInfo, editUser}) {
           <input type="text" className="grow" id='user_name' value={editUser?.name || ""} onChange={handleChangeFormData} />
         </label>
 
-        <label className="input input-bordered bg-background my-1 border-black"> Role
-          <input type="text" className="grow" id='user_id' value={editUser?.role || ""} onChange={handleChangeFormData} />
+        <label className="input input-bordered bg-background my-1 border-black"> User Role
+          <select defaultValue={editUser?.role || ""} className="select bg-transparent" id='user_role' onChange={handleChangeFormData}>
+            <option>User</option>
+            <option>Admin</option>
+          </select>
         </label>
       
         <div className="modal-action justify-start  ">
