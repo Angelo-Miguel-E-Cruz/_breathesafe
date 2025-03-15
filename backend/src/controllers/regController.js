@@ -38,13 +38,15 @@ export const logIn = async (req, res) => {
   try {
     const { name, password } = req.body
     // Check if user exists
-    const doesExist = await regServices.checkExistsEmployee(name)
-
+    let doesExist = await regServices.checkExistsEmployee(name)
+    const doesExistAdmin = await regServices.checkExistsAdmin(name)
+    
     // Notify if user does not exist
     if (doesExist == 0){
-      const doesExistAdmin = await regServices.checkExistsAdmin(name)
       if (doesExistAdmin == 0){
         return res.status(401).json({message: "User does not Exist"})
+      } else {
+        doesExist = doesExistAdmin
       }
     }
 
