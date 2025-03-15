@@ -29,7 +29,7 @@ function SensorCard({ label, value, latestVal, latestReading, lastReading }) {
         <div className='content-center pl-2'>
           <h2 className='text-start pb-2 font-bold text-3xl'>{value} µg/m³</h2>
           <p className='text-start pb-2 italic text-md text-lightgrey font-semibold'>{label} Concentration</p>
-          <div className='flex items-center'>
+          <div className='flex place-items-center'>
             <div className={clsx('rounded-md h-fit p-2',
               {
                 'bg-brightgreen/30': difference <= 0,
