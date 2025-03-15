@@ -3,7 +3,7 @@ import Clock from './Clock'
 import clsx from 'clsx'
 import { NavLink, useLocation } from 'react-router-dom'
 import { RiHome9Fill  } from "react-icons/ri"
-import { IoNewspaper, IoBarChartSharp, IoSettingsSharp  } from "react-icons/io5"
+import { IoNewspaper, IoBarChartSharp  } from "react-icons/io5"
 import { IoMdSettings } from "react-icons/io"
 import { RiSurgicalMaskFill } from "react-icons/ri"
 import { GiHamburgerMenu } from "react-icons/gi"
@@ -96,7 +96,7 @@ function NavBar({role, setAuth}) {
                 <GiHamburgerMenu /> Options
               </div>
               <ul tabIndex={0}
-                className="menu menu-sm relative dropdown-content bg-darkblue rounded-box h-auto z-1000 mt-3 p-2 shadow-black/50 shadow-md">
+                className="menu menu-sm dropdown-content bg-darkblue rounded-box z-1 mt-3 w-52 p-2 shadow-black/50 shadow-md">
                 <li>
                   <NavLink to="/records" className={({isActive}) =>
                     isActive ? 'bg-blue_green' : 'bg-darkblue hover:bg-white/20'}>
@@ -104,25 +104,16 @@ function NavBar({role, setAuth}) {
                   </NavLink>
                 </li>
                 <li>
-                  <div className="dropdown dropdown-end">
-                    <div tabIndex={0} role="button">
-                      <IoSettingsSharp  /> Manage Accounts
-                    </div>
-                    <ul tabIndex={0} className="menu menu-sm relative dropdown-content bg-darkblue rounded-box z-1000 mt-3 p-2">
-                      <li>
-                        <NavLink to="/employees" className={({isActive}) =>
-                          isActive ? 'bg-blue_green' : 'bg-darkblue hover:bg-white/20'}>
-                          <RiSurgicalMaskFill /> Employees
-                        </NavLink>
-                      </li>
-                      <li>
-                        <NavLink to="/users" className={({isActive}) =>
-                          isActive ? 'bg-blue_green' : 'bg-darkblue hover:bg-white/20'}>
-                          <MdManageAccounts /> Users
-                        </NavLink>
-                      </li>
-                    </ul>
-                  </div>
+                  <NavLink to="/employees" className={({isActive}) =>
+                    isActive ? 'bg-blue_green' : 'bg-darkblue hover:bg-white/20'}>
+                    <RiSurgicalMaskFill /> Employees
+                  </NavLink>
+                </li>
+                <li>
+                  <NavLink to="/users" className={({isActive}) =>
+                    isActive ? 'bg-blue_green' : 'bg-darkblue hover:bg-white/20'}>
+                    <MdManageAccounts /> Users
+                  </NavLink>
                 </li>
                 <li>
                   <button onClick={() => logOut()} className='bg-darkblue hover:bg-white/20'>
