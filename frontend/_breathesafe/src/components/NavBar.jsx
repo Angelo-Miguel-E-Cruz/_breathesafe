@@ -57,7 +57,7 @@ function NavBar({role, setAuth}) {
             })}>
                 i
             </div>
-            <div className="dropdown-content bg-darkblue border-black w-80 border-1 p-4">
+            <div className="dropdown-content bg-darkblue border-black w-96 border-1 p-4">
               <h3 className="font-semibold text-[10px] text-white mb-5">Category</h3>
               <table className="table rounded-2xl">
                 <thead>
@@ -81,9 +81,9 @@ function NavBar({role, setAuth}) {
                       "bg-white"}
                       text-[10px] font-semibold
                     `}>
-                      <td className='w-10 px-3 py-2.5 text-center'>{item.PM25}</td>
-                      <td className='w-10 px-3 py-2.5 text-center'>{item.PM10}</td>
-                      <td className='w-10 px-3 py-2.5 text-center'>{item.AQI}</td>
+                      <td className='w-30 px-3 py-2.5 text-center'>{item.PM25}</td>
+                      <td className='w-30 px-3 py-2.5 text-center'>{item.PM10}</td>
+                      <td className='w-30 px-3 py-2.5 text-center'>{item.AQI}</td>
                       <td className='w-50 px-3 py-2.5 text-center'>{item.Category}</td>
                     </tr>
                   ))}
