@@ -4,7 +4,6 @@ import SensorChart from './SensorChart'
 import NameCard from './NameCard'
 import Table from './Table'
 import Alerts from './Alerts'
-import clsx from 'clsx'
 import axios from 'axios'
 import formatTimestamp from './functions/formatTimestamp'
 import { useEmployee } from './contexts/EmployeeContext'
@@ -194,9 +193,7 @@ function Main() {
   
   return (
     <div className='absolute inset-0 bg-background h-screen pt-30 px-[42px] overflow-y-scroll w-full'>
-      <div className={clsx('grid grid-cols-2',{
-        'mb-5' : role !== "Admin"
-      })}>
+      <div className='grid grid-cols-2 mb-5' >
         <NameCard employeeName={employeeName}/>
         <div className='justify-self-end align-self-center h-fit rounded-box border-lightblack border-1 bg-sky_blue text-black shadow-black/50 shadow-md max-lg:mr-4'>
           <select defaultValue="Real-Time" className="select select-ghost h-10 w-38 bg-sky_blue focus:bg-transparent focus:text-black focus:rounded-box focus-within:outline-0" id='time_select'>
