@@ -20,7 +20,7 @@ function AvgTable({data, unit, specimen}) {
           : null
       })
       return row
-    })
+    }).reverse()
   
     return { tableData, uniqueEmployees }
   }
