@@ -7,6 +7,9 @@ function SensorCard({ label, value, latestVal, lastVal }) {
 
   console.log(latestVal, lastVal)
 
+  const latestNum = parseFloat(latestVal)
+  const lastNum = parseFloat(lastVal)
+
   const difference = latestNum - lastNum
 
   console.log(typeof(latestVal), typeof(lastVal), difference, typeof(difference))
