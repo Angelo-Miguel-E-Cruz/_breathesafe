@@ -28,20 +28,14 @@ const Login = () => {
 
       const user = response.data
 
-      console.log(response)
-      console.log(user)
-
       if (response.status === 201){
         window.localStorage.setItem("token", user.token)
         window.localStorage.setItem("role", user.role)
         if(user.role === "Admin"){
-          console.log("from login.jsx: ", user.role, typeof(user.role))
           setSelectedEmployee(1)
           window.location.href = "/admin";
         }
         else if(user.role === "User"){
-          console.log("from login.jsx: ", user.role, typeof(user.role))
-          console.log("employee id: ", user.id)
           setSelectedEmployee(user.id)
           window.location.href = "/dashboard";
         }

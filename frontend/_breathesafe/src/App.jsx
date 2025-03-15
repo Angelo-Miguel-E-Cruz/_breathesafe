@@ -25,8 +25,8 @@ function App() {
 
   return (
     <main>
-      <EmployeeProvider>
-        <BrowserRouter>
+      <BrowserRouter>
+        <EmployeeProvider>
           <Routes>
             {!isAuthenticated && (
               <>
@@ -49,8 +49,8 @@ function App() {
 
             <Route path="*" element={<Navigate to="/" />} />
           </Routes>
-        </BrowserRouter>
-      </EmployeeProvider>
+        </EmployeeProvider>
+      </BrowserRouter>
     </main>
   )
 }
