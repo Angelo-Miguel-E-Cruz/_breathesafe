@@ -49,7 +49,7 @@ function NavBar({role, setAuth}) {
         <div className='flex flex-row mr-1 items-center'>
           {/* Info Modal */}
           <div className="dropdown dropdown-end z-20">
-            <div tabIndex={0} onClick={()=>toggleModal()} role="button" className={clsx(`btn rounded-full w-8 h-8 text-lg center mr-2 shadow-black/50 shadow-md 
+            <div tabIndex={0} onClick={()=>toggleModal()} role="button" className={clsx(`btn rounded-full w-8 h-8 text-lg center mr-2 shadow-black/50 shadow-md border-white border-2
             hover:bg-white/20 transition duration-300 ease-in-out`,
             {
               'bg-blue_green' : !isOpen,
@@ -57,7 +57,7 @@ function NavBar({role, setAuth}) {
             })}>
                 i
             </div>
-            <div className="dropdown-content bg-darkblue border-black border-1">
+            <div className="dropdown-content bg-darkblue border-black border-1 p-4">
               <h3 className="font-bold text-lg text-white mb-5">Category</h3>
               <table className="table rounded-2xl">
                 <thead>
@@ -92,9 +92,6 @@ function NavBar({role, setAuth}) {
             </div>
           </div>
           
-          <button className={clsx(
-          )} > i </button>
-
           {/* Dashboard/Home Button */}
           {role === "Admin" ? 
             <div className="dropdown dropdown-end z-20">
@@ -120,12 +117,7 @@ function NavBar({role, setAuth}) {
                 </li>
               </ul>
             </div> 
-            :  
-            <NavLink to='/dashboard' className={({isActive}) => 
-              `btn rounded-xl mr-2 shadow-black/50 shadow-md 
-              transition duration-300 ease-in-out ${
-              isActive?  'bg-blue_green' : 'bg-darkblue hover:bg-white/20'}`}> <RiHome9Fill /> Home
-            </NavLink>
+            : <></>
           }
 
           {/* Options Button */}
@@ -162,25 +154,9 @@ function NavBar({role, setAuth}) {
               </ul>
             </div> 
             :  
-            <div className="dropdown dropdown-end">
-              <div tabIndex={0} role="button" className="btn rounded-xl mr-2 bg-darkblue shadow-black/50 shadow-md transition duration-300 ease-in-out">
-                <GiHamburgerMenu /> Options
-              </div>
-              <ul tabIndex={0}
-                className="menu menu-sm dropdown-content bg-darkblue rounded-box z-1 mt-3 w-52 p-2 shadow-black/50 shadow-md">
-                <li>
-                  <NavLink to="/records" className={({isActive}) =>
-                    isActive ? 'bg-blue_green' : 'bg-darkblue hover:bg-white/20'}>
-                    <IoMdSettings  /> Change Password
-                  </NavLink>
-                </li>
-                <li>
-                  <button onClick={() => logOut()} className='bg-darkblue hover:bg-white/20'>
-                    <MdLogout /> Logout
-                  </button>
-                </li>
-              </ul>
-            </div> 
+            <button onClick={() => logOut()} className='btn rounded-xl mr-2 bg-blue_green shadow-black/50 shadow-md transition duration-300 ease-in-out hover:bg-darkblue_green'>
+              <MdLogout /> Logout
+            </button>
           }
         </div>
       </div>

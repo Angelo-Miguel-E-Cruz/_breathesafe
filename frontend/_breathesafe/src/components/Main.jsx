@@ -214,9 +214,13 @@ function Main() {
             <SensorCard label="PM 10" value={sensorState.latestPM10.value} latestVal={sensorState.latestPM10Level.value}/>
           </div>
           <div className='grid grid-rows-2 max-lg:grid-rows-1 max-lg:grid-cols-2 max-lg:gap-2'>
-            {/* TODO: ADD CHECK IF LEVEL CHANGED */}
-            <Alerts latestVal={sensorState.latestPM25Level.value} sensorType="PM 2.5" willPrint={new25Alert} setPrint={setNew25Alert}/>
-            <Alerts latestVal={sensorState.latestPM10Level.value} sensorType="PM 10" willPrint={new10Alert} setPrint={setNew10Alert}/>
+            {
+              role === "Admin" ? 
+              <>
+                <Alerts latestVal={sensorState.latestPM25Level.value} sensorType="PM 2.5" willPrint={new25Alert} setPrint={setNew25Alert}/>
+                <Alerts latestVal={sensorState.latestPM10Level.value} sensorType="PM 10" willPrint={new10Alert} setPrint={setNew10Alert}/>
+              </> : <></>
+            }
           </div>
         </div>
         <div className='grid grid-rows-2 gap-2 max-lg:ml-4 max-lg:grid-rows-1 max-lg:grid-cols-2'>
