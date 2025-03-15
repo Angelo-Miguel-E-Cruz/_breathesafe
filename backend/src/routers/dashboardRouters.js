@@ -6,41 +6,49 @@ const router = express.Router()
 
 // GETS
 
+// SENSORS
+
 router.get('/sensor_data', sensorController.getSensorData)
 
 router.get('/sensor_data/all', sensorController.getAllSensorData)
+
+router.get('/sensor_data/range', sensorController.getDatainRange)
+
+router.get('/sensor_data/5m_avg', sensorController.get5mAvg)
+
+router.get('/sensor_data/1hr_avg', sensorController.get1hrAvg)
+
+router.get('/sensor_data/5m_avg/graph', sensorController.get5mGraph)
+
+router.get('/sensor_data/1hr_avg/graph', sensorController.get1hrGraph)
+
+// EMPLOYEES & USERS
 
 router.get('/employee_data', empController.getEmployeeData)
 
 router.get('/employee_data/search', empController.searchEmployee)
 
-router.get('/interval_data', sensorController.getDatainRange)
-
-router.get('/5m_avg', sensorController.get5mAvg)
-
-router.get('/1hr_avg', sensorController.get1hrAvg)
-
-router.get('/5m_avg/graph', sensorController.get5mGraph)
-
-router.get('/1hr_avg/graph', sensorController.get1hrGraph)
-
 router.get('/users', empController.getUserData)
 
 // POSTS
 
+// SENSORS
+
 router.post('/add_sensor_data', sensorController.addSensorData)
 
-router.post('/add_employee', empController.addEmployee)
+router.post('/sensor_data/5m_avg/add', sensorController.add5mAverage)
 
-router.post('/avg_5m', sensorController.add5mAverage)
+router.post('/sensor_data/1hr_avg/add', sensorController.add1hrAverage)
 
-router.post('/avg_1hr', sensorController.add1hrAverage)
+// EMPLOYEES & USERS
+
+router.post('/employee_data/add', empController.addEmployee)
 
 // PUTS
 
 router.put('/employee_data/:id', empController.updateEmployee)
 
-router.put("/update_employee_readings", empController.updateEmployeeReadings)
+router.put("/employee_data/update", empController.updateEmployeeReadings)
 
 // DELETES
 

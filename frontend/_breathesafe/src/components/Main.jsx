@@ -71,7 +71,7 @@ function Main() {
 
   const fetch5mAvg = async () => {
     try {
-      const response = await axios.get(`https://breath-o9r9.onrender.com/api/5m_avg?employeeID=${selectedEmployee}`)
+      const response = await axios.get(`https://breath-o9r9.onrender.com/api/sensor_data/5m_avg?employeeID=${selectedEmployee}`)
       return response.data
     } catch (error) {
       console.log(error.message) 
@@ -80,7 +80,7 @@ function Main() {
 
   const fetch1hrAvg = async () => {
     try {
-      const response = await axios.get(`https://breath-o9r9.onrender.com/api/1hr_avg?employeeID=${selectedEmployee}`)
+      const response = await axios.get(`https://breath-o9r9.onrender.com/api/sensor_data/1hr_avg?employeeID=${selectedEmployee}`)
       return response.data
     } catch (error) {
       console.log(error.message) 
@@ -97,6 +97,21 @@ function Main() {
     }
   }
   
+  const updateEmployeeData = async() =>{
+    try {
+      const response = await axios.put(`https://breath-o9r9.onrender.com/api/employee_data/update`,{
+        employeeId: selectedEmployee,
+        pm25: sensorState.latestPM25.value, 
+        pm10: sensorState.latestPM10.value, 
+        pm25Level: sensorState.latestPM25Level.value,
+        pm10Level: sensorState.latestPM10Level.value,
+        latest_time: formattedTime
+      })
+    } catch (error) {
+      console.log(error.message)
+    }
+  }
+
   const setLatest = (sensorData) => {
     const latestReading = sensorData[sensorData.length - 1]
     setFormattedTime(formatTimestamp(latestReading.timestamp))
@@ -156,21 +171,6 @@ function Main() {
     }, [])
 
     setAQIChartData(aqiChartData)
-  }
-
-  const updateEmployeeData = async() =>{
-    try {
-      const response = await axios.put(`https://breath-o9r9.onrender.com/api/update_employee_readings`,{
-        employeeId: selectedEmployee,
-        pm25: sensorState.latestPM25.value, 
-        pm10: sensorState.latestPM10.value, 
-        pm25Level: sensorState.latestPM25Level.value,
-        pm10Level: sensorState.latestPM10Level.value,
-        latest_time: formattedTime
-      })
-    } catch (error) {
-      console.log(error.message)
-    }
   }
 
   const getTimestamp = () => {

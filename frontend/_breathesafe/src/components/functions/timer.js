@@ -34,7 +34,7 @@ export const onTimerEnd = async(durationInSeconds) => {
   if (!interval) return null
 
   try {
-    const response = await axios.get(`https://breath-o9r9.onrender.com/api/interval_data`,  {
+    const response = await axios.get(`https://breath-o9r9.onrender.com/api/sensor_data/range`,  {
       params: { interval }
     })
     const results = response.data.result[0].result
@@ -62,7 +62,7 @@ export const onTimerEnd = async(durationInSeconds) => {
 
 const update5mAvg = async(data) => {
   try {
-    const result = await axios.post(`https://breath-o9r9.onrender.com/api/avg_5m`, data)
+    const result = await axios.post(`https://breath-o9r9.onrender.com/api/sensor_data/5m_avg/add'`, data)
   } catch (error) {
     console.log(error)
   }
@@ -70,7 +70,7 @@ const update5mAvg = async(data) => {
 
 const update1hrAvg = async(data) => {
   try {
-    const result = await axios.post(`https://breath-o9r9.onrender.com/api/avg_1hr`, data)
+    const result = await axios.post(`https://breath-o9r9.onrender.com/api/sensor_data/1hr_avg/add`, data)
   } catch (error) {
     console.log(error)
   }

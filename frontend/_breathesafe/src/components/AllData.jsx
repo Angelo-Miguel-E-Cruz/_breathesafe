@@ -14,7 +14,7 @@ function AllData() {
 
     const fetchData = async () => {
       try {
-        const response = await axios.get(`https://breath-o9r9.onrender.com/api/5m_avg/graph`)
+        const response = await axios.get(`https://breath-o9r9.onrender.com/api/sensor_data/5m_avg/graph`)
         const sensorData = response.data
         
         setCharts(sensorData)
