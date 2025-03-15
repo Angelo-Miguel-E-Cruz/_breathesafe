@@ -59,6 +59,7 @@ function AvgGraph({data, unit, specimen}) {
                   name={`${entry.emp_name}`}
                   stroke={`hsl(${index * 60}, 70%, 50%)`}
                   strokeWidth={2}
+                  dot={{ stroke: 'black', strokeWidth: 1, r: 1 }}
                 />
               ))}
             </LineChart>
