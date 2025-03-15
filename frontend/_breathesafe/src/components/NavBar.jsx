@@ -49,47 +49,47 @@ function NavBar({role, setAuth}) {
         <div className='flex flex-row mr-1 items-center'>
           {/* Info Modal */}
           <div className="dropdown dropdown-end z-20">
-              <div tabIndex={0} onClick={()=>toggleModal()} role="button" className={clsx(`btn rounded-full w-8 h-8 text-lg center mr-2 shadow-black/50 shadow-md 
+            <div tabIndex={0} onClick={()=>toggleModal()} role="button" className={clsx(`btn rounded-full w-8 h-8 text-lg center mr-2 shadow-black/50 shadow-md 
             hover:bg-white/20 transition duration-300 ease-in-out`,
             {
               'bg-blue_green' : !isOpen,
               'bg-darkblue' : isOpen
             })}>
                 i
-              </div>
-              <div className="bg-darkblue border-black border-1">
-                <h3 className="font-bold text-lg text-white mb-5">Category</h3>
-                <table className="table rounded-2xl">
-                  <thead>
-                    <tr className='bg-blue_green text-white text-center border-black border-1'>
-                      <th>PM 2.5</th>
-                      <th>PM 10</th>
-                      <th>AQI</th>
-                      <th>Category</th>
+            </div>
+            <div className="dropdown-content bg-darkblue border-black border-1">
+              <h3 className="font-bold text-lg text-white mb-5">Category</h3>
+              <table className="table rounded-2xl">
+                <thead>
+                  <tr className='bg-blue_green text-white text-center border-black border-1'>
+                    <th>PM 2.5</th>
+                    <th>PM 10</th>
+                    <th>AQI</th>
+                    <th>Category</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  {data.map((item) => (
+                    <tr key={item.id} 
+                    className={`
+                      ${item.Category === "Good" ? "bg-green-600" :
+                      item.Category === "Moderate" ? "bg-amber-300" :
+                      item.Category === "Unhealthy for Sensitive Groups" ? "bg-orange-600" :
+                      item.Category === "Unhealthy" ? "bg-red-700" :
+                      item.Category === "Very Unhealthy" ? "bg-pink-900" :
+                      item.Category === "Hazardous" ? "bg-red-950" :
+                      "bg-white"}
+                      font-bold border-black border-1
+                    `}>
+                      <td className='w-30 text-center'>{item.PM25}</td>
+                      <td className='w-30 text-center'>{item.PM10}</td>
+                      <td className='w-30 text-center'>{item.AQI}</td>
+                      <td className='w-30 text-center'>{item.Category}</td>
                     </tr>
-                  </thead>
-                  <tbody>
-                    {data.map((item) => (
-                      <tr key={item.id} 
-                      className={`
-                        ${item.Category === "Good" ? "bg-green-600" :
-                        item.Category === "Moderate" ? "bg-amber-300" :
-                        item.Category === "Unhealthy for Sensitive Groups" ? "bg-orange-600" :
-                        item.Category === "Unhealthy" ? "bg-red-700" :
-                        item.Category === "Very Unhealthy" ? "bg-pink-900" :
-                        item.Category === "Hazardous" ? "bg-red-950" :
-                        "bg-white"}
-                        font-bold border-black border-1
-                      `}>
-                        <td className='w-30 text-center'>{item.PM25}</td>
-                        <td className='w-30 text-center'>{item.PM10}</td>
-                        <td className='w-30 text-center'>{item.AQI}</td>
-                        <td className='w-30 text-center'>{item.Category}</td>
-                      </tr>
-                    ))}
-                  </tbody>
-                </table>
-              </div>
+                  ))}
+                </tbody>
+              </table>
+            </div>
           </div>
           
           <button className={clsx(
