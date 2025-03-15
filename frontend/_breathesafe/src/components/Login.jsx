@@ -27,7 +27,10 @@ const Login = () => {
       const response = await axios.post(`https://breath-o9r9.onrender.com/auth/login`, body)
 
       const user = response.data
-      
+
+      console.log(response)
+      console.log(user)
+
       if (response.status === 201){
         window.localStorage.setItem("token", user.token)
         window.localStorage.setItem("role", user.role)
