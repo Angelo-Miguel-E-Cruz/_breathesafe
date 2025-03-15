@@ -98,6 +98,22 @@ export const updateEmployee = async (req, res) => {
   }
 }
 
+export const updateUser = async (req, res) => {
+  try {
+    const id = req.params.id
+    const { user_name, user_role } = req.body
+    const updatedData = await empServices.updateUserData(id, user_name, user_role)
+
+    if(!updatedData){
+      return res.status(400).json({message: "ID not found"})
+    }
+    res.status(200).json(updatedData)
+  } catch (err) {
+    console.error(err)
+    res.status(500).json({message: "Server Error"})
+  }
+}
+
 // DELETES
 
 export const removeEmployee = async (req, res) => {

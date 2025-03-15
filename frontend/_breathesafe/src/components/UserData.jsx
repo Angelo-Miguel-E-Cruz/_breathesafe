@@ -8,8 +8,7 @@ function UserData() {
   
   const [chartData, setChartData] = useState(null)
   const [firstData, setFirstData] = useState(null)
-  const [editEmp, setEditEmp] = useState(null)
-  const [showPassword, setShowPassword] = useState(false)
+  const [editUser, setEditUser] = useState(null)
   const [searchTerm, setSearchTerm] = useState('')
 
   const fetchData = async () => {
@@ -38,21 +37,21 @@ function UserData() {
   }
 
   const openEditModal = (item) => {
-    setEditEmp(item)
+    setEditUser(item)
     document.getElementById('editModal').showModal()
   }
 
   const handleChangeFormData = (e) => {
     const { id, value } = e.target
-    setEditEmp((prevItem) => ({
+    setEditUser((prevItem) => ({
       ...prevItem,
       [id]: value,
     }))
   }
 
-  const handleUpdateEmpInfo = async(id) => {
+  const handleUpdateUserInfo = async(id) => {
     try {
-      await axios.put(`https://breath-o9r9.onrender.com/api/employee_data/${id}`, editEmp)
+      await axios.put(`https://breath-o9r9.onrender.com/api/employee_data/${id}`, editUser)
       window.confirm("Update Successful")
       fetchData()
     } catch (error) {
@@ -178,7 +177,7 @@ function UserData() {
         </label>
       </div>
 
-      <EditUserModal handleChangeFormData={handleChangeFormData} handleUpdateEmpInfo={handleUpdateEmpInfo} editEmp={editEmp} />
+      <EditUserModal handleChangeFormData={handleChangeFormData} handleUpdateUserInfo={handleUpdateUserInfo} editUser={editUser} />
 
       <AddUserModal handleAddUser={handleAddUser} />
     </div>

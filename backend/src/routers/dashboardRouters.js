@@ -50,6 +50,8 @@ router.put('/employee_data/:id', empController.updateEmployee)
 
 router.put("/employee_data/update", empController.updateEmployeeReadings)
 
+router.put('/users/:id', empController.updateUser)
+
 // DELETES
 
 router.delete('/employee_data/:id', empController.removeUser)

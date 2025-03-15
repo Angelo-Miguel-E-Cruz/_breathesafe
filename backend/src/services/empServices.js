@@ -103,6 +103,18 @@ export const updateEmployeeData = async(empID, emp_name, emp_id, device_id, emp_
   }
 }
 
+export const updateUserData = async(uid, user_name, user_role, ) => {
+  try {
+    const sql = `UPDATE users SET user_name = $1, user_role = $2 WHERE user_id = $3`
+  
+    const {rows} = await query(sql, [user_name, user_role, uid])
+    return rows 
+  } catch (error) {
+    console.error("Database Query Error:", error)
+    throw error
+  }
+}
+
 // DELETES
 
 export const removeEmployee = async(id) => {
