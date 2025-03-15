@@ -6,7 +6,7 @@ export const getSensorData = async (empID) => {
   try {
     const sql = `SELECT * FROM sensor_data
                 JOIN employees_tb ON sensor_data.device_id = employees_tb.device_id
-                WHERE employees_tb.id = $1 ORDER by sensor_data.timestamp DESC LIMIT 20`
+                WHERE employees_tb.id = $1 ORDER by sensor_data.timestamp ASC LIMIT 20`
   
     const {rows} = await query(sql, [empID])
     return rows 
@@ -53,7 +53,7 @@ export const get5mAvg = async (empID) => {
   try {
     const sql = `SELECT * FROM avg_5m
                 JOIN employees_tb ON avg_5m.device_id = employees_tb.device_id
-                WHERE employees_tb.id = $1 ORDER by avg_5m.timestamp DESC LIMIT 20`
+                WHERE employees_tb.id = $1 ORDER by avg_5m.timestamp ASC LIMIT 20`
   
     const {rows} = await query(sql, [empID])
     return rows 
@@ -67,7 +67,7 @@ export const get1hrAvg = async (empID) => {
   try {
     const sql = `SELECT * FROM avg_1hr
                 JOIN employees_tb ON avg_1hr.device_id = employees_tb.device_id
-                WHERE employees_tb.id = $1 ORDER by avg_1hr.timestamp DESC LIMIT 20`
+                WHERE employees_tb.id = $1 ORDER by avg_1hr.timestamp ASC LIMIT 20`
   
     const {rows} = await query(sql, [empID])
     return rows 
@@ -81,7 +81,7 @@ export const get5mGraph = async () => {
   try {
     const sql = `SELECT avg_5m.device_id, emp_name, pm25, pm10, aqi_pm25, aqi_pm10, timestamp
                 FROM avg_5m JOIN employees_tb ON avg_5m.device_id = employees_tb.device_id
-                ORDER BY avg_5m.timestamp DESC LIMIT 20`
+                ORDER BY avg_5m.timestamp ASC LIMIT 20`
   
     const {rows} = await query(sql, [])
     return rows 
@@ -95,7 +95,7 @@ export const get1hrGraph = async () => {
   try {
     const sql = `SELECT avg_1hr.device_id, emp_name, pm25, pm10, aqi_pm25, aqi_pm10, timestamp
                 FROM avg_1hr JOIN employees_tb ON avg_1hr.device_id = employees_tb.device_id
-                ORDER BY avg_1hr.timestamp DESC LIMIT 20`
+                ORDER BY avg_1hr.timestamp ASC LIMIT 20`
   
     const {rows} = await query(sql, [])
     return rows 
