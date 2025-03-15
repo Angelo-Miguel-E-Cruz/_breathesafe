@@ -38,11 +38,14 @@ export const logIn = async (req, res) => {
   try {
     const { name, password } = req.body
     // Check if user exists
-    const doesExist = await regServices.checkExists(name)
+    const doesExist = await regServices.checkExistsEmployee(name)
 
     // Notify if user does not exist
     if (doesExist == 0){
-      return res.status(401).json({message: "User does not Exist"})
+      const doesExistAdmin = await regServices.checkExistsEmployee(name)
+      if (doesExistAdmin == 0){
+        return res.status(401).json({message: "User does not Exist"})
+      }
     }
 
     // Check if password is the same
