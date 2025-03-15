@@ -26,8 +26,7 @@ function Main() {
 
   let selectedEmp = role === "User" ? window.localStorage.getItem("employeeID") : selectedEmployee
   
-  const empSelected = selectedEmp;
-  
+  const empSelected = selectedEmp
 
   useEffect(() => {
     getTimestamp()
@@ -186,6 +185,8 @@ function Main() {
 
     setTimestampValue(timestampVal)
   }
+
+  console.log("latest 2.5: ", sensorState.latestPM25)
   
   return (
     <div className='absolute inset-0 bg-background h-screen pt-30 px-[42px] overflow-y-scroll w-full'>
