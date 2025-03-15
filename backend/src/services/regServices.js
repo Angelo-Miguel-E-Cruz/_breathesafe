@@ -17,7 +17,7 @@ export const checkExistsEmployee = async (name) => {
 // SQL to check if admin exists
 export const checkExistsAdmin = async (name) => {
   try {
-    const sql = `SELECT * FROM users 
+    const sql = `SELECT user_password, user_role FROM users 
                 WHERE user_name = $1`
     const { rows } = await query(sql, [name])
     return rows
