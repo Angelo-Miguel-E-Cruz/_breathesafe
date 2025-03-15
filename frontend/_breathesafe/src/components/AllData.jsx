@@ -38,7 +38,7 @@ function AllData() {
         emp_name,
         timestamp: formatTimestamp(timestamp),
       })
-      return acc
+      return acc.slice(-20)
     }, [])
 
     setPm25ConData(con25ChartData)
@@ -50,7 +50,7 @@ function AllData() {
         emp_name,
         timestamp: formatTimestamp(timestamp),
       })
-      return acc
+      return acc.slice(-20)
     }, [])
 
     setPm25AQIData(aqi25ChartData)
@@ -62,7 +62,7 @@ function AllData() {
         emp_name,
         timestamp: formatTimestamp(timestamp),
       })
-      return acc
+      return acc.slice(-20)
     }, [])
 
     setPm10ConData(con10ChartData)
@@ -74,7 +74,7 @@ function AllData() {
         emp_name,
         timestamp: formatTimestamp(timestamp),
       })
-      return acc
+      return acc.slice(-20)
     }, [])
 
     setPm10AQIData(aqi10ChartData)
