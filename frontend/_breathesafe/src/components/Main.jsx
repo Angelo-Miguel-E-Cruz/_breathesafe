@@ -161,7 +161,7 @@ function Main() {
   const setChartsData = (sensorData) => {
 
     const pmChartData = sensorData.reduce((acc, { id, pm25, pm10, timestamp }) => {
-      acc.unshift({
+      acc.pop({
         id,
         pm25,
         pm10,
@@ -173,7 +173,7 @@ function Main() {
     setPMChartData(pmChartData)
 
     const aqiChartData = sensorData.reduce((acc, { id, aqi_pm25, aqi_pm10, timestamp }) => {
-      acc.unshift({
+      acc.pop({
         id,
         aqi_pm25,
         aqi_pm10,
