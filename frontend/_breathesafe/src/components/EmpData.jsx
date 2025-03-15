@@ -167,7 +167,7 @@ function EmpData() {
                           <td>
                             <button className='btn btn-ghost text-black font-bold text-2xl 
                                     hover:bg-transparent transition duration-300 ease-in-out' 
-                                    onClick={() => handleRemoveEmployee(item.id)}><MdDeleteForever /></button>
+                                    onClick={() => handleRemoveEmployee(item.device_id)}><MdDeleteForever /></button>
                           </td>
                         </tr>
                       )
