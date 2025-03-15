@@ -124,7 +124,7 @@ function Main() {
   }
 
   const setLatest = (sensorData) => {
-    const latestReading = sensorData[sensorData.length - 1]
+    const latestReading = sensorData[0]
     console.log(latestReading)
     setFormattedTime(formatTimestamp(latestReading.timestamp))
     dispatch({ type: "UPDATE", field: "latestPM25", value: latestReading.pm25, timestamp: latestReading.timestamp })
@@ -161,7 +161,7 @@ function Main() {
   const setChartsData = (sensorData) => {
 
     const pmChartData = sensorData.reduce((acc, { id, pm25, pm10, timestamp }) => {
-      acc.push({
+      acc.unshift({
         id,
         pm25,
         pm10,
@@ -173,7 +173,7 @@ function Main() {
     setPMChartData(pmChartData)
 
     const aqiChartData = sensorData.reduce((acc, { id, aqi_pm25, aqi_pm10, timestamp }) => {
-      acc.push({
+      acc.unshift({
         id,
         aqi_pm25,
         aqi_pm10,
