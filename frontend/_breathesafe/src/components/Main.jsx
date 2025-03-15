@@ -217,8 +217,8 @@ function Main() {
       </div>
 
       <div className='grid grid-cols-[30%_35%_35%] gap-4 pr-4 max-lg:grid-cols-1 '>
-        <div className='grid grid-rows-[39%_61%] gap-2'>
-          <div className='grid grid-rows-2 gap-2 max-lg:grid-rows-1 max-lg:grid-cols-2 max-lg:h-fit'>
+        <div className='grid grid-rows-[39%_61%] gap-4'>
+          <div className='grid grid-rows-2 gap-4 max-lg:grid-rows-1 max-lg:grid-cols-2 max-lg:h-fit'>
             <SensorCard label="PM 2.5" value={sensorState.latestPM25.value} latestVal={sensorState.latestPM25Level.value}/>
             <SensorCard label="PM 10" value={sensorState.latestPM10.value} latestVal={sensorState.latestPM10Level.value}/>
           </div>
@@ -232,11 +232,11 @@ function Main() {
             }
           </div>
         </div>
-        <div className='grid grid-rows-2 gap-2 max-lg:grid-rows-1 max-lg:grid-cols-2'>
+        <div className='grid grid-rows-2 gap-4 max-lg:grid-rows-1 max-lg:grid-cols-2'>
           <SensorChart chartData={pmChartData} title="Concentration (µg/m³)" type="concentration"/>
           <SensorChart chartData={aqiChartData} title="Air Quality Index" type="aqi"/>
         </div>
-        <div className='grid grid-rows-2 gap-2 mr-4 max-lg:grid-rows-1 max-lg:grid-cols-2'>
+        <div className='grid grid-rows-2 gap-4 mr-4 max-lg:grid-rows-1 max-lg:grid-cols-2'>
           {pmChartData && <Table tableData={pmChartData} title="Concentration (µg/m³)" type="concentration"/>}
           {aqiChartData && <Table tableData={aqiChartData} title="Air Quality Index" type="aqi"/>}
         </div>
