@@ -156,11 +156,13 @@ function Main() {
 
   const setChartsData = (sensorData) => {
 
-    const pmChartData = sensorData.reduce((acc, { id, pm25, pm10, timestamp }) => {
+    const pmChartData = sensorData.reduce((acc, { id, pm25, pm10, aqi_pm25_category, aqi_pm10_category, timestamp }) => {
       acc.unshift({
         id,
         pm25,
         pm10,
+        aqi_pm25_category,
+        aqi_pm10_category,
         timestamp: formatTimestamp(timestamp),
       })
       return acc.slice(0, 20)
@@ -168,11 +170,13 @@ function Main() {
 
     setPMChartData(pmChartData)
 
-    const aqiChartData = sensorData.reduce((acc, { id, aqi_pm25, aqi_pm10, timestamp }) => {
+    const aqiChartData = sensorData.reduce((acc, { id, aqi_pm25, aqi_pm10, aqi_pm25_category, aqi_pm10_category, timestamp }) => {
       acc.unshift({
         id,
         aqi_pm25,
         aqi_pm10,
+        aqi_pm25_category,
+        aqi_pm10_category,
         timestamp: formatTimestamp(timestamp),
       })
       return acc.slice(0, 20)

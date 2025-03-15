@@ -6,7 +6,7 @@ function SensorChart({ chartData, title, type }) {
   return (
     <div className="card card-border border-lightblack bg-skyblue w-full shadow-black/50 shadow-md">
       <div className="card-body p-2 pt-5">
-      <h1 className='text-lightgrey font-bold self-center text-2xl'>{title}</h1>
+      <h1 className='text-lightgrey font-bold self-center text-[23px]'>{title}</h1>
         <ResponsiveContainer width="100%" height={300}>
           <AreaChart data={chartData}
             margin={{ top: 10, right: 30, left: 0, bottom: 20 }}>
