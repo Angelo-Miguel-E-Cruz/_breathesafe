@@ -23,7 +23,7 @@ function SensorChart({ chartData, title, type }) {
             <XAxis dataKey="timestamp"/>
             <YAxis/>
             <CartesianGrid strokeDasharray="8 8" />
-            <Tooltip />
+            <Tooltip contentStyle={{ color: "white", backgroundColor: "black" }} />
             <Area type="monotone" dataKey={type === "concentration" ? "pm25" : "aqi_pm25"} unit= {type === "concentration" ? "µg/m³" : ""} 
             stroke="#8884d8" fillOpacity={1} fill="url(#colorUv)" dot={{ stroke: 'black', strokeWidth: 1, r: 1 }} 
             activeDot={8} name='PM 2.5' legendType='plainline'/>

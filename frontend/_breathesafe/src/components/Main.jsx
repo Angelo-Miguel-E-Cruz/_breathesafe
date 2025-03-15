@@ -98,6 +98,7 @@ function Main() {
   const fetchData = async () =>{
     try {
       const response = await axios.get(`https://breath-o9r9.onrender.com/api/sensor_data?employeeID=${empSelected}`)
+      console.log(response.data)
       return response.data
     }catch (error) {
      console.log(error.message) 
@@ -124,6 +125,7 @@ function Main() {
 
   const setLatest = (sensorData) => {
     const latestReading = sensorData[sensorData.length - 1]
+    console.log(latestReading)
     setFormattedTime(formatTimestamp(latestReading.timestamp))
     dispatch({ type: "UPDATE", field: "latestPM25", value: latestReading.pm25, timestamp: latestReading.timestamp })
     dispatch({ type: "UPDATE", field: "latestPM10", value: latestReading.pm10, timestamp: latestReading.timestamp })
