@@ -84,6 +84,8 @@ export const updateEmployeeReadings = async (req, res) => {
   try {
     const { employeeId, pm25, pm10, pm25Level, pm10Level, latest_time } = req.body
 
+    console.log(employeeId, pm25, pm10, pm25Level, pm10Level, latest_time)
+
     await empServices.updateEmployeeReadings(employeeId, pm25, pm10, pm25Level, pm10Level, latest_time)
 
     res.status(200).json({ message: "Employee readings updated successfully" })
