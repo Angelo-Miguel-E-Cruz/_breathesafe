@@ -193,9 +193,9 @@ function Main() {
   }
   
   return (
-    <div className='absolute inset-0 bg-background h-screen pt-26 px-[42px] overflow-y-scroll w-full'>
+    <div className='absolute inset-0 bg-background h-screen pt-30 px-[42px] overflow-y-scroll w-full'>
       <div className={clsx('grid grid-cols-2',{
-        'mb-2' : role !== "Admin"
+        'mb-5' : role !== "Admin"
       })}>
         <NameCard employeeName={employeeName}/>
         <div className='justify-self-end align-self-center h-fit rounded-box border-lightblack border-1 bg-sky_blue text-black shadow-black/50 shadow-md max-lg:mr-4'>
