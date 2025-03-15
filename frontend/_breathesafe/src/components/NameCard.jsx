@@ -13,7 +13,7 @@ function NameCard({ employeeName }) {
           <h1 className='text-lightgrey text-3xl font-bold'> Current Employee: {employeeName} </h1>
         </div>
       </div> :
-      <div className="w-fit flex items-center space-x-2">
+      <div className="w-fit flex items-center space-x-[15px]">
         <FaUserCircle className="text-lightgrey text-3xl" />
         <h1 className="text-lightgrey text-3xl font-bold">{employeeName}</h1>
       </div>
