@@ -35,7 +35,7 @@ function NavBar({role, setAuth}) {
   }
 
   return (
-    <div className="flex navbar pl-0 pt-0 sticky top-0 z-10 mt-1.5 mx-2.5 w-[1145px] h-24 bg-darkblue text-white rounded-2xl shadow-black/50 shadow-md">
+    <div className="flex navbar pl-0 pt-0 sticky top-0 z-10 mt-1.5 mx-2.5 w-[98%] h-24 bg-darkblue text-white rounded-2xl shadow-black/50 shadow-md">
       <div className="navbar-start mt-2.5">
         <img src='longlogo.png'/>
         <div className='flex flex-col pl-5 mt-0.5 pt-[8px]'>
