@@ -193,7 +193,7 @@ function Main() {
   }
   
   return (
-    <div className='absolute inset-0 bg-background h-screen pt-27 px-9 w-full'>
+    <div className='absolute inset-0 bg-background h-screen pt-27 px-9 overflow-y-scroll w-full'>
       <div className={clsx('grid grid-cols-2',{
         'mb-2' : role !== "Admin"
       })}>
