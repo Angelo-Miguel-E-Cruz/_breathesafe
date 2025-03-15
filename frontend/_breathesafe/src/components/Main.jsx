@@ -194,7 +194,9 @@ function Main() {
   
   return (
     <div className='absolute inset-0 bg-background h-screen pt-27 overflow-x-auto w-full'>
-      <div className='grid grid-cols-2'>
+      <div className={clsx('grid grid-cols-2',{
+        'mb-2' : role !== "Admin"
+      })}>
         <NameCard employeeName={employeeName}/>
         <div className='justify-self-end align-self-center h-fit rounded-box border-lightblack border-1 bg-skyblue text-black shadow-black/50 shadow-md max-lg:mr-4'>
           <select defaultValue="Real-Time" className="select select-ghost h-16 focus:bg-transparent focus:text-black focus:rounded-box" id='time_select'>
