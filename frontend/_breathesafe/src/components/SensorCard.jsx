@@ -36,7 +36,7 @@ function SensorCard({ label, value, latestVal, latestReading, lastReading }) {
                 'bg-lightred/30' : difference > 0
               }
               )}>
-                <p className={clsx('text-start pt-0.5 pb-1.5 font-bold',
+                <p className={clsx('text-start py-0.5 font-bold',
               {
                 'text-brightgreen': difference <= 0,
                 'text-lightred' : difference > 0
