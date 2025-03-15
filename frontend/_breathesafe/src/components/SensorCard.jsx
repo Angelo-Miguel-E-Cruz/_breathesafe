@@ -5,7 +5,7 @@ function SensorCard({ label, value, latestVal, lastVal }) {
 
   const latestval = latestVal === undefined ? "" : latestVal.toLowerCase()
 
-  const difference = latestVal - lastVal
+  const difference = Number(latestVal) - Number(lastVal)
 
   return (
     <div className="card card-border border-lightblack bg-skyblue w-full text-lightgrey shadow-black/50 shadow-md max-lg:h-fit">
