@@ -7,7 +7,7 @@ function SensorCard({ label, value, latestVal, lastVal }) {
 
   const difference = Number(latestVal) - Number(lastVal)
 
-  console.log(typeof(latestVal), typeof(lastVal), typeof(difference))
+  console.log(typeof(latestVal), typeof(lastVal), difference, typeof(difference))
 
   return (
     <div className="card card-border border-lightblack bg-skyblue w-full text-lightgrey shadow-black/50 shadow-md max-lg:h-fit">
