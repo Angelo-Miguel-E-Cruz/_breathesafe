@@ -79,7 +79,7 @@ function Main() {
 
   const fetch5mAvg = async () => {
     try {
-      const response = await axios.get(`https://breath-o9r9.onrender.com/api/sensor_data/5m_avg?employeeID=${selectedEmployee}`)
+      const response = await axios.get(`https://breath-o9r9.onrender.com/api/5m_avg?employeeID=${selectedEmployee}`)
       return response.data
     } catch (error) {
       console.log(error.message) 

@@ -12,11 +12,11 @@ router.get('/sensor_data', sensorController.getSensorData)
 
 router.get('/sensor_data/all', sensorController.getAllSensorData)
 
-router.get('/sensor_data/range', sensorController.getDatainRange)
+router.get('/range', sensorController.getDatainRange)
 
-router.get('/sensor_data/5m_avg', sensorController.get5mAvg)
+router.get('/5m_avg', sensorController.get5mAvg)
 
-router.get('/sensor_data/1hr_avg', sensorController.get1hrAvg)
+router.get('/1hr_avg', sensorController.get1hrAvg)
 
 router.get('/5m_avg/graph', sensorController.get5mGraph)
 
