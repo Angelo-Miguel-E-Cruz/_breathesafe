@@ -42,7 +42,7 @@ export const logIn = async (req, res) => {
 
     // Notify if user does not exist
     if (doesExist == 0){
-      const doesExistAdmin = await regServices.checkExistsEmployee(name)
+      const doesExistAdmin = await regServices.checkExistsAdmin(name)
       if (doesExistAdmin == 0){
         return res.status(401).json({message: "User does not Exist"})
       }
