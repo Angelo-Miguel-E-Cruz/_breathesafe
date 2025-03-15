@@ -129,6 +129,8 @@ function Main() {
     dispatch({ type: "UPDATE", field: "latestPM10Level", value: latestReading.aqi_pm10_category, timestamp: latestReading.timestamp })
 
     const lastReading = sensorData[1]
+    dispatch({ type: "UPDATE", field: "lastPM25", value: lastReading.pm25, timestamp: lastReading.timestamp })
+    dispatch({ type: "UPDATE", field: "lastPM10", value: lastReading.pm10, timestamp: lastReading.timestamp })
     dispatch({ type: "UPDATE", field: "lastPM25Level", value: lastReading.aqi_pm25_category, timestamp: lastReading.timestamp })
     dispatch({ type: "UPDATE", field: "lastPM10Level", value: lastReading.aqi_pm10_category, timestamp: lastReading.timestamp })
 
@@ -185,8 +187,6 @@ function Main() {
 
     setTimestampValue(timestampVal)
   }
-
-  console.log("latest 2.5: ", sensorState.latestPM25)
   
   return (
     <div className='absolute inset-0 bg-background h-screen pt-30 px-[42px] overflow-y-scroll w-full'>
@@ -204,8 +204,8 @@ function Main() {
       <div className='grid grid-cols-[30%_35%_35%] gap-4 pr-4 max-lg:grid-cols-1 '>
         <div className='grid grid-rows-[39%_61%] gap-4'>
           <div className='grid grid-rows-2 gap-4 max-lg:grid-rows-1 max-lg:grid-cols-2 max-lg:h-fit'>
-            <SensorCard label="PM 2.5" value={sensorState.latestPM25.value} latestVal={sensorState.latestPM25Level.value} lastVal={sensorState.lastPM25Level.value}/>
-            <SensorCard label="PM 10" value={sensorState.latestPM10.value} latestVal={sensorState.latestPM10Level.value} lastVal={sensorState.lastPM10Level.value}/>
+            <SensorCard label="PM 2.5" value={sensorState.latestPM25.value} latestVal={sensorState.latestPM25Level.value} latestReading={sensorState.latestPM25.value} lastReading={sensorState.lastPM25.value}/>
+            <SensorCard label="PM 10" value={sensorState.latestPM10.value} latestVal={sensorState.latestPM10Level.value} latestReading={sensorState.latestPM10.value}  lastReading={sensorState.lastPM10.value}/>
           </div>
           <div className='grid grid-rows-2 max-lg:grid-rows-1 max-lg:grid-cols-2 max-lg:gap-2'>
             {

@@ -5,6 +5,8 @@ export const INITIAL_STATE ={
   latestPM10AQI:{},
   latestPM25Level:{},
   latestPM10Level:{},
+  lastPM25:{},
+  lastPM10:{},
   lastPM25Level:{},
   lastPM10Level:{},
 }

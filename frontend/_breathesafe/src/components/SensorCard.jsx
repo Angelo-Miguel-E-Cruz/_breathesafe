@@ -1,18 +1,18 @@
 import React from 'react'
 import clsx from 'clsx'
 
-function SensorCard({ label, value, latestVal, lastVal }) {
+function SensorCard({ label, value, latestVal, latestReading, lastReading }) {
 
   const latestval = latestVal === undefined ? "" : latestVal.toLowerCase()
 
-  console.log(latestVal, lastVal)
+  console.log(latestVal, lastReading)
 
-  const latestNum = parseFloat(latestVal)
-  const lastNum = parseFloat(lastVal)
+  const latestNum = parseFloat(latestReading)
+  const lastNum = parseFloat(lastReading)
 
   const difference = latestNum - lastNum
 
-  console.log(typeof(latestVal), typeof(lastVal), difference, typeof(difference))
+  console.log(typeof(latestReading), typeof(lastReading), difference, typeof(difference))
 
   return (
     <div className="card card-border border-lightblack bg-skyblue w-full text-lightgrey shadow-black/50 shadow-md max-lg:h-fit">
