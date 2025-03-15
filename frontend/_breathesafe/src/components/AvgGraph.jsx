@@ -58,7 +58,7 @@ function AvgGraph({data, unit, specimen}) {
                   unit={unit === "µg/m³" ? ` ${unit}` : ""}
                   name={`${entry.emp_name}`}
                   stroke={`hsl(${index * 60}, 70%, 50%)`}
-                  strokeWidth={3}
+                  strokeWidth={2}
                 />
               ))}
             </LineChart>
