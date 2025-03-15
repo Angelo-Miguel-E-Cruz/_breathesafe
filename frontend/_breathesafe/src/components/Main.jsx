@@ -19,7 +19,15 @@ function Main() {
   const [new25Alert, setNew25Alert] = useState(true)
   const [new10Alert, setNew10Alert] = useState(true)
   const [timestampValue, setTimestampValue] = useState("Real-Time")
-  const { selectedEmployee } = useEmployee()
+  
+  const role  = window.localStorage.getItem("role")
+
+  const { emp } = useEmployee()
+
+  let selectedEmp = role === "User" ? window.localStorage.getItem("employeeID") : emp;
+  
+  const selectedEmployee = selectedEmp;
+  
 
   useEffect(() => {
     getTimestamp()

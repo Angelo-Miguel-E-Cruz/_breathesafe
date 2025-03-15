@@ -22,7 +22,7 @@ function Table({tableData, title, type}) {
                 Object.keys(newTableData).map((key) => {
                   const item = newTableData[key];
                   return (
-                    <tr key={key} className='even:bg-blue_green/10 text-center text-black'>
+                    <tr key={key} className='even:bg-blue_green/10 text-center text-xs text-black'>
                       <th>{item.timestamp}</th>
                       <td>{type === "concentration" ? item.pm25 : item.aqi_pm25}</td>
                       <td>{type === "concentration" ? item.pm10 : item.aqi_pm10}</td>

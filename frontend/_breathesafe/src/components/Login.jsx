@@ -39,6 +39,7 @@ const Login = () => {
         }
         else if(user.role === "User"){
           setSelectedEmployee(user.id)
+          window.localStorage.setItem("employeeID", user.id)
           window.location.href = "/dashboard";
         }
       }
