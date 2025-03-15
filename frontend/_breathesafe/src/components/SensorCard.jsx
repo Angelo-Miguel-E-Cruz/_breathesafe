@@ -36,17 +36,17 @@ function SensorCard({ label, value, latestVal, latestReading, lastReading }) {
           <div className='flex'>
             <div className={clsx('rounded-md h-fit p-2',
               {
-                'bg-brightgreen/30': difference >= 0,
-                'bg-lightred/30' : difference < 0
+                'bg-brightgreen/30': difference > 0,
+                'bg-lightred/30' : difference <= 0
               }
               )}>
                 <p className={clsx('text-start pt-0.5 pb-1.5 font-bold',
               {
-                'text-brightgreen': difference >= 0,
-                'text-lightred' : difference < 0
+                'text-brightgreen': difference > 0,
+                'text-lightred' : difference <= 0
               }
               )}>
-              {difference >= 0 ? "+" : ""} {difference.toFixed(0)} µg/m³
+              {difference > 0 ? "+" : ""} {difference.toFixed(0)} µg/m³
             </p>
             </div>
             <p className='text-start text-grey/45 font-semi-bold italic pb-2 ml-1'>compared to the last reading</p>
