@@ -5,7 +5,12 @@ function SensorCard({ label, value, latestVal, lastVal }) {
 
   const latestval = latestVal === undefined ? "" : latestVal.toLowerCase()
 
-  const difference = Number(latestVal) - Number(lastVal)
+  console.log(latestVal, lastVal)
+
+  const latestNum = parseFloat(latestVal)
+  const lastNum = parseFloat(lastVal)
+
+  const difference = latestNum - lastNum
 
   console.log(typeof(latestVal), typeof(lastVal), difference, typeof(difference))
 
