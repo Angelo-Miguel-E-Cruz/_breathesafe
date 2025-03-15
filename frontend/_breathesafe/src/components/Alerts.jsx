@@ -52,7 +52,7 @@ function Alerts({latestVal, sensorType, willPrint, setPrint}) {
   }
   
   return (
-    <div className="card card-border bg-skyblue w-full h-fit text-black shadow-black/50 shadow-md">
+    <div className="card card-border border-lightblack bg-skyblue w-full h-fit text-black shadow-black/50 shadow-md">
       <div className="card-body p-2">
         <h1 className='pl-5 font-bold text-2xl mt-2 text-lightgrey'>{sensorType} ALERTS</h1>
         <ul>

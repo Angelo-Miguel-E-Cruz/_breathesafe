@@ -3,10 +3,8 @@ import { AreaChart, Area, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContai
 
 function SensorChart({ chartData, title, type }) {
 
-  console.log(type, chartData[chartData.length - 1])
-
   return (
-    <div className="card card-border bg-skyblue w-full shadow-black/50 shadow-md">
+    <div className="card card-border border-lightblack bg-skyblue w-full shadow-black/50 shadow-md">
       <div className="card-body p-2 pt-5">
       <h1 className='text-lightgrey font-bold self-center text-2xl'>{title}</h1>
         <ResponsiveContainer width="100%" height={300}>

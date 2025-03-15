@@ -5,7 +5,7 @@ function Table({tableData, title, type}) {
   const newTableData = [...tableData].reverse()
 
   return (
-    <div className="card card-border bg-skyblue w-full shadow-black/50 shadow-md">
+    <div className="card card-border border-lightblack bg-skyblue w-full shadow-black/50 shadow-md">
       <div className="card-body">
         <h1 className='text-lightgrey font-bold self-center text-3xl'>{title}</h1>
         <div className="h-65 overflow-x-auto">

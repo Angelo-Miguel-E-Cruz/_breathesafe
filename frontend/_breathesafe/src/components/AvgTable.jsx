@@ -28,7 +28,7 @@ function AvgTable({data, unit, specimen}) {
   const { tableData, uniqueEmployees } = transformToTableFormat(data)
 
   return (
-    <div className="card card-border bg-skyblue w-full shadow-black/50 shadow-md">
+    <div className="card card-border border-lightblack bg-skyblue w-full shadow-black/50 shadow-md">
       <div className="card-body p-4 pt-5">
         <h1 className='text-lightgrey font-bold self-center text-3xl'>
           {unit === "µg/m³" 
