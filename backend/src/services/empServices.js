@@ -89,6 +89,11 @@ export const addEmployee = async(emp_name, emp_id, device_id, emp_gender, emp_ag
 
 export const updateEmployeeReadings = async(empID, pm25, pm10, pm25Level, pm10Level, latest_time) => {
   try {
+
+    if (!empID) {
+      throw new Error("empID is missing or undefined!")
+    }
+
     const sql = `UPDATE employees_tb 
                 SET latest_25 = $1, latest_10 = $2, latest_aqi_25 = $3, latest_aqi_10 = $4, latest_time = $5
                 WHERE emp_id = $6`
