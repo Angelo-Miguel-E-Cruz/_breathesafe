@@ -24,8 +24,6 @@ function Main() {
 
   const { selectedEmployee } = useEmployee()
 
-  console.log(selectedEmployee)
-
   let selectedEmp = role === "User" ? window.localStorage.getItem("employeeID") : selectedEmployee
   
   const empSelected = selectedEmp;
@@ -99,7 +97,6 @@ function Main() {
 
   const fetchData = async () =>{
     try {
-      console.log("main emp id: ", empSelected)
       const response = await axios.get(`https://breath-o9r9.onrender.com/api/sensor_data?employeeID=${empSelected}`)
       return response.data
     }catch (error) {
@@ -110,7 +107,7 @@ function Main() {
   const updateEmployeeData = async() =>{
     try {
       const response = await axios.put(`https://breath-o9r9.onrender.com/api/employee_data/update`,{
-        employeeId: selectedEmployee,
+        employeeId: empSelected,
         pm25: sensorState.latestPM25.value, 
         pm10: sensorState.latestPM10.value, 
         pm25Level: sensorState.latestPM25Level.value,
