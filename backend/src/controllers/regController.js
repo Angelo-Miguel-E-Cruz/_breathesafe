@@ -6,13 +6,17 @@ import bcrypt from 'bcryptjs'
 export const regUser = async (req, res) => {
   try {
     const { name, password, role } = req.body
-    
     // Check if user exists
-    const doesExist = await regServices.checkExists(name)
-
-    // Notify if user exists
+    let doesExist = await regServices.checkExistsEmployee(name)
+    const doesExistAdmin = await regServices.checkExistsAdmin(name)
+    
+    // Notify if user does not exist
     if (doesExist != 0){
-      return res.status(401).json({message: "User Already Exists"})
+      if (doesExistAdmin != 0){
+        return res.status(401).json({message: "User does not Exist"})
+      } else {
+        doesExist = doesExistAdmin
+      }
     }
     
     // Encrypt password
