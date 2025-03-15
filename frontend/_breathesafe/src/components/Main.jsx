@@ -24,7 +24,9 @@ function Main() {
 
   const { emp } = useEmployee()
 
-  let selectedEmp = role === "User" ? window.localStorage.getItem("employeeID") : emp;
+  console.log(emp)
+
+  let selectedEmp = role === "User" ? window.localStorage.getItem("employeeID") : emp
   
   const selectedEmployee = selectedEmp;
   

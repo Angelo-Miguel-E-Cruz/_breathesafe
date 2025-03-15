@@ -24,6 +24,7 @@ function NavBar({role, setAuth}) {
   const logOut = () => {
     localStorage.removeItem("role")
     localStorage.removeItem("token")
+    localStorage.removeItem("employeeID")
     setAuth(false)
   }
 
