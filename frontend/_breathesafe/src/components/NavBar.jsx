@@ -50,7 +50,7 @@ function NavBar({role, setAuth}) {
           {/* Info Modal */}
           <div className="dropdown dropdown-end z-20">
             <div tabIndex={0} onClick={()=>toggleModal()} role="button" className={clsx(`btn rounded-full w-8 h-8 text-lg center mr-2 shadow-black/50 shadow-md border-white border-2
-            hover:bg-white/20 transition duration-300 ease-in-out`,
+            hover:bg-darkblue_green transition duration-300 ease-in-out`,
             {
               'bg-blue_green' : !isOpen,
               'bg-darkblue' : isOpen
@@ -61,7 +61,7 @@ function NavBar({role, setAuth}) {
               <h3 className="font-bold text-lg text-white mb-5">Category</h3>
               <table className="table rounded-2xl">
                 <thead>
-                  <tr className='bg-blue_green text-white text-center border-black border-1'>
+                  <tr className='bg-blue_green text-white text-center border-black border-1 text-xs'>
                     <th>PM 2.5</th>
                     <th>PM 10</th>
                     <th>AQI</th>
@@ -79,7 +79,7 @@ function NavBar({role, setAuth}) {
                       item.Category === "Very Unhealthy" ? "bg-pink-900" :
                       item.Category === "Hazardous" ? "bg-red-950" :
                       "bg-white"}
-                      font-bold border-black border-1
+                      text-xs font-bold border-black border-1
                     `}>
                       <td className='w-30 text-center'>{item.PM25}</td>
                       <td className='w-30 text-center'>{item.PM10}</td>
