@@ -36,6 +36,18 @@ export const searchEmployee = async(searchTerm) => {
   }
 }
 
+export const searchUser = async(searchTerm) => {
+  try {
+    const {rows} = await query(
+      `SELECT * FROM users WHERE user_name ILIKE $1 OR user_role ILIKE $1 ORDER BY id ASC`,
+      [`%${searchTerm}%`])
+    return rows
+  } catch (error) {
+    console.error("Database Query Error:", error)
+    throw error
+  }
+}
+
 export const employeeExists = async(emp_name) => {
   try {
     const sql = 'SELECT COUNT(*) FROM employees_tb WHERE emp_name = $1'

@@ -51,7 +51,7 @@ function UserData() {
 
   const handleUpdateUserInfo = async(id) => {
     try {
-      await axios.put(`https://breath-o9r9.onrender.com/api/employee_data/${id}`, editUser)
+      await axios.put(`https://breath-o9r9.onrender.com/api/users/${id}`, editUser)
       window.confirm("Update Successful")
       fetchData()
     } catch (error) {
@@ -108,7 +108,7 @@ function UserData() {
           setChartData(firstData)
         } else {
           const response = await axios.get(
-            `https://breath-o9r9.onrender.com/api/employee_data/search?q=${searchTerm}`
+            `https://breath-o9r9.onrender.com/api/users/search?q=${searchTerm}`
           )
           setChartData(response.data)
         }

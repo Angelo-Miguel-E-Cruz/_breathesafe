@@ -30,6 +30,8 @@ router.get('/employee_data/search', empController.searchEmployee)
 
 router.get('/users', empController.getUserData)
 
+router.get('/users/search', empController.searchUser)
+
 // POSTS
 
 // SENSORS
