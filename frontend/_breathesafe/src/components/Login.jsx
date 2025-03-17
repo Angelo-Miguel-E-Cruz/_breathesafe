@@ -1,6 +1,7 @@
 import React, { useState } from 'react'
 import axios from 'axios'
 import { useEmployee } from './contexts/EmployeeContext'
+import { IoMdEye, IoMdEyeOff  } from "react-icons/io"
 
 const Login = () => {
 
@@ -59,8 +60,8 @@ const Login = () => {
           <h1 className="text-3xl font-bold">Hello, welcome.</h1>
           <p className="text-gray-400 mt-2">Please login your account.</p>
 
-          <div className="input flex flex-col gap-0 mt-5 px-3 py-1 h-fit items-start bg-gray-700 rounded-md text-white border-none focus-within:outline-blue_green">
-            <p className="text-[10px] text-skyblue/85 focus-within:text-blue_green">Name</p>
+          <div className="input flex flex-col gap-0 mt-5 px-3 py-1 h-fit items-start bg-gray-700 rounded-md text-white border-none focus-within:outline-blue_green group">
+            <p className="text-[10px] text-skyblue/85 group-focus-within:text-blue_green">Name</p>
             <input
               type="text"
               placeholder="Enter your name"
@@ -76,6 +77,11 @@ const Login = () => {
               placeholder="Enter your password"
               className=" w-full border-none bg-transparent placeholder-gray-400 "
               onChange={e => onChange(e)}/>
+            <label className="swap justify-self-end">
+              <input type="checkbox" />
+              <IoMdEye />
+              <IoMdEyeOff />
+            </label>
           </div>
 
           <a href="#" className="text-sm text-gray-400 mt-2 underline">
