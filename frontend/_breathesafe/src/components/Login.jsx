@@ -59,8 +59,8 @@ const Login = () => {
           <h1 className="text-3xl font-bold">Hello, welcome.</h1>
           <p className="text-gray-400 mt-2">Please login your account.</p>
 
-          <div className="input flex flex-col gap-0 mt-5 p-3 h-fit justify-items-start bg-gray-700 rounded-md text-white border-none focus-within:outline-blue_green">
-            <p className="text-[6px] justify-self-start text-skyblue/85 focus-within:text-blue_green">Name</p>
+          <div className="input flex flex-col gap-0 mt-5 p-3 h-fit items-start bg-gray-700 rounded-md text-white border-none focus-within:outline-blue_green">
+            <p className="text-[8px] text-skyblue/85 focus-within:text-blue_green">Name</p>
             <input
               type="text"
               placeholder="Enter your name"
@@ -69,8 +69,8 @@ const Login = () => {
             />
           </div>
 
-          <div className="input flex flex-col gap-0 mt-3 p-3 h-fit justify-items-start bg-gray-700 rounded-md text-white border-none focus-within:outline-blue_green">
-            <p className="text-[6px] text-skyblue/85 focus-within:text-blue_green">Password</p>
+          <div className="input flex flex-col gap-0 mt-3 p-3 h-fit items-start bg-gray-700 rounded-md text-white border-none focus-within:outline-blue_green">
+            <p className="text-[8px] text-skyblue/85 focus-within:text-blue_green">Password</p>
             <input
               type="password"
               placeholder="Enter your password"
