@@ -54,7 +54,7 @@ const Login = () => {
 
   return (
     <div className="flex justify-center items-center h-screen w-screen overflow-x-hidden">
-      <div className="absolute inset-0 left-[73%] translate-x-[-73%] z-10 w-[700px] h-full origin-top-left rotate-[-9.11deg] bg-[radial-gradient(ellipse_158.87%_216.54%_at_148.77%_59.82%,_rgba(45,_45,_45,_0)30%,_rgba(45,_45,_45,_0)_50%,_#2D2D2D_75%)]" />
+      <div className="absolute inset-0 left-[60%] translate-x-[-60%] z-10 w-[700px] h-[800px] origin-top-left rotate-[-9.11deg] bg-[radial-gradient(ellipse_158.87%_216.54%_at_148.77%_59.82%,_rgba(45,_45,_45,_0)30%,_rgba(45,_45,_45,_0)_50%,_#2D2D2D_75%)]" />
 
       <div className="w-full h-full flex overflow-hidden">
         {/* Left Section (Dark Overlay) */}
