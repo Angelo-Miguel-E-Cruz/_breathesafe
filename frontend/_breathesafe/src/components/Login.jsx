@@ -59,7 +59,7 @@ const Login = () => {
           <h1 className="text-3xl font-bold">Hello, welcome.</h1>
           <p className="text-gray-400 mt-2">Please login your account.</p>
 
-          <div className="input flex mt-5 p-3 bg-gray-700 rounded-md text-white border-none focus-within:outline-blue_green">
+          <div className="input flex flex-col mt-5 p-3 bg-gray-700 rounded-md text-white border-none focus-within:outline-blue_green">
             <h1 className="block text-sm text-gray-300 focus-within:text-blue_green">Name</h1>
             <input
               type="text"
@@ -69,7 +69,7 @@ const Login = () => {
             />
           </div>
 
-          <div className="input flex mt-3 p-3 bg-gray-700 rounded-md text-white border-none focus-within:outline-blue_green">
+          <div className="input flex flex-col mt-3 p-3 bg-gray-700 rounded-md text-white border-none focus-within:outline-blue_green">
             <h1 className="block text-sm text-gray-300 focus-within:text-blue_green">Password</h1>
             <input
               type="password"
