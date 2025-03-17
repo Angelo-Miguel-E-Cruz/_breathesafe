@@ -72,9 +72,9 @@ const Login = () => {
 
           <div className="input flex flex-col gap-0 mt-3 px-3 py-2 h-fit items-start bg-gray-700 rounded-md text-white border-none focus-within:outline-blue_green group">
             <p className="text-[10px] text-skyblue/85 group-focus-within:text-blue_green">Password</p>
-            <div className='flex items-center'>
+            <div className='flex items-center justify-between'>
               <input
-                type="password"
+                type={showPassword ? "text" : "password"}
                 placeholder="Enter your password"
                 className="flex-1 border-none bg-transparent placeholder-gray-400 "
                 onChange={e => onChange(e)}/>
