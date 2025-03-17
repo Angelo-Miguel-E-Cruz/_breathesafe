@@ -52,8 +52,8 @@ const Login = () => {
   }
 
   return (
-    <div className="flex justify-center items-center h-screen bg-gray-300">
-      <div className="w-[90%] max-w-[1000px] h-[600px] flex rounded-lg overflow-hidden shadow-lg">
+    <div className="flex justify-center items-center h-screen w-screen">
+      <div className="w-full h-full flex rounded-lg overflow-hidden shadow-lg">
         {/* Left Section (Dark Overlay) */}
         <div className="w-1/2 bg-gradient-to-r from-black to-gray-800 text-white p-10 flex flex-col justify-center">
           <h1 className="text-3xl font-bold">Hello, welcome.</h1>
@@ -61,19 +61,19 @@ const Login = () => {
           <input
             type="text"
             placeholder="Enter your name"
-            className="mt-5 p-3 bg-gray-700 rounded-md text-white placeholder-gray-400 focus:outline-none"
+            className="mt-5 p-3 bg-gray-700 rounded-md text-white placeholder-gray-400 focus:outline-sky_blue"
             onChange={e => onChange(e)}
           />
           <input
             type="password"
             placeholder="Enter your password"
-            className="mt-3 p-3 bg-gray-700 rounded-md text-white placeholder-gray-400 focus:outline-none"
+            className="mt-3 p-3 bg-gray-700 rounded-md text-white placeholder-gray-400 focus:outline-sky_blue"
             onChange={e => onChange(e)}
           />
           <a href="#" className="text-sm text-gray-400 mt-2 hover:underline">
             Forgot Password
           </a>
-          <button className="mt-5 bg-teal-500 hover:bg-teal-600 text-white font-semibold py-2 px-4 rounded-md">
+          <button className="mt-5 bg-sky_blue hover:bg-blue_green text-white font-semibold py-2 px-4 rounded-md">
             Submit
           </button>
         </div>
