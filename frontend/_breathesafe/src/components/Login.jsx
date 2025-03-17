@@ -54,9 +54,9 @@ const Login = () => {
 
   return (
     <div className="flex justify-center items-center h-screen w-screen ">
-      <div className="w-full h-full flex overflow-hidden shadow-lg">
+      <div className="w-full h-full flex overflow-hidden">
         {/* Left Section (Dark Overlay) */}
-        <div className="w-1/2 bg-darkblue text-white p-10 flex flex-col justify-center">
+        <div className="w-1/3 bg-darkblue text-white p-10 flex flex-col justify-center">
           <h1 className="text-3xl font-bold">Hello, welcome.</h1>
           <p className="text-gray-400 mt-2">Please login your account.</p>
 
@@ -98,7 +98,7 @@ const Login = () => {
         <div className="w-[850.51px] h-[1596.92px] origin-top-left rotate-[-9.11deg] bg-[radial-gradient(ellipse_158.87%_216.54%_at_148.77%_59.82%,_rgba(45,_45,_45,_0)_50%,_rgba(45,_45,_45,_0)_70%,_#2D2D2D_90%)]" />
 
         {/* Right Section (Image with Overlay) */}
-        <div className="w-1/2 relative">
+        <div className="w-2/3 relative">
           <img
             src="/login.png"
             alt="Factory Workers"
