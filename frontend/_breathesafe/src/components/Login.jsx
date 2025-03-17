@@ -59,22 +59,22 @@ const Login = () => {
           <h1 className="text-3xl font-bold">Hello, welcome.</h1>
           <p className="text-gray-400 mt-2">Please login your account.</p>
 
-          <div className="mt-5">
+          <div className="mt-5 bg-gray-700 rounded-md text-white border-none">
             <label className="block text-gray-300 mb-1">Name</label>
             <input
               type="text"
               placeholder="Enter your name"
-              className="w-full p-3 bg-gray-700 rounded-md text-white border-none placeholder-gray-400 focus-within::outline-sky_blue"
+              className="input w-full p-3 border-none bg-transparent placeholder-gray-400 focus-within:outline-sky_blue"
               onChange={e => onChange(e)}
             />
           </div>
 
-          <div className="mt-3">
+          <div className="mt-3 bg-gray-700 rounded-md text-white border-none">
             <label className="block text-gray-300 mb-1">Password</label>
             <input
               type="password"
               placeholder="Enter your password"
-              className="w-full p-3 bg-gray-700 rounded-md text-white border-none placeholder-gray-400 focus-within::outline-sky_blue"
+              className="input w-full p-3 border-none bg-transparent placeholder-gray-400 focus-within:outline-sky_blue"
               onChange={e => onChange(e)}/>
           </div>
 
