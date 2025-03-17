@@ -54,9 +54,9 @@ const Login = () => {
 
   return (
     <div className="flex justify-center items-center h-screen w-screen ">
-      <div className="w-full h-full flex overflow-hidden shadow-lg bg-darkblue">
+      <div className="w-full h-full flex overflow-hidden shadow-lg">
         {/* Left Section (Dark Overlay) */}
-        <div className="w-1/2  text-white p-10 flex flex-col justify-center">
+        <div className="w-1/2 bg-darkblue text-white p-10 flex flex-col justify-center">
           <h1 className="text-3xl font-bold">Hello, welcome.</h1>
           <p className="text-gray-400 mt-2">Please login your account.</p>
 
