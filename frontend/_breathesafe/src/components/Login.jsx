@@ -81,7 +81,8 @@ const Login = () => {
           <a href="#" className="text-sm text-gray-400 mt-2 underline">
             Forgot Password
           </a>
-          <button className="mt-5 w-full min-w-[3rem] max-w-[20rem] bg-blue_green hover:bg-darkblue_green text-white font-semibold py-2 px-4 rounded-box">
+          <button className="mt-5 w-full min-w-[3rem] max-w-[20rem] bg-blue_green hover:bg-darkblue_green text-white font-semibold py-2 px-4 rounded-box"
+          onClick={e => onSubmitForm(e)}>
             Submit
           </button>
         </div>
