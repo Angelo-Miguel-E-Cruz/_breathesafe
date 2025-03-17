@@ -81,7 +81,7 @@ const Login = () => {
         {/* Right Section (Image with Overlay) */}
         <div className="w-1/2 relative">
           <img
-            src="/your-image-url.jpg"
+            src="/login.png"
             alt="Factory Workers"
             className="w-full h-full object-cover"
           />
