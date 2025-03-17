@@ -52,7 +52,43 @@ const Login = () => {
   }
 
   return (
-    <div className='p-5 grid place-content-center'>
+    <div className="flex justify-center items-center h-screen bg-gray-300">
+      <div className="w-[90%] max-w-[1000px] h-[600px] flex rounded-lg overflow-hidden shadow-lg">
+        {/* Left Section (Dark Overlay) */}
+        <div className="w-1/2 bg-gradient-to-r from-black to-gray-800 text-white p-10 flex flex-col justify-center">
+          <h1 className="text-3xl font-bold">Hello, welcome.</h1>
+          <p className="text-gray-400 mt-2">Please login your account.</p>
+          <input
+            type="text"
+            placeholder="Enter your name"
+            className="mt-5 p-3 bg-gray-700 rounded-md text-white placeholder-gray-400 focus:outline-none"
+            onChange={e => onChange(e)}
+          />
+          <input
+            type="password"
+            placeholder="Enter your password"
+            className="mt-3 p-3 bg-gray-700 rounded-md text-white placeholder-gray-400 focus:outline-none"
+            onChange={e => onChange(e)}
+          />
+          <a href="#" className="text-sm text-gray-400 mt-2 hover:underline">
+            Forgot Password
+          </a>
+          <button className="mt-5 bg-teal-500 hover:bg-teal-600 text-white font-semibold py-2 px-4 rounded-md">
+            Submit
+          </button>
+        </div>
+
+        {/* Right Section (Image with Overlay) */}
+        <div className="w-1/2 relative">
+          <img
+            src="/your-image-url.jpg"
+            alt="Factory Workers"
+            className="w-full h-full object-cover"
+          />
+          <div className="absolute inset-0 bg-gradient-to-r from-black/50 to-transparent"></div>
+        </div>
+      </div>
+      {/* <div className='p-5 grid place-content-center'>
       <h1 className='font-bold text-4xl justify-self-center mt-35'>Login</h1>
       <form className='fieldset w-xs bg-base-200 border border-base-300 p-4 rounded-box mt-5'>
         
@@ -73,6 +109,7 @@ const Login = () => {
 
         <button className='btn btn-success mt-2' onClick={e => onSubmitForm(e)}>Submit</button>
       </form>
+    </div> */}
     </div>
   )
 }
