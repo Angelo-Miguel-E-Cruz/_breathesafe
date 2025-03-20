@@ -53,7 +53,7 @@ const Login = () => {
 
   return (
     <div className="flex justify-center items-center h-screen w-screen overflow-hidden">
-      <div className="absolute inset-0 left-[60%] translate-x-[-60%] z-10 w-[700px] h-[800px] bg-linear-to-r from-darkblue to-transparent">
+      <div className="absolute inset-0 left-[70%] translate-x-[-70%] z-10 w-[700px] h-full bg-linear-to-r from-darkblue from-30% via-darkblue/50 via-50% to-transparent to-75%">
       </div>
 
       {/* [radial-gradient(ellipse 158.87% 216.54% at 148.77% 59.82%, rgba(45, 45, 45, 0) 30%, rgba(45, 45, 45, 0) 50%, #2D2D2D 75%)] */}
