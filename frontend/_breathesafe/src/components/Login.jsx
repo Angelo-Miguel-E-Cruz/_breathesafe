@@ -54,11 +54,12 @@ const Login = () => {
   return (
     <div className="flex justify-center items-center h-screen w-screen overflow-x-hidden">
       <div className="absolute left-[60%] translate-x-[-60%] z-10 w-[700px] h-[800px]">
-        <div className="w-full h-full origin-top-left rotate-[-9.11deg]" 
-              style={{ background: "radial-gradient(ellipse 158.87% 216.54% at 148.77% 59.82%, rgba(45, 45, 45, 0) 30%, rgba(45, 45, 45, 0) 50%, #2D2D2D 75%)" }}>
+        <div className="w-full h-full 
+              bg-linear-to-r from-darkblue to-transparent" >
         </div>
       </div>
 
+      {/* [radial-gradient(ellipse 158.87% 216.54% at 148.77% 59.82%, rgba(45, 45, 45, 0) 30%, rgba(45, 45, 45, 0) 50%, #2D2D2D 75%)] */}
 
       <div className="w-full h-full flex overflow-hidden">
         {/* Left Section (Dark Overlay) */}
