@@ -17,6 +17,7 @@ const Login = () => {
 
   const onChange = (e) => {
     setInputs({...inputs, [e.target.name]: e.target.value})
+    console.log()
   }
 
   const onSubmitForm = async(e) => {
@@ -28,8 +29,6 @@ const Login = () => {
       const response = await axios.post(`https://breath-o9r9.onrender.com/auth/login`, body)
 
       const user = response.data
-      console.log(user)
-      console.log(user.id)
 
       if (response.status === 201){
         window.localStorage.setItem("token", user.token)
@@ -71,6 +70,7 @@ const Login = () => {
             <p className="text-[10px] text-skyblue/85 group-focus-within:text-blue_green">Name</p>
             <input
               type="text"
+              name='name'
               placeholder="Enter your name"
               className=" w-full border-none bg-transparent placeholder-gray-400 "
               onChange={e => onChange(e)}
@@ -82,6 +82,7 @@ const Login = () => {
             <div className='flex items-center justify-between w-full'>
               <input
                 type={showPassword ? "text" : "password"}
+                name='password'
                 placeholder="Enter your password"
                 className="flex-1 border-none bg-transparent placeholder-gray-400 "
                 onChange={e => onChange(e)}/>
