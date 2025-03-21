@@ -1,27 +1,27 @@
 import React from 'react'
 
-function AvgTable({data, unit, specimen}) {
+function AvgTable({ data, unit, specimen }) {
   const transformToTableFormat = (rawData) => {
 
     const uniqueTimestamps = [...new Set(rawData.map((item) => item.timestamp))].sort()
-  
+
     const uniqueEmployees = [...new Set(rawData.map((item) => item.emp_name))].sort()
-  
+
     const tableData = uniqueTimestamps.map((timestamp) => {
       let row = { timestamp }
       uniqueEmployees.forEach((emp) => {
-        
+
         const record = rawData.find((item) => item.emp_name === emp && item.timestamp === timestamp)
-        row[emp] = record 
-          ? (unit === "µg/m³" 
-              ? (specimen === "2.5" ? record.pm25 : record.pm10) 
-              : (specimen === "2.5" ? record.aqi_pm25 : record.aqi_pm10)
-            ) 
+        row[emp] = record
+          ? (unit === "µg/m³"
+            ? (specimen === "2.5" ? record.pm25 : record.pm10)
+            : (specimen === "2.5" ? record.aqi_pm25 : record.aqi_pm10)
+          )
           : null
       })
       return row
     }).reverse()
-  
+
     return { tableData, uniqueEmployees }
   }
 
@@ -31,9 +31,9 @@ function AvgTable({data, unit, specimen}) {
     <div className="card card-border border-lightblack bg-skyblue w-full shadow-black/50 shadow-md">
       <div className="card-body p-4 pt-5">
         <h1 className='text-lightgrey font-bold self-center text-3xl'>
-          {unit === "µg/m³" 
-            ? (specimen === "2.5" ? "PM2.5 Concentration" :"PM10 Concentration") 
-            : (specimen === "2.5" ? "PM2.5 AQI" :"PM10 AQI")}
+          {unit === "µg/m³"
+            ? (specimen === "2.5" ? "PM2.5 Concentration" : "PM10 Concentration")
+            : (specimen === "2.5" ? "PM2.5 AQI" : "PM10 AQI")}
         </h1>
         <div className='max-h-96 overflow-y-scroll'>
           <table className="table table-pin-rows">
@@ -49,7 +49,7 @@ function AvgTable({data, unit, specimen}) {
               {tableData.map((row, index) => (
                 <tr key={index} className='even:bg-blue_green/10 text-center text-black'>
                   {uniqueEmployees.map((emp) => (
-                    <td key={emp}>{row[emp] !== null ? row[emp] : "null"}</td>
+                    <td key={emp}>{row[emp] !== null ? row[emp] : "-"}</td>
                   ))}
                   <td>{row.timestamp}</td>
                 </tr>
