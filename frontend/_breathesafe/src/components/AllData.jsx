@@ -111,11 +111,7 @@ function AllData() {
           break
       }
 
-      if (sensorData) {
-        setCharts((sensorData))
-      } else {
-        return []
-      }
+      setCharts((sensorData))
     }
 
     fetchSensorData()
