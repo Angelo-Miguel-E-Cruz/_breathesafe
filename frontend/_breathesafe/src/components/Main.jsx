@@ -205,7 +205,7 @@ function Main() {
         </div>
       </div>
 
-      <div className='grid grid-cols-[60%_40%] gap-4 pr-4'>
+      <div className='grid grid-cols-[55%_45%] gap-4 pr-4'>
         <div className='grid grid-rows-2 gap-4 max-lg:grid-rows-1 max-lg:grid-cols-2'>
           <SensorChart chartData={pmChartData} title="Concentration (µg/m³)" type="concentration" />
           <SensorChart chartData={aqiChartData} title="Air Quality Index" type="aqi" />

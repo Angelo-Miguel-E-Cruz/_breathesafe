@@ -36,7 +36,7 @@ function SensorCard({ label, value, latestVal, latestReading, lastReading }) {
           </div>
         </div>
 
-        <div className={clsx('rounded-full w-25 h-25 self-center justify-self-center content-center',
+        <div className={clsx('rounded-full w-20 h-20 self-center justify-self-center content-center',
           {
             'bg-green-600': latestval === "good",
             'bg-amber-300': latestval === "moderate",
