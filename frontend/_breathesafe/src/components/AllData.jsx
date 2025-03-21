@@ -84,8 +84,8 @@ function AllData() {
   return (
     <div className='absolute inset-0 bg-background h-screen pt-29 overflow-x-auto w-full'>
       <Toaster />
-      <div className='flex mb-5' >
-        <div className='justify-self-end align-self-center h-fit rounded-box border-lightblack border-1 bg-sky_blue text-black shadow-black/50 shadow-md max-lg:mr-4'>
+      <div className='flex mb-5 justify-end' >
+        <div className='align-self-center h-fit rounded-box border-lightblack border-1 bg-sky_blue text-black shadow-black/50 shadow-md max-lg:mr-4'>
           <select defaultValue="5 Minutes" className="select select-ghost h-10 w-38 bg-sky_blue focus:bg-transparent focus:text-black focus:rounded-box focus-within:outline-0" id='time_select'>
             <option className='text-black hover:bg-sky_blue'>5 Minutes</option>
             <option className='text-black hover:bg-sky_blue'>1 Hour</option>
