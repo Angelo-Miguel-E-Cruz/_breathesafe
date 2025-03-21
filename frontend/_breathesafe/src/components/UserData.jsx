@@ -1,11 +1,11 @@
 import React, { useEffect, useState } from 'react'
 import axios from 'axios'
-import { MdEdit , MdDeleteForever, MdSearch  } from "react-icons/md"
+import { MdEdit, MdDeleteForever, MdSearch } from "react-icons/md"
 import EditUserModal from './modals/EditUserModal'
 import AddUserModal from './modals/AddUserModal'
 
 function UserData() {
-  
+
   const [chartData, setChartData] = useState(null)
   const [firstData, setFirstData] = useState(null)
   const [editUser, setEditUser] = useState(null)
@@ -15,10 +15,10 @@ function UserData() {
     try {
       const response = await axios.get('https://breath-o9r9.onrender.com/api/users')
 
-      const chartData = response.data.result.reduce((acc, { user_id, user_name, user_role}) => {
+      const chartData = response.data.result.reduce((acc, { user_id, user_name, user_role }) => {
         acc.push({
           user_id,
-          user_name, 
+          user_name,
           user_role
         })
         return acc
@@ -27,11 +27,11 @@ function UserData() {
       setChartData(chartData)
       setFirstData(chartData)
 
-    }catch (error) {
-      console.log(error.message) 
+    } catch (error) {
+      console.log(error.message)
     }
   }
-  
+
   const addUser = () => {
     document.getElementById('addModal').showModal()
   }
@@ -49,7 +49,7 @@ function UserData() {
     }))
   }
 
-  const handleUpdateUserInfo = async(id) => {
+  const handleUpdateUserInfo = async (id) => {
     try {
       await axios.put(`https://breath-o9r9.onrender.com/api/users/${id}`, editUser)
       window.confirm("Update Successful")
@@ -59,23 +59,23 @@ function UserData() {
     }
   }
 
-  const handleAddUser = async() => {
+  const handleAddUser = async () => {
 
     const user_name_field = document.getElementById("add_user_name")
     const user_password_field = document.getElementById("add_user_password")
     const user_role_field = document.getElementById("add_user_role")
-    
+
     const name = user_name_field.value
     const password = user_password_field.value
     const role = user_role_field.value
 
-    const data = {name, password, role}
+    const data = { name, password, role }
 
     try {
       await axios.post(`https://breath-o9r9.onrender.com/auth/register`, data)
       const confirm = window.confirm("Added Successfully!")
       fetchData()
-    }catch (error) {
+    } catch (error) {
       window.alert("Error adding item: " + error)
       console.log(error)
     }
@@ -83,24 +83,24 @@ function UserData() {
 
   const handleRemoveUser = async (id) => {
     const confirmDelete = window.confirm("Remove User?")
-    if (confirmDelete){
+    if (confirmDelete) {
       try {
         await axios.delete(`https://breath-o9r9.onrender.com/api/users/${id}`)
-      }catch (error) {
+      } catch (error) {
         console.log(error)
       }
     }
     fetchData()
   }
 
-  const handleSearchChange = (e) =>{
+  const handleSearchChange = (e) => {
     setSearchTerm(e.target.value)
   }
 
-  useEffect(() =>{
+  useEffect(() => {
     fetchData()
   }, [])
-  
+
   useEffect(() => {
     const fetchFilteredData = async () => {
       try {
@@ -116,14 +116,14 @@ function UserData() {
         console.error('Error fetching filtered data:', error)
       }
     }
-  
+
     fetchFilteredData()
   }, [searchTerm])
 
   return (
     <div className='absolute inset-0 bg-background min-h-screen overflow-auto pt-5'>
-      <div className='mx-5 pt-25 relative'>
-        
+      <div className='mx-5 pt-25 px-[42px] relative'>
+
         <div className="card card-border border-lightblack bg-skyblue w-full text-black shadow-black/50 shadow-md mt-10">
           <div className="card-body">
             <div className="h-100 overflow-x-auto w-full">
@@ -145,14 +145,14 @@ function UserData() {
                           <td>{item.user_name}</td>
                           <td>{item.user_role}</td>
                           <td className='w-fit'>
-                              <button className='btn btn-ghost text-black font-bold text-2xl 
-                                        hover:bg-transparent transition duration-300 ease-in-out' 
-                                        onClick={() => openEditModal(item)}> <MdEdit/> </button>
+                            <button className='btn btn-ghost text-black font-bold text-2xl 
+                                        hover:bg-transparent transition duration-300 ease-in-out'
+                              onClick={() => openEditModal(item)}> <MdEdit /> </button>
                           </td>
                           <td className='w-fit'>
                             <button className='btn btn-ghost text-black font-bold text-2xl 
-                                    hover:bg-transparent transition duration-300 ease-in-out' 
-                                    onClick={() => handleRemoveUser(item.user_id)}><MdDeleteForever /></button>
+                                    hover:bg-transparent transition duration-300 ease-in-out'
+                              onClick={() => handleRemoveUser(item.user_id)}><MdDeleteForever /></button>
                           </td>
                         </tr>
                       )

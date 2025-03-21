@@ -1,11 +1,11 @@
 import React, { useEffect, useState } from 'react'
 import axios from 'axios'
-import { MdEdit , MdDeleteForever, MdSearch  } from "react-icons/md"
+import { MdEdit, MdDeleteForever, MdSearch } from "react-icons/md"
 import EditEmpModal from './modals/EditEmpModal'
 import AddEmpModal from './modals/AddEmpModal'
 
 function EmpData() {
-  
+
   const [chartData, setChartData] = useState(null)
   const [firstData, setFirstData] = useState(null)
   const [editEmp, setEditEmp] = useState(null)
@@ -14,15 +14,15 @@ function EmpData() {
   const fetchData = async () => {
     try {
       const response = await axios.get('https://breath-o9r9.onrender.com/api/employee_data')
-   
-      const chartData = response.data.reduce((acc, { id, emp_id, device_id, emp_name, emp_gender, emp_age}) => {
+
+      const chartData = response.data.reduce((acc, { id, emp_id, device_id, emp_name, emp_gender, emp_age }) => {
         acc.push({
           id,
-          emp_id, 
-          device_id, 
-          emp_name, 
-          emp_gender, 
-          emp_age, 
+          emp_id,
+          device_id,
+          emp_name,
+          emp_gender,
+          emp_age,
         })
         return acc
       }, [])
@@ -30,11 +30,11 @@ function EmpData() {
       setChartData(chartData)
       setFirstData(chartData)
 
-    }catch (error) {
-      console.log(error.message) 
+    } catch (error) {
+      console.log(error.message)
     }
   }
-  
+
   const addEmployee = () => {
     document.getElementById('addModal').showModal()
   }
@@ -52,7 +52,7 @@ function EmpData() {
     }))
   }
 
-  const handleUpdateEmpInfo = async(id) => {
+  const handleUpdateEmpInfo = async (id) => {
     try {
       await axios.put(`https://breath-o9r9.onrender.com/api/employee_data/${id}`, editEmp)
       window.confirm("Update Successful")
@@ -62,7 +62,7 @@ function EmpData() {
     }
   }
 
-  const handleAddEmployee = async() => {
+  const handleAddEmployee = async () => {
 
     const emp_name_field = document.getElementById("add_emp_name")
     const emp_id_field = document.getElementById("add_emp_id")
@@ -76,7 +76,7 @@ function EmpData() {
     const emp_gender = emp_gender_field.value
     const emp_age = emp_age_field.value
 
-    const data = {emp_name, emp_id, device_id, emp_gender, emp_age}
+    const data = { emp_name, emp_id, device_id, emp_gender, emp_age }
 
     console.log(data)
 
@@ -84,7 +84,7 @@ function EmpData() {
       await axios.post(`https://breath-o9r9.onrender.com/api/employee_data/add`, data)
       const confirm = window.confirm("Added Successfully!")
       fetchData()
-    }catch (error) {
+    } catch (error) {
       window.alert("Error adding item: " + error)
       console.log(error)
     }
@@ -92,24 +92,24 @@ function EmpData() {
 
   const handleRemoveEmployee = async (id) => {
     const confirmDelete = window.confirm("Remove Employee?")
-    if (confirmDelete){
+    if (confirmDelete) {
       try {
         await axios.delete(`https://breath-o9r9.onrender.com/api/employee_data/${id}`)
-      }catch (error) {
+      } catch (error) {
         console.log(error)
       }
     }
     fetchData()
   }
 
-  const handleSearchChange = (e) =>{
+  const handleSearchChange = (e) => {
     setSearchTerm(e.target.value)
   }
 
-  useEffect(() =>{
+  useEffect(() => {
     fetchData()
   }, [])
-  
+
   useEffect(() => {
     const fetchFilteredData = async () => {
       try {
@@ -125,14 +125,14 @@ function EmpData() {
         console.error('Error fetching filtered data:', error)
       }
     }
-  
+
     fetchFilteredData()
   }, [searchTerm])
 
   return (
     <div className='absolute inset-0 bg-background min-h-screen overflow-auto pt-5'>
-      <div className='mx-5 pt-25 relative'>
-        
+      <div className='mx-5 px-[42px] pt-25 relative'>
+
         <div className="card card-border border-lightblack bg-skyblue w-full text-black shadow-black/50 shadow-md mt-10">
           <div className="card-body">
             <div className="h-100 overflow-x-auto w-full">
@@ -160,14 +160,14 @@ function EmpData() {
                           <td>{item.emp_age}</td>
                           <td>{item.emp_gender}</td>
                           <td>
-                              <button className='btn btn-ghost text-black font-bold text-2xl 
-                                        hover:bg-transparent transition duration-300 ease-in-out' 
-                                        onClick={() => openEditModal(item)}> <MdEdit/> </button>
+                            <button className='btn btn-ghost text-black font-bold text-2xl 
+                                        hover:bg-transparent transition duration-300 ease-in-out'
+                              onClick={() => openEditModal(item)}> <MdEdit /> </button>
                           </td>
                           <td>
                             <button className='btn btn-ghost text-black font-bold text-2xl 
-                                    hover:bg-transparent transition duration-300 ease-in-out' 
-                                    onClick={() => handleRemoveEmployee(item.device_id)}><MdDeleteForever /></button>
+                                    hover:bg-transparent transition duration-300 ease-in-out'
+                              onClick={() => handleRemoveEmployee(item.device_id)}><MdDeleteForever /></button>
                           </td>
                         </tr>
                       )

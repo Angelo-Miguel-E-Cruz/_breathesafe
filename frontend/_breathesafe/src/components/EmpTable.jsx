@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import axios from 'axios'
 import clsx from 'clsx'
-import { MdPerson, MdSearch  } from "react-icons/md"
+import { MdPerson, MdSearch } from "react-icons/md"
 import { useEmployee } from './contexts/EmployeeContext'
 import { Link } from 'react-router-dom'
 
@@ -14,16 +14,16 @@ function EmpTable() {
   const fetchData = async () => {
     try {
       const response = await axios.get('https://breath-o9r9.onrender.com/api/employee_data')
-   
+
       const chartData = response.data.reduce((acc, { id, emp_id, device_id, emp_name, latest_25, latest_10, latest_aqi_25, latest_aqi_10, latest_time }) => {
         acc.push({
           id,
-          emp_id, 
+          emp_id,
           device_id,
-          emp_name, 
-          latest_25, 
-          latest_10, 
-          latest_aqi_25, 
+          emp_name,
+          latest_25,
+          latest_10,
+          latest_aqi_25,
           latest_aqi_10,
           timestamp: latest_time,
         })
@@ -33,8 +33,8 @@ function EmpTable() {
       setChartData(chartData)
       setFirstData(chartData)
 
-    }catch (error) {
-      console.log(error.message) 
+    } catch (error) {
+      console.log(error.message)
     }
   }
 
@@ -42,14 +42,14 @@ function EmpTable() {
     setSelectedEmployee(employeeId)
   }
 
-  const handleSearchChange = (e) =>{
+  const handleSearchChange = (e) => {
     setSearchTerm(e.target.value)
   }
 
-  useEffect(() =>{
+  useEffect(() => {
     fetchData()
   }, [])
-  
+
   useEffect(() => {
     const fetchFilteredData = async () => {
       try {
@@ -65,14 +65,14 @@ function EmpTable() {
         console.error('Error fetching filtered data:', error)
       }
     }
-  
+
     fetchFilteredData()
   }, [searchTerm])
 
   return (
     <div className='absolute inset-0 bg-background min-h-screen overflow-auto pt-5'>
-      <div className='mx-5 pt-25 relative'>
-        
+      <div className='mx-5 px-[42px] pt-25 relative'>
+
         <div className="card card-border border-lightblack bg-skyblue w-full text-black shadow-black/50 shadow-md mt-10">
           <div className="card-body">
             <div className="h-100 overflow-x-auto w-full">
@@ -99,12 +99,12 @@ function EmpTable() {
                             <Link to='/' className={clsx(`btn btn-ghost transition duration-300 ease-in-out w-12 p-0
                                           rounded-full bg-transparent border-black border-1 text-black text-3xl
                                           avatar before:w-[25%] before:h-[25%] before:right-[6%]`,
-                                        {
-                                          'avatar-online' : Number(selectedEmployee) === Number(item.id),
-                                          'avatar-offline before:bg-grey' : Number(selectedEmployee) !== Number(item.id)
-                                        })} 
-                                          onClick={() => handleSelect(item.id)}>
-                              <MdPerson/>
+                              {
+                                'avatar-online': Number(selectedEmployee) === Number(item.id),
+                                'avatar-offline before:bg-grey': Number(selectedEmployee) !== Number(item.id)
+                              })}
+                              onClick={() => handleSelect(item.id)}>
+                              <MdPerson />
                             </Link>
                           </td>
                           <td>{item.emp_name}</td>
