@@ -22,7 +22,7 @@ function AvgGraph({ data, unit, specimen }) {
       emp_name,
       data: uniqueTimestamps.map((timestamp) => ({
         timestamp,
-        chartData: groupedData[emp_name] ?? null,
+        chartData: groupedData[emp_name][timestamp] ?? null,
       })),
     }))
 
