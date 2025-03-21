@@ -135,16 +135,6 @@ function Main() {
     dispatch({ type: "UPDATE", field: "lastPM10", value: lastReading.pm10, timestamp: lastReading.timestamp })
     dispatch({ type: "UPDATE", field: "lastPM25Level", value: lastReading.aqi_pm25_category, timestamp: lastReading.timestamp })
     dispatch({ type: "UPDATE", field: "lastPM10Level", value: lastReading.aqi_pm10_category, timestamp: lastReading.timestamp })
-
-    console.log("latest: ", latestReading.aqi_pm25_category)
-    console.log("last: ", lastReading.aqi_pm25_category)
-
-    //console.log(latestReading.aqi_pm25_category === lastReading.aqi_pm25_category ?
-    //  "" : "latest 25: " + latestReading.aqi_pm25_category +" last 25: " + lastReading.aqi_pm25_category)
-
-    //console.log(latestReading.aqi_pm10_category === lastReading.aqi_pm10_category ?
-    //  "" : "latest 10: " + latestReading.aqi_pm10_category +" last 10: " + lastReading.aqi_pm10_category)
-
   }
 
   const setChartsData = (sensorData) => {

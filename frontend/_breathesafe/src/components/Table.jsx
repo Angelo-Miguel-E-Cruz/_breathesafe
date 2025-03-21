@@ -22,7 +22,7 @@ function Table({ tableData, title, type, specimen }) {
                 Object.keys(newTableData).map((key) => {
                   const item = newTableData[key];
                   return (
-                    <tr key={key} className={clsx('text-center text-xs text-black rounded-md', {
+                    <tr key={key} className={clsx('text-center text-xs text-black', {
                       'bg-green-600/30': item.category === "Good",
                       'bg-amber-300/30': item.category === "Moderate",
                       'bg-orange-600/30': item.category === "Unhealthy for Sensitive Groups",
