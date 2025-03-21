@@ -12,11 +12,10 @@ function AllData() {
   const [timestampValue, setTimestampValue] = useState("5 minutes")
 
   const setCharts = (sensorData) => {
-    const con25ChartData = sensorData.reduce((acc, { device_id, emp_name, pm25, timestamp }) => {
+    const con25ChartData = sensorData.reduce((acc, { device_id, pm25, timestamp }) => {
       acc.push({
         id: device_id,
         pm25,
-        emp_name,
         timestamp: formatTimestamp(timestamp),
       })
       return acc.slice(-20)
@@ -24,11 +23,10 @@ function AllData() {
 
     setPm25ConData(con25ChartData)
 
-    const aqi25ChartData = sensorData.reduce((acc, { device_id, emp_name, aqi_pm25, timestamp }) => {
+    const aqi25ChartData = sensorData.reduce((acc, { device_id, aqi_pm25, timestamp }) => {
       acc.push({
         id: device_id,
         aqi_pm25,
-        emp_name,
         timestamp: formatTimestamp(timestamp),
       })
       return acc.slice(-20)
@@ -36,11 +34,10 @@ function AllData() {
 
     setPm25AQIData(aqi25ChartData)
 
-    const con10ChartData = sensorData.reduce((acc, { device_id, emp_name, pm10, timestamp }) => {
+    const con10ChartData = sensorData.reduce((acc, { device_id, pm10, timestamp }) => {
       acc.push({
         id: device_id,
         pm10,
-        emp_name,
         timestamp: formatTimestamp(timestamp),
       })
       return acc.slice(-20)
@@ -48,11 +45,10 @@ function AllData() {
 
     setPm10ConData(con10ChartData)
 
-    const aqi10ChartData = sensorData.reduce((acc, { device_id, emp_name, aqi_pm10, timestamp }) => {
+    const aqi10ChartData = sensorData.reduce((acc, { device_id, aqi_pm10, timestamp }) => {
       acc.push({
         id: device_id,
         aqi_pm10,
-        emp_name,
         timestamp: formatTimestamp(timestamp),
       })
       return acc.slice(-20)
@@ -115,7 +111,11 @@ function AllData() {
           break
       }
 
-      setCharts((sensorData))
+      if (sensorData) {
+        setCharts((sensorData))
+      } else {
+        return []
+      }
     }
 
     fetchSensorData()
