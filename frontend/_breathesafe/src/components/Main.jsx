@@ -251,13 +251,13 @@ function Main() {
         </div>
 
         <div className='grid grid-cols-2 gap-4'>
-          <div className='grid grid-rows-[12%_44%_44%] gap-4'>
+          <div className='grid grid-rows-[14%_43%_43%] gap-4'>
             <SensorCard label="PM 2.5" value={sensorState.latestPM25.value} latestVal={sensorState.latestPM25Level.value} latestReading={sensorState.latestPM25.value} lastReading={sensorState.lastPM25.value} />
             {pm25TableData && <Table tableData={pm25TableData} title="Concentration (µg/m³)" type="concentration" specimen="PM 2.5" />}
             {aqi25TableData && <Table tableData={aqi25TableData} title="Air Quality Index" type="aqi" specimen="PM 2.5" />}
           </div>
 
-          <div className='grid grid-rows-[12%_44%_44%] gap-4'>
+          <div className='grid grid-rows-[14%_43%_43%] gap-4'>
             <SensorCard label="PM 10" value={sensorState.latestPM10.value} latestVal={sensorState.latestPM10Level.value} latestReading={sensorState.latestPM10.value} lastReading={sensorState.lastPM10.value} />
             {pm10TableData && <Table tableData={pm10TableData} title="Concentration (µg/m³)" type="concentration" specimen="PM 10" />}
             {aqi10TableData && <Table tableData={aqi10TableData} title="Air Quality Index" type="aqi" specimen="PM 10" />}
