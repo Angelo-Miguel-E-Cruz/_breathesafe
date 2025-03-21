@@ -14,10 +14,12 @@ function Main() {
   const [sensorState, dispatch] = useReducer(dataReducer, INITIAL_STATE)
   const [pmChartData, setPMChartData] = useState(null)
   const [aqiChartData, setAQIChartData] = useState(null)
+  const [pm25TableData, setPM25TableData] = useState(null)
+  const [aqi25TableData, setAQI25TableData] = useState(null)
+  const [pm10TableData, setPM10TableData] = useState(null)
+  const [aqi10TableData, setAQI10TableData] = useState(null)
   const [employeeName, setEmployeeName] = useState("")
   const [formattedTime, setFormattedTime] = useState("")
-  const [new25Alert, setNew25Alert] = useState(true)
-  const [new10Alert, setNew10Alert] = useState(true)
   const [timestampValue, setTimestampValue] = useState("Real-Time")
 
   const role = window.localStorage.getItem("role")
@@ -170,6 +172,28 @@ function Main() {
 
     setPMChartData(pmChartData)
 
+    const pm25TableData = sensorData.reduce((acc, { id, pm25, timestamp }) => {
+      acc.unshift({
+        id,
+        pm25,
+        timestamp: formatTimestamp(timestamp),
+      })
+      return acc.slice(0, 20)
+    }, [])
+
+    setPM25TableData(pm25TableData)
+
+    const pm10TableData = sensorData.reduce((acc, { id, pm10, timestamp }) => {
+      acc.unshift({
+        id,
+        pm10,
+        timestamp: formatTimestamp(timestamp),
+      })
+      return acc.slice(0, 20)
+    }, [])
+
+    setPM10TableData(pm10TableData)
+
     const aqiChartData = sensorData.reduce((acc, { id, aqi_pm25, aqi_pm10, aqi_pm25_category, aqi_pm10_category, timestamp }) => {
       acc.unshift({
         id,
@@ -183,6 +207,30 @@ function Main() {
     }, [])
 
     setAQIChartData(aqiChartData)
+
+    const aqi25TableData = sensorData.reduce((acc, { id, aqi_pm25, aqi_pm25_category, timestamp }) => {
+      acc.unshift({
+        id,
+        aqi_pm25,
+        aqi_pm25_category,
+        timestamp: formatTimestamp(timestamp),
+      })
+      return acc.slice(0, 20)
+    }, [])
+
+    setAQI25TableData(aqi25TableData)
+
+    const aqi10TableData = sensorData.reduce((acc, { id, aqi_pm10, aqi_pm10_category, timestamp }) => {
+      acc.unshift({
+        id,
+        aqi_pm10,
+        aqi_pm10_category,
+        timestamp: formatTimestamp(timestamp),
+      })
+      return acc.slice(0, 20)
+    }, [])
+
+    setAQI10TableData(aqi10TableData)
   }
 
   const getTimestamp = () => {
@@ -214,6 +262,7 @@ function Main() {
         <div className='grid grid-cols-2 gap-4'>
           <div className='grid grid-rows-[22%_39%_39%] gap-4'>
             <SensorCard label="PM 2.5" value={sensorState.latestPM25.value} latestVal={sensorState.latestPM25Level.value} latestReading={sensorState.latestPM25.value} lastReading={sensorState.lastPM25.value} />
+            {pm25TableData && <Table tableData={pm25TableData} title="Concentration (µg/m³)" type="concentration" specimen="PM 2.5" />}
           </div>
 
           <div className='grid grid-rows-[22%_39%_39%] gap-4'>
