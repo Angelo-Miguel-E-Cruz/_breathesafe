@@ -162,7 +162,6 @@ function Main() {
     }, [])
 
     setPMChartData(pmChartData)
-    console.log("pm chart: ", pmChartData)
 
     const pm25TableData = sensorData.reduce((acc, { id, pm25, timestamp }) => {
       acc.unshift({
@@ -174,7 +173,6 @@ function Main() {
     }, [])
 
     setPM25TableData(pm25TableData)
-    console.log("25 tbl: ", pm25TableData)
 
     const pm10TableData = sensorData.reduce((acc, { id, pm10, timestamp }) => {
       acc.unshift({
@@ -186,7 +184,6 @@ function Main() {
     }, [])
 
     setPM10TableData(pm10TableData)
-    console.log("10 tbl: ", pm10TableData)
 
     const aqiChartData = sensorData.reduce((acc, { id, aqi_pm25, aqi_pm10, aqi_pm25_category, aqi_pm10_category, timestamp }) => {
       acc.unshift({
@@ -201,7 +198,6 @@ function Main() {
     }, [])
 
     setAQIChartData(aqiChartData)
-    console.log("aqi chart: ", aqiChartData)
 
     const aqi25TableData = sensorData.reduce((acc, { id, aqi_pm25, aqi_pm25_category, timestamp }) => {
       acc.unshift({
@@ -214,7 +210,6 @@ function Main() {
     }, [])
 
     setAQI25TableData(aqi25TableData)
-    console.log("a25 tbl: ", aqi25TableData)
 
     const aqi10TableData = sensorData.reduce((acc, { id, aqi_pm10, aqi_pm10_category, timestamp }) => {
       acc.unshift({
@@ -227,7 +222,6 @@ function Main() {
     }, [])
 
     setAQI10TableData(aqi10TableData)
-    console.log("a10 tbl: ", aqi10TableData)
   }
 
   const getTimestamp = () => {
@@ -260,10 +254,13 @@ function Main() {
           <div className='grid grid-rows-[22%_39%_39%] gap-4'>
             <SensorCard label="PM 2.5" value={sensorState.latestPM25.value} latestVal={sensorState.latestPM25Level.value} latestReading={sensorState.latestPM25.value} lastReading={sensorState.lastPM25.value} />
             {pm25TableData && <Table tableData={pm25TableData} title="Concentration (µg/m³)" type="concentration" specimen="PM 2.5" />}
+            {aqi25TableData && <Table tableData={aqi25TableData} title="Air Quality Index" type="aqi" specimen="PM 2.5" />}
           </div>
 
           <div className='grid grid-rows-[22%_39%_39%] gap-4'>
             <SensorCard label="PM 10" value={sensorState.latestPM10.value} latestVal={sensorState.latestPM10Level.value} latestReading={sensorState.latestPM10.value} lastReading={sensorState.lastPM10.value} />
+            {pm10TableData && <Table tableData={pm10TableData} title="Concentration (µg/m³)" type="concentration" specimen="PM 10" />}
+            {aqi10TableData && <Table tableData={aqi10TableData} title="Air Quality Index" type="aqi" specimen="PM 10" />}
           </div>
         </div>
       </div>
