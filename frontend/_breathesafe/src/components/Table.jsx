@@ -6,9 +6,7 @@ function Table({ tableData, title, type, specimen }) {
   const newTableData = [...tableData].reverse()
 
   return (
-    <div className={clsx("card card-border border-lightblack bg-skyblue w-full shadow-black/50 shadow-md", {
-      'mb-8': type === "aqi"
-    })}>
+    <div className={clsx("card card-border border-lightblack bg-skyblue w-full shadow-black/50 shadow-md", { 'mb-8': type === "aqi" })}>
       <div className='card-body p-5'>
         <h1 className='text-lightgrey font-bold self-center text-[23px] text-center'>{title}</h1>
         <div className="h-85 overflow-x-auto w-full">
@@ -24,7 +22,14 @@ function Table({ tableData, title, type, specimen }) {
                 Object.keys(newTableData).map((key) => {
                   const item = newTableData[key];
                   return (
-                    <tr key={key} className='even:bg-blue_green/10 text-center text-xs text-black'>
+                    <tr key={key} className={clsx('text-center text-xs text-black', {
+                      'bg-green-600/30': item.category === "Good",
+                      'bg-amber-300/30': item.category === "Moderate",
+                      'bg-orange-600/30': item.category === "Unhealthy for Sensitive Groups",
+                      'bg-red-700/30': item.category === "Unhealthy",
+                      'bg-pink-900/30': item.category === "Very Unhealthy",
+                      'bg-red-950/30': item.category === "Hazardous"
+                    })}>
                       <th>{item.timestamp}</th>
                       <td>
                         {type === "concentration"
