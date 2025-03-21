@@ -232,7 +232,7 @@ function Main() {
   }
 
   return (
-    <div className='absolute inset-0 bg-background h-screen pt-30 px-[42px] overflow-y-scroll w-full'>
+    <div className='absolute inset-0 bg-background h-screen pt-30 pb-4 px-[42px] overflow-y-scroll w-full'>
       <div className='grid grid-cols-2 mb-5' >
         <NameCard employeeName={employeeName} />
         <div className='justify-self-end align-self-center h-fit rounded-box border-lightblack border-1 bg-sky_blue text-black shadow-black/50 shadow-md max-lg:mr-4'>
