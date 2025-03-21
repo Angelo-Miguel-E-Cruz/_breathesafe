@@ -28,7 +28,8 @@ function Table({ tableData, title, type, specimen }) {
                       'bg-orange-600/30': item.category === "Unhealthy for Sensitive Groups",
                       'bg-red-700/30': item.category === "Unhealthy",
                       'bg-pink-900/30': item.category === "Very Unhealthy",
-                      'bg-red-950/30': item.category === "Hazardous"
+                      'bg-red-950/30': item.category === "Hazardous",
+                      'even:bg-blue_green/10': type === "aqi"
                     })}>
                       <th>{item.timestamp}</th>
                       <td>
@@ -46,7 +47,7 @@ function Table({ tableData, title, type, specimen }) {
                 })
               ) : (
                 <tr>
-                  <td colSpan="3" className="text-center text-black">No data available</td>
+                  <td colSpan="2" className="text-center text-black">No data available</td>
                 </tr>
               )}
             </tbody>
