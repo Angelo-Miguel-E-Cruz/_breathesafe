@@ -6,7 +6,11 @@ function Table({ tableData, title, type, specimen }) {
 
   return (
     <div className="card card-border border-lightblack bg-skyblue w-full shadow-black/50 shadow-md">
-      <div className="card-body">
+      <div className={clsx('card-body p-5',
+        {
+          'mb-4': type === "aqi",
+        }
+      )}>
         <h1 className='text-lightgrey font-bold self-center text-[23px] text-center'>{title}</h1>
         <div className="h-65 overflow-x-auto w-full">
           <table className="table table-pin-rows">
