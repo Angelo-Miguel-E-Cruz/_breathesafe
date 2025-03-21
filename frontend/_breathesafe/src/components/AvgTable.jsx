@@ -46,14 +46,18 @@ function AvgTable({ data, unit, specimen }) {
               </tr>
             </thead>
             <tbody>
-              {tableData.map((row, index) => (
-                <tr key={index} className='even:bg-blue_green/10 text-center text-black'>
-                  {uniqueEmployees.map((emp) => (
-                    <td key={emp}>{row[emp] !== null ? row[emp] : "-"}</td>
-                  ))}
-                  <td>{row.timestamp}</td>
-                </tr>
-              ))}
+              {tableData ?
+                tableData.map((row, index) => (
+                  <tr key={index} className='even:bg-blue_green/10 text-center text-black'>
+                    {uniqueEmployees.map((emp) => (
+                      <td key={emp}>{row[emp] !== null ? row[emp] : "-"}</td>
+                    ))}
+                    <td>{row.timestamp}</td>
+                  </tr>
+                )) :
+                <tr>
+                  <td colSpan="2" className="text-center text-black">No data available</td>
+                </tr>}
             </tbody>
           </table>
         </div>
