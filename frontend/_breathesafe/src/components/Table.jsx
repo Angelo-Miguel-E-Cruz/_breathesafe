@@ -23,12 +23,12 @@ function Table({ tableData, title, type, specimen }) {
                   const item = newTableData[key];
                   return (
                     <tr key={key} className={clsx('text-center text-xs text-black', {
-                      'text-green-600/30': item.category === "Good",
-                      'text-amber-300/30': item.category === "Moderate",
-                      'text-orange-600/30': item.category === "Unhealthy for Sensitive Groups",
-                      'text-red-700/30': item.category === "Unhealthy",
-                      'text-pink-900/30': item.category === "Very Unhealthy",
-                      'text-red-950/30': item.category === "Hazardous",
+                      'text-green-600': item.category === "Good",
+                      'text-amber-300': item.category === "Moderate",
+                      'text-orange-600': item.category === "Unhealthy for Sensitive Groups",
+                      'text-red-700': item.category === "Unhealthy",
+                      'text-pink-900': item.category === "Very Unhealthy",
+                      'text-red-950': item.category === "Hazardous",
                       'even:bg-blue_green/10': type === "aqi"
                     })}>
                       <th>{item.timestamp}</th>
