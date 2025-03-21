@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from 'react'
 import axios from 'axios'
 import formatTimestamp from './functions/formatTimestamp'
-import AvgGraph from './AvgGraph'
 import AvgTable from './AvgTable'
+import toast, { Toaster } from 'react-hot-toast'
 
 function AllData() {
   const [pm25ConData, setPm25ConData] = useState(null)
@@ -20,6 +20,7 @@ function AllData() {
         setCharts(sensorData)
 
       } catch (error) {
+        toast.error("No data")
         console.log(error.message)
       }
     }
@@ -82,6 +83,16 @@ function AllData() {
 
   return (
     <div className='absolute inset-0 bg-background h-screen pt-29 overflow-x-auto w-full'>
+      <Toaster />
+      <div className='flex mb-5' >
+        <div className='justify-self-end align-self-center h-fit rounded-box border-lightblack border-1 bg-sky_blue text-black shadow-black/50 shadow-md max-lg:mr-4'>
+          <select defaultValue="5 Minutes" className="select select-ghost h-10 w-38 bg-sky_blue focus:bg-transparent focus:text-black focus:rounded-box focus-within:outline-0" id='time_select'>
+            <option className='text-black hover:bg-sky_blue'>5 Minutes</option>
+            <option className='text-black hover:bg-sky_blue'>1 Hour</option>
+          </select>
+        </div>
+      </div>
+
       <div className='grid grid-cols-2 gap-4 px-[42px] max-lg:grid-cols-1'>
         <div className='grid grid-rows-2 gap-4 max-lg:grid-cols-1'>
           <div>
