@@ -6,15 +6,13 @@ function Table({ tableData, title, type, specimen }) {
   const newTableData = [...tableData].reverse()
 
   return (
-    <div className="card card-border border-lightblack bg-skyblue w-full shadow-black/50 shadow-md">
-      <div className={clsx('card-body p-5',
-        {
-          'mb-4': type === "aqi",
-        }
-      )}>
+    <div className={clsx("card card-border border-lightblack bg-skyblue w-full shadow-black/50 shadow-md", {
+      'mb-4': type === "aqi"
+    })}>
+      <div className='card-body p-5'>
         <h1 className='text-lightgrey font-bold self-center text-[23px] text-center'>{title}</h1>
-        <div className="h-65 overflow-x-auto w-full">
-          <table className="table table-pin-rows">
+        <div className="h-100 overflow-x-auto w-full">
+          <table className="table table-pin-rows h-full">
             <thead>
               <tr className='w-100 bg-blue_green text-center text-white'>
                 <th>Time</th>
@@ -50,7 +48,7 @@ function Table({ tableData, title, type, specimen }) {
           </table>
         </div>
       </div>
-    </div>
+    </div >
   )
 }
 
