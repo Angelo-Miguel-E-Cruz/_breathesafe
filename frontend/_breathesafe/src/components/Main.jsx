@@ -145,15 +145,6 @@ function Main() {
     //console.log(latestReading.aqi_pm10_category === lastReading.aqi_pm10_category ?
     //  "" : "latest 10: " + latestReading.aqi_pm10_category +" last 10: " + lastReading.aqi_pm10_category)
 
-    if (latestReading.aqi_pm25_category === lastReading.aqi_pm25_category) {
-      console.log("setting 25 to false")
-      setNew25Alert(false)
-    } else {
-      console.log("setting 25 to true")
-      setNew25Alert(true)
-    }
-    if (latestReading.aqi_pm10_category === lastReading.aqi_pm10_category) setNew10Alert(false)
-    else setNew10Alert(true)
   }
 
   const setChartsData = (sensorData) => {
@@ -171,6 +162,7 @@ function Main() {
     }, [])
 
     setPMChartData(pmChartData)
+    console.log("pm chart: ", pmChartData)
 
     const pm25TableData = sensorData.reduce((acc, { id, pm25, timestamp }) => {
       acc.unshift({
@@ -182,6 +174,7 @@ function Main() {
     }, [])
 
     setPM25TableData(pm25TableData)
+    console.log("25 tbl: ", pm25TableData)
 
     const pm10TableData = sensorData.reduce((acc, { id, pm10, timestamp }) => {
       acc.unshift({
@@ -193,6 +186,7 @@ function Main() {
     }, [])
 
     setPM10TableData(pm10TableData)
+    console.log("10 tbl: ", pm10TableData)
 
     const aqiChartData = sensorData.reduce((acc, { id, aqi_pm25, aqi_pm10, aqi_pm25_category, aqi_pm10_category, timestamp }) => {
       acc.unshift({
@@ -207,6 +201,7 @@ function Main() {
     }, [])
 
     setAQIChartData(aqiChartData)
+    console.log("aqi chart: ", aqiChartData)
 
     const aqi25TableData = sensorData.reduce((acc, { id, aqi_pm25, aqi_pm25_category, timestamp }) => {
       acc.unshift({
@@ -219,6 +214,7 @@ function Main() {
     }, [])
 
     setAQI25TableData(aqi25TableData)
+    console.log("a25 tbl: ", aqi25TableData)
 
     const aqi10TableData = sensorData.reduce((acc, { id, aqi_pm10, aqi_pm10_category, timestamp }) => {
       acc.unshift({
@@ -231,6 +227,7 @@ function Main() {
     }, [])
 
     setAQI10TableData(aqi10TableData)
+    console.log("a10 tbl: ", aqi10TableData)
   }
 
   const getTimestamp = () => {
