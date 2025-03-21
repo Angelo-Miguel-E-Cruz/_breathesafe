@@ -9,27 +9,7 @@ function AllData() {
   const [pm10ConData, setPm10ConData] = useState(null)
   const [pm25AQIData, setPm25AQIData] = useState(null)
   const [pm10AQIData, setPm10AQIData] = useState(null)
-
-  useEffect(() => {
-
-    const fetchData = async () => {
-      try {
-        const response = await axios.get(`https://breath-o9r9.onrender.com/api/5m_avg/graph`)
-        const sensorData = response.data
-
-        setCharts(sensorData)
-
-      } catch (error) {
-        toast.error("No data")
-        console.log(error.message)
-      }
-    }
-    fetchData
-    const interval = setInterval(fetchData, 5000)
-
-    return () => clearInterval(interval)
-
-  })
+  const [timestampValue, setTimestampValue] = useState("5 minutes")
 
   const setCharts = (sensorData) => {
     const con25ChartData = sensorData.reduce((acc, { device_id, emp_name, pm25, timestamp }) => {
@@ -80,6 +60,70 @@ function AllData() {
 
     setPm10AQIData(aqi10ChartData)
   }
+
+  const getTimestamp = () => {
+    const timestampField = document.getElementById("time_select")
+    const timestampVal = timestampField.value
+
+    setTimestampValue(timestampVal)
+  }
+
+  const fetch5mAvg = async () => {
+    try {
+      const response = await axios.get(`https://breath-o9r9.onrender.com/api/5m_avg/graph`)
+      const sensorData = response.data
+
+      setCharts(sensorData)
+
+    } catch (error) {
+      toast.error("No data")
+      console.log(error.message)
+    }
+  }
+
+  const fetch1hrAvg = async () => {
+    try {
+      const response = await axios.get(`https://breath-o9r9.onrender.com/api/1hr_avg/graph`)
+      const sensorData = response.data
+
+      setCharts(sensorData)
+
+    } catch (error) {
+      toast.error("No data")
+      console.log(error.message)
+    }
+  }
+
+  useEffect(() => {
+    getTimestamp()
+
+    const timestampInterval = setInterval(getTimestamp, 500)
+
+    return () => clearInterval(timestampInterval)
+  }, [])
+
+  useEffect(() => {
+
+    const fetchSensorData = async () => {
+      let sensorData = []
+      switch (timestampValue) {
+        case "5 Minutes":
+          sensorData = await fetch5mAvg()
+          break
+        case "1 Hour":
+          sensorData = await fetch1hrAvg()
+          break
+      }
+
+      setCharts((sensorData))
+    }
+
+    fetchSensorData()
+    const fetchInterval = setInterval(fetchSensorData, 5000)
+
+    return () => clearInterval(fetchInterval)
+  }, [timestampValue])
+
 
   return (
     <div className='absolute inset-0 bg-background h-screen pt-29 overflow-x-auto w-full'>
