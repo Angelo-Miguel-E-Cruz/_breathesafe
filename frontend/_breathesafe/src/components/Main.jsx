@@ -251,7 +251,7 @@ function Main() {
         </div>
 
         <div className='grid grid-cols-2 gap-4'>
-          <div className='grid grid-rows-[22%_39%_39%] gap-4'>
+          <div className='grid grid-rows-[20%_40%_40%] gap-4'>
             <SensorCard label="PM 2.5" value={sensorState.latestPM25.value} latestVal={sensorState.latestPM25Level.value} latestReading={sensorState.latestPM25.value} lastReading={sensorState.lastPM25.value} />
             {pm25TableData && <Table tableData={pm25TableData} title="Concentration (µg/m³)" type="concentration" specimen="PM 2.5" />}
             {aqi25TableData && <Table tableData={aqi25TableData} title="Air Quality Index" type="aqi" specimen="PM 2.5" />}
