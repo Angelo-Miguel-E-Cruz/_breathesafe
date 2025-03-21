@@ -7,9 +7,9 @@ function Table({ tableData, title, type, specimen }) {
 
   return (
     <div className={clsx("card card-border border-lightblack bg-skyblue w-full shadow-black/50 shadow-md", { 'mb-8': type === "aqi" })}>
-      <div className='card-body gap-0 p-0'>
-        <h1 className='w-full font-bold self-center text-[23px] bg-blue_green text-center text-white rounded-t-md'>{title}</h1>
-        <div className="h-85 overflow-x-auto w-full ">
+      <div className='card-body p-5'>
+        <h1 className='text-lightgrey font-bold self-center text-[23px] text-center'>{title}</h1>
+        <div className="h-85 overflow-x-auto w-full">
           <table className="table table-pin-rows h-full">
             <thead>
               <tr className='w-100 bg-blue_green text-center text-white'>
