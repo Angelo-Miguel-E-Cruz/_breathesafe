@@ -7,7 +7,7 @@ function Table({ tableData, title, type, specimen }) {
 
   return (
     <div className={clsx("card card-border border-lightblack bg-skyblue w-full shadow-black/50 shadow-md", {
-      'mb-6': type === "aqi"
+      'mb-7': type === "aqi"
     })}>
       <div className='card-body p-5'>
         <h1 className='text-lightgrey font-bold self-center text-[23px] text-center'>{title}</h1>
