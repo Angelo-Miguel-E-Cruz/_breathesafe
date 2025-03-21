@@ -6,9 +6,9 @@ function Table({ tableData, title, type, specimen }) {
 
   return (
     <div className="card card-border border-lightblack bg-skyblue w-full shadow-black/50 shadow-md">
-      <div className="card-body h-fit p-5">
+      <div className="card-body p-5">
         <h1 className='text-lightgrey font-bold self-center text-[23px]'>{title}</h1>
-        <div className="h-full overflow-x-auto w-full">
+        <div className="overflow-auto w-full">
           <table className="table table-pin-rows">
             <thead>
               <tr className='w-100 bg-blue_green text-center text-white'>
