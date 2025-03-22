@@ -55,7 +55,7 @@ const Login = () => {
   return (
     <div className="flex justify-center items-center h-screen w-screen overflow-hidden">
       <Toaster />
-      <div className="absolute inset-0 left-[50%] translate-x-[-50%] z-10 w-[700px] h-full bg-linear-to-r from-darkblue from-40% via-darkblue/50 via-65% to-transparent to-80%">
+      <div className="absolute inset-0 left-[60%] translate-x-[-60%] z-10 w-[700px] h-full bg-linear-to-r from-darkblue from-40% via-darkblue/50 via-65% to-transparent to-80%">
       </div>
 
       {/* [radial-gradient(ellipse 158.87% 216.54% at 148.77% 59.82%, rgba(45, 45, 45, 0) 30%, rgba(45, 45, 45, 0) 50%, #2D2D2D 75%)] */}
@@ -65,7 +65,7 @@ const Login = () => {
           <img
             src="/loginlogo.png"
             alt="Breathesafe Logo"
-            className="absolute top-10 left-10 w-200 h-auto"
+            className="absolute top-10 left-10 w-52 h-auto"
           />
           <div className='pl-20'>
             <h1 className="text-3xl font-bold">Hello, welcome.</h1>
