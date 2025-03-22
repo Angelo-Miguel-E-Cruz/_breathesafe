@@ -183,7 +183,11 @@ function EmpData() {
           </div>
         </div>
 
-        <button className='btn btn-warning' onClick={addEmployee}>Add Employee</button>
+
+        <div className='flex justify-end'>
+          <button className='btn btn-warning' onClick={addUser}>Add User</button>
+        </div>
+
 
         <label className="input input-bordered border-black text-black bg-background shadow-black/50 shadow-sm
                           flex w-38 items-center gap-2 absolute top-23 right-[42px]">
