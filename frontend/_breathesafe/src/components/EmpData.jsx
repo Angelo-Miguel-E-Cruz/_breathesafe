@@ -185,7 +185,7 @@ function EmpData() {
 
 
         <div className='flex justify-end'>
-          <button className='btn btn-warning' onClick={addUser}>Add User</button>
+          <button className='btn bg-blue_green' onClick={addUser}>Add User</button>
         </div>
 
 
