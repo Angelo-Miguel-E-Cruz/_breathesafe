@@ -97,7 +97,8 @@ function NavBar({ role, setAuth }) {
           {role === "Admin" ?
             <div className="dropdown dropdown-end z-20">
               <div tabIndex={0} role="button" className={clsx('btn rounded-xl border-0 shadow-none mr-2 bg-darkblue transition duration-300 ease-in-out', {
-                'bg-blue_green': dashboardIsActive, v
+                'bg-blue_green': dashboardIsActive,
+                'bg-darkblue': !dashboardIsActive
               })}>
                 <MdDashboard /> Dashboard
               </div>
