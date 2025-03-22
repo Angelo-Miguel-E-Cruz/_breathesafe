@@ -95,7 +95,7 @@ function NavBar({ role, setAuth }) {
           {/* Dashboard/Home Button */}
           {role === "Admin" ?
             <div className="dropdown dropdown-end z-20">
-              <div tabIndex={0} role="button" className='btn rounded-xl mr-2 bg-darkblue transition duration-300 ease-in-out'>
+              <div tabIndex={0} role="button" className='btn rounded-xl border-0  mr-2 bg-darkblue transition duration-300 ease-in-out'>
                 <MdDashboard /> Dashboard
               </div>
               <ul tabIndex={0}
@@ -120,7 +120,7 @@ function NavBar({ role, setAuth }) {
           {/* Options Button */}
           {role === "Admin" ?
             <div className="dropdown dropdown-end z-20">
-              <div tabIndex={0} role="button" className="btn rounded-xl mr-2 bg-darkblue transition duration-300 ease-in-out">
+              <div tabIndex={0} role="button" className="btn rounded-xl border-0 mr-2 bg-darkblue transition duration-300 ease-in-out">
                 <GiHamburgerMenu /> Options
               </div>
               <ul tabIndex={0}
