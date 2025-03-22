@@ -15,7 +15,7 @@ function SensorCard({ label, value, latestVal, latestReading, lastReading }) {
       <div className="grid grid-cols-[65%_35%] gap-1 card-body p-2">
         <div className='content-center pl-2'>
           <p className='text-start pb-2 italic text-md text-lightgrey font-semibold'>{label}</p>
-          <h2 className='text-start pb-2 font-bold text-3xl/4'>{value} µg/m³</h2>
+          <h2 className='text-start pb-2 font-bold text-3xl'>{value} µg/m³</h2>
           <div className='flex place-items-center text-center'>
             <div className={clsx('rounded-md h-fit p-2',
               {
@@ -23,7 +23,7 @@ function SensorCard({ label, value, latestVal, latestReading, lastReading }) {
                 'bg-lightred/30': difference > 0
               }
             )}>
-              <p className={clsx('text-start py-0.5 font-bold',
+              <p className={clsx('text-start py-0.5 font-bold leading-4',
                 {
                   'text-brightgreen': difference <= 0,
                   'text-lightred': difference > 0
