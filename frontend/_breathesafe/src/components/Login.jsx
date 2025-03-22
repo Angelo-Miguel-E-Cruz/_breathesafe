@@ -60,8 +60,8 @@ const Login = () => {
 
       {/* [radial-gradient(ellipse 158.87% 216.54% at 148.77% 59.82%, rgba(45, 45, 45, 0) 30%, rgba(45, 45, 45, 0) 50%, #2D2D2D 75%)] */}
 
-      <div className="w-full h-full flex overflow-hidden relative">
-        <div className="w-1/2 bg-darkblue text-white p-10 flex flex-col justify-center">
+      <div className="w-full h-full flex overflow-hidden">
+        <div className="w-1/2 bg-darkblue text-white p-10 flex flex-col justify-center relative">
           <img
             src="/loginlogo.png"
             alt="Breathesafe Logo"
