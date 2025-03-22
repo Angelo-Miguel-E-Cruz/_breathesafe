@@ -4,7 +4,6 @@ import clsx from 'clsx'
 import { NavLink, useLocation } from 'react-router-dom'
 import { RiHome9Fill } from "react-icons/ri"
 import { IoNewspaper, IoBarChartSharp } from "react-icons/io5"
-import { IoMdSettings } from "react-icons/io"
 import { RiSurgicalMaskFill } from "react-icons/ri"
 import { GiHamburgerMenu } from "react-icons/gi"
 import { MdManageAccounts, MdLogout, MdDashboard } from "react-icons/md"
@@ -29,6 +28,8 @@ function NavBar({ role, setAuth }) {
   }
 
   const location = useLocation()
+  const dashboardIsActive = ["/admin", "/all"].includes(location.pathname)
+  const optionsIsActive = ["/users", "/employees", "records"].includes(location.pathname)
 
   const toggleModal = () => {
     setIsOpen(!isOpen)
@@ -95,7 +96,9 @@ function NavBar({ role, setAuth }) {
           {/* Dashboard/Home Button */}
           {role === "Admin" ?
             <div className="dropdown dropdown-end z-20">
-              <div tabIndex={0} role="button" className='btn rounded-xl border-0 shadow-none mr-2 bg-darkblue transition duration-300 ease-in-out'>
+              <div tabIndex={0} role="button" className={clsx('btn rounded-xl border-0 shadow-none mr-2 bg-darkblue transition duration-300 ease-in-out', {
+                'bg-blue_green': dashboardIsActive, v
+              })}>
                 <MdDashboard /> Dashboard
               </div>
               <ul tabIndex={0}
@@ -120,7 +123,10 @@ function NavBar({ role, setAuth }) {
           {/* Options Button */}
           {role === "Admin" ?
             <div className="dropdown dropdown-end z-20">
-              <div tabIndex={0} role="button" className="btn rounded-xl border-0 shadow-none mr-2 bg-darkblue transition duration-300 ease-in-out">
+              <div tabIndex={0} role="button" className={clsx('btn rounded-xl border-0 shadow-none mr-2 bg-darkblue transition duration-300 ease-in-out', {
+                'bg-blue_green': optionsIsActive,
+                'bg-darkblue': !optionsIsActive
+              })}>
                 <GiHamburgerMenu /> Options
               </div>
               <ul tabIndex={0}
