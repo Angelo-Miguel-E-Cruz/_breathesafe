@@ -29,7 +29,7 @@ function NavBar({ role, setAuth }) {
 
   const location = useLocation()
   const dashboardIsActive = ["/admin", "/all"].includes(location.pathname)
-  const optionsIsActive = ["/users", "/employees", "records"].includes(location.pathname)
+  const optionsIsActive = ["/users", "/employees", "/records"].includes(location.pathname)
 
   console.log(dashboardIsActive)
   console.log(optionsIsActive)
@@ -99,7 +99,7 @@ function NavBar({ role, setAuth }) {
           {/* Dashboard/Home Button */}
           {role === "Admin" ?
             <div className="dropdown dropdown-end z-20">
-              <div tabIndex={0} role="button" className={clsx('btn rounded-xl border-0 shadow-none mr-2 bg-darkblue transition duration-300 ease-in-out', {
+              <div tabIndex={0} role="button" className={clsx('btn rounded-xl border-0 shadow-none mr-2 transition duration-300 ease-in-out', {
                 'bg-blue_green': dashboardIsActive,
                 'bg-darkblue': !dashboardIsActive
               })}>
@@ -127,7 +127,7 @@ function NavBar({ role, setAuth }) {
           {/* Options Button */}
           {role === "Admin" ?
             <div className="dropdown dropdown-end z-20">
-              <div tabIndex={0} role="button" className={clsx('btn rounded-xl border-0 shadow-none mr-2 bg-darkblue transition duration-300 ease-in-out', {
+              <div tabIndex={0} role="button" className={clsx('btn rounded-xl border-0 shadow-none mr-2 transition duration-300 ease-in-out', {
                 'bg-blue_green': optionsIsActive,
                 'bg-darkblue': !optionsIsActive
               })}>

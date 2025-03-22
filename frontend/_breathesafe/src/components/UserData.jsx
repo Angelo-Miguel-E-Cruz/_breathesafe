@@ -169,7 +169,7 @@ function UserData() {
         </div>
 
         <div className='flex justify-end'>
-          <button className='btn bg-blue_green' onClick={addUser}>Add User</button>
+          <button className='btn bg-blue_green hover:bg-darkblue_green' onClick={addUser}>Add User</button>
         </div>
 
 
