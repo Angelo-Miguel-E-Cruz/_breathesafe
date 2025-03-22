@@ -31,6 +31,9 @@ function NavBar({ role, setAuth }) {
   const dashboardIsActive = ["/admin", "/all"].includes(location.pathname)
   const optionsIsActive = ["/users", "/employees", "records"].includes(location.pathname)
 
+  console.log(dashboardIsActive)
+  console.log(optionsIsActive)
+
   const toggleModal = () => {
     setIsOpen(!isOpen)
   }
