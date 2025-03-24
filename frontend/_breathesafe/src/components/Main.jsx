@@ -51,11 +51,6 @@ function Main() {
           if (sensorData.length > 0) setLatest(sensorData)
           sensorData = await fetch5mAvg()
           break
-        case "1 Hour":
-          sensorData = await fetchData()
-          if (sensorData.length > 0) setLatest(sensorData)
-          sensorData = await fetch1hrAvg()
-          break
       }
 
       if (sensorData) {
@@ -80,15 +75,6 @@ function Main() {
   const fetch5mAvg = async () => {
     try {
       const response = await axios.get(`https://breath-o9r9.onrender.com/api/5m_avg?employeeID=${selectedEmployee}`)
-      return response.data
-    } catch (error) {
-      console.log(error.message)
-    }
-  }
-
-  const fetch1hrAvg = async () => {
-    try {
-      const response = await axios.get(`https://breath-o9r9.onrender.com/api/sensor_data/1hr_avg?employeeID=${selectedEmployee}`)
       return response.data
     } catch (error) {
       console.log(error.message)
@@ -228,7 +214,6 @@ function Main() {
           <select defaultValue="Real-Time" className="select select-ghost h-10 w-38 bg-sky_blue focus:bg-transparent focus:text-black focus:rounded-box focus-within:outline-0" id='time_select'>
             <option className='text-black mt-2.5 hover:bg-sky_blue'>Real-Time</option>
             <option className='text-black hover:bg-sky_blue'>5 Minutes</option>
-            <option className='text-black hover:bg-sky_blue'>1 Hour</option>
           </select>
         </div>
       </div>

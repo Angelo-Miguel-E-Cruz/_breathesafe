@@ -63,22 +63,6 @@ export const get5mAvg = async (empID) => {
   }
 }
 
-export const get1hrAvg = async (empID) => {
-  try {
-    const sql = `SELECT * FROM avg_1hr
-                JOIN employees_tb ON avg_1hr.device_id = employees_tb.device_id
-                WHERE employees_tb.id = $1 ORDER by avg_1hr.timestamp DESC LIMIT 20`
-
-    const { rows } = await query(sql, [empID])
-    return rows
-  } catch (error) {
-    console.error("Database Query Error:", error)
-    throw error
-  }
-}
-
-// create a real-time graph
-
 export const getRTGraph = async () => {
   try {
     const sql = `SELECT sensor_data.device_id, emp_name, pm25, pm10, aqi_pm25, aqi_pm10, timestamp
@@ -107,20 +91,6 @@ export const get5mGraph = async () => {
   }
 }
 
-export const get1hrGraph = async () => {
-  try {
-    const sql = `SELECT avg_1hr.device_id, emp_name, pm25, pm10, aqi_pm25, aqi_pm10, timestamp
-                FROM avg_1hr JOIN employees_tb ON avg_1hr.device_id = employees_tb.device_id
-                ORDER BY avg_1hr.timestamp DESC LIMIT 20`
-
-    const { rows } = await query(sql, [])
-    return rows
-  } catch (error) {
-    console.error("Database Query Error:", error)
-    throw error
-  }
-}
-
 // POSTS
 
 export const addSensorData = async (pm25, pm10, aqi_pm25, aqi_pm10, aqi_pm25_category, aqi_pm10_category, device_id) => {
@@ -139,19 +109,6 @@ export const addSensorData = async (pm25, pm10, aqi_pm25, aqi_pm10, aqi_pm25_cat
 export const add5mAverage = async (pm25, pm10, aqi_pm25, aqi_pm10, device_id) => {
   try {
     const sql = `INSERT INTO avg_5m (pm25, pm10, aqi_pm25, aqi_pm10, device_id) 
-                VALUES ($1, $2, $3, $4, $5)`
-
-    const { rows } = await query(sql, [pm25, pm10, aqi_pm25, aqi_pm10, device_id])
-    return rows
-  } catch (error) {
-    console.error("Database Query Error:", error)
-    throw error
-  }
-}
-
-export const add1hrAverage = async (pm25, pm10, aqi_pm25, aqi_pm10, device_id) => {
-  try {
-    const sql = `INSERT INTO avg_1hr (pm25, pm10, aqi_pm25, aqi_pm10, device_id) 
                 VALUES ($1, $2, $3, $4, $5)`
 
     const { rows } = await query(sql, [pm25, pm10, aqi_pm25, aqi_pm10, device_id])
