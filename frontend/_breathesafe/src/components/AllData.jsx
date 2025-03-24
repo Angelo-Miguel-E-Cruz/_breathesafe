@@ -9,7 +9,7 @@ function AllData() {
   const [pm10ConData, setPm10ConData] = useState(null)
   const [pm25AQIData, setPm25AQIData] = useState(null)
   const [pm10AQIData, setPm10AQIData] = useState(null)
-  const [timestampValue, setTimestampValue] = useState("5 minutes")
+  const [timestampValue, setTimestampValue] = useState("Real-Time")
 
   const setCharts = (sensorData) => {
     const con25ChartData = sensorData.reduce((acc, { device_id, emp_name, pm25, timestamp }) => {
@@ -81,9 +81,9 @@ function AllData() {
     }
   }
 
-  const fetch1hrAvg = async () => {
+  const fetchAvg = async () => {
     try {
-      const response = await axios.get(`https://breath-o9r9.onrender.com/api/1hr_avg/graph`)
+      const response = await axios.get(`https://breath-o9r9.onrender.com/api/sensor_data/graph`)
       const sensorData = response.data
 
       setCharts(sensorData)
@@ -110,8 +110,8 @@ function AllData() {
         case "5 Minutes":
           sensorData = await fetch5mAvg()
           break
-        case "1 Hour":
-          sensorData = await fetch1hrAvg()
+        case "Real-Time":
+          sensorData = await fetchAvg()
           break
       }
 
@@ -130,9 +130,9 @@ function AllData() {
       <Toaster />
       <div className='flex mb-5 justify-end mx-[42px]' >
         <div className='align-self-center h-fit rounded-box border-lightblack border-1 bg-sky_blue text-black shadow-black/50 shadow-md max-lg:mr-4'>
-          <select defaultValue="5 Minutes" className="select select-ghost h-10 w-38 bg-sky_blue focus:bg-transparent focus:text-black focus:rounded-box focus-within:outline-0" id='time_select'>
+          <select defaultValue="Real-Time" className="select select-ghost h-10 w-38 bg-sky_blue focus:bg-transparent focus:text-black focus:rounded-box focus-within:outline-0" id='time_select'>
+            <option className='text-black hover:bg-sky_blue'>Real-Time</option>
             <option className='text-black hover:bg-sky_blue'>5 Minutes</option>
-            <option className='text-black hover:bg-sky_blue'>1 Hour</option>
           </select>
         </div>
       </div>

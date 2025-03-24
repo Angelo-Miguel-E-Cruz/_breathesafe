@@ -18,6 +18,8 @@ router.get('/5m_avg', sensorController.get5mAvg)
 
 router.get('/1hr_avg', sensorController.get1hrAvg)
 
+router.get('/sensor_data/graph', sensorController.getRTGraph)
+
 router.get('/5m_avg/graph', sensorController.get5mGraph)
 
 router.get('/1hr_avg/graph', sensorController.get1hrGraph)
