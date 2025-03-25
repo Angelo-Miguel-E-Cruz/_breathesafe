@@ -73,6 +73,8 @@ function AllData() {
       const response = await axios.get(`https://breath-o9r9.onrender.com/api/5m_avg/graph`)
       const sensorData = response.data
 
+      console.log(sensorData)
+
       setCharts(sensorData)
 
     } catch (error) {
