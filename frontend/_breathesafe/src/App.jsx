@@ -20,7 +20,6 @@ function App() {
     setIsAuthenticated(!!token)
 
     timer.startLoopingCountdown(300, timer.onTimerEnd) // Get 5 minutes average
-    timer.startLoopingCountdown(3600, timer.onTimerEnd) // Get 1 hour average
   }, [])
 
   return (

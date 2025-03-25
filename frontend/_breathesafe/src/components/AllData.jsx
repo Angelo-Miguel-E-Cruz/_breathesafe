@@ -13,49 +13,49 @@ function AllData() {
 
   const setCharts = (sensorData) => {
     const con25ChartData = sensorData.reduce((acc, { device_id, emp_name, pm25, timestamp }) => {
-      acc.push({
+      acc.unshift({
         id: device_id,
         pm25,
         emp_name,
         timestamp: formatTimestamp(timestamp),
       })
-      return acc.slice(-20)
+      return acc.slice(0, 20)
     }, [])
 
     setPm25ConData(con25ChartData)
 
     const aqi25ChartData = sensorData.reduce((acc, { device_id, emp_name, aqi_pm25, timestamp }) => {
-      acc.push({
+      acc.unshift({
         id: device_id,
         aqi_pm25,
         emp_name,
         timestamp: formatTimestamp(timestamp),
       })
-      return acc.slice(-20)
+      return acc.slice(0, 20)
     }, [])
 
     setPm25AQIData(aqi25ChartData)
 
     const con10ChartData = sensorData.reduce((acc, { device_id, emp_name, pm10, timestamp }) => {
-      acc.push({
+      acc.unshift({
         id: device_id,
         pm10,
         emp_name,
         timestamp: formatTimestamp(timestamp),
       })
-      return acc.slice(-20)
+      return acc.slice(0, 20)
     }, [])
 
     setPm10ConData(con10ChartData)
 
     const aqi10ChartData = sensorData.reduce((acc, { device_id, emp_name, aqi_pm10, timestamp }) => {
-      acc.push({
+      acc.unshift({
         id: device_id,
         aqi_pm10,
         emp_name,
         timestamp: formatTimestamp(timestamp),
       })
-      return acc.slice(-20)
+      return acc.slice(0, 20)
     }, [])
 
     setPm10AQIData(aqi10ChartData)
