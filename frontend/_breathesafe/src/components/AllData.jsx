@@ -13,7 +13,7 @@ function AllData() {
 
   const setCharts = (sensorData) => {
     const con25ChartData = sensorData.reduce((acc, { device_id, emp_name, pm25, timestamp }) => {
-      acc.unshift({
+      acc.push({
         id: device_id,
         pm25,
         emp_name,
@@ -25,7 +25,7 @@ function AllData() {
     setPm25ConData(con25ChartData)
 
     const aqi25ChartData = sensorData.reduce((acc, { device_id, emp_name, aqi_pm25, timestamp }) => {
-      acc.unshift({
+      acc.push({
         id: device_id,
         aqi_pm25,
         emp_name,
@@ -37,7 +37,7 @@ function AllData() {
     setPm25AQIData(aqi25ChartData)
 
     const con10ChartData = sensorData.reduce((acc, { device_id, emp_name, pm10, timestamp }) => {
-      acc.unshift({
+      acc.push({
         id: device_id,
         pm10,
         emp_name,
@@ -49,7 +49,7 @@ function AllData() {
     setPm10ConData(con10ChartData)
 
     const aqi10ChartData = sensorData.reduce((acc, { device_id, emp_name, aqi_pm10, timestamp }) => {
-      acc.unshift({
+      acc.push({
         id: device_id,
         aqi_pm10,
         emp_name,
